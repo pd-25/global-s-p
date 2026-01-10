@@ -1,0 +1,124 @@
+.animateOnScroll {
+  opacity: 0;
+  transition: opacity var(--animation-duration, 0.6s) ease-out,
+    transform var(--animation-duration, 0.6s) ease-out;
+  transition-delay: var(--animation-delay, 0s);
+}
+
+/* Fade In */
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Fade Up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Down */
+.fade-down {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.fade-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Left */
+.fade-left {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade Right */
+.fade-right {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale */
+.scale {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide Up */
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide Down */
+.slide-down {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.slide-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide Left */
+.slide-left {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide Right */
+.slide-right {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hidden state */
+.hidden {
+  opacity: 0;
+}
+
+/* Visible state */
+.visible {
+  opacity: 1;
+}

@@ -3,6 +3,7 @@
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from './theme'
+import LenisProvider from '@/components/providers/LenisProvider'
 
 export default function ThemeRegistry({
   children,
@@ -12,7 +13,7 @@ export default function ThemeRegistry({
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {children}
+      <LenisProvider>{children}</LenisProvider>
     </ThemeProvider>
   )
 }
