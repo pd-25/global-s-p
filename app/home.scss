@@ -1,5 +1,5 @@
 // Import global variables
-@import './variables';
+@use './variables' as *;
 
 .heroWrapper {
     position: relative;
