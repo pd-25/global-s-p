@@ -1,0 +1,880 @@
+// Import global variables
+@import './variables';
+
+.heroWrapper {
+    position: relative;
+    overflow: hidden;
+    height: 415px;
+
+    .heroBg {
+        position: absolute;
+        inset: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .MuiContainer-root {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .heroPersonImage {
+            width: 347px;
+            flex: none;
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: bottom;
+            }
+        }
+    }
+
+    .heroTextWrapper {
+        max-width: 620px;
+
+        .searchForm {
+            max-width: 525px;
+            position: relative;
+
+            button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 61px;
+                width: 64px;
+                min-width: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+                border-radius: 18px;
+            }
+        }
+    }
+}
+
+.statisticsWrapper {
+    background-color: $colorSecondary;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 40px 0;
+    margin-top: 20px;
+
+    .statisticsParralax {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right;
+        }
+    }
+
+    .statisticsGlobe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 20%;
+        mix-blend-mode: lighten;
+        pointer-events: none;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right;
+        }
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+
+        .statisticsContent {
+            gap: 28px;
+
+            .statisticsItem {
+                text-align: center;
+
+                .statisticsItemContent {
+                    h3 {
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: $colorWhite;
+                        margin: 12px 0;
+                    }
+
+                    p {
+                        color: $colorWhite;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.categorySliderWrapper {
+    .productShowcaseRowOuter {
+        .productShowcaseRowInner {
+            margin-bottom: 30px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:nth-child(even) {
+                .productShowcaseRow {
+                    .productShowcaseColLeft {
+                        order: 2;
+                    }
+                }
+            }
+        }
+    }
+
+    .productShowcaseContent {
+        .MuiContainer-root {
+            padding: 0;
+        }
+
+        .productShowcaseRow {
+
+
+            .productShowcaseColLeft {
+                width: 50%;
+
+                @include respond-to(minLg) {
+                    width: 28%;
+                }
+
+                .featuredProductCard {
+                    position: relative;
+                    background-color: $colorSecondary3;
+                    border: 1px solid $borderLight;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 16px;
+                    @include transition-prefixes(0.4s);
+
+                    .discountBadge {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 85px;
+                        height: 85px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        background-color: $colorSecondary;
+                        border-radius: 0 16px 0 16px;
+                        z-index: 1;
+
+                        p {
+                            color: $colorWhite;
+                            font-weight: 600;
+                            font-size: 14px;
+                            margin: 0;
+
+                            span {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    .featuredProductCardImage {
+                        height: 350px;
+                        display: flex;
+                        position: relative;
+                        overflow: hidden;
+                        align-items: center;
+                        justify-content: center;
+
+                        img {
+                            height: auto;
+                            max-width: 170px;
+                            object-fit: contain;
+                            @include transition-prefixes(0.4s);
+                        }
+                    }
+
+                    .featuredProductCardContent {
+                        background-color: $colorSecondary;
+                        padding: 18px;
+
+                        p {
+                            color: $colorWhite;
+                            font-weight: 300;
+                            font-size: 16px;
+                        }
+
+                        h4 {
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: $colorWhite;
+                            margin: 4px 0;
+                        }
+
+                        .actionBtn {
+                            padding-top: 10px;
+                            margin-top: 10px;
+                            border-top: 1px solid $borderLight;
+                        }
+                    }
+
+                    &:hover {
+                        box-shadow: 7px 12px 11px 5px rgba(0, 0, 0, 0.35);
+
+                        .featuredProductCardImage {
+                            img {
+                                transform: scale(1.03) translateY(-5px);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .productShowcaseColRight {
+                width: 50%;
+
+                @include respond-to(minLg) {
+                    width: 72%;
+                }
+
+                .productShowcaseCardStack {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 30px 17px;
+
+                    @include respond-to(minXxxl) {
+                        grid-template-columns: repeat(5, 1fr);
+                    }
+
+                    .productShowcaseBox {
+                        position: relative;
+                        border-radius: 16px;
+                        overflow: hidden;
+                        border: 1px solid $borderLight;
+                        @include transition-prefixes(0.4s);
+
+                        >.innerLink {
+                            z-index: 1;
+                            display: block;
+                            position: absolute;
+                            inset: 0;
+                            width: 100%;
+                            height: 100%;
+                            padding: 0;
+                        }
+
+                        .productShowcaseCard {
+                            .discountBadge {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                width: 42px;
+                                height: 42px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-align: center;
+                                background-color: $colorSecondary;
+                                border-radius: 0 16px 0 16px;
+                                z-index: 1;
+
+                                p {
+                                    color: $colorWhite;
+                                    font-weight: 600;
+                                    font-size: 10px;
+                                    margin: 0;
+
+                                    span {
+                                        display: block;
+                                    }
+                                }
+                            }
+
+                            .productShowcaseCardImage {
+                                height: 160px;
+                                display: flex;
+                                position: relative;
+                                overflow: hidden;
+                                align-items: center;
+                                justify-content: center;
+                                background-color: #F5F5F5;
+
+                                img {
+                                    height: auto;
+                                    max-width: 110px;
+                                    object-fit: contain;
+                                    @include transition-prefixes(0.4s);
+                                }
+                            }
+
+                            .productShowcaseCardContent {
+                                padding: 10px 10px 15px;
+
+                                h3 {
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    color: #222222;
+                                    padding-bottom: 7px;
+                                    margin-bottom: 8px;
+                                    border-bottom: 1px solid $borderLight;
+                                }
+
+                                .productShowcaseCardPrice {
+                                    >div {
+                                        margin-top: 2px;
+
+                                        .MuiTypography-root {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            border-color: #008ECC;
+                            box-shadow:
+                                0px 0px 0px 0px #0000000D,
+                                0px 6px 13px 0px #0000000D,
+                                0px 24px 24px 0px #0000000A,
+                                0px 54px 33px 0px #00000008,
+                                0px 97px 39px 0px #00000003,
+                                0px 151px 42px 0px #00000000;
+
+                            .productShowcaseCard {
+                                .productShowcaseCardImage {
+                                    img {
+                                        transform: scale(1.03) translateY(-5px);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.topBrandsWrapper {
+    .shortTitle {
+        .MuiButtonBase-root {
+            font-size: 16px;
+            font-weight: 500;
+            color: $colorBlack;
+            gap: 6px;
+            min-width: auto;
+            padding: 0;
+            width: auto;
+        }
+    }
+
+    .top-brands-swiper {
+        .topBrandsCard {
+            height: 100%;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid transparent;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -40%;
+                right: -10%;
+                width: 246px;
+                height: 246px;
+                border-radius: 100%;
+                padding: 10px;
+            }
+
+            .brandContent {
+                position: relative;
+                z-index: 1;
+
+                p {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 35px;
+                    min-width: 110px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    letter-spacing: 1.4px;
+                    text-transform: uppercase;
+                    margin: 0;
+                }
+
+                .brandLogo {
+                    margin-top: 20px;
+                    line-height: 1;
+                }
+
+                h3 {
+                    font-size: 24px;
+                    line-height: 1.2;
+                    font-weight: 600;
+                    margin-top: 12px;
+                }
+            }
+
+            .brandImage {
+                position: relative;
+                z-index: 1;
+                flex: 1 1 150px;
+                text-align: right;
+            }
+
+            &--apple {
+                background-color: #313131;
+                border-color: #414141;
+
+                &::before {
+                    background-color: #404040;
+                    box-shadow: 0 0 0 1px #414141;
+                }
+
+                .brandContent {
+                    p {
+                        background-color: #494949;
+                        color: $colorWhite;
+                    }
+
+                    h3 {
+                        color: $colorWhite;
+                    }
+                }
+            }
+
+            &--realme {
+                background-color: #FFF3CC;
+                border-color: #F6DE8D;
+
+                &::before {
+                    background-color: #F6DE8D;
+                    box-shadow: 0 0 0 1px #F6DE8D;
+                }
+
+                .brandContent {
+                    p {
+                        background-color: #F6DE8D;
+                        color: #222222;
+                    }
+
+                    h3 {
+                        color: #222222;
+                    }
+                }
+            }
+
+            &--xiaomi {
+                background-color: #FFECDF;
+                border-color: #FFD1B0;
+
+                &::before {
+                    background-color: #FFD1B0;
+                    box-shadow: 0 0 0 1px #FFD1B0;
+                }
+
+                .brandContent {
+                    p {
+                        background-color: #FFD1B0;
+                        color: #222222;
+                    }
+
+                    h3 {
+                        color: #222222;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.marketplaceWrapper {
+    .marketplaceCard {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50px;
+        background-color: #F7F5E7;
+
+        &.colorPrimary {
+            .marketplaceCardHeader {
+                background-color: $colorPrimary;
+            }
+
+        }
+
+        &.colorSecondary {
+            .marketplaceCardHeader {
+                background-color: $colorSecondary;
+            }
+        }
+
+        .marketplaceCardHeader {
+            padding: 80px 50px 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .marketplaceCardHeaderContent {
+                max-width: 300px;
+
+                p {
+                    color: $colorWhite;
+                }
+
+                h3 {
+                    font-size: 32px;
+                    font-weight: 700;
+                    color: $colorWhite;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        .marketplaceCardBody {
+            padding: 50px;
+
+            p {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+.ourPartnersWrapper {
+    .ourPartnersCol {
+        .ourPartnersContentCard {
+            max-width: 700px;
+
+            h3 {
+                font-size: 40px;
+                font-weight: 700;
+                color: $colorBlack;
+
+                span {
+                    color: $colorSecondary;
+                }
+            }
+
+            h4 {
+                font-size: 50px;
+                line-height: 1.2;
+                font-weight: 700;
+                color: $colorBlack;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: 600;
+                color: #83939C;
+                margin-bottom: 20px;
+            }
+        }
+
+        .ourPartnersImageCard {
+            @include respond-to(minMd) {
+                text-align: right;
+            }
+        }
+    }
+}
+
+.ourClientsWrapper {
+    overflow: hidden;
+
+    // Custom Marquee Styles for Our Clients
+    .marquee-container {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        mask-image: linear-gradient(to right,
+                transparent,
+                black 10%,
+                black 90%,
+                transparent);
+        -webkit-mask-image: linear-gradient(to right,
+                transparent,
+                black 10%,
+                black 90%,
+                transparent);
+    }
+
+    .marquee-track {
+        display: flex;
+        gap: 40px;
+        width: fit-content;
+
+        &--ltr {
+            animation: marquee 30s linear infinite;
+        }
+
+        &--rtl {
+            animation: marquee-reverse 30s linear infinite;
+        }
+
+        .ourClientsLogo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+    }
+
+    // Left to Right Animation
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    // Right to Left Animation
+    @keyframes marquee-reverse {
+        0% {
+            transform: translateX(-50%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+
+.perfectVendorWrapper {
+    background-color: $colorSecondary;
+    padding: 50px;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+
+    .perfectVendorBg {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        mix-blend-mode: lighten;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right;
+        }
+    }
+
+    .sectionHeading {
+        max-width: 600px;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 0;
+
+        h2 {
+            color: $colorWhite;
+
+            span {
+                font-size: 32px;
+                display: block;
+                margin: 0;
+            }
+        }
+
+        p {
+            color: $colorWhite;
+            margin-bottom: 20px;
+        }
+
+    }
+}
+
+.ourBlogWrapper {
+    .blog-swiper {
+        padding-bottom: 70px;
+    }
+
+    .blogCard {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        background-color: #FBFBFB;
+        box-shadow: 0px 10px 20px 0px #0000001A;
+        @include transition-prefixes(0.4s);
+
+        .blogCardImage {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                @include transition-prefixes(0.8s);
+                transform: scale(1);
+            }
+        }
+
+        .blogCardContent {
+            padding: 20px;
+            text-align: center;
+
+            h3 {
+                font-size: 16px;
+                font-weight: 500;
+                color: $colorBlack;
+                margin-bottom: 20px;
+            }
+
+            a {
+                color: $colorBlack;
+                padding: 0;
+                min-width: auto;
+                line-height: 1;
+                height: auto;
+            }
+        }
+
+        &:hover {
+            .blogCardImage {
+                img {
+                    transform: scale(1.1) translateY(-5px);
+                }
+            }
+        }
+    }
+}
+
+.testimonialsWrapper {
+    .testimonials-swiper {
+        padding-top: 100px;
+
+        .swiper-slide {
+            height: 100%;
+        }
+    }
+
+    .testimonialsSliderCard {
+        padding: 50px;
+        padding-top: 100px;
+        position: relative;
+        border-radius: 30px;
+        min-height: 500px;
+
+        &--primary {
+            background-color: $colorPrimary;
+        }
+
+        &--secondary {
+            background-color: $colorSecondary;
+        }
+
+        .cardHeader {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -80px;
+            padding: 0 50px;
+            justify-content: space-between;
+
+            .clientAvatar {
+                width: 150px;
+                height: 150px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .cardContent {
+            p {
+                font-size: 20px;
+                color: $colorWhite;
+                margin-bottom: 20px;
+            }
+
+            .MuiButtonBase-root {
+                color: $colorWhite;
+                font-size: 24px;
+                padding: 0;
+                min-width: auto;
+                line-height: 1;
+                height: auto;
+            }
+        }
+
+        .cardFooter {
+            justify-content: space-between;
+            margin-top: 50px;
+
+            .clientName {
+                h3 {
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: $colorWhite;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    color: $colorWhite;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
