@@ -40,7 +40,7 @@ export default function Banner() {
                       color: "white",
                     }}
                   >
-                    The leading B2B marketplace for European trade
+                    The leading B2B marketplace for Indian trade
                   </Typography>
                   <Typography
                     variant="body1"
