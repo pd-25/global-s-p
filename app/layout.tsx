@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google"
 import "./globals.css"
 import "./_reset.scss"
 import ThemeRegistry from "./ThemeRegistry"
+import Header from "@/components/layout/header/Header"
+import Footer from "@/components/layout/footer/Footer"
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -23,7 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${montserrat.className}`}>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeRegistry>
       </body>
     </html>
   )
