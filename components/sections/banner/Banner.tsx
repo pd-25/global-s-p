@@ -14,7 +14,7 @@ export default function Banner() {
         sx={{ position: "relative" }}
       >
         <Box className="heroBg">
-          <Image src={HeroBg} alt="hero-bg" width={1000} height={1080} />
+          <Image src='https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/market-place-home.Dp_XERVV.svg' alt="hero-bg" width={1000} height={1080} />
         </Box>
         <Container sx={{ position: "relative", zIndex: 1 }}>
           <Box
@@ -123,12 +123,12 @@ export default function Banner() {
                 </Stack>
               </Stack>
             </Box>
-            <Box
+            {/* <Box
               sx={{ flex: 1, width: { xs: "100%", md: "50%" } }}
               className="heroPersonImage"
             >
               <Image src={HeroPerson} alt="hero-person" />
-            </Box>
+            </Box> */}
           </Box>
         </Container>
       </Box>

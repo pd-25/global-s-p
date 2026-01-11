@@ -14,7 +14,7 @@ export default function Testimonials() {
         <Container>
           <Box className="sectionHeading" sx={{ textAlign: "center" }}>
             <Typography variant="h2" component="h2">
-              Testimonials By Our Clients
+              What our customers are saying about us:
             </Typography>
             <Typography variant="body1" component="p">
               Begin planning your child’s career at the right time with

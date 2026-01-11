@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
-import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import IconButton from "@mui/material/IconButton"
@@ -13,6 +12,8 @@ import Icon from "@/components/icon/Icon"
 import styles from "./Header.module.css"
 import Image from "next/image"
 import logo from "@/public/global-sp-logo.svg"
+import { navLinks } from "@/lib/constants"
+
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -21,12 +22,7 @@ export default function Header() {
     setMobileOpen(!mobileOpen)
   }
 
-  const navLinks = [
-    { name: "Get Quote", href: "/quote" },
-    { name: "Request Hub", href: "/request-hub" },
-    { name: "Products&Services", href: "/products&searvices" },
-    { name: "About us", href: "/about" },
-  ]
+
 
   const drawer = (
     <Box sx={{ p: 3, backgroundColor: "#054934", height: "100%" }}>

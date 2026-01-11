@@ -1,44 +1,18 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
-import Stack from "@mui/material/Stack"
-import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
-
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Autoplay } from "swiper/modules"
-
 import "swiper/css"
 import "swiper/css/navigation"
 import "./home.scss"
 import "./category-slider.scss"
-
 import CategorySlider from "@/components/sections/category/CategorySlider"
-import Icon from "@/components/icon/Icon"
 import { AnimateOnScroll } from "@/components/animations"
-
 import Link from "next/link"
 import Image from "next/image"
-
-
-
-
-
-
-
-
-
-// Partners/Clients/Vendor images
-
-
 import perfectVendorBg from "@/public/home/perfect-vendor-pic.webp"
-
-
-
-
 import Banner from "@/components/sections/banner/Banner"
 import Statistics from "@/components/sections/statistics/Statistics"
 import CategoryWiseProducts from "@/components/sections/category-wise-product/CategoryWiseProducts"
@@ -48,7 +22,6 @@ import PartnerInfo from "@/components/sections/partners/PartnerInfo"
 import PartnerSlider from "@/components/sections/partners/PartnerSlider"
 import BlogList from "@/components/sections/blog/BlogList"
 import Testimonials from "@/components/sections/testimonials/Testimonials"
-
 // Image paths - add your images to the public folder
 const ukFlag = "/home/flag-uk.svg"
 const pakistanFlag = "/home/flag-pk.svg"
@@ -58,8 +31,6 @@ const bangladeshFlag = "/home/flag-bd.svg"
 
 
 export default function Home() {
-  // Counter hooks for all statistics
-
   const categories = [
     {
       id: 1,

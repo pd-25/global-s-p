@@ -103,10 +103,11 @@ export default function Statistics() {
         </Box>
         <Box className="statisticsGlobe">
           <Image
-            src={StatisticsGlobe}
+            src='https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/quotes_backgrade.BNzaFa3U.gif'
             alt="statistics-globe"
             width={360}
             height={360}
+            unoptimized={true}
           />
         </Box>
         <Box className="container">

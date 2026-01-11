@@ -13,10 +13,10 @@ export default function BlogList() {
         <Container>
           <Box className="sectionHeading" sx={{ textAlign: "center" }}>
             <Typography variant="h2" component="h2">
-              Blog Section
+              Inside Business: The B2B blog from europages
             </Typography>
             <Typography variant="body1" component="p">
-              Desctiprion of blog
+              Most trending business topics for you
             </Typography>
           </Box>
           <Box className="blogSliderOuter" sx={{ mt: 4 }}>
