@@ -1,5 +1,5 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Icon from "@/components/icon/Icon"
+import Icon from "@/components/ui/icon/Icon"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Autoplay } from "swiper/modules"
 // Top brands & marketplace images

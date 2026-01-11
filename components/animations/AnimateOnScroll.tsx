@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode } from "react"
+import React, { ReactNode } from "react"
 import { useScrollAnimation, AnimationType } from "@/hooks/useScrollAnimation"
 import styles from "./AnimateOnScroll.module.css"
 
@@ -13,7 +13,7 @@ interface AnimateOnScrollProps {
   delay?: number
   duration?: number
   className?: string
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof React.JSX.IntrinsicElements
 }
 
 export default function AnimateOnScroll({

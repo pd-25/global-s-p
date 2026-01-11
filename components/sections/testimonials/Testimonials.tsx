@@ -6,7 +6,7 @@ import clientAvatar1 from "@/public/home/testimonial-avatar-01.webp"
 import clientAvatar2 from "@/public/home/testimonial-avatar-02.webp"
 import testimonialLogo from "@/public/home/testimonial-logo.svg"
 import Image from 'next/image';
-import Icon from '@/components/icon';
+import Icon from '@/components/ui/icon';
 
 export default function Testimonials() {
   return (
