@@ -77,16 +77,14 @@ const theme = createTheme({
           // maxWidth: '1400px', // Uncomment and set your desired width
 
           // Or use responsive breakpoints
-          '@media (min-width: 600px)': {
-            maxWidth: '600px',
-          },
-          '@media (min-width: 900px)': {
-            maxWidth: '1200px',
-          },
-          '@media (min-width: 1200px)': {
+          '@media (min-width: 320px)': {
             maxWidth: '100%',
-            padding: '0 32px',
+            padding: '0 16px',
           },
+          '@media (min-width: 768px)': {
+            maxWidth: '100%',
+            padding: '0 24px',
+          }
         },
       },
       defaultProps: {

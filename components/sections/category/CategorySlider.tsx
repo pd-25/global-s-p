@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
 import Container from "@mui/material/Container"
 import Link from "next/link"
+import { useSliderNavigation } from "@/hooks/useSliderNavigation"
 
 interface CategoryItem {
   id: number
@@ -24,6 +25,19 @@ interface CategorySliderProps {
 }
 
 export default function CategorySlider({ categories }: CategorySliderProps) {
+  const { showNavigation } = useSliderNavigation(
+    categories.length,
+    2, // default slidesPerView
+    {
+      640: 3,
+      768: 3,
+      992: 4,
+      1024: 4,
+      1280: 4,
+      1400: 6,
+    }
+  )
+
   return (
     <Box component="section" className="categorySliderWrapper secPadd pb-0">
       <Container>
@@ -44,33 +58,53 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
           modules={[Navigation, Autoplay]}
           spaceBetween={20}
           slidesPerView={2}
-          navigation
+          navigation={
+            showNavigation
+              ? {
+                  nextEl: ".ComSliderNavigation .swiper-button-next",
+                  prevEl: ".ComSliderNavigation .swiper-button-prev",
+                }
+              : false
+          }
           autoplay={false}
           // autoplay={{
           //   delay: 3000,
           //   disableOnInteraction: false,
           // }}
-          loop={true}
+          loop={false}
           breakpoints={{
             640: {
               slidesPerView: 3,
               spaceBetween: 20,
             },
             768: {
+              slidesPerView: 3,
+              spaceBetween: 24,
+            },
+            992: {
               slidesPerView: 4,
               spaceBetween: 24,
             },
             1024: {
-              slidesPerView: 5,
-              spaceBetween: 24,
+              slidesPerView: 4,
             },
             1280: {
-              slidesPerView: 6,
+              slidesPerView: 4,
               spaceBetween: 16,
+            },
+            1400: {
+              slidesPerView: 6,
             },
           }}
           className="category-swiper"
         >
+          {showNavigation && (
+            <Box className="ComSliderNavigation">
+              <Box className="swiper-button-prev"></Box>
+              <Box className="swiper-button-next"></Box>
+            </Box>
+          )}
+
           {categories.map((category) => (
             <SwiperSlide key={category.id}>
               <Box className="categoryItem">

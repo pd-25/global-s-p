@@ -250,3 +250,37 @@ li {
         }
     }
 }
+
+.ComSliderNavigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    gap: 10px;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: $colorWhite;
+        background: rgba(255, 255, 255, 0.2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        position: relative;
+        inset: 0 !important;
+        margin: 0 !important;
+        transform: none;
+        font-size: 20px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $colorPrimary;
+
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -14,15 +14,12 @@ import Image from "next/image"
 import logo from "@/public/global-sp-logo.svg"
 import { navLinks } from "@/lib/constants"
 
-
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-
-
 
   const drawer = (
     <Box sx={{ p: 3, backgroundColor: "#054934", height: "100%" }}>
@@ -74,9 +71,18 @@ export default function Header() {
           }}
         >
           {/* Logo */}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box
+            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ maxWidth: { xs: 160, md: 300 } }}
+          >
             <Link href="/" style={{ textDecoration: "none" }}>
-              <Image src={logo} alt="logo" width={300} height={40} />
+              <Image
+                src={logo}
+                alt="logo"
+                width={300}
+                height={40}
+                className="logo"
+              />
             </Link>
           </Box>
 

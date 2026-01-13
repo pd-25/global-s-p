@@ -1,10 +1,25 @@
-import { AnimateOnScroll } from "@/components/animations";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+"use client"
 
-
+import { AnimateOnScroll } from "@/components/animations"
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+import Image from "next/image"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Autoplay } from "swiper/modules"
+import "swiper/css"
+import "swiper/css/navigation"
 
 export default function CategoryWiseProducts() {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(992))
+
   return (
     <Box component="section" className="categorySliderWrapper pb-0 secPadd">
       <Container>
@@ -21,7 +36,6 @@ export default function CategoryWiseProducts() {
         <AnimateOnScroll animation="fade-up" delay={0.5}>
           <Box className="productShowcaseRowOuter">
             <Box className="productShowcaseRowInner">
-
               <Box className="productShowcaseContent">
                 <Container>
                   <Box
@@ -72,10 +86,7 @@ export default function CategoryWiseProducts() {
                             2.2K Products
                           </Typography>
                           <Box className="actionBtn">
-                            <Button
-                              variant="contained"
-                              href="/"
-                            >
+                            <Button variant="contained" href="/">
                               Source Now
                             </Button>
                           </Box>
@@ -84,888 +95,1768 @@ export default function CategoryWiseProducts() {
                     </Box>
                     {/* Category Card end */}
                     <Box className="productShowcaseColRight">
-                      <Stack className="productShowcaseCardStack">
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="Modern Smartphone"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
-                                    }}
-                                  >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
+                      {isMobile ? (
+                        <Swiper
+                          modules={[Navigation, Autoplay]}
+                          spaceBetween={20}
+                          slidesPerView={1}
+                          navigation={{
+                            nextEl: ".ComSliderNavigation .swiper-button-next",
+                            prevEl: ".ComSliderNavigation .swiper-button-prev",
+                          }}
+                          autoplay={false}
+                          loop={false}
+                          breakpoints={{
+                            320: {
+                              slidesPerView: 2,
+                              spaceBetween: 20,
+                            },
+                            768: {
+                              slidesPerView: 3,
+                              spaceBetween: 24,
+                            },
+                          }}
+                          className="product-showcase-swiper"
+                        >
+                          <Box className="ComSliderNavigation">
+                            <Box className="swiper-button-prev"></Box>
+                            <Box className="swiper-button-next"></Box>
+                          </Box>
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
                                   </Typography>
                                 </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                    alt="Modern Smartphone"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                    alt="Wireless Headphones"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                    alt="MacBook Pro"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                    alt="Professional Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch White"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                    alt="Polaroid Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                            {/* product-showcase-card */}
+                            {/* product-showcase-card */}
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="product-showcase-image"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                        </Swiper>
+                      ) : (
+                        <Stack className="productShowcaseCardStack">
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                  alt="Modern Smartphone"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
+
+                                  <Box
                                     sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="Smart Watch"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
-                                alt="Wireless Headphones"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                  alt="Wireless Headphones"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
-                                alt="MacBook Pro"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                  alt="MacBook Pro"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
-                                alt="Professional Camera"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                  alt="Professional Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
-                                alt="Smart Watch White"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch White"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
-                                alt="Polaroid Camera"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                  alt="Polaroid Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="product-showcase-image"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                      </Stack>
+                          {/* product-showcase-card */}
+                        </Stack>
+                      )}
                     </Box>
                   </Box>
                 </Container>
@@ -1026,10 +1917,7 @@ export default function CategoryWiseProducts() {
                             2.2K Products
                           </Typography>
                           <Box className="actionBtn">
-                            <Button
-                              variant="contained"
-                              href="/"
-                            >
+                            <Button variant="contained" href="/">
                               Source Now
                             </Button>
                           </Box>
@@ -1037,895 +1925,1774 @@ export default function CategoryWiseProducts() {
                       </Box>
                     </Box>
                     <Box className="productShowcaseColRight">
-                      <Stack className="productShowcaseCardStack">
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
-                                    }}
-                                  >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
+                      {isMobile ? (
+                        <Swiper
+                          modules={[Navigation, Autoplay]}
+                          spaceBetween={20}
+                          slidesPerView={1}
+                          navigation={{
+                            nextEl: ".ComSliderNavigation .swiper-button-next",
+                            prevEl: ".ComSliderNavigation .swiper-button-prev",
+                          }}
+                          autoplay={false}
+                          loop={false}
+                          breakpoints={{
+                            320: {
+                              slidesPerView: 2,
+                              spaceBetween: 20,
+                            },
+                            768: {
+                              slidesPerView: 3,
+                              spaceBetween: 24,
+                            },
+                          }}
+                          className="product-showcase-swiper"
+                        >
+                          <Box className="ComSliderNavigation">
+                            <Box className="swiper-button-prev"></Box>
+                            <Box className="swiper-button-next"></Box>
+                          </Box>
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
                                   </Typography>
                                 </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                    alt="Modern Smartphone"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                    alt="Wireless Headphones"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                    alt="MacBook Pro"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                    alt="Professional Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch White"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                    alt="Polaroid Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                            {/* product-showcase-card */}
+                            {/* product-showcase-card */}
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="product-showcase-image"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                        </Swiper>
+                      ) : (
+                        <Stack className="productShowcaseCardStack">
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                  alt="Modern Smartphone"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
+
+                                  <Box
                                     sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                  alt="Wireless Headphones"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                  alt="MacBook Pro"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                  alt="Professional Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch White"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                  alt="Polaroid Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="product-showcase-image"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                      </Stack>
+                          {/* product-showcase-card */}
+                        </Stack>
+                      )}
                     </Box>
                   </Box>
                 </Container>
               </Box>
             </Box>
             <Box className="productShowcaseRowInner">
-
               <Box className="productShowcaseContent">
                 <Container>
                   <Box
@@ -1975,10 +3742,7 @@ export default function CategoryWiseProducts() {
                             2.2K Products
                           </Typography>
                           <Box className="actionBtn">
-                            <Button
-                              variant="contained"
-                              href="/"
-                            >
+                            <Button variant="contained" href="/">
                               Source Now
                             </Button>
                           </Box>
@@ -1986,895 +3750,1774 @@ export default function CategoryWiseProducts() {
                       </Box>
                     </Box>
                     <Box className="productShowcaseColRight">
-                      <Stack className="productShowcaseCardStack">
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
-                                    }}
-                                  >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
+                      {isMobile ? (
+                        <Swiper
+                          modules={[Navigation, Autoplay]}
+                          spaceBetween={20}
+                          slidesPerView={1}
+                          navigation={{
+                            nextEl: ".ComSliderNavigation .swiper-button-next",
+                            prevEl: ".ComSliderNavigation .swiper-button-prev",
+                          }}
+                          autoplay={false}
+                          loop={false}
+                          breakpoints={{
+                            320: {
+                              slidesPerView: 2,
+                              spaceBetween: 20,
+                            },
+                            768: {
+                              slidesPerView: 3,
+                              spaceBetween: 24,
+                            },
+                          }}
+                          className="product-showcase-swiper"
+                        >
+                          <Box className="ComSliderNavigation">
+                            <Box className="swiper-button-prev"></Box>
+                            <Box className="swiper-button-next"></Box>
+                          </Box>
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
                                   </Typography>
                                 </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                    alt="Modern Smartphone"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                    alt="Wireless Headphones"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                    alt="MacBook Pro"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                    alt="Professional Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch White"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                    alt="Polaroid Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                            {/* product-showcase-card */}
+                            {/* product-showcase-card */}
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="product-showcase-image"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                        </Swiper>
+                      ) : (
+                        <Stack className="productShowcaseCardStack">
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                  alt="Modern Smartphone"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
+
+                                  <Box
                                     sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                  alt="Wireless Headphones"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                  alt="MacBook Pro"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                  alt="Professional Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch White"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                  alt="Polaroid Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="product-showcase-image"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                      </Stack>
+                          {/* product-showcase-card */}
+                        </Stack>
+                      )}
                     </Box>
                   </Box>
                 </Container>
               </Box>
             </Box>
             <Box className="productShowcaseRowInner">
-
               <Box className="productShowcaseContent">
                 <Container>
                   <Box
@@ -2924,10 +5567,7 @@ export default function CategoryWiseProducts() {
                             2.2K Products
                           </Typography>
                           <Box className="actionBtn">
-                            <Button
-                              variant="contained"
-                              href="/"
-                            >
+                            <Button variant="contained" href="/">
                               Source Now
                             </Button>
                           </Box>
@@ -2935,888 +5575,1768 @@ export default function CategoryWiseProducts() {
                       </Box>
                     </Box>
                     <Box className="productShowcaseColRight">
-                      <Stack className="productShowcaseCardStack">
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
-                                    }}
-                                  >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
+                      {isMobile ? (
+                        <Swiper
+                          modules={[Navigation, Autoplay]}
+                          spaceBetween={20}
+                          slidesPerView={1}
+                          navigation={{
+                            nextEl: ".ComSliderNavigation .swiper-button-next",
+                            prevEl: ".ComSliderNavigation .swiper-button-prev",
+                          }}
+                          autoplay={false}
+                          loop={false}
+                          breakpoints={{
+                            320: {
+                              slidesPerView: 2,
+                              spaceBetween: 20,
+                            },
+                            768: {
+                              slidesPerView: 3,
+                              spaceBetween: 24,
+                            },
+                          }}
+                          className="product-showcase-swiper"
+                        >
+                          <Box className="ComSliderNavigation">
+                            <Box className="swiper-button-prev"></Box>
+                            <Box className="swiper-button-next"></Box>
+                          </Box>
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
                                   </Typography>
                                 </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                    alt="Modern Smartphone"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                    alt="Wireless Headphones"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                    alt="MacBook Pro"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                    alt="Professional Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                    alt="Smart Watch White"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                    alt="Polaroid Camera"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                            {/* product-showcase-card */}
+                            {/* product-showcase-card */}
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <SwiperSlide>
+                            <Box className="productShowcaseBox">
+                              <Button href="/" className="innerLink"></Button>
+                              <Box className="productShowcaseCard">
+                                <Box className="discountBadge">
+                                  <Typography variant="body1" component="p">
+                                    56% <span>OFF</span>
+                                  </Typography>
+                                </Box>
+                                <Box className="productShowcaseCardImage">
+                                  <Image
+                                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                    alt="product-showcase-image"
+                                    width={200}
+                                    height={200}
+                                  />
+                                </Box>
+                                <Box className="productShowcaseCardContent">
+                                  <Typography
+                                    variant="h3"
+                                    component="h3"
+                                    className="productTitle"
+                                  >
+                                    Galaxy M13 (4GB)
+                                  </Typography>
+                                  <Box className="productShowcaseCardPrice">
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          mb: 0.2,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        ₹10
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        gap: 4,
+                                        alignItems: "flex-start",
+                                        mt: 2,
+                                      }}
+                                    >
+                                      {/* Current Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          fontSize: "16px",
+                                          fontWeight: 700,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                        }}
+                                      >
+                                        499
+                                      </Typography>
+                                      {/* Old Prices */}
+                                      <Typography
+                                        variant="h4"
+                                        component="div"
+                                        sx={{
+                                          textDecoration: "line-through",
+                                          fontSize: "16px",
+                                          fontWeight: 400,
+                                          lineHeight: 1,
+                                          color: "#222222",
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        ₹14
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Box>
+                          </SwiperSlide>
+                          {/* product-showcase-card */}
+                        </Swiper>
+                      ) : (
+                        <Stack className="productShowcaseCardStack">
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
+                                  alt="Modern Smartphone"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
+
+                                  <Box
                                     sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop"
+                                  alt="Wireless Headphones"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500&auto=format&fit=crop"
+                                  alt="MacBook Pro"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop"
+                                  alt="Professional Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop"
+                                  alt="Smart Watch White"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=500&auto=format&fit=crop"
+                                  alt="Polaroid Camera"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                        {/* product-showcase-card */}
-                        <Box className="productShowcaseBox">
-                          <Button
-                            href="/"
-                            className="innerLink"
-                          ></Button>
-                          <Box className="productShowcaseCard">
-                            <Box className="discountBadge">
-                              <Typography variant="body1" component="p">
-                                56% <span>OFF</span>
-                              </Typography>
-                            </Box>
-                            <Box className="productShowcaseCardImage">
-                              <Image
-                                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
-                                alt="product-showcase-image"
-                                width={200}
-                                height={200}
-                              />
-                            </Box>
-                            <Box className="productShowcaseCardContent">
-                              <Typography
-                                variant="h3"
-                                component="h3"
-                                className="productTitle"
-                              >
-                                Galaxy M13 (4GB)
-                              </Typography>
-                              <Box className="productShowcaseCardPrice">
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
+                          {/* product-showcase-card */}
+                          {/* product-showcase-card */}
+                          <Box className="productShowcaseBox">
+                            <Button href="/" className="innerLink"></Button>
+                            <Box className="productShowcaseCard">
+                              <Box className="discountBadge">
+                                <Typography variant="body1" component="p">
+                                  56% <span>OFF</span>
+                                </Typography>
+                              </Box>
+                              <Box className="productShowcaseCardImage">
+                                <Image
+                                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=500&auto=format&fit=crop"
+                                  alt="product-showcase-image"
+                                  width={200}
+                                  height={200}
+                                />
+                              </Box>
+                              <Box className="productShowcaseCardContent">
+                                <Typography
+                                  variant="h3"
+                                  component="h3"
+                                  className="productTitle"
                                 >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  Galaxy M13 (4GB)
+                                </Typography>
+                                <Box className="productShowcaseCardPrice">
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      mb: 0.2,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    ₹10
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
-                                </Box>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        mb: 0.2,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      ₹10
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
 
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                    mt: 2,
-                                  }}
-                                >
-                                  {/* Current Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
+                                  <Box
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: 700,
-                                      lineHeight: 1,
-                                      color: "#222222",
+                                      display: "flex",
+                                      gap: 4,
+                                      alignItems: "flex-start",
+                                      mt: 2,
                                     }}
                                   >
-                                    499
-                                  </Typography>
-                                  {/* Old Prices */}
-                                  <Typography
-                                    variant="h4"
-                                    component="div"
-                                    sx={{
-                                      textDecoration: "line-through",
-                                      fontSize: "16px",
-                                      fontWeight: 400,
-                                      lineHeight: 1,
-                                      color: "#222222",
-                                      mb: 0.2,
-                                    }}
-                                  >
-                                    ₹14
-                                  </Typography>
+                                    {/* Current Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        fontSize: "16px",
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                      }}
+                                    >
+                                      499
+                                    </Typography>
+                                    {/* Old Prices */}
+                                    <Typography
+                                      variant="h4"
+                                      component="div"
+                                      sx={{
+                                        textDecoration: "line-through",
+                                        fontSize: "16px",
+                                        fontWeight: 400,
+                                        lineHeight: 1,
+                                        color: "#222222",
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      ₹14
+                                    </Typography>
+                                  </Box>
                                 </Box>
                               </Box>
                             </Box>
                           </Box>
-                        </Box>
-                        {/* product-showcase-card */}
-                      </Stack>
+                          {/* product-showcase-card */}
+                        </Stack>
+                      )}
                     </Box>
                   </Box>
                 </Container>

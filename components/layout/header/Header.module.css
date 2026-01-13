@@ -42,4 +42,14 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  .logo {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 160px;
+  }
 }
