@@ -72,8 +72,11 @@ export default function Header() {
         >
           {/* Logo */}
           <Box
-            sx={{ display: "flex", alignItems: "center" }}
-            sx={{ maxWidth: { xs: 160, md: 300 } }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              maxWidth: { xs: 160, md: 300 },
+            }}
           >
             <Link href="/" style={{ textDecoration: "none" }}>
               <Image
