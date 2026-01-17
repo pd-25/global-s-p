@@ -83,58 +83,59 @@ export default function Home() {
       <Banner />
       {/* banner-section */}
       {/* statistics-section */}
-      <Statistics />
-      {/* statistics-section */}
-      {/* product-category-slider-section */}
-      <AnimateOnScroll animation="fade-up">
-        <CategorySlider categories={categories} />
-      </AnimateOnScroll>
-      {/* product-category-slider-section */}
-      {/* product-showcase-section */}
+      <div className="home-content">
+        <Statistics />
+        {/* statistics-section */}
+        {/* product-category-slider-section */}
+        <AnimateOnScroll animation="fade-up">
+          <CategorySlider categories={categories} />
+        </AnimateOnScroll>
+        {/* product-category-slider-section */}
+        {/* product-showcase-section */}
 
-      <CategoryWiseProducts />
+        <CategoryWiseProducts />
 
-      {/* product-showcase-section */}
-      {/* top-brands-section */}
-      <TopBrands />
-      {/* top-brands-section */}
-      {/* marketplace-section */}
-      <MarketplaceCards />
-      {/* marketplace-section */}
-      {/* our-partners-section */}
-      <PartnerInfo />
-      {/* our-partners-section */}
-      {/* our-partners-slider-section */}
-      <PartnerSlider />
-      {/* our-partner-slider-section */}
-      {/* perfect-vendor-section */}
-      <Box component="section" className="perfectVendorWrapper">
-        <Box className="perfectVendorBg">
-          <Image src={perfectVendorBg} alt="perfect-vendor-bg" />
-        </Box>
-        <Container>
-          <Box className="sectionHeading">
-            <Typography variant="h2" component="h2">
-              <span>Worried about finding</span> The Perfect Vendor
-            </Typography>
-            <Typography variant="body1" component="p">
-              Avail Fully Interactive Remote <strong> Counselling </strong>
-              from the Comfort of Your Home
-            </Typography>
-            <Button variant="contained" component={Link} href="/">
-              Source Now
-            </Button>
+        {/* product-showcase-section */}
+        {/* top-brands-section */}
+        <TopBrands />
+        {/* top-brands-section */}
+        {/* marketplace-section */}
+        <MarketplaceCards />
+        {/* marketplace-section */}
+        {/* our-partners-section */}
+        <PartnerInfo />
+        {/* our-partners-section */}
+        {/* our-partners-slider-section */}
+        <PartnerSlider />
+        {/* our-partner-slider-section */}
+        {/* perfect-vendor-section */}
+        <Box component="section" className="perfectVendorWrapper">
+          <Box className="perfectVendorBg">
+            <Image src={perfectVendorBg} alt="perfect-vendor-bg" />
           </Box>
-        </Container>
-      </Box>
-      {/* perfect-vendor-section */}
-      {/* our-latest-blog */}
-    <BlogList />
-      {/* our-latest-blog */}
-      {/* testimonials-section */}
-      <Testimonials />
-      {/* testimonials-section */}
-
+          <Container>
+            <Box className="sectionHeading">
+              <Typography variant="h2" component="h2">
+                <span>Worried about finding</span> The Perfect Vendor
+              </Typography>
+              <Typography variant="body1" component="p">
+                Avail Fully Interactive Remote <strong> Counselling </strong>
+                from the Comfort of Your Home
+              </Typography>
+              <Button variant="contained" component={Link} href="/">
+                Source Now
+              </Button>
+            </Box>
+          </Container>
+        </Box>
+        {/* perfect-vendor-section */}
+        {/* our-latest-blog */}
+        <BlogList />
+        {/* our-latest-blog */}
+        {/* testimonials-section */}
+        <Testimonials />
+        {/* testimonials-section */}
+      </div>
     </>
   )
 }

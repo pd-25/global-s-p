@@ -1,13 +1,13 @@
-import React from 'react';
-import ComingSoon from '@/components/sections/ComingSoon';
+import React from 'react'
+import ComingSoon from '@/components/sections/ComingSoon'
 
-export default function Contact() {
+export default function GetQuotePage() {
     return (
         <div>
             <ComingSoon
-                title="Contact Us"
+                title="Get Quote"
                 description="This page is under development. Please check back soon for updates."
             />
         </div>
-    );
+    )
 }

@@ -1,6 +1,8 @@
-  export const navLinks = [
-    { name: "Get Quote", href: "/quote" },
-    { name: "Request Hub", href: "/request-hub" },
-    { name: "Products&Services", href: "/products&searvices" },
-    { name: "About us", href: "/about" },
-  ]
+import { routes } from "@/config/routes";
+
+export const navLinks = [
+  { name: "Get Quote", href: routes.getQuotePage },
+  { name: "Request Hub", href: routes.requestHubPage },
+  { name: "Products&Services", href: routes.productsServicesPage },
+  { name: "About us", href: routes.aboutPage },
+]

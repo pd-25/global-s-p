@@ -1,13 +1,13 @@
-import React from 'react';
-import ComingSoon from '@/components/sections/ComingSoon';
+import ComingSoon from '@/components/sections/ComingSoon'
+import React from 'react'
 
-export default function Contact() {
+export default function RequstHubPage() {
     return (
         <div>
             <ComingSoon
-                title="Contact Us"
+                title="Request Hub"
                 description="This page is under development. Please check back soon for updates."
             />
         </div>
-    );
+    )
 }
