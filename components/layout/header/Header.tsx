@@ -128,7 +128,7 @@ export default function Header() {
             sx={{
               display: { xs: "flex", md: "none" },
               alignItems: "center",
-              gap: 1,
+              gap: { xs: "0", md: "10px" },
             }}
           >
             <IconButton sx={{ color: "#ffffff" }} aria-label="notifications">

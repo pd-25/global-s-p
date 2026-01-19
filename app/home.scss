@@ -7,7 +7,7 @@
     height: 415px;
 
     @include respond-to(md) {
-        height: 570px;
+        height: 520px;
     }
 
     .heroSliderOuter {
@@ -19,6 +19,11 @@
 
             .heroTextWrapper {
                 max-width: 620px;
+
+                @include respond-to(md) {
+                    max-width: 100%;
+                    text-align: center;
+                }
             }
 
             .heroBg {
@@ -41,6 +46,10 @@
                     width: 100%;
                     z-index: 1;
                     pointer-events: none;
+
+                    @include respond-to(md) {
+                        background: radial-gradient(50.06% 100% at 50% 100%, #002e1f 0, #002e1f00);
+                    }
                 }
 
                 img {

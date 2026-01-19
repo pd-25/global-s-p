@@ -181,8 +181,12 @@ li {
 
     h3 {
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 600;
         color: #666666;
+
+        @include respond-to(md) {
+            font-size: 20px;
+        }
 
         span {
             color: $colorSecondary;

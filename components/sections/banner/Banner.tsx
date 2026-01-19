@@ -108,12 +108,17 @@ export default function Banner() {
           <SwiperSlide>
             <Box className="heroSliderCard">
               <Box className="heroBg">
-                <Image
+                {/* <Image
                   src="https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/market-place-home.Dp_XERVV.svg"
                   alt="hero-bg"
                   width={1000}
                   height={1080}
-                />
+                /> */}
+                <picture>
+                  <source srcSet="/home/banner-slider-pic-01.svg" media="(min-width: 768px)" />
+                  <source srcSet="/home/banner-slider-pic-mobile-01.svg" media="(max-width: 767px)" />
+                  <img src="/home/banner-slider-pic-01.svg" alt="hero-bg" width={1000} height={1080} />
+                </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>
                 <Box
@@ -162,12 +167,17 @@ export default function Banner() {
           <SwiperSlide>
             <Box className="heroSliderCard">
               <Box className="heroBg">
-                <Image
+                {/* <Image
                   src="/home/banner4.jpg"
                   alt="hero-bg"
                   width={1000}
                   height={1080}
-                />
+                /> */}
+                <picture>
+                  <source srcSet="/home/banner4.jpg" media="(min-width: 768px)" />
+                  <source srcSet="/home/banner4-mobile.jpg" media="(max-width: 767px)" />
+                  <img src="/home/banner4.jpg" alt="hero-bg" width={1000} height={1080} />
+                </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>
                 <Box

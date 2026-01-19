@@ -57,13 +57,13 @@ const theme = createTheme({
       fontWeight: 500,
     },
     body1: {
-      fontSize: '20px',
+      fontSize: '{xs: "16px", md: "20px"}',
       lineHeight: 1.5,
       fontWeight: 400,
       color: '#000000',
     },
     body2: {
-      fontSize: '20px',
+      fontSize: '{xs: "16px", md: "20px"}',
       lineHeight: 1.5,
       fontWeight: 400,
       color: '#014B35',
@@ -142,7 +142,7 @@ const theme = createTheme({
       styleOverrides: {
         // Only nested selectors and specific overrides here
         h1: {
-          fontSize: '32px',
+          fontSize: '24px',
           '@media (min-width: 600px)': {
             fontSize: '36px',
           },
@@ -152,7 +152,7 @@ const theme = createTheme({
         },
         h2: {
           // Responsive font sizes
-          fontSize: '28px', // Mobile default (xs)
+          fontSize: '22px', // Mobile default (xs)
           '@media (min-width: 600px)': {
             fontSize: '32px', // Small devices (sm)
           },
