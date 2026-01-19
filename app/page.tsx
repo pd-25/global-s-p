@@ -129,7 +129,7 @@ export default function Home() {
       </Box>
       {/* perfect-vendor-section */}
       {/* our-latest-blog */}
-    <BlogList />
+      <BlogList />
       {/* our-latest-blog */}
       {/* testimonials-section */}
       <Testimonials />

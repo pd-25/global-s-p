@@ -84,7 +84,11 @@ const theme = createTheme({
           '@media (min-width: 768px)': {
             maxWidth: '100%',
             padding: '0 24px',
-          }
+          },
+          '@media (min-width: 1400px)': {
+            maxWidth: '1400px',
+            padding: '0 32px',
+          },
         },
       },
       defaultProps: {
