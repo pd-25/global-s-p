@@ -1,9 +1,11 @@
 import React from 'react';
+import ComingSoon from '@/components/sections/ComingSoon';
 
 export default function ProductsServices() {
     return (
-        <div>
-            <h1>Products & Services</h1>
-        </div>
+        <ComingSoon
+            title="Products & Services"
+            description="This page is under development. Please check back soon for updates."
+        />
     );
 }

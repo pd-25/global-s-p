@@ -1,9 +1,13 @@
 import React from 'react';
+import ComingSoon from '@/components/sections/ComingSoon';
 
 export default function Contact() {
     return (
         <div>
-            <h1>Contact Us</h1>
+            <ComingSoon
+                title="Contact Us"
+                description="This page is under development. Please check back soon for updates."
+            />
         </div>
     );
 }

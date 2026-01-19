@@ -156,7 +156,7 @@ export default function Banner() {
             <Box className="heroSliderCard">
               <Box className="heroBg">
                 <Image
-                  src="https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/market-place-home.Dp_XERVV.svg"
+                  src="/home/banner4.jpg"
                   alt="hero-bg"
                   width={1000}
                   height={1080}

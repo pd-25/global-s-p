@@ -93,14 +93,14 @@ export default function Statistics() {
       className="statisticsWrapper"
       sx={{ position: "relative" }}
     >
-      <Box className="statisticsParralax">
+      {/* <Box className="statisticsParralax">
         <Image
           src={StatisticsParralax}
           alt="statistics-bg"
           width={1000}
           height={1080}
         />
-      </Box>
+      </Box> */}
       <Box className="statisticsGlobe">
         <Image
           src="https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/quotes_backgrade.BNzaFa3U.gif"

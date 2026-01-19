@@ -9,3 +9,8 @@ html {
 body {
     font-family: var(--font-montserrat), sans-serif;
 }
+
+.home-content {
+    max-width: 1440px;
+    margin: auto;
+}
