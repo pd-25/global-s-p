@@ -68,9 +68,9 @@ export default function BlogList() {
             navigation={
               showNavigation
                 ? {
-                    nextEl: ".ComSliderNavigation .swiper-button-next",
-                    prevEl: ".ComSliderNavigation .swiper-button-prev",
-                  }
+                  nextEl: ".ComSliderNavigation .swiper-button-next",
+                  prevEl: ".ComSliderNavigation .swiper-button-prev",
+                }
                 : false
             }
             autoplay={{
@@ -114,7 +114,10 @@ export default function BlogList() {
                     <Typography variant="h3" component="h3">
                       {blog.title}
                     </Typography>
-                    <Button variant="text" href={blog.link}>
+                    <Button
+                      variant="text"
+                      href={blog.link}
+                    >
                       Read More
                     </Button>
                   </Box>

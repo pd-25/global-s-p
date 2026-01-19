@@ -1011,6 +1011,10 @@
                 min-width: auto;
                 line-height: 1;
                 height: auto;
+
+                &:hover {
+                    color: $colorSecondary;
+                }
             }
         }
 

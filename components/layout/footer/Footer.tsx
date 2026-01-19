@@ -71,7 +71,7 @@ export default function Footer() {
                 <Button variant="contained" component={Link} href="/connect">
                   Connect with us
                 </Button>
-                <Button variant="outlined" component={Link} href="/store">
+                <Button variant="outlined" component={Link} href="/store" sx={{ borderColor: "#ffffff", color: "#ffffff", display: "flex", alignItems: "center", gap: 1, transition: "all 0.3s ease" }}>
                   <Image src={storeIcon} alt="store-icon" />
                   Visit Our Store
                 </Button>
