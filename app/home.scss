@@ -13,6 +13,7 @@
     .heroSliderOuter {
         height: 100%;
 
+
         .heroSliderCard {
             padding-top: 60px;
 
@@ -22,7 +23,25 @@
 
             .heroBg {
                 position: absolute;
+                overflow: hidden;
                 inset: 0;
+                border-radius: 0 0 32px 32px;
+
+                @include respond-to(md) {
+                    border-radius: 0 0 16px 16px;
+                }
+
+                &::before {
+                    background: radial-gradient(50.06% 100% at 50% 100%, #002e1f 0, #002e1f00);
+                    content: "";
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    z-index: 1;
+                    pointer-events: none;
+                }
 
                 img {
                     width: 100%;
@@ -39,13 +58,16 @@
         z-index: 2;
         bottom: 40px;
         padding: 0 32px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+
+        @include respond-to(minXxl) {
+            max-width: 1400px;
+        }
 
         @include respond-to(lg) {
             bottom: 60px;
-            left: 0;
-            right: 0;
-            max-width: 100%;
-            margin: 0 auto;
         }
 
         @include respond-to(md) {
@@ -106,16 +128,24 @@
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    padding: 40px 0;
+    padding: 30px 0;
     // margin-top: 20px;
     margin: 20px auto;
 
+
+
+    @include respond-to(minLg) {
+        margin: 20px 24px;
+    }
+
     @include respond-to(minXxl) {
         max-width: calc(1400px - 64px);
+        margin: 20px auto;
     }
 
     @include respond-to(lg) {
-        margin: 20px 24px;
+        margin: 20px 16px;
+        padding-top: 130px;
     }
 
     .statisticsParralax {
@@ -140,12 +170,30 @@
         mix-blend-mode: lighten;
         pointer-events: none;
 
+        &::before {
+            content: "";
+            inset: 0;
+            background: linear-gradient(to right, transparent 0%, #014934 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+
+            @include respond-to(md) {
+                background: linear-gradient(to bottom, transparent 0%, #014934 100%);
+            }
+        }
+
         @include respond-to(lg) {
             width: 50%;
         }
 
         @include respond-to(md) {
             width: 100%;
+            bottom: auto;
+            height: 30%;
         }
 
         img {
@@ -153,6 +201,10 @@
             height: 100%;
             object-fit: cover;
             object-position: right;
+
+            @include respond-to(md) {
+                object-position: center;
+            }
         }
     }
 
@@ -171,7 +223,7 @@
                         font-size: 20px;
                         font-weight: 700;
                         color: $colorWhite;
-                        margin: 12px 0;
+                        margin: 0;
                     }
 
                     p {
@@ -273,9 +325,9 @@
                         justify-content: center;
 
                         img {
-                            height: auto;
-                            max-width: 170px;
-                            object-fit: contain;
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
                             @include transition-prefixes(0.4s);
 
                             @include respond-to(lg) {
@@ -843,8 +895,13 @@
     overflow: hidden;
     margin: 32px auto;
 
+    @include respond-to(minLg) {
+        margin: 20px 24px;
+    }
+
     @include respond-to(minXxl) {
         max-width: calc(1400px - 64px);
+        margin: 20px auto;
     }
 
     @include respond-to(minLg) {

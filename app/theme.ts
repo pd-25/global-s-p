@@ -27,8 +27,8 @@ const theme = createTheme({
     },
     h2: {
       lineHeight: 1.53,
-      fontWeight: 700,
-      color: '#030303',
+      fontWeight: 600,
+      color: '#054934',
       marginBottom: '10px',
     },
     h3: {

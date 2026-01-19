@@ -26,7 +26,7 @@ export default function Banner() {
       className="heroWrapper"
       sx={{ position: "relative" }}
     >
-      <Box className="heroFormOuter" sx={{ width: { xs: "100%", md: "50%" } }}>
+      <Box className="heroFormOuter" sx={{ width: { xs: "100%", md: "100%" } }}>
         <Stack
           direction="row"
           spacing={2}
@@ -40,10 +40,11 @@ export default function Banner() {
             fullWidth
             sx={{
               "& .MuiOutlinedInput-root": {
-                color: "white",
-                padding: "0 70px 0 15px",
                 fontSize: "15px",
                 height: "61px",
+                backgroundColor: "rgba(255,255,255,1)",
+                borderRadius: "18px",
+                padding: "0 0 0 0",
                 "& fieldset": {
                   borderColor: "white",
                   borderRadius: "18px",
@@ -52,11 +53,17 @@ export default function Banner() {
                 "&:hover fieldset": {
                   borderColor: "white",
                 },
-                "& .MuiInputBase-input::placeholder": {
-                  color: "white",
-                  opacity: 0.7,
+                "& input": {
+                  color: "#000",
+                  padding: "0 70px 0 15px",
                   fontSize: "15px",
-                },
+                  "&::placeholder": {
+                    color: "#000",
+                    opacity: 0.7,
+                    fontSize: "15px",
+                  },
+                  backgroundColor: "transparent",
+                }
               },
               "& .MuiOutlinedInput-root.Mui-focused": {
                 "& fieldset": {
@@ -90,11 +97,11 @@ export default function Banner() {
           slidesPerView={1}
           pagination={{ clickable: true }}
           speed={1500}
-          // autoplay={false}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          autoplay={false}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
           loop={true}
           className="hero-swiper"
         >

@@ -13,7 +13,7 @@ export default function ThemeRegistry({
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LenisProvider>{children}</LenisProvider>
+      {children}
     </ThemeProvider>
   )
 }
