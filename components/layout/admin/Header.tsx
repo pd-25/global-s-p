@@ -20,12 +20,14 @@ import {
   Badge
 } from '@mui/material';
 import { pages } from '@/lib/constants';
+import { adminRoutes } from '@/config/routes';
 
 
 
 export default function Header() {
   const pathname = usePathname();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElTools, setAnchorElTools] = React.useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -33,6 +35,14 @@ export default function Header() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleOpenToolsMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElTools(event.currentTarget);
+  };
+
+  const handleCloseToolsMenu = () => {
+    setAnchorElTools(null);
   };
 
   return (
@@ -104,33 +114,101 @@ export default function Header() {
             {pages.map((page) => {
               const isActive = pathname === page.path;
               return (
-                <Button
+                <Link
                   key={page.name}
-                  component={Link}
                   href={page.path}
-                  startIcon={<Icon sx={{ fontSize: '1.2rem !important' }}>{page.icon}</Icon>}
-                  sx={{
-                    my: 1,
-                    px: 2,
-                    color: isActive ? 'primary.main' : 'text.secondary',
-                    bgcolor: isActive ? 'primary.light' : 'transparent',
-                    fontWeight: isActive ? 700 : 500,
-                    textTransform: 'none',
-                    fontSize: '0.9rem',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      bgcolor: isActive ? 'primary.light' : 'grey.50',
-                      color: 'primary.main'
-                    },
-                    '&:hover .material-icons': {
-                      color: 'primary.main'
-                    }
-                  }}
+                  style={{ textDecoration: 'none' }}
                 >
-                  {page.name}
-                </Button>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                      my: 1,
+                      px: 2,
+                      py: 1,
+                      color: isActive ? 'primary.main' : 'text.secondary',
+                      bgcolor: isActive ? 'primary.light' : 'transparent',
+                      fontWeight: isActive ? 700 : 500,
+                      textTransform: 'none',
+                      fontSize: '0.9rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.2s',
+                      cursor: 'pointer',
+                      '&:hover': {
+                        bgcolor: isActive ? 'primary.light' : 'grey.50',
+                        color: 'primary.main'
+                      },
+                      '&:hover .material-icons': {
+                        color: 'primary.main'
+                      }
+                    }}
+                  >
+                    <Icon sx={{ fontSize: '1.2rem !important' }}>{page.icon}</Icon>
+                    {page.name}
+                  </Box>
+                </Link>
               )
             })}
+
+            <Box
+              onClick={handleOpenToolsMenu}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+                my: 1,
+                px: 2,
+                py: 1,
+                color: Boolean(anchorElTools) ? 'primary.main' : 'text.secondary',
+                bgcolor: Boolean(anchorElTools) ? 'primary.light' : 'transparent',
+                fontWeight: Boolean(anchorElTools) ? 700 : 500,
+                textTransform: 'none',
+                fontSize: '0.9rem',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: Boolean(anchorElTools) ? 'primary.light' : 'grey.50',
+                  color: 'primary.main'
+                },
+                '&:hover .material-icons': {
+                  color: 'primary.main'
+                }
+              }}
+            >
+              Tools
+              <Icon>arrow_drop_down</Icon>
+            </Box>
+            <Menu
+              anchorEl={anchorElTools}
+              open={Boolean(anchorElTools)}
+              onClose={handleCloseToolsMenu}
+              sx={{ mt: 1 }}
+              PaperProps={{
+                sx: {
+                  mt: 1.5,
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                  borderRadius: '12px',
+                  minWidth: '200px'
+                }
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
+              <MenuItem onClick={handleCloseToolsMenu} component={Link} href={adminRoutes.categoryPage}>
+                <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>category</Icon>
+                <Typography variant="inherit">Categories</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseToolsMenu} component={Link} href="/gse/admin/countries">
+                <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>public</Icon>
+                <Typography variant="inherit">Countries</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseToolsMenu} component={Link} href="/gse/admin/testimonials">
+                <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>reviews</Icon>
+                <Typography variant="inherit">Testimonials</Typography>
+              </MenuItem>
+            </Menu>
           </Box>
 
           {/* User Settings & Notifications */}
