@@ -12,5 +12,5 @@ export const pages = [
   { name: 'Products', path: '/gse/admin/products', icon: 'inventory_2' },
   // { name: 'Categories', path: '/gse/admin/categories', icon: 'category' },
   { name: 'Leads', path: '/gse/admin/leads', icon: 'leaderboard' },
-  { name: 'Requests', path: '/gse/admin/requests', icon: 'assignment' },
+  { name: 'Quotes', path: '/gse/admin/quotes', icon: 'assignment' },
 ];
