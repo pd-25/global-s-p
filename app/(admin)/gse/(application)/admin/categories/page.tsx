@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
@@ -20,6 +20,13 @@ import {
   InputBase,
   Icon
 } from '@mui/material';
+import type { Metadata } from "next";
+import AddCategoryModal from '@/components/ui/modal/AddCategoryModal';
+
+// export const metadata: Metadata = {
+//   title: "Categories | Global Source Export",
+//   description: "Manage your product categories and inventory organization.",
+// };
 
 // Mock Data for Categories
 const categories = [
@@ -32,6 +39,11 @@ const categories = [
 ];
 
 export default function CategoryPage() {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const handleOpenAddModal = () => setIsAddModalOpen(true);
+  const handleCloseAddModal = () => setIsAddModalOpen(false);
+
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       {/* Header Section */}
@@ -68,6 +80,7 @@ export default function CategoryPage() {
             variant="contained"
             color="primary"
             startIcon={<Icon>add</Icon>}
+            onClick={handleOpenAddModal}
             sx={{
               textTransform: 'none',
               fontWeight: 600,
@@ -169,6 +182,8 @@ export default function CategoryPage() {
           </Table>
         </TableContainer>
       </Paper>
+
+      <AddCategoryModal open={isAddModalOpen} onClose={handleCloseAddModal} />
     </Container>
   );
 }
