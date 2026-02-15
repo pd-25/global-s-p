@@ -1,6 +1,8 @@
 'use client'
 import { Box, Button, Chip, Grid, Icon, IconButton, InputAdornment, Menu, MenuItem, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import NextLink from 'next/link';
+import { adminRoutes } from "../../../../config/routes";
 
 interface Quote {
   id: number;
@@ -11,6 +13,9 @@ interface Quote {
   date: string;
   status: 'Pending' | 'Approved' | 'Review' | 'Rejected';
 }
+interface QuotesProps {
+  showViewAll?: boolean;
+};
 const recentQuotes: Quote[] = [
   { id: 1, refId: 'QT-2024-001', user: 'John Doe', item: 'Organic Spices Bulk', amount: '$4,500', date: '2 mins ago', status: 'Pending' },
   { id: 2, refId: 'QT-2024-002', user: 'Mike Johnson', item: 'Handmade Pottery Set', amount: '$1,200', date: '3 hours ago', status: 'Review' },
@@ -25,6 +30,8 @@ const TableToolbar = ({ title, showViewAll = true }: { title: string, showViewAl
       <Typography variant="h6" sx={{ fontWeight: 700 }}>{title}</Typography>
       {showViewAll && (
         <Button
+          component={NextLink}
+          href={adminRoutes.quotePage}
           variant="text"
           color="primary"
           endIcon={<Icon>arrow_forward</Icon>}
@@ -65,7 +72,7 @@ const TableToolbar = ({ title, showViewAll = true }: { title: string, showViewAl
     </Stack>
   </Box>
 );
-export default function Quotes() {
+export default function Quotes({ showViewAll = false }: QuotesProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -90,7 +97,7 @@ export default function Quotes() {
               overflow: 'hidden'
             }}
           >
-            <TableToolbar title="All Quotes" showViewAll={false} />
+            <TableToolbar title="All Quotes" showViewAll={showViewAll} />
             <TableContainer>
               <Table sx={{ minWidth: 800 }} aria-label="recent quotes table">
                 <TableHead sx={{ bgcolor: 'grey.50' }}>
