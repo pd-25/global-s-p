@@ -33,14 +33,14 @@ const theme = createTheme({
     },
     h3: {
       lineHeight: 1.5,
-      fontWeight: 400,
+      fontWeight: 600,
       color: '#7FAF0D',
       marginBottom: 0,
     },
     h4: {
       fontSize: '14px',
       lineHeight: '20px',
-      fontWeight: 700,
+      fontWeight: 600,
       color: '#000000',
       marginBottom: '22px',
     },
