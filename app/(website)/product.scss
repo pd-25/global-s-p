@@ -347,6 +347,30 @@
     }
 
     .productListingSliderOuter {
+        .swiper-slide {
+            transition: all 0.3s ease-in-out;
+
+            // &:not(.swiper-slide-active) {
+            //     // width: 228px !important;
+            //     transform: scale(0.7);
+            //     transform-origin: top left;
+
+            // }
+            &.swiper-slide-active {
+
+                .productListingSliderBox {
+
+                    border-color: #008ECC;
+                    box-shadow:
+                        0px 6px 13px 0px #0000000D,
+                        0px 24px 24px 0px #0000000A,
+                        0px 54px 33px 0px #00000008,
+                        0px 97px 39px 0px #00000003,
+                        0px 151px 42px 0px #00000000;
+                }
+            }
+        }
+
         .productListingSliderBox {
             border: 1px solid #EDEDED;
             border-radius: 16px;
@@ -368,11 +392,44 @@
 
             .productListingSliderBoxImage {
                 aspect-ratio: 16/9;
+                transition: all 0.3s ease-in-out;
+                position: relative;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+
+                .discountBadge {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 55px;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    background-color: $colorSecondary;
+                    border-radius: 0 16px 0 16px;
+                    z-index: 1;
+
+                    @include respond-to(xxl) {
+                        width: 55px;
+                        height: 55px;
+                    }
+
+                    p {
+                        color: $colorWhite;
+                        font-weight: 600;
+                        font-size: 12px;
+                        margin: 0;
+
+                        span {
+                            display: block;
+                        }
+                    }
                 }
             }
 
@@ -384,6 +441,8 @@
                     font-size: 16px;
                     font-weight: 600;
                     color: #222222;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #EDEDED;
                 }
 
                 .MuiList-root {
@@ -416,6 +475,180 @@
                             }
                         }
                     }
+                }
+
+                .productListingSliderContentButton {
+                    margin-top: 15px;
+
+                    .MuiButtonBase-root {
+                        min-width: auto;
+                        height: 40px;
+                        min-height: auto;
+                        padding: 0 20px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    .childCategorySliderOuter {
+        background-color: #DBDBDB;
+        padding: 40px 25px;
+        border-radius: 15px;
+        margin-top: 40px;
+
+        .childCategorySliderBoxImage {
+            background-color: #F5F5F5;
+            height: 120px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+}
+
+.paginationOuter {
+    .MuiPagination-ul {
+        justify-content: center;
+    }
+}
+
+.learnMoreOuter {
+    margin: 60px 0;
+
+    h2 {
+        color: #000;
+        margin: 0;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    .learnMoreContent {
+        margin-bottom: 35px;
+
+        p {
+            font-size: 14px;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+
+            &.readMoreOpen {
+                -webkit-line-clamp: unset;
+            }
+        }
+    }
+
+    .learnMoreButton {
+        text-align: right;
+
+        button {
+            color: #7FAF0D;
+            background-color: transparent;
+            padding: 0;
+            min-width: auto;
+            height: auto;
+
+            .MuiTouchRipple-root {
+                display: none;
+            }
+        }
+    }
+}
+
+.relatedKeyWordsOuter {
+    h2 {
+        color: #000;
+        margin: 0;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    .relatedKeyWordsContent {
+        margin-bottom: 35px;
+        max-height: 90px;
+        overflow: hidden;
+
+        .relatedKeyWordsContentList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            .MuiButton-root {
+                padding: 0 15px;
+                height: 35px;
+                min-height: auto;
+                font-size: 13px;
+                font-weight: 500;
+                border-radius: 30px;
+                min-width: auto;
+            }
+        }
+
+        &.readMoreOpenKeywords {
+            max-height: 2000px;
+        }
+    }
+
+    .learnMoreButton {
+        text-align: right;
+
+        button {
+            color: #7FAF0D;
+            background-color: transparent;
+            padding: 0;
+            min-width: auto;
+            height: auto;
+
+            .MuiTouchRipple-root {
+                display: none;
+            }
+        }
+    }
+}
+
+.startRequestOuter {
+    margin: 60px 0;
+
+    .startRequestBoxLeft {
+        height: 280px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .startRequestBoxRight {
+        h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .MuiList-root {
+            margin-bottom: 25px;
+
+            .MuiListItem-root {
+                padding: 0;
+                margin-bottom: 5px;
+
+                &:last-child {
+                    margin-bottom: 0;
                 }
             }
         }
