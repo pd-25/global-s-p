@@ -17,12 +17,14 @@ import {
   Checkbox,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   Slider,
   LinearProgress,
   FormControl,
   RadioGroup,
   Radio,
+  Pagination,
 } from "@mui/material"
 import Icon from "@/components/ui/icon/Icon"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -40,12 +42,18 @@ import flagTurkeyIcon from "@/public/flag/turkey.svg"
 import flagSpainIcon from "@/public/flag/spain.svg"
 import flagFranceIcon from "@/public/flag/france.svg"
 import flagItalyIcon from "@/public/flag/italy.svg"
+import productCategoryImage1 from "@/public/product/spice-product-slider-thumb-01.png"
+import productCategoryImage2 from "@/public/product/spice-product-slider-thumb-02.png"
+import productCategoryImage3 from "@/public/product/spice-product-slider-thumb-03.png"
+import startQuoteImage from "@/public/product/start-quote.png"
 
 export default function ProductsServices() {
   const prevRef = React.useRef<any>(null)
   const nextRef = React.useRef<any>(null)
   const [readMoreOpen, setReadMoreOpen] = React.useState(false)
   const toggleReadMoreParent = () => setReadMoreOpen((prev) => !prev)
+  const [readMoreOpenKeywords, setReadMoreOpenKeywords] = React.useState(false)
+  const toggleReadMoreKeywords = () => setReadMoreOpenKeywords((prev) => !prev)
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
   const toggleSideBar = () => setSidebarOpen((prev) => !prev)
   const [location, setLocation] = React.useState("")
@@ -760,6 +768,7 @@ export default function ProductsServices() {
               }}
             >
               <Box className="categoryLoopListing">
+
                 <Box className="productTitleOuter">
                   <Typography variant="h2" className="productTitle">
                     SPICES & HERBS
@@ -823,6 +832,7 @@ export default function ProductsServices() {
                   <Swiper
                     modules={[Navigation, Autoplay]}
                     navigation={false}
+                    // autoplay={false}
                     autoplay={{ delay: 3000 }}
                     spaceBetween={24}
                     slidesPerView={1}
@@ -851,9 +861,14 @@ export default function ProductsServices() {
                       <Box className="productListingSliderBox">
                         <Box className="productListingSliderBoxImage">
                           <Image
-                            src={productFeaturedImage}
+                            src={productCategoryImage1}
                             alt="product-featured-image"
                           />
+                          <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box>
                         </Box>
 
                         <Box className="productListingSliderContent">
@@ -871,6 +886,9 @@ export default function ProductsServices() {
                               <ListItemText primary="Wide range of protective materials" />
                             </ListItem>
                           </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Details</Button>
+                          </Box>
                         </Box>
                       </Box>
                     </SwiperSlide>
@@ -878,9 +896,14 @@ export default function ProductsServices() {
                       <Box className="productListingSliderBox">
                         <Box className="productListingSliderBoxImage">
                           <Image
-                            src={productFeaturedImage}
+                            src={productCategoryImage2}
                             alt="product-featured-image"
                           />
+                          <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -897,6 +920,9 @@ export default function ProductsServices() {
                               <ListItemText primary="Wide range of protective materials" />
                             </ListItem>
                           </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Details</Button>
+                          </Box>
                         </Box>
                       </Box>
                     </SwiperSlide>
@@ -904,9 +930,14 @@ export default function ProductsServices() {
                       <Box className="productListingSliderBox">
                         <Box className="productListingSliderBoxImage">
                           <Image
-                            src={productFeaturedImage}
+                            src={productCategoryImage3}
                             alt="product-featured-image"
                           />
+                          <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -923,6 +954,9 @@ export default function ProductsServices() {
                               <ListItemText primary="Wide range of protective materials" />
                             </ListItem>
                           </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Details</Button>
+                          </Box>
                         </Box>
                       </Box>
                     </SwiperSlide>
@@ -930,9 +964,14 @@ export default function ProductsServices() {
                       <Box className="productListingSliderBox">
                         <Box className="productListingSliderBoxImage">
                           <Image
-                            src={productFeaturedImage}
+                            src={productCategoryImage1}
                             alt="product-featured-image"
                           />
+                          <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -949,6 +988,9 @@ export default function ProductsServices() {
                               <ListItemText primary="Wide range of protective materials" />
                             </ListItem>
                           </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Details</Button>
+                          </Box>
                         </Box>
                       </Box>
                     </SwiperSlide>
@@ -956,9 +998,14 @@ export default function ProductsServices() {
                       <Box className="productListingSliderBox">
                         <Box className="productListingSliderBoxImage">
                           <Image
-                            src={productFeaturedImage}
+                            src={productCategoryImage2}
                             alt="product-featured-image"
                           />
+                          <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -975,15 +1022,223 @@ export default function ProductsServices() {
                               <ListItemText primary="Wide range of protective materials" />
                             </ListItem>
                           </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Details</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                  </Swiper>
+                </Box>
+                <Box className="childCategorySliderOuter">
+                  <Swiper
+                    modules={[Navigation, Autoplay]}
+                    navigation={false}
+                    // autoplay={false}
+                    autoplay={{ delay: 3000 }}
+                    spaceBetween={24}
+                    slidesPerView={1}
+                    speed={1500}
+                    loop={false}
+                    breakpoints={{
+                      0: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                      },
+                      768: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                      },
+                      1024: {
+                        slidesPerView: 4,
+                      },
+                      1440: {
+                        slidesPerView: 5,
+                      },
+                      1800: {
+                        slidesPerView: 6,
+                      },
+                    }}
+                  >
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage2}
+                            alt="product-featured-image"
+                          />
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage3}
+                            alt="product-featured-image"
+                          />
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage2}
+                            alt="product-featured-image"
+                          />
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="childCategorySliderBox">
+                        <Box className="childCategorySliderBoxImage">
+                          <Image
+                            src={productCategoryImage3}
+                            alt="product-featured-image"
+                          />
                         </Box>
                       </Box>
                     </SwiperSlide>
                   </Swiper>
                 </Box>
               </Box>
-
+              <Box className="paginationOuter">
+                <Pagination count={10} color="primary" />
+              </Box>
             </Box>
           </Stack>
+          <Box className="learnMoreOuter">
+            <Typography variant="h2" className="learnMoreTitle">
+              Learn More
+            </Typography>
+            <Box className="learnMoreContent">
+              <Typography variant="body1" className={`learnMoreContentText ${readMoreOpen ? "readMoreOpen" : ""}`}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+              </Typography>
+            </Box>
+            <Box className="learnMoreButton">
+              <Button variant="contained" onClick={toggleReadMoreParent}>{readMoreOpen ? "See Less" : "See More"}</Button>
+            </Box>
+          </Box>
+          <Box className="relatedKeyWordsOuter">
+            <Typography variant="h2" className="relatedKeyWordsTitle">
+              Related Keywords
+            </Typography>
+            <Box className={`relatedKeyWordsContent ${readMoreOpenKeywords ? "readMoreOpenKeywords" : ""}`}>
+              <Box className="relatedKeyWordsContentList">
+                <Button variant="outlined">prefabricated houses</Button>
+                <Button variant="outlined">lingerie</Button>
+                <Button variant="outlined">food wholesalers drinks</Button>
+                <Button variant="outlined">asbestos removal contractors</Button>
+                <Button variant="outlined">foöd importer</Button>
+                <Button variant="outlined">solar panel</Button>
+                <Button variant="outlined">furniture wholesaler</Button>
+                <Button variant="outlined">food packaging distributors</Button>
+                <Button variant="outlined">prefabricated houses</Button>
+                <Button variant="outlined">lingerie</Button>
+                <Button variant="outlined">food wholesalers drinks</Button>
+                <Button variant="outlined">asbestos removal contractors</Button>
+                <Button variant="outlined">foöd importer</Button>
+                <Button variant="outlined">solar panel</Button>
+                <Button variant="outlined">furniture wholesaler</Button>
+                <Button variant="outlined">food packaging distributors</Button>
+                <Button variant="outlined">prefabricated houses</Button>
+                <Button variant="outlined">lingerie</Button>
+                <Button variant="outlined">food wholesalers drinks</Button>
+                <Button variant="outlined">asbestos removal contractors</Button>
+                <Button variant="outlined">foöd importer</Button>
+                <Button variant="outlined">solar panel</Button>
+                <Button variant="outlined">furniture wholesaler</Button>
+                <Button variant="outlined">food packaging distributors</Button>
+                <Button variant="outlined">prefabricated houses</Button>
+                <Button variant="outlined">lingerie</Button>
+                <Button variant="outlined">food wholesalers drinks</Button>
+                <Button variant="outlined">asbestos removal contractors</Button>
+                <Button variant="outlined">foöd importer</Button>
+                <Button variant="outlined">solar panel</Button>
+                <Button variant="outlined">furniture wholesaler</Button>
+                <Button variant="outlined">food packaging distributors</Button>
+                <Button variant="outlined">prefabricated houses</Button>
+                <Button variant="outlined">lingerie</Button>
+                <Button variant="outlined">food wholesalers drinks</Button>
+                <Button variant="outlined">asbestos removal contractors</Button>
+                <Button variant="outlined">foöd importer</Button>
+                <Button variant="outlined">solar panel</Button>
+                <Button variant="outlined">furniture wholesaler</Button>
+                <Button variant="outlined">food packaging distributors</Button>
+              </Box>
+            </Box>
+            <Box className="learnMoreButton">
+              <Button variant="contained" onClick={toggleReadMoreKeywords}>{readMoreOpenKeywords ? "See Less" : "See More"}</Button>
+            </Box>
+          </Box>
+          <Box className="startRequestOuter">
+            <Grid container spacing={4} className="startRequestBox">
+              <Grid
+                size={{ xs: 6, md: 6, lg: 6 }}
+                className="startRequestBoxLeft"
+              >
+                <Image
+                  src={startQuoteImage}
+                  alt=""
+                />
+              </Grid>
+              <Grid
+                size={{ xs: 6, md: 6, lg: 6 }}
+                className="startRequestBoxRight"
+              >
+                <Box className="startRequestBoxRightContent">
+                  <Typography
+                    variant="h3"
+                    className="startRequestBoxRightTitle"
+                  >
+                    Start a request for quotes - Easy and 100% free.
+                  </Typography>
+                  <Box className="startRequestBoxRightContentList">
+                    <List>
+                      <ListItem>
+                        <ListItemIcon>
+                          <Icon name="check" width={30} height={30} />
+                        </ListItemIcon>
+                        <ListItemText primary="Present your request to all verified suppliers in your industry" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <Icon name="check" width={30} height={30} />
+                        </ListItemIcon>
+                        <ListItemText primary="Top relevant suppliers will be notified by us" />
+                      </ListItem>
+                    </List>
+
+                  </Box>
+                  <Box className="actionBtn">
+                    <Button variant="contained">Get Multiple Quotes </Button>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </Box>
     </>
