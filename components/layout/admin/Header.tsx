@@ -128,7 +128,7 @@ export default function Header() {
                       px: 2,
                       py: 1,
                       color: isActive ? 'primary.main' : 'text.secondary',
-                      bgcolor: isActive ? 'primary.light' : 'transparent',
+                      // bgcolor: isActive ? 'primary.light' : 'transparent',
                       fontWeight: isActive ? 700 : 500,
                       textTransform: 'none',
                       fontSize: '0.9rem',
@@ -136,7 +136,7 @@ export default function Header() {
                       transition: 'all 0.2s',
                       cursor: 'pointer',
                       '&:hover': {
-                        bgcolor: isActive ? 'primary.light' : 'grey.50',
+                        // bgcolor: isActive ? 'secondary.light' : 'grey.50',
                         color: 'primary.main'
                       },
                       '&:hover .material-icons': {

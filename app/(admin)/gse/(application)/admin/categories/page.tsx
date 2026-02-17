@@ -23,7 +23,8 @@ import {
   Menu,
   MenuItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  TablePagination
 } from '@mui/material';
 import type { Metadata } from "next";
 import AddCategoryModal from '@/components/ui/modal/AddCategoryModal';
@@ -332,15 +333,27 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
 export default function CategoryPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleOpenAddModal = () => setIsAddModalOpen(true);
   const handleCloseAddModal = () => setIsAddModalOpen(false);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const handleToggleRow = (id: number) => {
     setExpandedRows(prev =>
       prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
     );
   };
+
 
   const handleToggleAll = () => {
     if (expandedRows.length === categories.length) {
@@ -351,6 +364,12 @@ export default function CategoryPage() {
   };
 
   const isAllExpanded = categories.length > 0 && expandedRows.length === categories.length;
+
+  // Calculate visible rows for pagination
+  const visibleRows = categories.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage,
+  );
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -430,11 +449,11 @@ export default function CategoryPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {categories.map((category, index) => (
+              {visibleRows.map((category, index) => (
                 <Row
                   key={category.id}
                   row={category}
-                  index={index}
+                  index={page * rowsPerPage + index}
                   open={expandedRows.includes(category.id)}
                   onToggle={() => handleToggleRow(category.id)}
                 />
@@ -442,6 +461,15 @@ export default function CategoryPage() {
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={categories.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Paper>
 
       <AddCategoryModal open={isAddModalOpen} onClose={handleCloseAddModal} />
