@@ -177,7 +177,7 @@ export default function DashboardAdminContent() {
 
             {/* Recent Quotes Section*/}
 
-            <Quotes />
+            <Quotes showViewAll={true}/>
 
             {/* Recent Activity Section */}
             <Grid container spacing={3}>

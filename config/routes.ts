@@ -10,5 +10,6 @@ export const routes = {
 
 export const adminRoutes = {
     dashboard: "/gse/admin/dashboard",
-    categoryPage: "/gse/admin/categories"
+    categoryPage: "/gse/admin/categories",
+    quotePage: "/gse/admin/quotes"
 }
