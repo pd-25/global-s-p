@@ -47,6 +47,13 @@ import productCategoryImage2 from "@/public/product/spice-product-slider-thumb-0
 import productCategoryImage3 from "@/public/product/spice-product-slider-thumb-03.png"
 import startQuoteImage from "@/public/product/start-quote.png"
 
+import childProductCategoryImage1 from "@/public/product/child-category-thumbnail-01.png"
+import childProductCategoryImage2 from "@/public/product/child-category-thumbnail-02.png"
+import childProductCategoryImage3 from "@/public/product/child-category-thumbnail-03.png"
+import flagUsaIcon from "@/public/flag/usa.svg"
+import verifiedIcon from "@/public/product/verified-badge.svg"
+
+
 export default function ProductsServices() {
   const prevRef = React.useRef<any>(null)
   const nextRef = React.useRef<any>(null)
@@ -1126,6 +1133,140 @@ export default function ProductsServices() {
               <Box className="paginationOuter">
                 <Pagination count={10} color="primary" />
               </Box>
+              <Box className="childCategoryLisitngOuter">
+                <Grid container spacing={2} className="childCategoryLisitngRow">
+                  <Grid
+                    size={{ xs: 6, md: 6, lg: 4 }}
+                    className="childCategoryLisitngCol"
+                  >
+                    <Box className="lisitngCard">
+                      <Box className="lisitngCardImage">
+                        <Image src={childProductCategoryImage1} alt="product-featured-image" />
+                      </Box>
+                      <Stack direction="row" spacing={1} sx={{ padding: "15px" }} alignItems="center" justifyContent="space-between">
+                        <Box className="locationInfo" sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <Image src={flagUsaIcon} alt="flag-icon" width={27} height={27} />
+                          <Typography variant="body1" component="p" sx={{ fontSize: "11px", fontWeight: "400", color: "#000", textTransform: "uppercase" }}>
+                            KLÖTER VERPACKUNGEN GMBH
+                          </Typography>
+                        </Box>
+                        <Box className="verifiedBadge">
+                          <Image src={verifiedIcon} alt="verified-icon" width={20} height={20} />
+                        </Box>
+                      </Stack>
+                      <Box className="lisitngCardContent">
+                        <Typography
+                          variant="h3"
+                          className="lisitngCardTitle"
+                        >
+                          Packaging Material
+                        </Typography>
+                        <List className="lisitngCardContentList">
+                          <ListItem>
+                            <ListItemText primary="Custom packaging solutions" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Wide range of protective materials" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Expert hazardous goods packaging" />
+                          </ListItem>
+                        </List>
+                        <Box className="actionBtn">
+                          <Button variant="contained">Contact Supplier</Button>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Grid>
+                  <Grid
+                    size={{ xs: 6, md: 6, lg: 4 }}
+                    className="childCategoryLisitngCol"
+                  >
+                    <Box className="lisitngCard">
+                      <Box className="lisitngCardImage">
+                        <Image src={childProductCategoryImage2} alt="product-featured-image" />
+                      </Box>
+                      <Stack direction="row" spacing={1} sx={{ padding: "15px" }} alignItems="center" justifyContent="space-between">
+                        <Box className="locationInfo" sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <Image src={flagUsaIcon} alt="flag-icon" width={27} height={27} />
+                          <Typography variant="body1" component="p" sx={{ fontSize: "11px", fontWeight: "400", color: "#000", textTransform: "uppercase" }}>
+                            KLÖTER VERPACKUNGEN GMBH
+                          </Typography>
+                        </Box>
+                        <Box className="verifiedBadge">
+                          <Image src={verifiedIcon} alt="verified-icon" width={20} height={20} />
+                        </Box>
+                      </Stack>
+                      <Box className="lisitngCardContent">
+                        <Typography
+                          variant="h3"
+                          className="lisitngCardTitle"
+                        >
+                          Packaging Material
+                        </Typography>
+                        <List className="lisitngCardContentList">
+                          <ListItem>
+                            <ListItemText primary="Custom packaging solutions" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Wide range of protective materials" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Expert hazardous goods packaging" />
+                          </ListItem>
+                        </List>
+                        <Box className="actionBtn">
+                          <Button variant="contained">Contact Supplier</Button>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Grid>
+                  <Grid
+                    size={{ xs: 6, md: 6, lg: 4 }}
+                    className="childCategoryLisitngCol"
+                  >
+                    <Box className="lisitngCard">
+                      <Box className="lisitngCardImage">
+                        <Image src={childProductCategoryImage3} alt="product-featured-image" />
+                      </Box>
+                      <Stack direction="row" spacing={1} sx={{ padding: "15px" }} alignItems="center" justifyContent="space-between">
+                        <Box className="locationInfo" sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <Image src={flagUsaIcon} alt="flag-icon" width={27} height={27} />
+                          <Typography variant="body1" component="p" sx={{ fontSize: "11px", fontWeight: "400", color: "#000", textTransform: "uppercase" }}>
+                            KLÖTER VERPACKUNGEN GMBH
+                          </Typography>
+                        </Box>
+                        <Box className="verifiedBadge">
+                          <Image src={verifiedIcon} alt="verified-icon" width={20} height={20} />
+                        </Box>
+                      </Stack>
+                      <Box className="lisitngCardContent">
+                        <Typography
+                          variant="h3"
+                          className="lisitngCardTitle"
+                        >
+                          Packaging Material
+                        </Typography>
+                        <List className="lisitngCardContentList">
+                          <ListItem>
+                            <ListItemText primary="Custom packaging solutions" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Wide range of protective materials" />
+                          </ListItem>
+                          <ListItem>
+                            <ListItemText primary="Expert hazardous goods packaging" />
+                          </ListItem>
+                        </List>
+                        <Box className="actionBtn">
+                          <Button variant="contained">Contact Supplier</Button>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Grid>
+                </Grid>
+
+              </Box>
             </Box>
           </Stack>
           <Box className="learnMoreOuter">
@@ -1194,7 +1335,7 @@ export default function ProductsServices() {
             </Box>
           </Box>
           <Box className="startRequestOuter">
-            <Grid container spacing={4} className="startRequestBox">
+            <Grid container spacing={4} alignItems="center" className="startRequestBox">
               <Grid
                 size={{ xs: 6, md: 6, lg: 6 }}
                 className="startRequestBoxLeft"
