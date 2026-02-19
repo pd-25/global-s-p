@@ -424,8 +424,9 @@ export default function ProductDetails() {
                                                 <Swiper
                                                     modules={[Navigation, Thumbs, Autoplay]}
                                                     navigation
-                                                    autoplay={false}
-                                                    // autoplay={{ delay: 4000, disableOnInteraction: true }}
+                                                    // autoplay={false}
+                                                    speed={1500}
+                                                    autoplay={{ delay: 4000, disableOnInteraction: true }}
                                                     thumbs={{ swiper: thumbsSwiper }}
                                                     grabCursor={true}
                                                     className="mainSwiper"
@@ -797,7 +798,9 @@ export default function ProductDetails() {
                                     : false
                             }
                             pagination={{ clickable: true }}
-                            autoplay={false}
+                            // autoplay={false}
+                            speed={1500}
+                            autoplay={{ delay: 4000, disableOnInteraction: true }}
                             spaceBetween={16}
                             breakpoints={{
                                 0: { slidesPerView: 1 },

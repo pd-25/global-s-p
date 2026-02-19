@@ -840,10 +840,10 @@ export default function ProductsServices() {
                     modules={[Navigation, Autoplay]}
                     navigation={false}
                     // autoplay={false}
-                    autoplay={{ delay: 3000 }}
+                    speed={1500}
+                    autoplay={{ delay: 4000, disableOnInteraction: true }}
                     spaceBetween={24}
                     slidesPerView={1}
-                    speed={1500}
                     loop={false}
                     breakpoints={{
                       0: {
