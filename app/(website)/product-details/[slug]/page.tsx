@@ -114,62 +114,7 @@ export default function ProductDetails() {
                                 Product
                             </Typography>
                         </Breadcrumbs>
-                        <Box>
-                            <Stack
-                                direction="row"
-                                spacing={2}
-                                className="searchForm"
-                                sx={{ alignItems: "flex-end" }}
-                            >
-                                <TextField
-                                    id="standard-basic"
-                                    placeholder="Packaging Material.... "
-                                    variant="outlined"
-                                    fullWidth
-                                    sx={{
-                                        "& .MuiOutlinedInput-root": {
-                                            fontSize: "15px",
-                                            height: "48px",
-                                            backgroundColor: "#EAEBED",
-                                            borderRadius: "18px",
-                                            padding: "0 0 0 0",
-                                            "& fieldset": {
-                                                borderColor: "white",
-                                                borderRadius: "18px",
-                                                transition: "all 0.3s ease",
-                                            },
-                                            "&:hover fieldset": {
-                                                borderColor: "white",
-                                            },
-                                            "& input": {
-                                                color: "#000",
-                                                padding: "0 60px 0 15px",
-                                                fontSize: "15px",
-                                                "&::placeholder": {
-                                                    color: "#242424",
-                                                    opacity: 1,
-                                                    fontSize: "15px",
-                                                },
-                                                backgroundColor: "transparent",
-                                            },
-                                        },
-                                        "& .MuiOutlinedInput-root.Mui-focused": {
-                                            "& fieldset": {
-                                                borderColor: "#7FAF0D",
-                                            },
-                                        },
-                                    }}
-                                />
-                                <Button variant="contained" type="submit">
-                                    <Image
-                                        src={SearchIcon}
-                                        alt="search-icon"
-                                        width={25}
-                                        height={25}
-                                    />
-                                </Button>
-                            </Stack>
-                        </Box>
+
                     </Stack>
 
                     <Stack
@@ -270,15 +215,15 @@ export default function ProductDetails() {
                                                 <Stack spacing={1}>
                                                     <Stack direction="row" spacing={1} alignItems="center">
                                                         <Icon name="delivery" width={24} height={24} />
-                                                        <Typography variant="body2">Delivery: National</Typography>
+                                                        <Typography variant="body2">Delivery: <strong style={{ fontWeight: 600 }}>National</strong> </Typography>
                                                     </Stack>
                                                     <Stack direction="row" spacing={1} alignItems="center">
                                                         <Icon name="foundedYear" width={24} height={24} />
-                                                        <Typography variant="body2">Founded: 1971</Typography>
+                                                        <Typography variant="body2">Founded: <strong style={{ fontWeight: 600 }}>1971</strong> </Typography>
                                                     </Stack>
                                                     <Stack direction="row" spacing={1} alignItems="center">
                                                         <Icon name="employees" width={24} height={24} />
-                                                        <Typography variant="body2">Employees: 5-9</Typography>
+                                                        <Typography variant="body2">Employees: <strong style={{ fontWeight: 600 }}>5-9</strong> </Typography>
                                                     </Stack>
                                                 </Stack>
                                             </Box>
@@ -345,6 +290,103 @@ export default function ProductDetails() {
                                             </Box>
                                         </Box>
                                     </Box>
+
+                                    <Box className="widget supplierCardWidget" sx={{ backgroundColor: "#F3F4F5 !important", padding: "35px 8px !important" }}>
+                                        <Box className="supplierCardWidgetContent">
+                                            <Typography variant="h3" className="supplierCardWidgetTitle" sx={{ fontSize: "16px !important", fontWeight: 700, color: "#000", padding: "15px 10px", borderTop: "1px solid #cdd1cf", borderBottom: "1px solid #cdd1cf", marginBottom: "20px" }}>
+                                                Similar products
+                                            </Typography>
+                                            <Box className="similarProductsSliderOuter">
+                                                <Swiper
+                                                    modules={[Navigation, Pagination]}
+                                                    navigation={true}
+                                                    pagination={{ clickable: true }}
+                                                    spaceBetween={12}
+                                                    slidesPerView={1}
+                                                    breakpoints={{
+                                                        768: { slidesPerView: 1 },
+                                                        1024: { slidesPerView: 1 },
+                                                    }}
+                                                    className="similarProductsSwiper"
+                                                >
+                                                    {[
+                                                        childProductCategoryImage1,
+                                                        childProductCategoryImage2,
+                                                        childProductCategoryImage3,
+                                                    ].map((img, idx) => (
+                                                        <SwiperSlide key={`similar-${idx}`}>
+                                                            <Box className="similarProductSliderCardOuter">
+                                                                <Box className="similarProductBox">
+                                                                    <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                        <Box className="similarProductImage">
+                                                                            <Link href="/">
+                                                                                <Image src={img} alt={`similar-${idx}`} />
+                                                                            </Link>
+                                                                        </Box>
+                                                                        <Box className="similarProductContent">
+                                                                            <Link href="/">
+                                                                                Wholesale hygiene products
+                                                                            </Link>
+                                                                            <Typography variant="body1">
+                                                                                Chemical appearance: Glutaraldehyde is usually a light yellow or clear liquid. It has a strong, pungent smell.
+                                                                            </Typography>
+                                                                            <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                                <Icon name="mapPin" width={18} height={18} />
+                                                                                <Typography variant="body1">FR-93300 Aubervilliers</Typography>
+                                                                            </Stack>
+                                                                        </Box>
+                                                                    </Stack>
+                                                                </Box>
+                                                                <Box className="similarProductBox">
+                                                                    <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                        <Box className="similarProductImage">
+                                                                            <Link href="/">
+                                                                                <Image src={img} alt={`similar-${idx}`} />
+                                                                            </Link>
+                                                                        </Box>
+                                                                        <Box className="similarProductContent">
+                                                                            <Link href="/">
+                                                                                Wholesale hygiene products
+                                                                            </Link>
+                                                                            <Typography variant="body1">
+                                                                                Chemical appearance: Glutaraldehyde is usually a light yellow or clear liquid. It has a strong, pungent smell.
+                                                                            </Typography>
+                                                                            <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                                <Icon name="mapPin" width={18} height={18} />
+                                                                                <Typography variant="body1">FR-93300 Aubervilliers</Typography>
+                                                                            </Stack>
+                                                                        </Box>
+                                                                    </Stack>
+                                                                </Box>
+                                                                <Box className="similarProductBox">
+                                                                    <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                        <Box className="similarProductImage">
+                                                                            <Link href="/">
+                                                                                <Image src={img} alt={`similar-${idx}`} />
+                                                                            </Link>
+                                                                        </Box>
+                                                                        <Box className="similarProductContent">
+                                                                            <Link href="/">
+                                                                                Wholesale hygiene products
+                                                                            </Link>
+                                                                            <Typography variant="body1">
+                                                                                Chemical appearance: Glutaraldehyde is usually a light yellow or clear liquid. It has a strong, pungent smell.
+                                                                            </Typography>
+                                                                            <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                                                                                <Icon name="mapPin" width={18} height={18} />
+                                                                                <Typography variant="body1">FR-93300 Aubervilliers</Typography>
+                                                                            </Stack>
+                                                                        </Box>
+                                                                    </Stack>
+                                                                </Box>
+                                                            </Box>
+
+                                                        </SwiperSlide>
+                                                    ))}
+                                                </Swiper>
+                                            </Box>
+                                        </Box>
+                                    </Box>
                                 </Box>
 
                             </Box>
@@ -374,7 +416,7 @@ export default function ProductDetails() {
                                 </Box>
                                 <Grid container spacing={3} className="singleProductFeatureRow">
                                     <Grid
-                                        size={{ xs: 6, md: 8 }}
+                                        size={{ xs: 12, md: 12, lg: 8 }}
                                         className="singleProductFeatureColLeft"
                                     >
                                         <Box className="singleProductFeaturedSliderOuter">
@@ -385,6 +427,7 @@ export default function ProductDetails() {
                                                     autoplay={false}
                                                     // autoplay={{ delay: 4000, disableOnInteraction: true }}
                                                     thumbs={{ swiper: thumbsSwiper }}
+                                                    grabCursor={true}
                                                     className="mainSwiper"
                                                 >
                                                     {productImages.map((img, idx) => (
@@ -408,7 +451,7 @@ export default function ProductDetails() {
                                                     slideToClickedSlide={true}
                                                     breakpoints={{
                                                         0: {
-                                                            slidesPerView: 1,
+                                                            slidesPerView: 2,
                                                             spaceBetween: 8,
                                                         },
                                                         768: {
@@ -418,10 +461,10 @@ export default function ProductDetails() {
                                                             slidesPerView: 4,
                                                         },
                                                         1440: {
-                                                            slidesPerView: 5,
+                                                            slidesPerView: 4,
                                                         },
                                                         1800: {
-                                                            slidesPerView: 7,
+                                                            slidesPerView: 6,
                                                         },
                                                     }}
                                                 >
@@ -439,7 +482,7 @@ export default function ProductDetails() {
 
                                     </Grid>
                                     <Grid
-                                        size={{ xs: 6, md: 4 }}
+                                        size={{ xs: 12, md: 12, lg: 4 }}
                                         className="singleProductFeatureColRight"
                                     >
                                         <Box className="productFeaturedBoxRightContent">
@@ -599,7 +642,7 @@ export default function ProductDetails() {
                                 <Box className="childCategoryLisitngOuter">
                                     <Grid container spacing={{ xs: 2, md: 2, lg: 7 }} className="childCategoryLisitngRow">
                                         <Grid
-                                            size={{ xs: 6, md: 6, lg: 6 }}
+                                            size={{ xs: 12, md: 6, lg: 6 }}
                                             className="childCategoryLisitngCol"
                                         >
                                             <Box className="lisitngCard">
@@ -642,7 +685,7 @@ export default function ProductDetails() {
                                             </Box>
                                         </Grid>
                                         <Grid
-                                            size={{ xs: 6, md: 6, lg: 6 }}
+                                            size={{ xs: 12, md: 6, lg: 6 }}
                                             className="childCategoryLisitngCol"
                                         >
                                             <Box className="lisitngCard">
@@ -759,7 +802,8 @@ export default function ProductDetails() {
                             breakpoints={{
                                 0: { slidesPerView: 1 },
                                 768: { slidesPerView: 2 },
-                                1024: { slidesPerView: 4 },
+                                1024: { slidesPerView: 3 },
+                                1440: { slidesPerView: 4 },
                             }}
                             className="trendingProductsSwiper"
                         >

@@ -43,10 +43,16 @@
 }
 
 .sidebar {
+    @include respond-to(xl) {
+        flex: 1 1 calc(30% - 32px) !important;
+    }
 
+    @include respond-to(lg) {
+        flex: 1 1 100% !important;
+    }
 
     .sidebarContent {
-        max-width: 300px;
+        max-width: 330px;
 
         @include respond-to(minLg) {
             position: sticky;
@@ -82,6 +88,10 @@
                 @include respond-to(minLg) {
                     display: none !important;
                 }
+
+                svg {
+                    fill: #7FAF0D;
+                }
             }
         }
 
@@ -94,9 +104,11 @@
                 width: 100%;
                 max-width: 400px;
                 padding: 70px 30px;
-                background: #FBE8D0;
+                background: #fff;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.17);
                 z-index: 1000;
                 transform: translateX(-100%);
+                overflow-y: auto;
                 transition: all 0.4s ease-in-out;
             }
 
@@ -108,6 +120,10 @@
                 position: absolute;
                 top: 15px;
                 right: 15px;
+
+                svg {
+                    fill: #7FAF0D;
+                }
             }
         }
 
@@ -234,6 +250,15 @@
 }
 
 .mainContent {
+    @include respond-to(xl) {
+        flex: 1 1 calc(70% - 32px) !important;
+    }
+
+    @include respond-to(lg) {
+        flex: 1 1 100% !important;
+        margin-left: 0 !important;
+    }
+
     .categoryLoopListing {
         margin-bottom: 50px;
 
@@ -298,6 +323,10 @@
                 padding: 40px;
                 border-radius: 15px;
 
+                @include respond-to(md) {
+                    padding: 20px;
+                }
+
                 h3 {
                     font-size: 16px;
                     font-weight: 700;
@@ -349,6 +378,10 @@
     }
 
     .productListingSliderOuter {
+        .swiper {
+            padding-bottom: 40px;
+        }
+
         .swiper-slide {
             transition: all 0.3s ease-in-out;
 
@@ -499,7 +532,6 @@
         background-color: #DBDBDB;
         padding: 40px 25px;
         border-radius: 15px;
-        margin-top: 40px;
 
         .childCategorySliderBoxImage {
             background-color: #F5F5F5;
@@ -526,6 +558,10 @@
 
 .learnMoreOuter {
     margin: 60px 0;
+
+    @include respond-to(md) {
+        margin: 40px 0;
+    }
 
     h2 {
         color: #000;
@@ -623,6 +659,11 @@
 .startRequestOuter {
     margin: 60px 0;
 
+    @include respond-to(md) {
+        margin: 40px 0;
+    }
+
+
     .startRequestBoxLeft {
         height: 280px;
 
@@ -640,6 +681,10 @@
             font-weight: 700;
             color: #000;
             margin-bottom: 15px;
+
+            @include respond-to(md) {
+                font-size: 22px;
+            }
         }
 
         .MuiList-root {
@@ -794,6 +839,10 @@
     border-radius: 15px;
     padding: 35px;
 
+    @include respond-to(md) {
+        padding: 20px;
+    }
+
     .singleProductFeaturedMainSlider {
         width: 100%;
         text-align: center;
@@ -846,6 +895,13 @@
         color: #7faf0d;
         width: 25px;
         height: 25px;
+
+        @include respond-to(md) {
+            top: auto;
+            bottom: 0;
+            transform: none;
+            margin: 0;
+        }
     }
 
 
@@ -859,6 +915,10 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+
+        @include respond-to(md) {
+            padding: 20px;
+        }
 
         h3 {
             font-size: 16px;
@@ -949,6 +1009,10 @@
     border-radius: 15px;
     margin-bottom: 30px;
 
+    @include respond-to(md) {
+        padding: 20px;
+    }
+
     h3 {
         font-size: 16px;
         font-weight: 700;
@@ -987,18 +1051,37 @@
     padding: 15px 45px;
     border-radius: 15px;
 
+    @include respond-to(md) {
+        padding: 15px;
+    }
+
+    .MuiStack-root {
+        flex-wrap: wrap;
+    }
+
+
     h3 {
         font-size: 16px;
         font-weight: 700;
         color: #ffffff;
         margin-bottom: 0;
         margin-top: 3px !important;
+
+        @include respond-to(md) {
+            width: 100%;
+            margin-bottom: 15px !important;
+        }
     }
 
     .relatedKeyWordsContentList {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
+
+        @include respond-to(md) {
+            width: 100%;
+            margin-left: 0;
+        }
 
         .MuiButton-root {
             padding: 0 15px;
@@ -1026,6 +1109,12 @@
     .searchHeader {
         margin-bottom: 30px;
 
+        @include respond-to(md) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
         h3 {
             font-size: 16px;
             font-weight: 700;
@@ -1036,6 +1125,11 @@
         .searchForm {
             position: relative;
             width: 305px;
+
+            @include respond-to(md) {
+                width: 100%;
+                margin-left: 0;
+            }
 
             .MuiButtonBase-root {
                 position: absolute;
@@ -1086,10 +1180,18 @@
     background-color: #f5f5f5;
     padding: 20px 0 10px;
 
+    @include respond-to(md) {
+        padding-bottom: 0;
+    }
+
     h2 {
         font-size: 17px;
         font-weight: 700;
         margin-bottom: -30px;
+
+        @include respond-to(md) {
+            margin-bottom: 0;
+        }
     }
 
     .sliderNavigation {
@@ -1099,6 +1201,12 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+
+        @include respond-to(md) {
+            top: auto;
+            bottom: 36px;
+            transform: none;
+        }
 
         .swiper-button-next,
         .swiper-button-prev {
@@ -1112,12 +1220,26 @@
         padding: 0 40px 25px;
         position: relative;
 
+        @include respond-to(md) {
+            padding: 0 0 25px;
+        }
+
         .swiper {
             padding: 40px 0 0;
+
+            @include respond-to(md) {
+                padding: 30px 0 30px;
+            }
 
             .swiper-pagination {
                 top: 0;
                 bottom: auto;
+
+                @include respond-to(md) {
+                    top: auto;
+                    bottom: -20px;
+                    position: relative;
+                }
 
                 .swiper-pagination-bullet-active {
                     background: #7FAF0D;
@@ -1191,5 +1313,96 @@
             position: relative;
             top: 3px;
         }
+    }
+}
+
+.similarProductsSwiper {
+    padding-bottom: 10px;
+
+    .similarProductSliderCardOuter {
+        .similarProductBox {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 6px 13px 0px #0000000D;
+            margin-bottom: 10px;
+
+            .similarProductImage {
+                width: 90px;
+                min-width: 90px;
+                height: 90px;
+                border: 1px solid #e6e8e7;
+                border-radius: 6px;
+                padding: 10px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .similarProductContent {
+                a {
+                    font-size: 12px;
+                    line-height: 1.2;
+                    display: block;
+                    font-weight: 600;
+                    color: #7FAF0D;
+                    margin-bottom: 5px;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: #054934;
+                    }
+                }
+
+                p {
+                    font-size: 12px;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    text-decoration: none;
+                    margin-bottom: 5px;
+                }
+
+                .MuiStack-root {
+                    justify-content: flex-start !important;
+
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .swiper-pagination {
+        position: relative;
+        top: 10px;
+        bottom: auto;
+        width: fit-content;
+        margin: 0 auto;
+
+        .swiper-pagination-bullet-active {
+            background: #7FAF0D;
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #7faf0d;
+        width: 25px;
+        height: 25px;
+        top: auto;
+        bottom: 0;
+    }
+}
+
+.MuiPopover-root {
+    .MuiPopover-paper {
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.14) !important;
     }
 }

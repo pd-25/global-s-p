@@ -773,7 +773,7 @@ export default function ProductsByCategory() {
                             <Box className="childCategoryLisitngOuter">
                                 <Grid container spacing={2} className="childCategoryLisitngRow">
                                     <Grid
-                                        size={{ xs: 6, md: 6, lg: 4 }}
+                                        size={{ xs: 12, md: 6, lg: 4 }}
                                         className="childCategoryLisitngCol"
                                     >
                                         <Box className="lisitngCard">
@@ -816,7 +816,7 @@ export default function ProductsByCategory() {
                                         </Box>
                                     </Grid>
                                     <Grid
-                                        size={{ xs: 6, md: 6, lg: 4 }}
+                                        size={{ xs: 12, md: 6, lg: 4 }}
                                         className="childCategoryLisitngCol"
                                     >
                                         <Box className="lisitngCard">
@@ -859,7 +859,7 @@ export default function ProductsByCategory() {
                                         </Box>
                                     </Grid>
                                     <Grid
-                                        size={{ xs: 6, md: 6, lg: 4 }}
+                                        size={{ xs: 12, md: 6, lg: 4 }}
                                         className="childCategoryLisitngCol"
                                     >
                                         <Box className="lisitngCard">
@@ -974,7 +974,7 @@ export default function ProductsByCategory() {
                     <Box className="startRequestOuter">
                         <Grid container spacing={4} alignItems="center" className="startRequestBox">
                             <Grid
-                                size={{ xs: 6, md: 6, lg: 6 }}
+                                size={{ xs: 12, md: 6, lg: 6 }}
                                 className="startRequestBoxLeft"
                             >
                                 <Image
@@ -983,7 +983,7 @@ export default function ProductsByCategory() {
                                 />
                             </Grid>
                             <Grid
-                                size={{ xs: 6, md: 6, lg: 6 }}
+                                size={{ xs: 12, md: 6, lg: 6 }}
                                 className="startRequestBoxRight"
                             >
                                 <Box className="startRequestBoxRightContent">
