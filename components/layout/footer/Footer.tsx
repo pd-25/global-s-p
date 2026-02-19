@@ -222,7 +222,10 @@ export default function Footer() {
                       lineHeight: 1.6,
                       textDecoration: "none",
                       transition: "color 0.3s ease",
+                      cursor: "pointer"
                     }}
+                    onMouseOver={e => (e.currentTarget.style.color = "#7FAF0D")}
+                    onMouseOut={e => (e.currentTarget.style.color = "#ffffff")}
                   >
                     {category}
                   </Link>
@@ -281,6 +284,8 @@ export default function Footer() {
                       textDecoration: "none",
                       transition: "color 0.3s ease",
                     }}
+                    onMouseOver={e => (e.currentTarget.style.color = "#7FAF0D")}
+                    onMouseOut={e => (e.currentTarget.style.color = "#ffffff")}
                   >
                     {service.name}
                   </Link>
