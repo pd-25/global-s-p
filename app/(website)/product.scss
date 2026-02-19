@@ -1,6 +1,8 @@
 @use "../../app/(website)/_variables.scss" as *;
 
 .collectionListingProductWrapper {
+    margin-bottom: 70px;
+
     .MuiContainer-root {
         max-width: 95%;
     }
@@ -747,6 +749,447 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.supplierLinks {
+    .MuiButtonBase-root {
+        padding: 0;
+        min-width: auto;
+        height: auto;
+
+        .MuiTouchRipple-root {
+            display: none;
+        }
+    }
+}
+
+.supplierRatingButtons {
+    .MuiButtonBase-root {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+        font-weight: 600;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        .MuiTouchRipple-root {
+            display: none;
+        }
+    }
+}
+
+.singleProductFeaturedSliderOuter {
+    background-color: #F5F5F5;
+    position: relative;
+    overflow: hidden;
+    min-height: 515px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 35px;
+
+    .singleProductFeaturedMainSlider {
+        width: 100%;
+        text-align: center;
+
+        .singleProductFeatureImage {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                object-fit: contain;
+            }
+        }
+    }
+
+    .singleProductFeaturedThumbnailSlider {
+        width: 100%;
+        margin-top: 35px;
+
+        .singleProductFeatureThumbnailImage {
+            height: 100px;
+            background-color: #fff;
+            border: 1px solid #EDEDED;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: .5;
+            transition: all 0.3s ease-in-out;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .swiper-slide-thumb-active {
+
+            .singleProductFeatureThumbnailImage {
+                opacity: 1;
+                border-color: #7FAF0D;
+            }
+        }
+
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #7faf0d;
+        width: 25px;
+        height: 25px;
+    }
+
+
+}
+
+.singleProductFeatureColRight {
+    .productFeaturedBoxRightContent {
+        background-color: #054934;
+        padding: 40px;
+        border-radius: 15px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .productFeaturedBoxRightContentList {
+            .MuiList-root {
+                padding-left: 0;
+
+                .MuiListItem-root {
+                    padding: 0 0 0 10px;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 11px;
+                        left: 0;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background-color: #ffffff;
+                    }
+
+                    .MuiListItemText-root {
+
+                        margin-bottom: 0;
+
+                        span {
+                            font-size: 14px;
+                            line-height: 1.3;
+                            font-weight: 400;
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .productFeaturedBoxRightContentButton {
+            padding-top: 20px;
+            margin-top: auto;
+            border-top: 1px solid #ffffff;
+        }
+    }
+}
+
+.MuiList-root {
+    &.defaultUl {
+        padding-left: 0;
+
+        .MuiListItem-root {
+            padding: 0 0 0 10px;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 9px;
+                left: 0;
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background-color: #000000;
+            }
+
+            .MuiListItemText-root {
+
+                margin-bottom: 0;
+
+                span {
+                    font-size: 14px;
+                    line-height: 1.3;
+                    font-weight: 400;
+                    color: #000000;
+                }
+            }
+        }
+    }
+}
+
+.productShortInfoBox {
+    background-color: #F5F5F5;
+    padding: 40px 50px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 10px;
+    }
+
+    .MuiList-root {
+        &.defaultUl {
+            .MuiListItem-root {
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 9px;
+                    left: 0;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: #000000;
+                }
+
+                .MuiListItemText-root {
+
+                    span {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.productKeywordsBox {
+    background-color: #054934;
+    padding: 15px 45px;
+    border-radius: 15px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 0;
+        margin-top: 3px !important;
+    }
+
+    .relatedKeyWordsContentList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        .MuiButton-root {
+            padding: 0 15px;
+            height: 30px;
+            min-height: auto;
+            font-size: 12px;
+            font-weight: 400;
+            border-radius: 12px;
+            min-width: auto;
+            border-color: #ffffff;
+            color: #ffffff;
+            border-width: 1px;
+
+            &:hover {
+                border-color: #ffffff;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+.productResultsOuter {
+    margin-top: 50px;
+
+    .searchHeader {
+        margin-bottom: 30px;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0;
+        }
+
+        .searchForm {
+            position: relative;
+            width: 305px;
+
+            .MuiButtonBase-root {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                min-width: auto;
+                padding: 0;
+                width: 52px;
+                height: 48px;
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.aboutSupplierOuter {
+    margin-top: 35px;
+    background: #fff;
+    box-shadow: 0 6px 13px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    .aboutSupplierProductGallery {
+        margin-bottom: 30px;
+
+        .imageBox {
+            max-width: 150px;
+        }
+    }
+}
+
+.trendingProductsOuter {
+    background-color: #f5f5f5;
+    padding: 20px 0 10px;
+
+    h2 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: -30px;
+    }
+
+    .sliderNavigation {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #7faf0d;
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    .trendingProductsSliderOuter {
+        padding: 0 40px 25px;
+        position: relative;
+
+        .swiper {
+            padding: 40px 0 0;
+
+            .swiper-pagination {
+                top: 0;
+                bottom: auto;
+
+                .swiper-pagination-bullet-active {
+                    background: #7FAF0D;
+                }
+            }
+        }
+    }
+
+    .trendingProductBox {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 6px 13px 0px #0000000D;
+
+        .trendingProductImage {
+            width: 120px;
+            min-width: 120px;
+            height: 110px;
+            border: 1px solid #e6e8e7;
+            border-radius: 6px;
+            padding: 10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .trendingProductContent {
+            a {
+                font-size: 14px;
+                font-weight: 600;
+                color: #054934;
+                margin-bottom: 5px;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                text-decoration: none;
+
+
+                &:hover {
+                    color: #7FAF0D;
+                }
+            }
+        }
+
+        p {
+            font-size: 12px;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            text-decoration: none;
+        }
+
+        .leftData {
+            .MuiButtonBase-root {
+                padding: 0;
+                min-width: auto;
+                height: auto;
+
+                .MuiTouchRipple-root {
+                    display: none;
+                }
+            }
+        }
+
+        .rightData {
+            position: relative;
+            top: 3px;
         }
     }
 }

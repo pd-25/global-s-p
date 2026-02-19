@@ -25,6 +25,7 @@ import {
   RadioGroup,
   Radio,
   Pagination,
+  Popover,
 } from "@mui/material"
 import Icon from "@/components/ui/icon/Icon"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -54,6 +55,12 @@ import flagUsaIcon from "@/public/flag/usa.svg"
 import verifiedIcon from "@/public/product/verified-badge.svg"
 
 
+import supplierAvatar from "@/public/product/supplier-avatar.png"
+import badReviewImage from "@/public/product/bad-review.svg"
+import okayReviewImage from "@/public/product/okay-review.svg"
+import goodReviewImage from "@/public/product/good-review.svg"
+
+
 export default function ProductsServices() {
   const prevRef = React.useRef<any>(null)
   const nextRef = React.useRef<any>(null)
@@ -65,6 +72,15 @@ export default function ProductsServices() {
   const toggleSideBar = () => setSidebarOpen((prev) => !prev)
   const [location, setLocation] = React.useState("")
   const [radius, setRadius] = React.useState(50)
+  const [infoAnchorEl, setInfoAnchorEl] = React.useState<HTMLElement | null>(null)
+  const handleInfoClick = (event: React.MouseEvent<HTMLElement>) => {
+    setInfoAnchorEl(event.currentTarget)
+  }
+  const handleInfoClose = () => {
+    setInfoAnchorEl(null)
+  }
+  const infoOpen = Boolean(infoAnchorEl)
+  const infoId = infoOpen ? "supplier-info-popover" : undefined
   return (
     <>
       <Box
@@ -750,6 +766,133 @@ export default function ProductsServices() {
                         width={28}
                         height={28}
                       />
+                    </Box>
+                  </Box>
+                  <Box className="widget priceRangeWidget">
+                    <Box className="supplierCardWidgetContent">
+                      <Box className="supplierHeader">
+                        <Box className="supplierAvatar" mb={1}>
+                          <Image src={supplierAvatar} alt="supplier-avatar" width={80} height={80} />
+                        </Box>
+                        <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                          <Typography variant="h3" className="supplierName" sx={{ fontSize: "16px !important", fontWeight: 700, textTransform: "uppercase", color: "#000" }}>
+                            KLÖTER VERPACKUNGEN GMBH
+                          </Typography>
+                          <Image src={verifiedIcon} alt="verified-icon" width={22} height={22} />
+                        </Stack>
+
+                        <Typography variant="body2" sx={{ color: "#000000", mt: 0.5 }}>
+                          Fürther Berg 21, Grevenbroich
+                          41515
+                        </Typography>
+                        <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 2 }}>
+                          <Image src={flagUsaIcon} alt="country" width={27} height={27} />
+                          <Typography variant="body2" sx={{ color: "#000000", fontSize: "14px !important", fontWeight: 400 }}>
+                            America
+                          </Typography>
+                        </Stack>
+                        <Box sx={{ height: "1px", background: "#000", width: "100%", mx: "auto", mt: 2 }} />
+                        <Button variant="contained" sx={{ backgroundColor: "#7FAF0D", mt: 2, textTransform: "none", width: "100%", }}>
+                          Contact Supplier
+                        </Button>
+                        <Button variant="outlined" sx={{ mt: 3, textTransform: "none", width: "100%", }}>
+                          Notify Me
+                        </Button>
+                        <Box sx={{ height: "1px", background: "#000", width: "100%", mx: "auto", mt: 3 }} />
+                      </Box>
+
+                      <Box className="supplierLinks" sx={{ pt: 3 }}>
+                        <Stack spacing={2}>
+                          <Button variant="text" startIcon={<Icon name="link" width={18} height={18} />} sx={{ color: "#7FAF0D", textTransform: "none", justifyContent: "flex-start" }}>
+                            Visit website
+                          </Button>
+                          <Button variant="text" startIcon={<Icon name="phoneGreen" width={18} height={18} />} sx={{ color: "#7FAF0D", textTransform: "none", justifyContent: "flex-start" }}>
+                            Phone number
+                          </Button>
+                          <Button variant="text" startIcon={<Icon name="vat" width={18} height={18} />} sx={{ color: "#7FAF0D", textTransform: "none", justifyContent: "flex-start" }}>
+                            Show VAT number
+                          </Button>
+                        </Stack>
+                      </Box>
+                      <Box sx={{ height: "1px", background: "#000", width: "100%", mx: "auto", mt: 3 }} />
+
+                      <Box className="supplierMeta" sx={{ pt: 3 }}>
+                        <Stack spacing={1}>
+                          <Stack direction="row" spacing={1} alignItems="center">
+                            <Icon name="delivery" width={24} height={24} />
+                            <Typography variant="body2">Delivery: National</Typography>
+                          </Stack>
+                          <Stack direction="row" spacing={1} alignItems="center">
+                            <Icon name="foundedYear" width={24} height={24} />
+                            <Typography variant="body2">Founded: 1971</Typography>
+                          </Stack>
+                          <Stack direction="row" spacing={1} alignItems="center">
+                            <Icon name="employees" width={24} height={24} />
+                            <Typography variant="body2">Employees: 5-9</Typography>
+                          </Stack>
+                        </Stack>
+                      </Box>
+
+                      <Box sx={{ height: "1px", background: "#000", width: "100%", mx: "auto", mt: 3 }} />
+
+                      <Box className="supplierType" sx={{ pt: 3 }}>
+                        <Stack direction="row" spacing={1} mb={1.5} alignItems="center" justifyContent="space-between">
+                          <Typography variant="h4" sx={{ fontSize: "16px", fontWeight: 700 }}>Supplier type</Typography>
+                          <IconButton aria-label="info" onClick={handleInfoClick}>
+                            <Icon name="info" width={24} height={24} />
+                          </IconButton>
+                          <Popover
+                            id={infoId}
+                            open={infoOpen}
+                            anchorEl={infoAnchorEl}
+                            onClose={handleInfoClose}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "left",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "left",
+                            }}
+                          >
+                            <Box sx={{ p: 2, maxWidth: 300 }}>
+                              <Typography variant="h4" sx={{ color: "#000000", fontWeight: 700, marginBottom: "10px" }}>
+                                Supplier type
+                              </Typography>
+                              <Typography variant="body2" sx={{ color: "#000000" }}>
+                                These are the general business activities for this supplier.
+                              </Typography>
+                            </Box>
+                          </Popover>
+                        </Stack>
+
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          <Icon name="supplierType" width={24} height={24} />
+                          <Typography variant="body2">Wholesaler</Typography>
+                        </Stack>
+                      </Box>
+
+                      <Box sx={{ height: "1px", background: "#000", width: "100%", mx: "auto", mt: 3 }} />
+
+                      <Box className="supplierRating" sx={{ pt: 2, textAlign: "center" }}>
+                        <Typography variant="body1" sx={{ mb: 2, fontWeight: 700, color: "#587a09", fontSize: "14px !important" }}>
+                          How would you rate the company and product information?
+                        </Typography>
+                        <Stack direction="row" spacing={3} justifyContent="center" alignItems="center" className="supplierRatingButtons">
+                          <IconButton aria-label="bad-review" sx={{ color: "#E41648" }}>
+                            <Image src={badReviewImage} alt="bad-review" width={31} height={31} />
+                            Bad
+                          </IconButton>
+                          <IconButton aria-label="okay-review" sx={{ color: "#0060DF" }}>
+                            <Image src={okayReviewImage} alt="bad-review" width={31} height={31} />
+                            Okay
+                          </IconButton>
+                          <IconButton aria-label="good-review" sx={{ color: "#71A300" }}>
+                            <Image src={goodReviewImage} alt="bad-review" width={31} height={31} />
+                            Good
+                          </IconButton>
+                        </Stack>
+                      </Box>
                     </Box>
                   </Box>
                   <Box className="sidebarFooter">
