@@ -9,6 +9,7 @@ export const routes = {
 }
 
 export const adminRoutes = {
+    login: "/gse/login",
     dashboard: "/gse/admin/dashboard",
     categoryPage: "/gse/admin/categories",
     quotePage: "/gse/admin/quotes"

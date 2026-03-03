@@ -16,6 +16,7 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 import Icon from '@/components/ui/icon'
+import { adminRoutes } from '@/config/routes'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -24,6 +25,13 @@ export default function LoginPage() {
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+  }
+
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log('login clicked');
+    
+    window.location.href = adminRoutes.dashboard;
   }
 
   return (
@@ -114,7 +122,7 @@ export default function LoginPage() {
             </Typography>
           </Box>
 
-          <form>
+          <form onSubmit={handleLogin}>
             <Stack spacing={3}>
               <Box>
                 <Typography component="label" sx={{ display: 'block', mb: 1, fontWeight: 600, color: 'text.primary' }}>
@@ -180,6 +188,7 @@ export default function LoginPage() {
               </Box>
 
               <Button
+              type='submit'
                 variant="contained"
                 size="large"
                 fullWidth

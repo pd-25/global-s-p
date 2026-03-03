@@ -9,6 +9,7 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import Icon from "@/components/ui/icon/Icon"
 import styles from "./Footer.module.css"
+import { adminRoutes } from "@/config/routes"
 import storeIcon from "@/public/store.svg"
 import appStoreIcon from "@/public/app-store.svg"
 import googlePlayIcon from "@/public/google-play.svg"
@@ -296,7 +297,9 @@ export default function Footer() {
             borderTop: "1px solid rgba(255, 255, 255, 0.2)",
             pt: 3,
             mt: 4,
-            textAlign: "center",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
           <Typography
@@ -309,6 +312,22 @@ export default function Footer() {
           >
             © 2026 All rights reserved. Global Source Expo
           </Typography>
+          <Button
+            variant="text"
+            component={Link}
+            href={adminRoutes.login}
+            sx={{
+              color: "rgba(255, 255, 255, 0.6)",
+              fontSize: "13px",
+              textTransform: "none",
+              "&:hover": {
+                color: "#ffffff",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+          >
+            Admin Login
+          </Button>
         </Box>
       </Container>
     </Box>

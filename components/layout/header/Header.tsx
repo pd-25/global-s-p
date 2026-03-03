@@ -11,7 +11,11 @@ import Drawer from "@mui/material/Drawer"
 import Icon from "@/components/ui/icon/Icon"
 import styles from "./Header.module.css"
 import Image from "next/image"
-import logo from "@/public/global-sp-logo.svg"
+// import logo from "@/public/global-sp-logo.svg"
+// import logo from "@/public/logo1.jpeg"
+// import logo from "@/public/logo2.jpeg"
+// import logo from "@/public/logo3.jpeg"
+import logo from "@/public/logo4.jpeg"
 import { navLinks } from "@/lib/constants"
 
 export default function Header() {
@@ -31,7 +35,7 @@ export default function Header() {
           mb: 3,
         }}
       >
-        <Image src={logo} alt="logo" width={300} height={40} />
+        <Image src={logo} alt="logo" width={80} height={80} />
         <IconButton
           onClick={handleDrawerToggle}
           sx={{ color: "#ffffff" }}
@@ -75,16 +79,18 @@ export default function Header() {
             sx={{
               display: "flex",
               alignItems: "center",
-              maxWidth: { xs: 160, md: 300 },
+              height: { xs: 50, md: 60 },
+              maxWidth: { xs: 160, md: 200 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none" }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
               <Image
                 src={logo}
                 alt="logo"
-                width={300}
-                height={40}
+                width={200}
+                height={60}
                 className="logo"
+                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "60px" }}
               />
             </Link>
           </Box>
