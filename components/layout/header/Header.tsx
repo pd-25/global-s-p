@@ -6,6 +6,7 @@ import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
 import IconButton from "@mui/material/IconButton"
 import Drawer from "@mui/material/Drawer"
 import Icon from "@/components/ui/icon/Icon"
@@ -15,7 +16,10 @@ import Image from "next/image"
 // import logo from "@/public/logo1.jpeg"
 // import logo from "@/public/logo2.jpeg"
 // import logo from "@/public/logo3.jpeg"
-import logo from "@/public/logo4.jpeg"
+// import logo from "@/public/logo4.jpeg"
+// import logo from "@/public/gse-white-logo.png"
+import logo from "@/public/gse-green-bg.svg"
+
 import { navLinks } from "@/lib/constants"
 
 export default function Header() {
@@ -35,7 +39,11 @@ export default function Header() {
           mb: 3,
         }}
       >
-        <Image src={logo} alt="logo" width={80} height={80} />
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Image src={logo} alt="logo" width={80} height={80} />
+          <Box sx={{ width: '2px', height: '28px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+          <Typography sx={{ fontWeight: 700, fontSize: '22px', letterSpacing: '3px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
+        </Box>
         <IconButton
           onClick={handleDrawerToggle}
           sx={{ color: "#ffffff" }}
@@ -79,19 +87,21 @@ export default function Header() {
             sx={{
               display: "flex",
               alignItems: "center",
-              height: { xs: 50, md: 60 },
-              maxWidth: { xs: 160, md: 200 },
+              height: { xs: 40, md: 60 },
+              maxWidth: { xs: 180, md: 280 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '8px' }}>
               <Image
                 src={logo}
                 alt="logo"
                 width={200}
-                height={60}
+                height={86}
                 className="logo"
-                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "60px" }}
+                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80px" }}
               />
+              {/* <Box sx={{ width: '2px', height: { xs: '22px', md: '32px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
+              <Typography sx={{ fontWeight: 700, fontSize: { xs: '18px', md: '26px' }, letterSpacing: { xs: '2px', md: '4px' }, lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
             </Link>
           </Box>
 
@@ -137,9 +147,6 @@ export default function Header() {
               gap: { xs: "0", md: "10px" },
             }}
           >
-            <IconButton sx={{ color: "#ffffff" }} aria-label="notifications">
-              <Icon name="notification" width={24} height={24} />
-            </IconButton>
             <IconButton sx={{ color: "#ffffff" }} aria-label="user profile">
               <Icon name="user" width={24} height={24} />
             </IconButton>

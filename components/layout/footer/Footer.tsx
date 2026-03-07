@@ -13,7 +13,9 @@ import { adminRoutes } from "@/config/routes"
 import storeIcon from "@/public/store.svg"
 import appStoreIcon from "@/public/app-store.svg"
 import googlePlayIcon from "@/public/google-play.svg"
-import logo from "@/public/global-sp-logo.svg"
+// import logo from "@/public/global-sp-logo.svg"
+import logo from "@/public/gse-green-bg.svg"
+
 
 export default function Footer() {
   const categories = [
@@ -65,7 +67,19 @@ export default function Footer() {
           <Box>
             <Box sx={{ mb: 3 }}>
               <Box sx={{ mb: 3 }}>
-                <Image src={logo} alt="logo" width={300} height={40} />
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'row', md: 'row' }, alignItems: { xs: 'center', md: 'center' }, gap: { xs: 1.5, md: 1 } }}>
+                  <Image src={logo} alt="logo" width={300} height={40} style={{ width: '100px', height: '100px', maxWidth: '100%' }} />
+                  <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1.5, mt: 0.5 }}>
+                    <Typography sx={{ fontWeight: 800, fontSize: '24px', letterSpacing: '5px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
+                    {/* <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} /> */}
+                    {/* <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Global Source Expo</Typography> */}
+                  </Box>
+                  {/* Mobile only: side-by-side GSE text */}
+                  <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
+                    {/* <Box sx={{ width: '2px', height: '22px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
+                    <Typography sx={{ fontWeight: 700, fontSize: '30px', letterSpacing: '3px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
+                  </Box>
+                </Box>
               </Box>
 
               <Stack direction="column" alignItems="start" spacing={2}>
