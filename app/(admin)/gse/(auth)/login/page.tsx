@@ -10,16 +10,23 @@ import {
   FormControlLabel,
   InputAdornment,
   IconButton,
-  Paper,
   Stack,
   Link as MuiLink,
 } from '@mui/material'
-import Image from 'next/image'
 import Icon from '@/components/ui/icon'
 import { adminRoutes } from '@/config/routes'
+import apiService from '@/service/apiService'
+
+interface FormErrors {
+  email?: string
+  password?: string
+}
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState<FormErrors>({})
 
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -27,11 +34,38 @@ export default function LoginPage() {
     event.preventDefault()
   }
 
-  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('login clicked');
-    
-    window.location.href = adminRoutes.dashboard;
+  const validate = (email: string, password: string): boolean => {
+    const newErrors: FormErrors = {}
+
+    // Email is required
+    if (!email.trim()) {
+      newErrors.email = 'Email is required'
+    } else {
+      // Email must be a valid email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        newErrors.email = 'Please enter a valid email address'
+      }
+    }
+
+    // Password is required
+    if (!password.trim()) {
+      newErrors.password = 'Password is required'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const isValid = validate(email, password)
+    if (!isValid) return
+    const response = await apiService.get('/auth/login')
+    return
+
+    // TODO: call login API
+    window.location.href = adminRoutes.dashboard
   }
 
   return (
@@ -132,11 +166,15 @@ export default function LoginPage() {
                   fullWidth
                   placeholder="admin@globalsourceexport.com"
                   variant="outlined"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  error={!!errors.email}
+                  helperText={errors.email}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
                         {/* <Email color="action" /> */}
-                         <Icon name="email" width={20} height={20} />
+                        <Icon name="email" width={20} height={20} />
                       </InputAdornment>
                     ),
                     sx: { borderRadius: '10px' }
@@ -153,11 +191,15 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Enter your password"
                   variant="outlined"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  error={!!errors.password}
+                  helperText={errors.password}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
                         {/* <Lock color="action" /> */}
-                         <Icon name="lock" width={20} height={20} />
+                        <Icon name="lock" width={20} height={20} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -168,7 +210,7 @@ export default function LoginPage() {
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showPassword ?  <Icon name="visibilityOff" width={20} height={20} /> : <Icon name="visibility" width={20} height={20} />}
+                          {showPassword ? <Icon name="visibilityOff" width={20} height={20} /> : <Icon name="visibility" width={20} height={20} />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -188,7 +230,7 @@ export default function LoginPage() {
               </Box>
 
               <Button
-              type='submit'
+                type='submit'
                 variant="contained"
                 size="large"
                 fullWidth

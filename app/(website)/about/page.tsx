@@ -1,11 +1,226 @@
-import React from 'react';
-import ComingSoon from '@/components/sections/ComingSoon';
+'use client'
 
-export default function About() {
+import React from 'react'
+import {
+    Box,
+    Container,
+    Typography,
+    Button,
+    Grid,
+    Card,
+    Stack,
+    Divider
+} from '@mui/material'
+
+// Hand-tailored SVG Icons
+const GlobeIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M2 12H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+        <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+    </svg>
+);
+
+const TargetIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+        <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" />
+    </svg>
+);
+
+const HandshakeIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+    </svg>
+);
+
+export default function AboutPage() {
     return (
-        <ComingSoon
-            title="About Us"
-            description="This page is under development. Please check back soon for updates."
-        />
-    );
+        <Box sx={{ bgcolor: '#F9FAF9', minHeight: '100vh', pb: 0 }}>
+            {/* Header / Hero Section */}
+            <Box sx={{ bgcolor: '#014B35', color: 'white', pt: { xs: 8, md: 12 }, pb: { xs: 12, md: 16 }, position: 'relative', overflow: 'hidden' }}>
+                <Box sx={{ position: 'absolute', width: '800px', height: '800px', borderRadius: '50%', background: 'linear-gradient(180deg, rgba(127,175,13,0.1) 0%, rgba(1,75,53,0) 100%)', top: '-40%', left: '-10%', zIndex: 0 }} />
+                <Box sx={{ position: 'absolute', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(127,175,13,0.15) 0%, rgba(1,75,53,0) 70%)', bottom: '-10%', right: '-5%', zIndex: 0 }} />
+
+                <Container disableGutters sx={{ position: 'relative', zIndex: 1, maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                    <Grid container spacing={6} alignItems="center">
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
+                                About global-s-p
+                            </Typography>
+                            <Typography variant="h1" sx={{ fontWeight: 800, fontSize: { xs: '36px', md: '52px' }, mb: 3, lineHeight: 1.1 }}>
+                                Connecting global markets, empowering B2B trade.
+                            </Typography>
+                            <Typography sx={{ fontSize: '18px', opacity: 0.9, lineHeight: 1.6, mb: 4, color: 'white' }}>
+                                We are the leading B2B sourcing platform bridging the gap between verified global suppliers and quality buyers worldwide.
+                            </Typography>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    bgcolor: '#7FAF0D',
+                                    color: 'white',
+                                    px: 5,
+                                    py: 1.5,
+                                    borderRadius: '8px',
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    fontSize: '16px',
+                                    boxShadow: 'none',
+                                    '&:hover': { bgcolor: '#6e980c', boxShadow: 'none' }
+                                }}
+                            >
+                                Contact Us
+                            </Button>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
+                            <Box sx={{
+                                position: 'relative',
+                                height: '400px',
+                                width: '100%',
+                                borderRadius: '24px',
+                                overflow: 'hidden',
+                                border: '4px solid rgba(255,255,255,0.1)',
+                                boxShadow: '0 24px 48px rgba(0,0,0,0.2)'
+                            }}>
+                                <Box sx={{ bgcolor: '#013D2B', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <GlobeIcon />
+                                    <Typography variant="h3" sx={{ ml: 2, opacity: 0.5 }}>GLOBAL-S-P</Typography>
+                                </Box>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+
+            {/* Stats Section Overlay */}
+            <Container disableGutters sx={{ mt: { xs: -6, md: -8 }, position: 'relative', zIndex: 2, maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                <Card sx={{ p: { xs: 3, md: 5 }, borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.08)', border: '1px solid #E5E7EB', bgcolor: 'white' }}>
+                    <Grid container spacing={3} sx={{
+                        '& .MuiGrid-root:not(:last-child)': {
+                            borderRight: { md: '1px solid #E5E7EB' },
+                            borderBottom: { xs: '1px solid #E5E7EB', md: 'none' }
+                        }
+                    }}>
+                        {[
+                            { value: '2.2M+', label: 'Verified Suppliers' },
+                            { value: '470K+', label: 'Products & Services' },
+                            { value: '150+', label: 'Countries Covered' },
+                            { value: '24/7', label: 'Dedicated Support' },
+                        ].map((stat, i) => (
+                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={i} sx={{ textAlign: 'center', py: { xs: 2, md: 0 } }}>
+                                <Typography sx={{ fontWeight: 800, fontSize: { xs: '28px', md: '36px' }, color: '#1C1B1F', lineHeight: 1, mb: 1 }}>
+                                    {stat.value}
+                                </Typography>
+                                <Typography sx={{ fontSize: '14px', color: '#6B7280', fontWeight: 600 }}>
+                                    {stat.label}
+                                </Typography>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Card>
+            </Container>
+
+            {/* Mission & Vision Section */}
+            <Container disableGutters sx={{ py: { xs: 10, md: 14 }, maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                <Grid container spacing={8} alignItems="center">
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
+                            Our Mission
+                        </Typography>
+                        <Typography variant="h2" sx={{ fontWeight: 800, fontSize: { xs: '32px', md: '40px' }, color: '#1C1B1F', mb: 3 }}>
+                            Simplifying B2B Sourcing for Everyone.
+                        </Typography>
+                        <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
+                            We believe that finding the right business partners should be transparent, efficient, and reliable. Our mission is to digitize the global supply chain, making it accessible for businesses of all sizes to connect and thrive.
+                        </Typography>
+                        <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563' }}>
+                            By leveraging advanced matching algorithms and rigorous supplier verification processes, we ensure that every connection made on our platform is built on trust and mutual growth.
+                        </Typography>
+                    </Grid>
+
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <Stack spacing={4}>
+                            <Box sx={{ display: 'flex', gap: 3 }}>
+                                <Box sx={{ width: '64px', height: '64px', borderRadius: '16px', bgcolor: '#F5F8F2', color: '#014B35', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <TargetIcon />
+                                </Box>
+                                <Box>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Unmatched Precision</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>We use data-driven insights to match your precise sourcing needs with the most capable global suppliers.</Typography>
+                                </Box>
+                            </Box>
+                            <Box sx={{ display: 'flex', gap: 3 }}>
+                                <Box sx={{ width: '64px', height: '64px', borderRadius: '16px', bgcolor: '#F5F8F2', color: '#014B35', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <GlobeIcon />
+                                </Box>
+                                <Box>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Global Reach</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>Our network spans over 150 countries, providing you with unparalleled access to international markets.</Typography>
+                                </Box>
+                            </Box>
+                            <Box sx={{ display: 'flex', gap: 3 }}>
+                                <Box sx={{ width: '64px', height: '64px', borderRadius: '16px', bgcolor: '#F5F8F2', color: '#014B35', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <HandshakeIcon />
+                                </Box>
+                                <Box>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Verified Trust</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>Every supplier undergoes a strict vetting process to ensure safe, reliable, and high-quality transactions.</Typography>
+                                </Box>
+                            </Box>
+                        </Stack>
+                    </Grid>
+                </Grid>
+            </Container>
+
+            {/* CTA Section */}
+            <Box sx={{ bgcolor: '#014B35', py: { xs: 8, md: 10 }, textAlign: 'center' }}>
+                <Container disableGutters sx={{ maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                    <Typography variant="h2" sx={{ fontWeight: 800, color: 'white', mb: 3, fontSize: { xs: '28px', md: '36px' } }}>
+                        Ready to grow your business?
+                    </Typography>
+                    <Typography sx={{ color: '#E5E7EB', fontSize: '18px', mb: 5, maxWidth: '600px', mx: 'auto' }}>
+                        Join million of buyers and suppliers who rely on global-s-p for their B2B sourcing needs.
+                    </Typography>
+                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+                        <Button
+                            variant="contained"
+                            sx={{
+                                bgcolor: '#7FAF0D',
+                                color: 'white',
+                                px: 4,
+                                py: '14px',
+                                borderRadius: '8px',
+                                fontWeight: 700,
+                                fontSize: '16px',
+                                textTransform: 'none',
+                                boxShadow: 'none',
+                                '&:hover': { bgcolor: '#6e980c', boxShadow: 'none' }
+                            }}
+                        >
+                            Create an Account
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                borderColor: 'rgba(255,255,255,0.3)',
+                                color: 'white',
+                                px: 4,
+                                py: '14px',
+                                borderRadius: '8px',
+                                fontWeight: 700,
+                                fontSize: '16px',
+                                textTransform: 'none',
+                                '&:hover': { borderColor: 'white', bgcolor: 'rgba(255,255,255,0.05)' }
+                            }}
+                        >
+                            Contact Sales
+                        </Button>
+                    </Stack>
+                </Container>
+            </Box>
+        </Box>
+    )
 }
