@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <Box component="header" className={styles.header}>
-      <Container sx={{ maxWidth: "95% !important", padding: "0 15px !important" }}>
+      <Container sx={{ maxWidth: "100% !important", padding: "0 15px !important" }}>
         <Box
           sx={{
             display: "flex",
