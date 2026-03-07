@@ -45,6 +45,7 @@ import childProductCategoryImage2 from "@/public/product/child-category-thumbnai
 import childProductCategoryImage3 from "@/public/product/child-category-thumbnail-03.png"
 import flagUsaIcon from "@/public/flag/usa.svg"
 import verifiedIcon from "@/public/product/verified-badge.svg"
+import Filter from "@/components/sections/product-services-filter/Filter"
 
 
 export default function ProductsByCategory() {
@@ -140,7 +141,9 @@ export default function ProductsByCategory() {
                         </Box>
                     </Stack>
 
-                    <Stack
+                    <Filter />
+
+                    {/* <Stack
                         direction="row"
                         className="listingProductRow"
                         spacing={2}
@@ -905,7 +908,7 @@ export default function ProductsByCategory() {
 
                             </Box>
                         </Box>
-                    </Stack>
+                    </Stack> */}
                     <Box className="learnMoreOuter">
                         <Typography variant="h2" className="learnMoreTitle">
                             Learn More

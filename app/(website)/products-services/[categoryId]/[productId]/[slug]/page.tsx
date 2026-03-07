@@ -100,12 +100,12 @@ export default function ProductDetails() {
                             <Link underline="hover" color="inherit" href="/">
                                 <Image src={homeIcon} alt="home" width={36} height={36} />
                             </Link>
-                            <Link underline="hover" color="inherit" href="/products&searvices">
+                            <Link underline="hover" color="inherit" href="/products-services">
                                 <Typography sx={{ color: "text.primary" }}>
                                     Product And services
                                 </Typography>
                             </Link>
-                            <Link underline="hover" color="inherit" href="/products&searvices/packaging-material">
+                            <Link underline="hover" color="inherit" href="/products-services/packaging-material">
                                 <Typography sx={{ color: "text.primary" }}>
                                     packaging material
                                 </Typography>

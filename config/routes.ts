@@ -2,7 +2,7 @@ export const routes = {
     home: "/",
     aboutPage: "/about",
     contactPage: "/contact",
-    productsServicesPage: "/products&searvices",
+    productsServicesPage: "/products-services",
     getQuotePage: "/get-quote",
     requestHubPage: "/request-hub",
 

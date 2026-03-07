@@ -1,0 +1,10 @@
+.heroSection {
+    background-color: #f7f9fc;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+}

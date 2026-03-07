@@ -1,0 +1,12 @@
+.gridContainer {
+    padding: 40px 20px;
+}
+
+.productCard {
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+}
