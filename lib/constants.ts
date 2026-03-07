@@ -9,8 +9,8 @@ export const navLinks = [
 
 export const pages = [
   { name: 'Dashboard', path: adminRoutes.dashboard, icon: 'dashboard' },
-  { name: 'Products', path: '/gse/admin/products', icon: 'inventory_2' },
-  // { name: 'Categories', path: '/gse/admin/categories', icon: 'category' },
-  { name: 'Leads', path: '/gse/admin/leads', icon: 'leaderboard' },
-  { name: 'Quotes', path: '/gse/admin/quotes', icon: 'assignment' },
+  { name: 'Products', path: adminRoutes.productsPage, icon: 'inventory_2' },
+  { name: 'Categories', path: adminRoutes.categoryPage, icon: 'category' },
+  { name: 'Leads', path: adminRoutes.leadsPage, icon: 'leaderboard' },
+  { name: 'Quotes', path: adminRoutes.quotePage, icon: 'assignment' },
 ];
