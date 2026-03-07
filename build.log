@@ -1,0 +1,240 @@
+
+> global-s-p@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 7 errors:
+./components/sections/statistics/Statistics.tsx:12:10
+Ecmascript file had an error
+[0m [90m 10 |[39m [36mimport[39m [33mStatisticsIcon5[39m [36mfrom[39m [32m"@/public/home/home-statistics-icon-05.svg"[39m
+ [90m 11 |[39m [36mimport[39m { [33mAnimateOnScroll[39m } [36mfrom[39m [32m"@/components/animations"[39m
+[31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m    |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 13 |[39m
+ [90m 14 |[39m [90m// Custom hook for animated counter[39m
+ [90m 15 |[39m [36mfunction[39m useCounter([0m
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Server Component:
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+  Client Component Browser:
+    ./components/sections/statistics/Statistics.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/sections/statistics/Statistics.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+
+./components/sections/statistics/Statistics.tsx:12:21
+Ecmascript file had an error
+[0m [90m 10 |[39m [36mimport[39m [33mStatisticsIcon5[39m [36mfrom[39m [32m"@/public/home/home-statistics-icon-05.svg"[39m
+ [90m 11 |[39m [36mimport[39m { [33mAnimateOnScroll[39m } [36mfrom[39m [32m"@/components/animations"[39m
+[31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m    |[39m                     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 13 |[39m
+ [90m 14 |[39m [90m// Custom hook for animated counter[39m
+ [90m 15 |[39m [36mfunction[39m useCounter([0m
+
+You're importing a component that needs `useRef`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Server Component:
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+  Client Component Browser:
+    ./components/sections/statistics/Statistics.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/sections/statistics/Statistics.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+
+./components/sections/statistics/Statistics.tsx:12:29
+Ecmascript file had an error
+[0m [90m 10 |[39m [36mimport[39m [33mStatisticsIcon5[39m [36mfrom[39m [32m"@/public/home/home-statistics-icon-05.svg"[39m
+ [90m 11 |[39m [36mimport[39m { [33mAnimateOnScroll[39m } [36mfrom[39m [32m"@/components/animations"[39m
+[31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m    |[39m                             [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 13 |[39m
+ [90m 14 |[39m [90m// Custom hook for animated counter[39m
+ [90m 15 |[39m [36mfunction[39m useCounter([0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Server Component:
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+  Client Component Browser:
+    ./components/sections/statistics/Statistics.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/sections/statistics/Statistics.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+
+./hooks/useScrollAnimation.ts:1:10
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m   |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m [36mexport[39m type [33mAnimationType[39m [33m=[39m
+ [90m 4 |[39m   [33m|[39m [32m"fade-in"[39m[0m
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Client Component Browser:
+    ./hooks/useScrollAnimation.ts [Client Component Browser]
+    ./components/animations/index.ts [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./hooks/useScrollAnimation.ts [Client Component SSR]
+    ./components/animations/index.ts [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+  Server Component:
+    ./hooks/useScrollAnimation.ts
+    ./components/animations/index.ts
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+
+./hooks/useScrollAnimation.ts:1:21
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m   |[39m                     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m [36mexport[39m type [33mAnimationType[39m [33m=[39m
+ [90m 4 |[39m   [33m|[39m [32m"fade-in"[39m[0m
+
+You're importing a component that needs `useRef`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Client Component Browser:
+    ./hooks/useScrollAnimation.ts [Client Component Browser]
+    ./components/animations/index.ts [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./hooks/useScrollAnimation.ts [Client Component SSR]
+    ./components/animations/index.ts [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+  Server Component:
+    ./hooks/useScrollAnimation.ts
+    ./components/animations/index.ts
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+
+./hooks/useScrollAnimation.ts:1:29
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m"react"[39m
+ [90m   |[39m                             [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m [36mexport[39m type [33mAnimationType[39m [33m=[39m
+ [90m 4 |[39m   [33m|[39m [32m"fade-in"[39m[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Client Component Browser:
+    ./hooks/useScrollAnimation.ts [Client Component Browser]
+    ./components/animations/index.ts [Client Component Browser]
+    ./app/(website)/page.tsx [Client Component Browser]
+    ./app/(website)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./hooks/useScrollAnimation.ts [Client Component SSR]
+    ./components/animations/index.ts [Client Component SSR]
+    ./app/(website)/page.tsx [Client Component SSR]
+    ./app/(website)/page.tsx [Server Component]
+
+  Server Component:
+    ./hooks/useScrollAnimation.ts
+    ./components/animations/index.ts
+    ./components/sections/statistics/Statistics.tsx
+    ./app/(website)/about/page.tsx
+
+
+./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx:28:1
+Module not found: Can't resolve '../../product.scss'
+[0m [90m 26 |[39m [36mimport[39m [32m"swiper/css/thumbs"[39m
+ [90m 27 |[39m [90m// import "swiper/css/autoplay"[39m
+[31m[1m>[22m[39m[90m 28 |[39m [36mimport[39m [32m"../../product.scss"[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 29 |[39m [36mimport[39m homeIcon [36mfrom[39m [32m"@/public/home-icon.svg"[39m
+ [90m 30 |[39m [36mimport[39m [33mSearchIcon[39m [36mfrom[39m [32m"@/public/search.png"[39m
+ [90m 31 |[39m [36mimport[39m flagUsaIcon [36mfrom[39m [32m"@/public/flag/usa.svg"[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx [Client Component Browser]
+    ./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx [Client Component SSR]
+    ./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./components/sections/statistics/Statistics.tsx:12:10)
+    at <unknown> (./components/sections/statistics/Statistics.tsx:12:21)
+    at <unknown> (./components/sections/statistics/Statistics.tsx:12:29)
+    at <unknown> (./hooks/useScrollAnimation.ts:1:10)
+    at <unknown> (./hooks/useScrollAnimation.ts:1:21)
+    at <unknown> (./hooks/useScrollAnimation.ts:1:29)
+    at <unknown> (./app/(website)/products-services/[categoryId]/[productId]/[slug]/page.tsx:28:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

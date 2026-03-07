@@ -14,7 +14,7 @@ export default function ProductGrid() {
             </Typography>
             <Grid container spacing={4}>
                 {products.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} key={item}>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item}>
                         <Card className={styles.productCard}>
                             <Box p={3}>
                                 <Typography variant="h6">Product Item {item}</Typography>
