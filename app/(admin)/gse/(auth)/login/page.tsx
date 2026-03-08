@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import {
   Box,
@@ -32,7 +32,7 @@ interface LoginResponse {
   token_type: string
 }
 
-export default function LoginPage() {
+function LoginForm() {
   const searchParams = useSearchParams()
   const redirectPath = searchParams.get('redirect')
 
@@ -295,5 +295,13 @@ export default function LoginPage() {
         </Box>
       </Box>
     </Box>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   )
 }
