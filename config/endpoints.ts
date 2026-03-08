@@ -30,4 +30,11 @@ export const endpoints = {
         delete: (id: number | string) => `/products/${id}`,
         getById: (id: number | string) => `/products/${id}`,
     },
+    countries: {
+        list: '/countries/',
+        create: '/countries/',
+        update: (id: number | string) => `/countries/${id}`,
+        delete: (id: number | string) => `/countries/${id}`,
+        getById: (id: number | string) => `/countries/${id}`,
+    },
 }

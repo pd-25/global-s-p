@@ -200,7 +200,7 @@ export default function Header() {
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>category</Icon>
                 <Typography variant="inherit">Categories</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseToolsMenu} component={Link} href="/gse/admin/countries">
+              <MenuItem onClick={handleCloseToolsMenu} component={Link} href={adminRoutes.countryPage}>
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>public</Icon>
                 <Typography variant="inherit">Countries</Typography>
               </MenuItem>
