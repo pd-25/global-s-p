@@ -1,5 +1,7 @@
 import { adminRoutes, routes } from "@/config/routes";
-
+export const LOGIN_PATH = '/gse/login';
+export const ADMIN_PATH_PREFIX = '/gse/admin';
+export const TOKEN_COOKIE_NAME = 'access_token';
 export const navLinks = [
   { name: "Get Quote", href: routes.getQuotePage },
   { name: "Request Hub", href: routes.requestHubPage },

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import {
   Box,
   Button,
@@ -12,21 +13,35 @@ import {
   IconButton,
   Stack,
   Link as MuiLink,
+  Alert,
+  CircularProgress,
 } from '@mui/material'
 import Icon from '@/components/ui/icon'
 import { adminRoutes } from '@/config/routes'
+import { endpoints } from '@/config/endpoints'
 import apiService from '@/service/apiService'
+import { setAuthToken } from '@/lib/cookies'
 
 interface FormErrors {
   email?: string
   password?: string
 }
 
+interface LoginResponse {
+  access_token: string
+  token_type: string
+}
+
 export default function LoginPage() {
+  const searchParams = useSearchParams()
+  const redirectPath = searchParams.get('redirect')
+
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<FormErrors>({})
+  const [apiError, setApiError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -59,13 +74,32 @@ export default function LoginPage() {
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setApiError(null)
+
     const isValid = validate(email, password)
     if (!isValid) return
-    const response = await apiService.get('/auth/login')
-    return
 
-    // TODO: call login API
-    window.location.href = adminRoutes.dashboard
+    setIsLoading(true)
+
+    try {
+      const response = await apiService.postUrlEncoded<LoginResponse>(
+        endpoints.auth.login,
+        {
+          username: email,
+          password: password,
+        }
+      )
+
+      // Save token to cookie
+      setAuthToken(response.access_token)
+
+      // Redirect to the originally requested page, or dashboard by default
+      window.location.href = redirectPath || adminRoutes.dashboard
+    } catch (error: any) {
+      setApiError(error.message || 'Login failed. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -158,6 +192,11 @@ export default function LoginPage() {
 
           <form onSubmit={handleLogin}>
             <Stack spacing={3}>
+              {apiError && (
+                <Alert severity="error" onClose={() => setApiError(null)}>
+                  {apiError}
+                </Alert>
+              )}
               <Box>
                 <Typography component="label" sx={{ display: 'block', mb: 1, fontWeight: 600, color: 'text.primary' }}>
                   Email Address
@@ -234,14 +273,15 @@ export default function LoginPage() {
                 variant="contained"
                 size="large"
                 fullWidth
+                disabled={isLoading}
                 sx={{
                   py: 1.5,
                   fontSize: '1rem',
                   textTransform: 'none',
-                  boxShadow: '0 4px 12px rgba(127, 175, 13, 0.4)', // Using primary color shadow
+                  boxShadow: '0 4px 12px rgba(127, 175, 13, 0.4)',
                 }}
               >
-                Log In
+                {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Log In'}
               </Button>
             </Stack>
           </form>

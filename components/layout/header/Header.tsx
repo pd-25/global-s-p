@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
@@ -22,6 +22,53 @@ import logo from "@/public/gse-green-bg.svg"
 
 import { navLinks } from "@/lib/constants"
 
+const brandWords = ["Global", "Source", "Expo"] as const
+const WORD_DELAY = 500 // ms between each word appearing
+
+function AnimatedBrandText({ fontSize, letterSpacing }: { fontSize: string | Record<string, string>; letterSpacing: string | Record<string, string> }) {
+  const [visibleCount, setVisibleCount] = useState(0)
+
+  useEffect(() => {
+    if (visibleCount < brandWords.length) {
+      const timer = setTimeout(() => {
+        setVisibleCount((prev) => prev + 1)
+      }, WORD_DELAY)
+      return () => clearTimeout(timer)
+    }
+  }, [visibleCount])
+
+  return (
+    <Typography
+      component="span"
+      sx={{
+        fontWeight: 700,
+        fontSize,
+        letterSpacing,
+        lineHeight: 1.1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      }}
+    >
+      {brandWords.map((word, index) => (
+        <Box
+          key={word}
+          component="span"
+          sx={{
+            color: index === 1 ? '#7FAF0D' : 'white',
+            opacity: index < visibleCount ? 1 : 0,
+            transform: index < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.4s ease, transform 0.4s ease',
+            display: 'block',
+          }}
+        >
+          {word}
+        </Box>
+      ))}
+    </Typography>
+  )
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -41,8 +88,8 @@ export default function Header() {
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Image src={logo} alt="logo" width={80} height={80} />
-          <Box sx={{ width: '2px', height: '28px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
-          <Typography sx={{ fontWeight: 700, fontSize: '22px', letterSpacing: '3px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
+          <Box sx={{ width: '2px', height: '44px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+          <AnimatedBrandText fontSize="14px" letterSpacing="2px" />
         </Box>
         <IconButton
           onClick={handleDrawerToggle}
@@ -100,8 +147,8 @@ export default function Header() {
                 className="logo"
                 style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80px" }}
               />
-              {/* <Box sx={{ width: '2px', height: { xs: '22px', md: '32px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
-              <Typography sx={{ fontWeight: 700, fontSize: { xs: '18px', md: '26px' }, letterSpacing: { xs: '2px', md: '4px' }, lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
+              <Box sx={{ width: '2px', height: { xs: '36px', md: '52px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+              <AnimatedBrandText fontSize={{ xs: '12px', md: '16px' }} letterSpacing={{ xs: '1.5px', md: '2.5px' }} />
             </Link>
           </Box>
 

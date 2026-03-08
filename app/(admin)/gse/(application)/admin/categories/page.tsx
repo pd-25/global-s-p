@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Container,
@@ -13,7 +13,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Chip,
   IconButton,
   Avatar,
   Stack,
@@ -24,106 +23,55 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-  TablePagination
+  TablePagination,
+  CircularProgress,
+  Alert,
 } from '@mui/material';
-import type { Metadata } from "next";
 import AddCategoryModal from '@/components/ui/modal/AddCategoryModal';
+import apiService from '@/service/apiService';
+import { endpoints } from '@/config/endpoints';
 
-// export const metadata: Metadata = {
-//   title: "Categories | Global Source Export",
-//   description: "Manage your product categories and inventory organization.",
-// };
+// ─── Types matching API response ─────────────────────────────────────────────
 
-// Types
 interface SubCategory {
   id: number;
+  slug: string;
+  created_at: string;
   name: string;
-  totalProducts: number;
-  status: 'Active' | 'Inactive' | 'Review';
+  image: string;
+  parent_id: number | null;
+  total_products: number;
+  subcategories: SubCategory[];
 }
 
 interface Category {
   id: number;
+  slug: string;
+  created_at: string;
   name: string;
   image: string;
-  totalProducts: number;
-  status: 'Active' | 'Inactive' | 'Review';
-  subCategories: SubCategory[];
+  parent_id: number | null;
+  total_products: number;
+  subcategories: SubCategory[];
 }
 
-// Mock Data for Categories
-const categories: Category[] = [
-  {
-    id: 1,
-    name: 'Organic Spices',
-    image: '',
-    totalProducts: 120,
-    status: 'Active',
-    subCategories: [
-      { id: 101, name: 'Whole Spices', totalProducts: 60, status: 'Active' },
-      { id: 102, name: 'Powdered Spices', totalProducts: 40, status: 'Active' },
-      { id: 103, name: 'Herbs', totalProducts: 20, status: 'Review' },
-    ]
-  },
-  {
-    id: 2,
-    name: 'Textiles & Fabrics',
-    image: '',
-    totalProducts: 85,
-    status: 'Active',
-    subCategories: [
-      { id: 201, name: 'Cotton', totalProducts: 40, status: 'Active' },
-      { id: 202, name: 'Silk', totalProducts: 25, status: 'Inactive' },
-      { id: 203, name: 'Wool', totalProducts: 20, status: 'Active' },
-    ]
-  },
-  {
-    id: 3,
-    name: 'Handmade Pottery',
-    image: '',
-    totalProducts: 42,
-    status: 'Review',
-    subCategories: [
-      { id: 301, name: 'Vases', totalProducts: 20, status: 'Review' },
-      { id: 302, name: 'Bowls', totalProducts: 15, status: 'Review' },
-      { id: 303, name: 'Plates', totalProducts: 7, status: 'Active' },
-    ]
-  },
-  {
-    id: 4,
-    name: 'Agricultural Tools',
-    image: '',
-    totalProducts: 15,
-    status: 'Inactive',
-    subCategories: []
-  },
-  {
-    id: 5,
-    name: 'Home Decor',
-    image: '',
-    totalProducts: 230,
-    status: 'Active',
-    subCategories: [
-      { id: 501, name: 'Lighting', totalProducts: 100, status: 'Active' },
-      { id: 502, name: 'Wall Art', totalProducts: 80, status: 'Active' },
-      { id: 503, name: 'Furniture', totalProducts: 50, status: 'Review' },
-    ]
-  },
-  {
-    id: 6,
-    name: 'Jewelry',
-    image: '',
-    totalProducts: 64,
-    status: 'Active',
-    subCategories: [
-      { id: 601, name: 'Necklaces', totalProducts: 30, status: 'Active' },
-      { id: 602, name: 'Earrings', totalProducts: 20, status: 'Active' },
-      { id: 603, name: 'Bracelets', totalProducts: 14, status: 'Inactive' },
-    ]
-  },
-];
+interface PaginationMeta {
+  count: number;
+  total: number;
+  page: number;
+  per_page: number;
+}
 
-function Row({ row, index, open, onToggle }: { row: Category, index: number, open: boolean, onToggle: () => void }) {
+interface CategoryListResponse {
+  success: boolean;
+  message: string;
+  data: Category[];
+  meta: PaginationMeta;
+}
+
+// ─── Row Component ───────────────────────────────────────────────────────────
+
+function Row({ row, index, open, onToggle, onAddSubcategory, onEdit }: { row: Category, index: number, open: boolean, onToggle: () => void, onAddSubcategory: (parent: { id: number; name: string }) => void, onEdit: (slug: string) => void }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
 
@@ -156,43 +104,45 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
           </Typography>
         </TableCell>
         <TableCell>
-          <Avatar
-            variant="rounded"
-            sx={{
-              width: 40,
-              height: 40,
-              bgcolor: 'primary.light',
-              color: 'primary.main',
-              fontSize: '1rem',
-              fontWeight: 700
-            }}
-          >
-            {row.name.charAt(0)}
-          </Avatar>
+          {row.image && row.image.startsWith('http') ? (
+            <Avatar
+              variant="rounded"
+              src={row.image}
+              sx={{ width: 40, height: 40 }}
+            />
+          ) : (
+            <Avatar
+              variant="rounded"
+              sx={{
+                width: 40,
+                height: 40,
+                bgcolor: 'primary.light',
+                color: 'primary.main',
+                fontSize: '1rem',
+                fontWeight: 700
+              }}
+            >
+              {row.name.charAt(0)}
+            </Avatar>
+          )}
         </TableCell>
         <TableCell>
           <Typography variant="body2" sx={{ fontWeight: 500 }}>
-            {row.totalProducts} <Box component="span" sx={{ color: 'text.secondary', fontSize: '0.8rem' }}>items</Box>
+            {row.total_products} <Box component="span" sx={{ color: 'text.secondary', fontSize: '0.8rem' }}>items</Box>
           </Typography>
         </TableCell>
         <TableCell>
-          <Chip
-            label={row.status}
-            size="small"
-            sx={{
-              fontWeight: 600,
-              fontSize: '0.75rem',
-              height: '24px',
-              bgcolor: row.status === 'Active' ? 'success.light' :
-                row.status === 'Inactive' ? 'error.light' : 'warning.light',
-              color: row.status === 'Active' ? 'success.dark' :
-                row.status === 'Inactive' ? 'error.dark' : 'warning.dark',
-            }}
-          />
+          <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.8rem' }}>
+            {new Date(row.created_at).toLocaleDateString()}
+          </Typography>
         </TableCell>
         <TableCell align="right">
           <Stack direction="row" spacing={1} justifyContent="flex-end">
-            <IconButton size="small" sx={{ color: 'primary.main', bgcolor: 'primary.50', '&:hover': { bgcolor: 'primary.100' } }}>
+            <IconButton
+              size="small"
+              onClick={() => onEdit(row.slug)}
+              sx={{ color: 'primary.main', bgcolor: 'primary.50', '&:hover': { bgcolor: 'primary.100' } }}
+            >
               <Icon fontSize="small">edit</Icon>
             </IconButton>
             <IconButton size="small" sx={{ color: 'error.main', bgcolor: 'error.50', '&:hover': { bgcolor: 'error.100' } }}>
@@ -245,7 +195,7 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
                 </ListItemIcon>
                 <ListItemText>View Products</ListItemText>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={() => { handleMenuClose(); onAddSubcategory({ id: row.id, name: row.name }); }}>
                 <ListItemIcon>
                   <Icon fontSize="small">playlist_add</Icon>
                 </ListItemIcon>
@@ -272,36 +222,44 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>
+                    <TableCell>Image</TableCell>
                     <TableCell>Total Products</TableCell>
-                    <TableCell>Status</TableCell>
+                    <TableCell>Created At</TableCell>
                     <TableCell align="right">Action</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.subCategories.length > 0 ? (
-                    row.subCategories.map((subRow) => (
+                  {row.subcategories.length > 0 ? (
+                    row.subcategories.map((subRow) => (
                       <TableRow key={subRow.id}>
                         <TableCell component="th" scope="row">
                           {subRow.name}
                         </TableCell>
-                        <TableCell>{subRow.totalProducts}</TableCell>
                         <TableCell>
-                          <Chip
-                            label={subRow.status}
-                            size="small"
-                            sx={{
-                              fontSize: '0.7rem',
-                              height: '20px',
-                              bgcolor: subRow.status === 'Active' ? 'success.light' :
-                                subRow.status === 'Inactive' ? 'error.light' : 'warning.light',
-                              color: subRow.status === 'Active' ? 'success.dark' :
-                                subRow.status === 'Inactive' ? 'error.dark' : 'warning.dark',
-                            }}
-                          />
+                          {subRow.image && subRow.image.startsWith('http') ? (
+                            <Avatar variant="rounded" src={subRow.image} sx={{ width: 30, height: 30 }} />
+                          ) : (
+                            <Avatar
+                              variant="rounded"
+                              sx={{ width: 30, height: 30, bgcolor: 'grey.400', fontSize: '0.7rem' }}
+                            >
+                              {subRow.name.charAt(0)}
+                            </Avatar>
+                          )}
+                        </TableCell>
+                        <TableCell>{subRow.total_products}</TableCell>
+                        <TableCell>
+                          <Typography variant="body2" sx={{ fontSize: '0.8rem', color: 'text.secondary' }}>
+                            {new Date(subRow.created_at).toLocaleDateString()}
+                          </Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Stack direction="row" spacing={1} justifyContent="flex-end">
-                            <IconButton size="small" sx={{ color: 'primary.main', '&:hover': { bgcolor: 'primary.50' } }}>
+                            <IconButton
+                              size="small"
+                              onClick={() => onEdit(subRow.slug)}
+                              sx={{ color: 'primary.main', '&:hover': { bgcolor: 'primary.50' } }}
+                            >
                               <Icon fontSize="small" sx={{ fontSize: '1.2rem' }}>edit</Icon>
                             </IconButton>
                             <IconButton size="small" sx={{ color: 'error.main', '&:hover': { bgcolor: 'error.50' } }}>
@@ -313,7 +271,7 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
                     ))
                   ) : (
                     <TableRow>
-                      <TableCell colSpan={4} align="center">
+                      <TableCell colSpan={5} align="center">
                         <Typography variant="body2" color="text.secondary" fontStyle="italic">
                           No subcategories found.
                         </Typography>
@@ -330,22 +288,118 @@ function Row({ row, index, open, onToggle }: { row: Category, index: number, ope
   );
 }
 
+// ─── Main Page Component ─────────────────────────────────────────────────────
+
 export default function CategoryPage() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [parentCategory, setParentCategory] = useState<{ id: number; name: string } | null>(null);
+  const [editSlug, setEditSlug] = useState<string | null>(null);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
+
+  // API state
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Pagination state (API is 1-indexed, MUI TablePagination is 0-indexed)
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [totalCount, setTotalCount] = useState(0);
 
-  const handleOpenAddModal = () => setIsAddModalOpen(true);
-  const handleCloseAddModal = () => setIsAddModalOpen(false);
+  // Search state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  // ─── Modal handlers ────────────────────────────────────────────────────────
+
+  const handleOpenAddModal = () => {
+    setParentCategory(null);
+    setEditSlug(null);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenAddSubcategoryModal = (parent: { id: number; name: string }) => {
+    setParentCategory(parent);
+    setEditSlug(null);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditModal = (slug: string) => {
+    setEditSlug(slug);
+    setParentCategory(null);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setParentCategory(null);
+    setEditSlug(null);
+  };
+
+  // ─── Fetch categories from API ─────────────────────────────────────────────
+
+  const fetchCategories = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const params: Record<string, string | number | boolean> = {
+        page: page + 1, // API is 1-indexed
+        per_page: rowsPerPage,
+        order_by_column: 'id',
+        sort_order: 'desc',
+      };
+
+      if (searchQuery.trim()) {
+        params.search_string = searchQuery.trim();
+      }
+
+      const response = await apiService.get<CategoryListResponse>(
+        endpoints.categories.list,
+        params
+      );
+
+      if (response.success) {
+        setCategories(response.data);
+        setTotalCount(response.meta.total);
+      } else {
+        setError(response.message || 'Failed to fetch categories');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch categories');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [page, rowsPerPage, searchQuery]);
+
+  // Fetch on mount and when page/rowsPerPage/search changes
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
+  // ─── Handlers ──────────────────────────────────────────────────────────────
+
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setPage(0); // Reset to first page
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    // Debounce search — wait 500ms after user stops typing
+    if (searchTimeout) clearTimeout(searchTimeout);
+
+    const timeout = setTimeout(() => {
+      setSearchQuery(value);
+      setPage(0); // Reset to first page on new search
+    }, 500);
+
+    setSearchTimeout(timeout);
   };
 
   const handleToggleRow = (id: number) => {
@@ -353,7 +407,6 @@ export default function CategoryPage() {
       prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
     );
   };
-
 
   const handleToggleAll = () => {
     if (expandedRows.length === categories.length) {
@@ -365,11 +418,7 @@ export default function CategoryPage() {
 
   const isAllExpanded = categories.length > 0 && expandedRows.length === categories.length;
 
-  // Calculate visible rows for pagination
-  const visibleRows = categories.slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage,
-  );
+  // ─── Render ────────────────────────────────────────────────────────────────
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -377,7 +426,7 @@ export default function CategoryPage() {
       <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
         <Box>
           <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 0.5 }}>
-            Categories
+            Categories({totalCount})
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Manage your product categories and inventory organization.
@@ -400,6 +449,7 @@ export default function CategoryPage() {
             <Icon sx={{ color: 'text.secondary', fontSize: '1.2rem !important' }}>search</Icon>
             <InputBase
               placeholder="Search categories..."
+              onChange={handleSearchChange}
               sx={{ ml: 1, flex: 1, fontSize: '0.9rem' }}
             />
           </Box>
@@ -420,6 +470,13 @@ export default function CategoryPage() {
         </Stack>
       </Box>
 
+      {/* Error Alert */}
+      {error && (
+        <Alert severity="error" sx={{ mb: 3 }} onClose={() => setError(null)}>
+          {error}
+        </Alert>
+      )}
+
       {/* Table Section */}
       <Paper
         elevation={0}
@@ -436,7 +493,7 @@ export default function CategoryPage() {
             <TableHead sx={{ bgcolor: 'grey.50' }}>
               <TableRow>
                 <TableCell>
-                  <IconButton size="small" onClick={handleToggleAll}>
+                  <IconButton size="small" onClick={handleToggleAll} disabled={categories.length === 0}>
                     <Icon>{isAllExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}</Icon>
                   </IconButton>
                 </TableCell>
@@ -444,27 +501,52 @@ export default function CategoryPage() {
                 <TableCell sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Name</TableCell>
                 <TableCell sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Image</TableCell>
                 <TableCell sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Total Products</TableCell>
-                <TableCell sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Status</TableCell>
+                <TableCell sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Created At</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 600, color: 'text.secondary', py: 2 }}>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {visibleRows.map((category, index) => (
-                <Row
-                  key={category.id}
-                  row={category}
-                  index={page * rowsPerPage + index}
-                  open={expandedRows.includes(category.id)}
-                  onToggle={() => handleToggleRow(category.id)}
-                />
-              ))}
+              {isLoading ? (
+                <TableRow>
+                  <TableCell colSpan={7} align="center" sx={{ py: 6 }}>
+                    <CircularProgress size={40} />
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                      Loading categories...
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : categories.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={7} align="center" sx={{ py: 6 }}>
+                    <Icon sx={{ fontSize: '3rem !important', color: 'text.disabled', mb: 1 }}>category</Icon>
+                    <Typography variant="body1" color="text.secondary">
+                      No categories found.
+                    </Typography>
+                    <Typography variant="body2" color="text.disabled">
+                      {searchQuery ? 'Try a different search term.' : 'Click "Add Category" to create one.'}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                categories.map((category, index) => (
+                  <Row
+                    key={category.id}
+                    row={category}
+                    index={page * rowsPerPage + index}
+                    open={expandedRows.includes(category.id)}
+                    onToggle={() => handleToggleRow(category.id)}
+                    onAddSubcategory={handleOpenAddSubcategoryModal}
+                    onEdit={handleOpenEditModal}
+                  />
+                ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={categories.length}
+          count={totalCount}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -472,7 +554,13 @@ export default function CategoryPage() {
         />
       </Paper>
 
-      <AddCategoryModal open={isAddModalOpen} onClose={handleCloseAddModal} />
+      <AddCategoryModal
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        onSuccess={fetchCategories}
+        parentCategory={parentCategory}
+        editSlug={editSlug}
+      />
     </Container>
   );
 }
