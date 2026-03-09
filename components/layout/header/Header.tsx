@@ -22,7 +22,7 @@ import logo from "@/public/gse-green-bg.svg"
 
 import { navLinks } from "@/lib/constants"
 
-const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
+const brandWords = ["Global", "Source", "Expo"] as const
 const WORD_DELAY = 500 // ms between each word appearing
 
 function AnimatedBrandText({ fontSize, letterSpacing }: { fontSize: string | Record<string, string>; letterSpacing: string | Record<string, string> }) {
