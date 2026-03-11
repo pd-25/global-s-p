@@ -1,193 +1,133 @@
-import { Box, Container, Typography } from "@mui/material";
-import ourClientsLogo1 from "@/public/home/dummy-logo-01.svg"
-import ourClientsLogo2 from "@/public/home/dummy-logo-02.svg"
-import ourClientsLogo3 from "@/public/home/dummy-logo-03.svg"
-import ourClientsLogo4 from "@/public/home/dummy-logo-04.svg"
-import Image from "next/image";
-export default function PartnerSlider() {
-  return (
-          <Box component="section" className="ourClientsWrapper secPadd">
-        <Container>
-          <Box className="sectionHeading" sx={{ textAlign: "center" }}>
-            <Typography variant="h2" component="h2">
-              Our Valuable Partners
-            </Typography>
-            <Typography variant="body2" component="p">
-              Supported By
-            </Typography>
-            {/* Left to Right Marquee */}
-            <Box
-              sx={{
-                mt: 4,
-                mb: 2,
-                overflow: "hidden",
-                position: "relative",
-                "&:hover .marquee-track": {
-                  animationPlayState: "paused",
-                },
-              }}
-              className="marquee-container"
-            >
-              <Box className="marquee-track marquee-track--ltr">
-                {[
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                ].map((logo, index) => (
-                  <Box
-                    key={`ltr-${index}`}
-                    className="ourClientsLogo"
-                    sx={{
-                      flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0 20px",
-                      opacity: 0.7,
-                      height: "70px",
-                      transition: "opacity 0.3s ease",
-                      "&:hover": {
-                        opacity: 1,
-                      },
-                    }}
-                  >
-                    <Image
-                      src={logo}
-                      alt="our-clients-logo"
-                      width={150}
-                      height={80}
-                    />
-                  </Box>
-                ))}
-                {/* Duplicate for seamless loop */}
-                {[
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                ].map((logo, index) => (
-                  <Box
-                    key={`ltr-duplicate-${index}`}
-                    className="ourClientsLogo"
-                    sx={{
-                      flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0 20px",
-                      opacity: 0.7,
-                      transition: "opacity 0.3s ease",
-                      "&:hover": {
-                        opacity: 1,
-                      },
-                    }}
-                  >
-                    <Image
-                      src={logo}
-                      alt="our-clients-logo"
-                      width={150}
-                      height={80}
-                    />
-                  </Box>
-                ))}
-              </Box>
-            </Box>
+'use client'
+import { Box, Container, Typography } from "@mui/material"
+import Image from "next/image"
+import type { ValuablePartner } from "@/interfaces/interface"
 
-            {/* Right to Left Marquee */}
-            <Box
-              sx={{
-                mt: 2,
-                overflow: "hidden",
-                position: "relative",
-                "&:hover .marquee-track": {
-                  animationPlayState: "paused",
-                },
-              }}
-              className="marquee-container"
-            >
-              <Box className="marquee-track marquee-track--rtl">
-                {[
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                ].map((logo, index) => (
-                  <Box
-                    key={`rtl-${index}`}
-                    className="ourClientsLogo"
-                    sx={{
-                      flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0 20px",
-                      opacity: 0.7,
-                      transition: "opacity 0.3s ease",
-                      "&:hover": {
-                        opacity: 1,
-                      },
-                    }}
-                  >
-                    <Image
-                      src={logo}
-                      alt="our-clients-logo"
-                      width={150}
-                      height={80}
-                    />
-                  </Box>
-                ))}
-                {/* Duplicate for seamless loop */}
-                {[
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                  ourClientsLogo1,
-                  ourClientsLogo2,
-                  ourClientsLogo3,
-                  ourClientsLogo4,
-                ].map((logo, index) => (
-                  <Box
-                    key={`rtl-duplicate-${index}`}
-                    className="ourClientsLogo"
-                    sx={{
-                      flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0 20px",
-                      opacity: 0.7,
-                      transition: "opacity 0.3s ease",
-                      "&:hover": {
-                        opacity: 1,
-                      },
-                    }}
-                  >
-                    <Image
-                      src={logo}
-                      alt="our-clients-logo"
-                      width={150}
-                      height={80}
-                    />
-                  </Box>
-                ))}
-              </Box>
-            </Box>
-          </Box>
-        </Container>
+// ─── Logo Item ────────────────────────────────────────────────────────────────
+
+const logoItemSx = {
+  flexShrink: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "0 20px",
+  opacity: 0.7,
+  height: "70px",
+  transition: "opacity 0.3s ease",
+  "&:hover": { opacity: 1 },
+}
+
+function LogoItem({
+  partner,
+  keyPrefix,
+}: {
+  partner: ValuablePartner
+  keyPrefix: string
+}) {
+  return (
+    <Box key={`${keyPrefix}-${partner.id}`} className="ourClientsLogo" sx={logoItemSx}>
+      <Image
+        src={partner.logo || "/home/dummy-logo-01.svg"}
+        alt={partner.name}
+        width={150}
+        height={80}
+        unoptimized
+        onError={(e) => {
+          e.currentTarget.onerror = null
+          e.currentTarget.src = "/home/dummy-logo-01.svg"
+        }}
+      />
+    </Box>
+  )
+}
+
+// ─── Marquee Row ──────────────────────────────────────────────────────────────
+
+function MarqueeRow({
+  partners,
+  direction,
+  mt = 2,
+}: {
+  partners: ValuablePartner[]
+  direction: "ltr" | "rtl"
+  mt?: number
+}) {
+  return (
+    <Box
+      sx={{
+        mt,
+        mb: direction === "ltr" ? 2 : 0,
+        overflow: "hidden",
+        position: "relative",
+        "&:hover .marquee-track": { animationPlayState: "paused" },
+      }}
+      className="marquee-container"
+    >
+      <Box className={`marquee-track marquee-track--${direction}`}>
+        {/* Original set */}
+        {partners.map((partner) => (
+          <LogoItem
+            key={`${direction}-${partner.id}`}
+            partner={partner}
+            keyPrefix={direction}
+          />
+        ))}
+        {/* Duplicate for seamless loop */}
+        {partners.map((partner) => (
+          <LogoItem
+            key={`${direction}-dup-${partner.id}`}
+            partner={partner}
+            keyPrefix={`${direction}-dup`}
+          />
+        ))}
       </Box>
+    </Box>
+  )
+}
+
+// ─── Main Component ────────────────────────────────────────────────────────────
+
+interface PartnerSliderProps {
+  partners: ValuablePartner[]
+}
+
+export default function PartnerSlider({ partners }: PartnerSliderProps) {
+  // Split partners into two halves so each marquee row shows a different set
+  const half = Math.ceil(partners.length / 2)
+  const firstHalf = partners.slice(0, half)
+  const secondHalf = partners.slice(half)
+
+  // If API returned nothing, fall back to showing all in both rows
+  const ltrPartners = firstHalf.length > 0 ? firstHalf : partners
+  const rtlPartners = secondHalf.length > 0 ? secondHalf : partners
+
+  return (
+    <Box component="section" className="ourClientsWrapper secPadd">
+      <Container>
+        <Box className="sectionHeading" sx={{ textAlign: "center" }}>
+          <Typography variant="h2" component="h2">
+            Our Valuable Partners
+          </Typography>
+          <Typography variant="body2" component="p">
+            Supported By
+          </Typography>
+
+          {partners.length > 0 ? (
+            <>
+              {/* Left to Right Marquee */}
+              <MarqueeRow partners={ltrPartners} direction="ltr" mt={4} />
+              {/* Right to Left Marquee */}
+              <MarqueeRow partners={rtlPartners} direction="rtl" mt={2} />
+            </>
+          ) : (
+            <Box sx={{ py: 6 }}>
+              <Typography variant="body1" color="text.secondary">
+                No partners available.
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      </Container>
+    </Box>
   )
 }

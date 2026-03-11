@@ -11,22 +11,25 @@ import Stack from "@mui/material/Stack"
 import Container from "@mui/material/Container"
 import Link from "next/link"
 import { useSliderNavigation } from "@/hooks/useSliderNavigation"
+import { CountryImage, ProductPrimaryImage } from "@/interfaces/interface"
 
+interface Image {
+  image: string
+}
 interface CategoryItem {
   id: number
   title: string
-  image: any
-  flag: any
-  discount: string
+  primary_image: ProductPrimaryImage | null
+  country: CountryImage | null
 }
 
 interface CategorySliderProps {
-  categories: CategoryItem[]
+  recommendedProducts: CategoryItem[]
 }
 
-export default function CategorySlider({ categories }: CategorySliderProps) {
+export default function CategorySlider({ recommendedProducts }: CategorySliderProps) {
   const { showNavigation } = useSliderNavigation(
-    categories.length,
+    recommendedProducts.length,
     2, // default slidesPerView
     {
       640: 3,
@@ -41,14 +44,14 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
   return (
     <Box component="section" className="categorySliderWrapper secPadd pb-0">
       <Container>
-        <Box className="sectionHeading" sx={{ textAlign: "center" }}>
+        {/* <Box className="sectionHeading" sx={{ textAlign: "center" }}>
           <Typography variant="h2" component="h2">
             Product Category
           </Typography>
           <Typography variant="body1" component="p">
             Make Passive Income Online
           </Typography>
-        </Box>
+        </Box> */}
         <Box className="shortTitle">
           <Typography variant="h3" component="h3">
             Product <span>Recommendation</span>
@@ -61,9 +64,9 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
           navigation={
             showNavigation
               ? {
-                  nextEl: ".ComSliderNavigation .swiper-button-next",
-                  prevEl: ".ComSliderNavigation .swiper-button-prev",
-                }
+                nextEl: ".ComSliderNavigation .swiper-button-next",
+                prevEl: ".ComSliderNavigation .swiper-button-prev",
+              }
               : false
           }
           autoplay={false}
@@ -105,25 +108,35 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
             </Box>
           )}
 
-          {categories.map((category) => (
-            <SwiperSlide key={category.id}>
+          {recommendedProducts.map((product) => (
+            <SwiperSlide key={product.id}>
               <Box className="categoryItem">
-                <Link href={`/category/${category.id}`}></Link>
+                <Link href={`/category/${product.id}`}></Link>
                 <Box className="categoryItemImage">
                   <Box className="holder">
                     <Image
-                      src={category.image}
-                      alt={category.title}
+                      src={product?.primary_image?.image || "/home/category-thumbnail-01.png"}
+                      alt={product.title}
                       width={190}
                       height={190}
+                      unoptimized
+                      onError={(e) => {
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = "/home/category-thumbnail-01.png"
+                      }}
                     />
                   </Box>
                   <Box className="categoryItemFlag">
                     <Image
-                      src={category.flag}
+                      src={product.country?.country_flag || "/flag/usa.svg"}
                       alt="country flag"
                       width={32}
                       height={32}
+                      unoptimized
+                      onError={(e) => {
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = "/flag/usa.svg"
+                      }}
                     />
                   </Box>
                 </Box>
@@ -142,7 +155,7 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
                       mb: 0.5,
                     }}
                   >
-                    {category.title}
+                    {product.title}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -152,7 +165,7 @@ export default function CategorySlider({ categories }: CategorySliderProps) {
                       color: "#7FAF0D",
                     }}
                   >
-                    {category.discount}
+                    {/* {product.discount} */}
                   </Typography>
                 </Stack>
               </Box>

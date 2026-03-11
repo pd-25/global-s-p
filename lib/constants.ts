@@ -1,4 +1,5 @@
 import { adminRoutes, routes } from "@/config/routes";
+export const API_BASE_URL = 'http://100.52.107.135:8000/api/v1';
 export const LOGIN_PATH = '/gse/login';
 export const ADMIN_PATH_PREFIX = '/gse/admin';
 export const TOKEN_COOKIE_NAME = 'access_token';
@@ -15,4 +16,9 @@ export const pages = [
   // { name: 'Categories', path: '/gse/admin/categories', icon: 'category' },
   { name: 'Leads', path: '/gse/admin/leads', icon: 'leaderboard' },
   { name: 'Quotes', path: '/gse/admin/quotes', icon: 'assignment' },
+];
+
+export const languageList = [
+  { name: 'English', locale: 'en', path: '/en' },
+  { name: 'Bengali', locale: 'bn', path: '/bn' },
 ];

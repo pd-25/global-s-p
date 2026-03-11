@@ -10,14 +10,9 @@ import Typography from "@mui/material/Typography"
 import IconButton from "@mui/material/IconButton"
 import Drawer from "@mui/material/Drawer"
 import Icon from "@/components/ui/icon/Icon"
+import LanguageSwitcher from "@/components/ui/language-switcher/LanguageSwitcher"
 import styles from "./Header.module.css"
 import Image from "next/image"
-// import logo from "@/public/global-sp-logo.svg"
-// import logo from "@/public/logo1.jpeg"
-// import logo from "@/public/logo2.jpeg"
-// import logo from "@/public/logo3.jpeg"
-// import logo from "@/public/logo4.jpeg"
-// import logo from "@/public/gse-white-logo.png"
 import logo from "@/public/gse-green-bg.svg"
 
 import { navLinks } from "@/lib/constants"
@@ -180,9 +175,7 @@ export default function Header() {
               <IconButton sx={{ color: "#ffffff" }} aria-label="user profile">
                 <Icon name="user" width={30} height={30} />
               </IconButton>
-              <IconButton sx={{ color: "#ffffff" }} aria-label="language">
-                <Icon name="translate" width={30} height={30} />
-              </IconButton>
+              <LanguageSwitcher iconSize={30} />
             </Box>
           </Box>
 
@@ -197,9 +190,7 @@ export default function Header() {
             <IconButton sx={{ color: "#ffffff" }} aria-label="user profile">
               <Icon name="user" width={24} height={24} />
             </IconButton>
-            <IconButton sx={{ color: "#ffffff" }} aria-label="language">
-              <Icon name="translate" width={24} height={24} />
-            </IconButton>
+            <LanguageSwitcher iconSize={24} />
             <IconButton
               sx={{ color: "#ffffff" }}
               onClick={handleDrawerToggle}

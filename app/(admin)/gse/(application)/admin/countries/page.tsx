@@ -30,7 +30,7 @@ import {
     Tooltip,
 } from '@mui/material';
 import apiService from '@/service/apiService';
-import { endpoints } from '@/config/endpoints';
+import { endpoints } from '@/config/adminEndpoints';
 
 // ─── Types matching API response ─────────────────────────────────────────────
 

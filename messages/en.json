@@ -1,0 +1,99 @@
+{
+    "metadata": {
+        "title": "Global Source Export",
+        "description": "A b2b market place for buyers."
+    },
+    "nav": {
+        "getQuote": "Get Quote",
+        "requestHub": "Request Hub",
+        "productsServices": "Products&Services",
+        "aboutUs": "About us",
+        "connectWithUs": "Connect with us"
+    },
+    "banner": {
+        "searchPlaceholder": "Search Items e,g, CNC Milling,Packaging , Gas",
+        "getQuote": "Get Quote",
+        "learnMore": "Learn More",
+        "heroTitle": "The leading B2B marketplace for European trade",
+        "heroSubtitle": "Post your request to verified suppliers."
+    },
+    "statistics": {
+        "million": "Million",
+        "b2bProviders": "B2B Providers",
+        "industrySectors": "Industry Sectors",
+        "products": "Products",
+        "picturesVideo": "Pictures & Video",
+        "buyersPerMonth": "Buyers per month",
+        "getMultipleQuotes": "Get Multiple Quotes"
+    },
+    "topBrands": {
+        "title": "Top",
+        "titleHighlight": "Electronics Brands",
+        "viewAll": "View All"
+    },
+    "marketplace": {
+        "heading": "Become Part of the Marketplace Today",
+        "subtitle": "Make Passive Income Online",
+        "products": "2.2K Products",
+        "electronicsItems": "Electronics Items And More",
+        "sourceNow": "Source Now",
+        "description": "We have had perhaps the best experience of getting our children counselled for their career with the psychologist at Tera Parichay. She was not only incredibly knowledgeable and helpful but also ethical. While we had tried services of other \"career"
+    },
+    "partners": {
+        "heading": "Become Our Partner",
+        "subtitle": "Make Passive Income Online",
+        "forPartners": "For Partners,",
+        "andTheOnes": "and the ones",
+        "whoBecomeExperts": "who become experts.",
+        "description1": "Whether you're a solo designer or part of a team, a junior or a senior, at an agency or a large organization, Prime has you covered.",
+        "description2": "It's not about number of components. With top Figma tricks & techniques, battle-tested design system approach",
+        "knowMore": "Know More",
+        "ourValuablePartners": "Our Valuable Partners",
+        "supportedBy": "Supported By"
+    },
+    "blog": {
+        "heading": "Inside Business: The B2B blog from europages",
+        "subtitle": "Most trending business topics for you",
+        "readMore": "Read More"
+    },
+    "testimonials": {
+        "heading": "What our customers are saying about us:",
+        "subtitle": "Begin planning your child's career at the right time with internationally recognised career psychologists",
+        "readMore": "Read More"
+    },
+    "home": {
+        "perfectVendor": {
+            "heading": "The Perfect Vendor",
+            "subheading": "Worried about finding",
+            "description": "Avail Fully Interactive Remote",
+            "descriptionBold": "Counselling",
+            "descriptionEnd": "from the Comfort of Your Home",
+            "cta": "Source Now"
+        }
+    },
+    "footer": {
+        "connectWithUs": "Connect with us",
+        "visitOurStore": "Visit Our Store",
+        "contactUs": "Contact Us",
+        "whatsApp": "Whats App",
+        "callUs": "Call Us",
+        "downloadApp": "Download App",
+        "mostPopularCategories": "Most Popular Categories",
+        "viewMore": "View More",
+        "customerServices": "Customer Services",
+        "aboutUs": "About Us",
+        "termsConditions": "Terms & Conditions",
+        "faq": "FAQ",
+        "privacyPolicy": "Privacy Policy",
+        "eWastePolicy": "E-waste Policy",
+        "cancellationPolicy": "Cancellation & Return Policy",
+        "copyright": "© 2026 All rights reserved. Global Source Expo",
+        "adminLogin": "Admin Login"
+    },
+    "common": {
+        "sourceNow": "Source Now",
+        "viewAll": "View All",
+        "readMore": "Read More",
+        "learnMore": "Learn More"
+    }
+}

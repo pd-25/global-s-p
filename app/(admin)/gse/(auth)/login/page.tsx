@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 import Icon from '@/components/ui/icon'
 import { adminRoutes } from '@/config/routes'
-import { endpoints } from '@/config/endpoints'
+import { endpoints } from '@/config/adminEndpoints'
 import apiService from '@/service/apiService'
 import { setAuthToken } from '@/lib/cookies'
 

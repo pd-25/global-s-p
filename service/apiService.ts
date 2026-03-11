@@ -1,6 +1,8 @@
+import { API_BASE_URL } from '@/lib/constants';
 import { getAuthToken } from '@/lib/cookies';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+// const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BASE_URL = API_BASE_URL;
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -96,7 +98,7 @@ const apiService = {
      * @param params - Optional query parameters as key-value pairs
      */
     get: async function <T = any>(url: string, params?: Record<string, string | number | boolean>): Promise<T> {
-        let fullUrl = `${BASE_URL}${url}`;
+        let fullUrl = `${BASE_URL}/${url}`;
 
         // Append query parameters if provided
         if (params) {
@@ -109,6 +111,7 @@ const apiService = {
             const qs = searchParams.toString();
             if (qs) fullUrl += `?${qs}`;
         }
+        console.log('fullUrl- ', fullUrl);
 
         const response = await fetch(fullUrl, {
             method: 'GET',
@@ -124,7 +127,7 @@ const apiService = {
      * @param data - Request body payload
      */
     post: async function <T = any>(url: string, data: any): Promise<T> {
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'POST',
             headers: buildHeaders(),
             body: JSON.stringify(data),
@@ -152,7 +155,7 @@ const apiService = {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'POST',
             headers,
             body,
@@ -167,7 +170,7 @@ const apiService = {
      * @param data - Updated resource payload
      */
     put: async function <T = any>(url: string, data: any): Promise<T> {
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'PUT',
             headers: buildHeaders(),
             body: JSON.stringify(data),
@@ -182,7 +185,7 @@ const apiService = {
      * @param data - Fields to update
      */
     patch: async function <T = any>(url: string, data: any): Promise<T> {
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'PATCH',
             headers: buildHeaders(),
             body: JSON.stringify(data),
@@ -196,7 +199,7 @@ const apiService = {
      * @param url - API endpoint path
      */
     delete: async function <T = any>(url: string): Promise<T> {
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'DELETE',
             headers: buildHeaders(),
         });
@@ -220,7 +223,7 @@ const apiService = {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'POST',
             headers,
             body: formData,
@@ -244,7 +247,7 @@ const apiService = {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch(`${BASE_URL}${url}`, {
+        const response = await fetch(`${BASE_URL}/${url}`, {
             method: 'PUT',
             headers,
             body: formData,

@@ -1,8 +1,8 @@
+"use client"
+
 import { Box, Button, Typography } from "@mui/material"
 import Image from "next/image"
 // Statistics section images
-import StatisticsParralax from "@/public/home/home-statistics-parralax.png"
-import StatisticsGlobe from "@/public/home/home-statistics-globe.png"
 import StatisticsIcon1 from "@/public/home/home-statistics-icon-01.svg"
 import StatisticsIcon2 from "@/public/home/home-statistics-icon-02.svg"
 import StatisticsIcon3 from "@/public/home/home-statistics-icon-03.svg"

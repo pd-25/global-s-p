@@ -1,15 +1,14 @@
-"use client"
-
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import "swiper/css"
 import "swiper/css/navigation"
-import "./home.scss"
-import "./category-slider.scss"
+import "../home.scss"
+import "../category-slider.scss"
 import CategorySlider from "@/components/sections/category/CategorySlider"
 import { AnimateOnScroll } from "@/components/animations"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 import Image from "next/image"
 import perfectVendorBg from "@/public/home/perfect-vendor-pic.webp"
@@ -20,65 +19,62 @@ import TopBrands from "@/components/sections/top-brands/TopBrands"
 import MarketplaceCards from "@/components/sections/marketplace-cards/MarketplaceCards"
 import PartnerInfo from "@/components/sections/partners/PartnerInfo"
 import PartnerSlider from "@/components/sections/partners/PartnerSlider"
-import BlogList from "@/components/sections/blog/BlogList"
 import Testimonials from "@/components/sections/testimonials/Testimonials"
-// Image paths - add your images to the public folder
-const ukFlag = "/home/flag-uk.svg"
-const pakistanFlag = "/home/flag-pk.svg"
-const uaeFlag = "/home/flag-uae.svg"
-const bangladeshFlag = "/home/flag-bd.svg"
+import { websiteEndpoints } from "@/config/websiteEndpoints"
+import type {
+  RecommendedProduct,
+  RecommendedProductsResponse,
+  CategoryWithSubcategories,
+  CategoryWiseSubcategoriesResponse,
+  ValuablePartner,
+  ValuablePartnersResponse,
+} from "@/interfaces/interface"
+import apiService from "@/service/apiService"
 
+async function getRecommendedProducts(): Promise<RecommendedProduct[]> {
+  try {
+    const json = await apiService.get<RecommendedProductsResponse>(
+      websiteEndpoints.recommendedProducts
+    )
+    // console.log('json?.data- ', json?.data);
 
+    return json?.data ?? []
+  } catch {
+    return []
+  }
+}
 
-export default function Home() {
-  const categories = [
-    {
-      id: 1,
-      title: "Electronics Item",
-      image: "/home/category-thumbnail-01.png",
-      flag: ukFlag,
-      discount: "UP to 50% OFF",
-    },
-    {
-      id: 2,
-      title: "Vegitables",
-      image: "/home/category-thumbnail-02.png",
-      flag: pakistanFlag,
-      discount: "UP to 50% OFF",
-    },
-    {
-      id: 3,
-      title: "Fruits",
-      image: "/home/category-thumbnail-03.png",
-      flag: uaeFlag,
-      discount: "UP to 50% OFF",
-    },
-    {
-      id: 4,
-      title: "Strowberry",
-      image: "/home/category-thumbnail-04.png",
-      flag: bangladeshFlag,
-      discount: "UP to 50% OFF",
-    },
-    {
-      id: 5,
-      title: "Mango",
-      image: "/home/category-thumbnail-05.png",
-      flag: uaeFlag,
-      discount: "UP to 50% OFF",
-    },
-    {
-      id: 6,
-      title: "Cherry",
-      image: "/home/category-thumbnail-06.png",
-      flag: ukFlag,
-      discount: "UP to 50% OFF",
-    },
-  ]
+async function getCategoryWiseSubcategories(): Promise<CategoryWithSubcategories[]> {
+  try {
+    const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
+      websiteEndpoints.categoryWiseSubcategories
+    )
+    return json?.data ?? []
+  } catch {
+    return []
+  }
+}
 
+async function getValuablePartners(): Promise<ValuablePartner[]> {
+  try {
+    const json = await apiService.get<ValuablePartnersResponse>(
+      websiteEndpoints.valuablePartners
+    )
+    return json?.data ?? []
+  } catch {
+    return []
+  }
+}
+
+export default async function Home() {
+  const t = await getTranslations("home")
+  const [recommendedProducts, categoryWiseSubcategories, valuablePartners] = await Promise.all([
+    getRecommendedProducts(),
+    getCategoryWiseSubcategories(),
+    getValuablePartners(),
+  ])
   return (
     <>
-
       {/* banner-section */}
       <Banner />
       {/* banner-section */}
@@ -88,12 +84,12 @@ export default function Home() {
         {/* statistics-section */}
         {/* product-category-slider-section */}
         <AnimateOnScroll animation="fade-up">
-          <CategorySlider categories={categories} />
+          <CategorySlider recommendedProducts={recommendedProducts} />
         </AnimateOnScroll>
         {/* product-category-slider-section */}
         {/* product-showcase-section */}
 
-        <CategoryWiseProducts />
+        <CategoryWiseProducts categories={categoryWiseSubcategories} />
 
         {/* product-showcase-section */}
         {/* top-brands-section */}
@@ -106,7 +102,7 @@ export default function Home() {
         <PartnerInfo />
         {/* our-partners-section */}
         {/* our-partners-slider-section */}
-        <PartnerSlider />
+        <PartnerSlider partners={valuablePartners} />
         {/* our-partner-slider-section */}
         {/* perfect-vendor-section */}
         <Box component="section" className="perfectVendorWrapper">
@@ -116,21 +112,23 @@ export default function Home() {
           <Container>
             <Box className="sectionHeading">
               <Typography variant="h2" component="h2">
-                <span>Worried about finding</span> The Perfect Vendor
+                <span>{t("perfectVendor.subheading")}</span> {t("perfectVendor.heading")}
               </Typography>
               <Typography variant="body1" component="p">
-                Avail Fully Interactive Remote <strong> Counselling </strong>
-                from the Comfort of Your Home
+                {t("perfectVendor.description")} <strong> {t("perfectVendor.descriptionBold")} </strong>
+                {t("perfectVendor.descriptionEnd")}
               </Typography>
-              <Button variant="contained" component={Link} href="/">
-                Source Now
-              </Button>
+              <Link href="/" passHref>
+                <Button variant="contained">
+                  {t("perfectVendor.cta")}
+                </Button>
+              </Link>
             </Box>
           </Container>
         </Box>
         {/* perfect-vendor-section */}
         {/* our-latest-blog */}
-        <BlogList />
+        {/* <BlogList /> */}
         {/* our-latest-blog */}
         {/* testimonials-section */}
         <Testimonials />

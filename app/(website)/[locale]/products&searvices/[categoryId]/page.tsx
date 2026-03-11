@@ -27,7 +27,7 @@ import {
     Radio,
 } from "@mui/material"
 import Icon from "@/components/ui/icon/Icon"
-import "../../product.scss"
+import "../../../product.scss"
 
 import homeIcon from "@/public/home-icon.svg"
 import SearchIcon from "@/public/search.png"

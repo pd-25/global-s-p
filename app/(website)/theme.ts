@@ -86,7 +86,7 @@ const theme = createTheme({
             padding: '0 24px',
           },
           '@media (min-width: 1400px)': {
-            maxWidth: '1400px',
+            maxWidth: '1440px',
             padding: '0 32px',
           },
         },

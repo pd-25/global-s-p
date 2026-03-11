@@ -15,7 +15,7 @@ import {
 import { useState, useRef, useEffect } from 'react';
 import apiService from '@/service/apiService';
 import { ApiError } from '@/service/apiService';
-import { endpoints } from '@/config/endpoints';
+import { endpoints } from '@/config/adminEndpoints';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

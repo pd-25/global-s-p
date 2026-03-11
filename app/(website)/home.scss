@@ -4,7 +4,7 @@
 .heroWrapper {
     position: relative;
     overflow: hidden;
-    height: 415px;
+    height: 330px;
 
     @include respond-to(md) {
         height: 520px;
@@ -148,7 +148,7 @@
     }
 
     @include respond-to(minXxl) {
-        max-width: calc(1400px - 64px);
+        max-width: 1440px;
         margin: 20px auto;
     }
 
@@ -908,7 +908,7 @@
     }
 
     @include respond-to(minXxl) {
-        max-width: calc(1400px - 64px);
+        max-width: 1440px;
         margin: 20px auto;
     }
 
