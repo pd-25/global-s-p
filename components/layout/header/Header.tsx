@@ -17,10 +17,20 @@ import logo from "@/public/gse-green-bg.svg"
 
 import { navLinks } from "@/lib/constants"
 
-const brandWords = ["Global", "Source", "Expo"] as const
+const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
 const WORD_DELAY = 500 // ms between each word appearing
 
-function AnimatedBrandText({ fontSize, letterSpacing }: { fontSize: string | Record<string, string>; letterSpacing: string | Record<string, string> }) {
+function AnimatedBrandText({
+  fontSize,
+  letterSpacing,
+  flexDirection = 'column',
+  gap = 0,
+}: {
+  fontSize: string | Record<string, string>
+  letterSpacing: string | Record<string, string>
+  flexDirection?: 'column' | 'row' | Record<string, string>
+  gap?: number | string | Record<string, number | string>
+}) {
   const [visibleCount, setVisibleCount] = useState(0)
 
   useEffect(() => {
@@ -41,25 +51,57 @@ function AnimatedBrandText({ fontSize, letterSpacing }: { fontSize: string | Rec
         letterSpacing,
         lineHeight: 1.1,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
+        flexDirection,
+        alignItems: { xs: 'flex-start', md: 'center' },
+        gap,
       }}
     >
-      {brandWords.map((word, index) => (
+      <Box
+        component="span"
+        sx={{
+          color: 'white',
+          opacity: 0 < visibleCount ? 1 : 0,
+          transform: 0 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+          transition: 'opacity 0.4s ease, transform 0.4s ease',
+        }}
+      >
+        {brandWords[0]}
+      </Box>
+      <Box
+        component="span"
+        sx={{
+          color: '#7FAF0D',
+          opacity: 1 < visibleCount ? 1 : 0,
+          transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+          transition: 'opacity 0.4s ease, transform 0.4s ease',
+        }}
+      >
+        {brandWords[1]}
+      </Box>
+      <Box component="span" sx={{ display: 'flex', flexDirection: 'row', gap: '5px' }}>
         <Box
-          key={word}
           component="span"
           sx={{
-            color: index === 1 ? '#7FAF0D' : 'white',
-            opacity: index < visibleCount ? 1 : 0,
-            transform: index < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+            color: 'white',
+            opacity: 2 < visibleCount ? 1 : 0,
+            transform: 2 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
             transition: 'opacity 0.4s ease, transform 0.4s ease',
-            display: 'block',
           }}
         >
-          {word}
+          {brandWords[2]}
         </Box>
-      ))}
+        <Box
+          component="span"
+          sx={{
+            color: '#7FAF0D',
+            opacity: 3 < visibleCount ? 1 : 0,
+            transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.4s ease, transform 0.4s ease',
+          }}
+        >
+          {brandWords[3]}
+        </Box>
+      </Box>
     </Typography>
   )
 }
@@ -130,10 +172,10 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               height: { xs: 40, md: 60 },
-              maxWidth: { xs: 180, md: 280 },
+              maxWidth: { xs: 180, md: 400 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '8px' }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '8px', minWidth: 'max-content' }}>
               <Image
                 src={logo}
                 alt="logo"
@@ -143,7 +185,12 @@ export default function Header() {
                 style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80px" }}
               />
               <Box sx={{ width: '2px', height: { xs: '36px', md: '52px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
-              <AnimatedBrandText fontSize={{ xs: '12px', md: '16px' }} letterSpacing={{ xs: '1.5px', md: '2.5px' }} />
+              <AnimatedBrandText
+                fontSize={{ xs: '12px', md: '16px' }}
+                letterSpacing={{ xs: '1.5px', md: '2.5px' }}
+                flexDirection={{ xs: 'column', md: 'row' }}
+                gap={{ xs: 0, md: '6px' }}
+              />
             </Link>
           </Box>
 

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import Box from "@mui/material/Box"
@@ -16,6 +17,94 @@ import googlePlayIcon from "@/public/google-play.svg"
 // import logo from "@/public/global-sp-logo.svg"
 import logo from "@/public/gse-green-bg.svg"
 
+const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
+const WORD_DELAY = 500 // ms between each word appearing
+
+function AnimatedBrandText({
+  fontSize,
+  letterSpacing,
+  flexDirection = 'column',
+  gap = 0,
+}: {
+  fontSize: string | Record<string, string>
+  letterSpacing: string | Record<string, string>
+  flexDirection?: 'column' | 'row' | Record<string, string>
+  gap?: number | string | Record<string, number | string>
+}) {
+  const [visibleCount, setVisibleCount] = useState(0)
+
+  useEffect(() => {
+    if (visibleCount < brandWords.length) {
+      const timer = setTimeout(() => {
+        setVisibleCount((prev) => prev + 1)
+      }, WORD_DELAY)
+      return () => clearTimeout(timer)
+    }
+  }, [visibleCount])
+
+  return (
+    <Typography
+      component="span"
+      sx={{
+        fontWeight: 700,
+        fontSize,
+        letterSpacing,
+        lineHeight: 1.1,
+        display: 'flex',
+        flexDirection,
+        alignItems: { xs: 'flex-start', md: 'center' },
+        gap,
+      }}
+    >
+      <Box
+        component="span"
+        sx={{
+          color: 'white',
+          opacity: 0 < visibleCount ? 1 : 0,
+          transform: 0 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+          transition: 'opacity 0.4s ease, transform 0.4s ease',
+        }}
+      >
+        {brandWords[0]}
+      </Box>
+      <Box
+        component="span"
+        sx={{
+          color: '#7FAF0D',
+          opacity: 1 < visibleCount ? 1 : 0,
+          transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+          transition: 'opacity 0.4s ease, transform 0.4s ease',
+        }}
+      >
+        {brandWords[1]}
+      </Box>
+      <Box component="span" sx={{ display: 'flex', flexDirection: 'row', gap: '5px' }}>
+        <Box
+          component="span"
+          sx={{
+            color: 'white',
+            opacity: 2 < visibleCount ? 1 : 0,
+            transform: 2 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.4s ease, transform 0.4s ease',
+          }}
+        >
+          {brandWords[2]}
+        </Box>
+        <Box
+          component="span"
+          sx={{
+            color: '#7FAF0D',
+            opacity: 3 < visibleCount ? 1 : 0,
+            transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.4s ease, transform 0.4s ease',
+          }}
+        >
+          {brandWords[3]}
+        </Box>
+      </Box>
+    </Typography>
+  )
+}
 
 export default function Footer() {
   const categories = [
@@ -67,18 +156,15 @@ export default function Footer() {
           <Box>
             <Box sx={{ mb: 3 }}>
               <Box sx={{ mb: 3 }}>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'row', md: 'row' }, alignItems: { xs: 'center', md: 'center' }, gap: { xs: 1.5, md: 1 } }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: { xs: 1.5, md: 0 } }}>
                   <Image src={logo} alt="logo" width={300} height={40} style={{ width: '100px', height: '100px', maxWidth: '100%' }} />
-                  <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1.5, mt: 0.5 }}>
-                    <Typography sx={{ fontWeight: 800, fontSize: '24px', letterSpacing: '5px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
-                    {/* <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} /> */}
-                    {/* <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Global Source Expo</Typography> */}
-                  </Box>
-                  {/* Mobile only: side-by-side GSE text */}
-                  <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
-                    {/* <Box sx={{ width: '2px', height: '22px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
-                    <Typography sx={{ fontWeight: 700, fontSize: '30px', letterSpacing: '3px', lineHeight: 1 }}><Box component="span" sx={{ color: 'white' }}>G</Box><Box component="span" sx={{ color: '#7FAF0D' }}>S</Box><Box component="span" sx={{ color: 'white' }}>E</Box></Typography>
-                  </Box>
+                  <Box sx={{ width: '2px', height: { xs: '48px', md: '52px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6, ml: 1, mr: 2 }} />
+                  <AnimatedBrandText
+                    fontSize={{ xs: '14px', md: '20px' }}
+                    letterSpacing={{ xs: '1.5px', md: '2.5px' }}
+                    flexDirection={{ xs: 'column', md: 'row' }}
+                    gap={{ xs: 0, md: '8px' }}
+                  />
                 </Box>
               </Box>
 
