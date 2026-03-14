@@ -3,6 +3,7 @@ export const routes = {
     aboutPage: "/about",
     contactPage: "/contact",
     productsServicesPage: "/products&searvices",
+    productListPage: "/products&searvices/[slug]",
     getQuotePage: "/get-quote",
     requestHubPage: "/request-hub",
 

@@ -65,3 +65,34 @@ export interface ValuablePartnersResponse {
     data: ValuablePartner[]
     meta: Record<string, unknown>
 }
+
+// ─── Product Listing ──────────────────────────────────────────────────────────
+
+export interface ProductListingItem {
+    id: number
+    slug: string
+    title: string
+    primary_image: {
+        image: string
+    } | null
+    country: {
+        country_flag: string
+    } | null
+    supplier: {
+        name: string
+    } | null
+}
+
+export interface ProductListingMeta {
+    page: number
+    per_page: number
+    total_count: number
+    total_pages: number
+}
+
+export interface ProductListingResponse {
+    success: boolean
+    message: string
+    data: ProductListingItem[]
+    meta: ProductListingMeta
+}

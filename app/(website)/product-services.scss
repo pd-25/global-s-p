@@ -1,0 +1,506 @@
+// Import global variables
+@use './variables' as *;
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE ROOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ps-root {
+  min-height: 100vh;
+  background: $colorSecondary3;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO BANNER
+   Uses $colorSecondary (#054934) — same as Header bg
+   Border-radius mirrors .heroBg on the home page
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ps-hero {
+  background-color: $colorSecondary;
+  position: relative;
+  overflow: hidden;
+  padding: 48px 0 40px;
+  border-radius: 0 0 32px 32px;
+
+  // Bottom radial glow — same technique as .heroBg::before on home page
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50% 100% at 50% 100%, rgba(0, 46, 31, 0.55) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  // Top-right accent orb using $colorPrimary
+  &::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(127, 175, 13, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .ps-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  // MUI breadcrumb separator colour override
+  .MuiBreadcrumbs-separator {
+    color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+/* ── Breadcrumb ─────────────────────────────────── */
+.ps-bc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  @include transition-prefixes(0.25s);
+
+  &:hover {
+    color: $colorWhite;
+  }
+}
+
+.ps-bc-current {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* ── Eyebrow pill ───────────────────────────────── */
+.ps-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(127, 175, 13, 0.15);
+  border: 1px solid rgba(127, 175, 13, 0.35);
+  color: $colorPrimary !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.8px !important;
+  text-transform: uppercase !important;
+  border-radius: 30px;
+  padding: 5px 14px;
+  margin: 18px 0 14px;
+}
+
+.ps-hero__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $colorPrimary;
+  flex-shrink: 0;
+  animation: ps-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes ps-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ── Hero heading ───────────────────────────────── */
+.ps-hero__title {
+  color: $colorWhite !important;
+  font-size: clamp(28px, 4.5vw, 50px) !important;
+  font-weight: 800 !important;
+  line-height: 1.12 !important;
+  margin-bottom: 12px !important;
+
+  span {
+    color: $colorPrimary;
+  }
+}
+
+.ps-hero__sub {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 15px !important;
+  max-width: 500px;
+  line-height: 1.7 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── Stat strip ─────────────────────────────────── */
+.ps-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.ps-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 11px 18px;
+}
+
+.ps-stat__icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(127, 175, 13, 0.2);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $colorPrimary;
+  flex-shrink: 0;
+}
+
+.ps-stat__num {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: $colorWhite !important;
+  line-height: 1 !important;
+}
+
+.ps-stat__lbl {
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-weight: 500 !important;
+  margin-top: 2px !important;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SECTION HEADING
+   Mirrors the .shortTitle pattern from _reset.scss
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ps-section {
+  padding: 44px 0 72px;
+}
+
+.ps-section__hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #b2afaf; // same as .shortTitle
+  margin-bottom: 28px;
+  position: relative;
+
+  // Left underline accent — mirrors .shortTitle::before
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 10%;
+    border-top: 3px solid $colorSecondary;
+  }
+}
+
+.ps-section__label {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: $colorGray !important; // same shade as .shortTitle h3
+  margin: 0 !important;
+
+  span {
+    color: $colorSecondary !important;
+  }
+}
+
+.ps-section__count {
+  font-size: 14px !important;
+  color: $colorGray !important;
+  font-weight: 500 !important;
+  white-space: nowrap;
+  padding-bottom: 4px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ACCORDION CARD
+   Mirrors .productShowcaseBox style from home.scss
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ps-cat-card {
+  background: $colorWhite;
+  border-radius: 16px;
+  border: 1px solid $borderLight;
+  overflow: hidden;
+  margin-bottom: 12px;
+  @include transition-prefixes(0.28s);
+  animation: ps-card-in 0.42s ease both;
+
+  &:hover {
+    // Same 4-layer shadow as .productShowcaseBox:hover
+    box-shadow:
+      0px 0px 0px 0px #0000000d,
+      0px 6px 13px 0px #0000000d,
+      0px 24px 24px 0px #0000000a;
+    border-color: $colorPrimary;
+    transform: translateY(-2px);
+  }
+
+  &.ps-cat-card--open {
+    border-color: $colorSecondary;
+    box-shadow: 0 4px 20px rgba(5, 73, 52, 0.12);
+    transform: translateY(0) !important;
+  }
+}
+
+@keyframes ps-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card header row ────────────────────────────── */
+.ps-cat-card__hd {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  position: relative;
+  @include transition-prefixes(0.2s);
+
+  &:hover {
+    background: #fafafa;
+  }
+
+  .ps-cat-card--open & {
+    background: #f2f8f0; // very light $colorPrimary tint
+
+    // Left accent bar — $colorSecondary dark green
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: $colorSecondary;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+/* ── Thumbnail ──────────────────────────────────── */
+.ps-cat-card__thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $colorSecondary3;
+  border: 1px solid $borderLight;
+
+  @include respond-to(md) {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+.ps-cat-card__thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  @include transition-prefixes(0.25s);
+
+  .ps-cat-card--open & {
+    background: rgba(5, 73, 52, 0.08);
+  }
+}
+
+/* ── Card info ──────────────────────────────────── */
+.ps-cat-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ps-cat-card__name {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: $colorBlack !important;
+  line-height: 1.3 !important;
+  margin-bottom: 9px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include respond-to(md) {
+    font-size: 14px !important;
+  }
+}
+
+.ps-cat-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Badge pills ────────────────────────────────── */
+.ps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &--primary {
+    background: rgba(127, 175, 13, 0.12);
+    color: $colorSecondary;
+  }
+
+  &--secondary {
+    background: rgba(5, 73, 52, 0.08);
+    color: $colorSecondary;
+  }
+}
+
+/* ── Card end (CTA) ─────────────────────────────── */
+.ps-cat-card__end {
+  flex-shrink: 0;
+
+  @include respond-to(sm) {
+    display: none;
+  }
+}
+
+.ps-cat-card__cta {
+  background: $colorPrimary !important;
+  color: $colorWhite !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  border-radius: 10px !important;
+  padding: 9px 20px !important;
+  min-width: auto !important;
+  height: 40px !important;
+  white-space: nowrap;
+  box-shadow: none !important;
+  letter-spacing: 0.2px !important;
+  @include transition-prefixes(0.22s);
+
+  &:hover {
+    background: darken($colorPrimary, 8%) !important;
+    transform: translateY(-1px);
+  }
+}
+
+/* ── Chevron ────────────────────────────────────── */
+.ps-cat-card__chevron {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: $colorSecondary3;
+  border: 1px solid $borderLight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $colorSecondary;
+  cursor: pointer;
+  @include transition-prefixes(0.2s);
+
+  .ps-cat-card--open & {
+    background: rgba(5, 73, 52, 0.1);
+    border-color: $colorSecondary;
+  }
+}
+
+/* ── Card body / subcategories ──────────────────── */
+.ps-cat-card__bd {
+  border-top: 1px solid $borderLight;
+  background: #fcfcfc;
+}
+
+.ps-cat-card__bd-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.6px !important;
+  text-transform: uppercase !important;
+  color: $colorGray !important;
+  padding: 16px 20px 10px !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+.ps-sub-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SUBCATEGORY TAG
+   Mirrors .productShowcaseBox hover from home.scss
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ps-sub-link {
+  text-decoration: none !important;
+}
+
+.ps-sub-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border-radius: 50px;
+  border: 1px solid $borderLight;
+  background: $colorWhite;
+  cursor: pointer;
+  @include transition-prefixes(0.25s);
+
+  &:hover {
+    border-color: $colorPrimary;
+    background: rgba(127, 175, 13, 0.07);
+    transform: translateY(-2px);
+    box-shadow:
+      0px 6px 13px 0px rgba(127, 175, 13, 0.1),
+      0px 2px 6px 0px rgba(127, 175, 13, 0.08);
+
+    .ps-sub-tag__chip {
+      background: $colorPrimary !important;
+    }
+  }
+}
+
+.ps-sub-tag__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: $colorBlack;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ps-sub-tag__chip {
+  height: 20px !important;
+  background: $colorSecondary !important;
+  color: $colorWhite !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+
+  .MuiChip-label {
+    padding: 0 7px !important;
+  }
+}
