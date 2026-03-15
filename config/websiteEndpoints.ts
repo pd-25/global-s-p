@@ -2,5 +2,8 @@ export const websiteEndpoints = {
     recommendedProducts: 'website/products/recomended-products',
     categoryWiseSubcategories: 'website/categories/category-wise-subcategories',
     valuablePartners: 'website/suppliers/valuable-partners',
+    /** Category-specific listing: replace {categorySlug} with the actual slug */
     productListing: 'website/products/{categorySlug}',
+    /** Global listing (no category filter) */
+    productListingGlobal: 'website/products',
 };

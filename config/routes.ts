@@ -3,7 +3,8 @@ export const routes = {
     aboutPage: "/about",
     contactPage: "/contact",
     productsServicesPage: "/products&searvices",
-    productListPage: "/products&searvices/[slug]",
+    productListPage: "/products&searvices/products",
+    serviceProductListPage: "/products&searvices/products/[categoryId]",
     getQuotePage: "/get-quote",
     requestHubPage: "/request-hub",
 

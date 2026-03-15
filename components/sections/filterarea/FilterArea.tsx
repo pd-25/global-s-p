@@ -1,6 +1,7 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
+import NextLink from "next/link"
 import {
     Box,
     Typography,
@@ -21,6 +22,11 @@ import {
     Radio,
 } from "@mui/material"
 import Icon from "@/components/ui/icon/Icon"
+import Loader from "@/components/ui/loader/Loader"
+import apiService from "@/service/apiService"
+import { websiteEndpoints } from "@/config/websiteEndpoints"
+import { routes } from "@/config/routes"
+import type { CategoryWithSubcategories, CategoryWiseSubcategoriesResponse } from "@/interfaces/interface"
 
 import arrowDownIcon from "@/public/chevron-bottom.svg"
 import flagGermanyIcon from "@/public/flag/germany.svg"
@@ -32,10 +38,33 @@ import flagItalyIcon from "@/public/flag/italy.svg"
 
 
 export default function FilterArea() {
-        const [sidebarOpen, setSidebarOpen] = useState(false)
-        const toggleSideBar = () => setSidebarOpen((prev) => !prev)
-         const [location, setLocation] = useState("")
-            const [radius, setRadius] = useState(50)
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+    const toggleSideBar = () => setSidebarOpen((prev) => !prev)
+
+    const [location, setLocation] = useState("")
+    const [radius, setRadius] = useState(50)
+
+    const [categories, setCategories] = useState<CategoryWithSubcategories[]>([])
+    const [categoriesExpanded, setCategoriesExpanded] = useState(false)
+    const [loadingCategories, setLoadingCategories] = useState(true)
+
+    async function fetchCategories() {
+        try {
+            const res = await apiService.get<CategoryWiseSubcategoriesResponse>(websiteEndpoints.categoryWiseSubcategories)
+            if (res?.data) {
+                setCategories(res.data)
+            }
+        } catch (err) {
+            console.error("Failed to fetch categories:", err)
+        } finally {
+            setLoadingCategories(false)
+        }
+    }
+    useEffect(() => {
+
+        fetchCategories()
+    }, [])
+
     return (
         <Box
             component="aside"
@@ -80,48 +109,69 @@ export default function FilterArea() {
                         <Typography variant="h3" className="widgetTitle">
                             Categories
                         </Typography>
-                        <Box className="widgetContent">
-                            <Box className="categoryItem">
-                                <Typography variant="h4" className="categoryItemTitle">
-                                    SPICES & HERBS
-                                </Typography>
-                                <List className="categoryItemList">
-                                    <ListItem>
-                                        <ListItemText primary="Whole Spices" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Ground Spices" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Exotic and Premium Spices" />
-                                    </ListItem>
-                                </List>
-                            </Box>
-                            <Box className="categoryItem">
-                                <Typography variant="h4" className="categoryItemTitle">
-                                    CLOTHING Section
-                                </Typography>
-                                <List className="categoryItemList">
-                                    <ListItem>
-                                        <ListItemText primary="Whole Spices" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Ground Spices" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Exotic and Premium Spices" />
-                                    </ListItem>
-                                </List>
-                            </Box>
+                        <Box
+                            className="widgetContent"
+                            sx={{
+                                maxHeight: categoriesExpanded ? '800px' : '280px',
+                                overflowY: 'auto',
+                                transition: 'max-height 0.4s ease-in-out',
+                                pr: 1, // Add persistent padding so thumb scrollbar doesn't clip content
+                                '&::-webkit-scrollbar': {
+                                    width: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    backgroundColor: '#ccc',
+                                    borderRadius: '4px',
+                                },
+                            }}
+                        >
+                            {loadingCategories ? (
+                                <Loader minHeight={180} text="Loading categories..." />
+                            ) : (
+                                categories.map((category) => (
+                                    <Box className="categoryItem" key={category.id} sx={{ mb: 2 }}>
+                                        <Typography variant="h4" className="categoryItemTitle">
+                                            <NextLink
+                                                href={routes.serviceProductListPage.replace("[categoryId]", category.slug)}
+                                                style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
+                                            >
+                                                {category.name}
+                                            </NextLink>
+                                        </Typography>
+                                        <List className="categoryItemList">
+                                            {category.subcategories.map((sub) => (
+                                                <ListItem key={sub.id} disablePadding sx={{ pb: 0.5 }}>
+                                                    <NextLink
+                                                        href={routes.serviceProductListPage.replace("[categoryId]", sub.slug)}
+                                                        style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
+                                                    >
+                                                        <ListItemText primary={sub.name} sx={{ m: 0 }} />
+                                                    </NextLink>
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </Box>
+                                ))
+                            )}
                         </Box>
-                        <Box className="bottomIcon">
-                            <Image
-                                src={arrowDownIcon}
-                                alt="arrow-down"
-                                width={28}
-                                height={28}
-                            />
-                        </Box>
+                        {categories.length > 0 && (
+                            <Box
+                                className="bottomIcon"
+                                sx={{ cursor: 'pointer', mt: 1 }}
+                                onClick={() => setCategoriesExpanded(!categoriesExpanded)}
+                            >
+                                <Image
+                                    src={arrowDownIcon}
+                                    alt="arrow-down"
+                                    width={28}
+                                    height={28}
+                                    style={{
+                                        transform: categoriesExpanded ? 'rotate(180deg)' : 'none',
+                                        transition: 'transform 0.3s ease',
+                                    }}
+                                />
+                            </Box>
+                        )}
                     </Box>
                     <Box className="widget supplierWidget">
                         <Typography variant="h3" className="widgetTitle">

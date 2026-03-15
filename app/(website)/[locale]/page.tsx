@@ -46,10 +46,11 @@ async function getRecommendedProducts(): Promise<RecommendedProduct[]> {
 
 async function getCategoryWiseSubcategories(): Promise<CategoryWithSubcategories[]> {
   try {
-    const url = `${websiteEndpoints.categoryWiseSubcategories}?limit=4`
+    const url = `${websiteEndpoints.categoryWiseSubcategories}?limit=4&sub_cat_limit=10`
     const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
       url
     )
+    console.log('json?.data- ', json?.data);
     return json?.data ?? []
   } catch {
     return []

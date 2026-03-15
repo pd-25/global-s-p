@@ -1,10 +1,12 @@
-import React from "react"
+import React, { Suspense } from "react"
 import { Box, Grid } from "@mui/material"
 import SingleProductCard from "./SingleProductCard"
-import type { ProductListingItem } from "@/interfaces/interface"
+import ProductPagination from "./ProductPagination"
+import type { ProductListingItem, ProductListingMeta } from "@/interfaces/interface"
 
 interface ProductListingProps {
     products: ProductListingItem[]
+    meta: ProductListingMeta
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ""
@@ -21,7 +23,7 @@ function resolveImageUrl(path: string | null | undefined): string {
     return `${BASE_URL}/${path}`
 }
 
-export default function ProductListing({ products }: ProductListingProps) {
+export default function ProductListing({ products, meta }: ProductListingProps) {
     if (products.length === 0) {
         return (
             <Box
@@ -78,6 +80,16 @@ export default function ProductListing({ products }: ProductListingProps) {
                         </Grid>
                     ))}
                 </Grid>
+
+                {/* Pagination — wrapped in Suspense because ProductPagination reads useSearchParams */}
+                <Suspense fallback={null}>
+                    <ProductPagination
+                        currentPage={meta.page}
+                        totalPages={meta.total_pages}
+                        totalCount={meta.total_count}
+                        perPage={meta.per_page}
+                    />
+                </Suspense>
             </Box>
         </Box>
     )

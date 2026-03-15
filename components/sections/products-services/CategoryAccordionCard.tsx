@@ -16,7 +16,7 @@ import Link from "next/link"
 
 function SubcategoryTag({ name, slug, total_products }: Subcategory) {
   return (
-    <Link href={`${routes.productListPage.replace("[slug]", slug)}`} className="ps-sub-link">
+    <Link href={`${routes.serviceProductListPage.replace("[categoryId]", slug)}`} className="ps-sub-link">
       <Box className="ps-sub-tag">
         <span className="ps-sub-tag__name">{name}</span>
         {total_products > 0 && (
@@ -116,7 +116,7 @@ export default function CategoryAccordionCard({
           className="ps-cat-card__end"
           onClick={(e) => e.stopPropagation()}
         >
-          <Link href={`${routes.productListPage.replace("[slug]", category.slug)}`} className="ps-sub-link">
+          <Link href={`${routes.serviceProductListPage.replace("[categoryId]", category.slug)}`} className="ps-sub-link">
             <Button
               className="ps-cat-card__cta"
               variant="contained"

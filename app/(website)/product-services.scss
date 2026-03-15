@@ -133,6 +133,46 @@
   margin-bottom: 0 !important;
 }
 
+/* ── Hero CTA button ─────────────────────────────── */
+.ps-hero__cta-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 22px;
+}
+
+.ps-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: $colorPrimary;
+  color: $colorWhite;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  @include transition-prefixes(0.25s);
+  box-shadow: 0 4px 18px rgba(127, 175, 13, 0.35);
+
+  svg {
+    @include transition-prefixes(0.25s);
+  }
+
+  &:hover {
+    background: darken($colorPrimary, 8%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(127, 175, 13, 0.45);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 /* ── Stat strip ─────────────────────────────────── */
 .ps-stats {
   display: flex;
