@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import NextLink from "next/link"
 import {
@@ -60,9 +60,14 @@ export default function FilterArea() {
             setLoadingCategories(false)
         }
     }
-    useEffect(() => {
 
-        fetchCategories()
+    const hasFetched = useRef(false);
+
+    useEffect(() => {
+        if (!hasFetched.current) {
+            hasFetched.current = true;
+            fetchCategories();
+        }
     }, [])
 
     return (
