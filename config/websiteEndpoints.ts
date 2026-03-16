@@ -6,4 +6,7 @@ export const websiteEndpoints = {
     productListing: 'website/products/{categorySlug}',
     /** Global listing (no category filter) */
     productListingGlobal: 'website/products',
+    countries: 'website/countries',
+    supplierTypes: 'website/supplier-types', // <-- New endpoint for supplier types
+    
 };

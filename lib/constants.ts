@@ -1,6 +1,5 @@
 import { adminRoutes, routes } from "@/config/routes";
-const isProd = process.env.NODE_ENV === 'production';
-export const API_BASE_URL = isProd ? '/api-proxy' : 'http://100.52.107.135:8000/api/v1';
+export const API_BASE_URL = 'http://100.52.107.135:8000/api/v1';
 export const LOGIN_PATH = '/gse/login';
 export const ADMIN_PATH_PREFIX = '/gse/admin';
 export const TOKEN_COOKIE_NAME = 'access_token';

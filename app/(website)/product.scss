@@ -103,6 +103,20 @@
         }
 
         .siderBarListHolder {
+            @include respond-to(minLg) {
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+                padding-right: 15px;
+
+                &::-webkit-scrollbar {
+                    width: 4px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #ccc;
+                    border-radius: 4px;
+                }
+            }
+
             @include respond-to(lg) {
                 position: fixed;
                 top: 0;

@@ -16,24 +16,15 @@ import {
     ListItem,
     ListItemText,
     Slider,
-    LinearProgress,
-    FormControl,
-    RadioGroup,
-    Radio,
 } from "@mui/material"
 import Icon from "@/components/ui/icon/Icon"
 import Loader from "@/components/ui/loader/Loader"
 import apiService from "@/service/apiService"
 import { websiteEndpoints } from "@/config/websiteEndpoints"
 import { routes } from "@/config/routes"
-import type { CategoryWithSubcategories, CategoryWiseSubcategoriesResponse } from "@/interfaces/interface"
+import type { CategoryWithSubcategories, CategoryWiseSubcategoriesResponse, ValuablePartner, ValuablePartnersResponse, Country, CountriesResponse, SupplierType, SupplierTypesResponse } from "@/interfaces/interface"
 
 import arrowDownIcon from "@/public/chevron-bottom.svg"
-import flagGermanyIcon from "@/public/flag/germany.svg"
-import flagTurkeyIcon from "@/public/flag/turkey.svg"
-import flagSpainIcon from "@/public/flag/spain.svg"
-import flagFranceIcon from "@/public/flag/france.svg"
-import flagItalyIcon from "@/public/flag/italy.svg"
 
 
 
@@ -41,12 +32,26 @@ export default function FilterArea() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const toggleSideBar = () => setSidebarOpen((prev) => !prev)
 
-    const [location, setLocation] = useState("")
-    const [radius, setRadius] = useState(50)
+    // const [location, setLocation] = useState("")
+    // const [radius, setRadius] = useState(50)
+
+    const [priceRange, setPriceRange] = useState<number[]>([0, 100000])
 
     const [categories, setCategories] = useState<CategoryWithSubcategories[]>([])
     const [categoriesExpanded, setCategoriesExpanded] = useState(false)
+    const [suppliersExpanded, setSuppliersExpanded] = useState(false)
     const [loadingCategories, setLoadingCategories] = useState(true)
+
+    const [suppliers, setSuppliers] = useState<ValuablePartner[]>([])
+    const [loadingSuppliers, setLoadingSuppliers] = useState(true)
+
+    const [countries, setCountries] = useState<Country[]>([])
+    const [loadingCountries, setLoadingCountries] = useState(true)
+    const [countriesExpanded, setCountriesExpanded] = useState(false)
+
+    const [supplierTypes, setSupplierTypes] = useState<SupplierType[]>([])
+    const [loadingSupplierTypes, setLoadingSupplierTypes] = useState(true)
+    const [supplierTypesExpanded, setSupplierTypesExpanded] = useState(false)
 
     async function fetchCategories() {
         try {
@@ -61,12 +66,87 @@ export default function FilterArea() {
         }
     }
 
+    async function fetchSuppliers() {
+        try {
+            const cacheKey = "suppliers_data";
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < 86400000) { // 24 hours
+                    setSuppliers(data);
+                    return;
+                }
+            }
+
+            const res = await apiService.get<ValuablePartnersResponse>(websiteEndpoints.valuablePartners)
+            if (res?.data) {
+                setSuppliers(res.data)
+                localStorage.setItem(cacheKey, JSON.stringify({ data: res.data, timestamp: Date.now() }));
+            }
+        } catch (err) {
+            console.error("Failed to fetch suppliers:", err)
+        } finally {
+            setLoadingSuppliers(false)
+        }
+    }
+
+    async function fetchCountries() {
+        try {
+            const cacheKey = "countries_data";
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < 86400000) { // 24 hours
+                    setCountries(data);
+                    return;
+                }
+            }
+
+            const res = await apiService.get<CountriesResponse>(websiteEndpoints.countries)
+            if (res?.data) {
+                setCountries(res.data)
+                localStorage.setItem(cacheKey, JSON.stringify({ data: res.data, timestamp: Date.now() }));
+            }
+        } catch (err) {
+            console.error("Failed to fetch countries:", err)
+        } finally {
+            setLoadingCountries(false)
+        }
+    }
+
+    async function fetchSupplierTypes() {
+        try {
+            const cacheKey = "supplier_types_data";
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < 86400000) { // 24 hours
+                    setSupplierTypes(data);
+                    return;
+                }
+            }
+
+            const res = await apiService.get<SupplierTypesResponse>(websiteEndpoints.supplierTypes)
+            if (res?.data) {
+                setSupplierTypes(res.data)
+                localStorage.setItem(cacheKey, JSON.stringify({ data: res.data, timestamp: Date.now() }));
+            }
+        } catch (err) {
+            console.error("Failed to fetch supplier types:", err)
+        } finally {
+            setLoadingSupplierTypes(false)
+        }
+    }
+
     const hasFetched = useRef(false);
 
     useEffect(() => {
         if (!hasFetched.current) {
             hasFetched.current = true;
             fetchCategories();
+            fetchSuppliers();
+            fetchCountries();
+            fetchSupplierTypes();
         }
     }, [])
 
@@ -182,167 +262,130 @@ export default function FilterArea() {
                         <Typography variant="h3" className="widgetTitle">
                             Supplier
                         </Typography>
-                        <Box className="widgetContent">
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <span>Packaging Products (648)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <span>Packaging Aids (74)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <span>Packaging Machinery (Other) (44)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
+                        <Box className="widgetContent"
+                            sx={{
+                                maxHeight: suppliersExpanded ? '800px' : '280px',
+                                overflowY: 'auto',
+                                transition: 'max-height 0.4s ease-in-out',
+                                pr: 1, // Add persistent padding so thumb scrollbar doesn't clip content
+                                '&::-webkit-scrollbar': {
+                                    width: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    backgroundColor: '#ccc',
+                                    borderRadius: '4px',
+                                },
+                            }}
+                        >
+                            {loadingSuppliers ? (
+                                <Loader minHeight={100} text="Loading suppliers..." />
+                            ) : (
+                                suppliers.map((supplier) => (
+                                    <FormGroup key={supplier.id}>
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label={
+                                                <Stack
+                                                    direction="row"
+                                                    spacing={1}
+                                                    alignItems="center"
+                                                >
+                                                    <span>{supplier.name}</span>
+                                                </Stack>
+                                            }
+                                        />
+                                    </FormGroup>
+                                ))
+                            )}
                         </Box>
 
-                        <Box className="bottomIcon">
-                            <Image
-                                src={arrowDownIcon}
-                                alt="arrow-down"
-                                width={28}
-                                height={28}
-                            />
-                        </Box>
+                        {suppliers.length > 0 && (
+                            <Box
+                                className="bottomIcon"
+                                sx={{ cursor: 'pointer', mt: 1 }}
+                                onClick={() => setSuppliersExpanded(!suppliersExpanded)}
+                            >
+                                <Image
+                                    src={arrowDownIcon}
+                                    alt="arrow-down"
+                                    width={28}
+                                    height={28}
+                                    style={{
+                                        transform: suppliersExpanded ? 'rotate(180deg)' : 'none',
+                                        transition: 'transform 0.3s ease',
+                                    }}
+                                />
+                            </Box>
+                        )}
                     </Box>
                     <Box className="widget supplierWidget">
                         <Typography variant="h3" className="widgetTitle">
                             Supplier country
                         </Typography>
-                        <Box className="widgetContent">
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <Image
-                                                src={flagGermanyIcon}
-                                                alt="Printable"
-                                                width={24}
-                                                height={24}
-                                            />
-                                            <span>Germany (506)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <Image
-                                                src={flagTurkeyIcon}
-                                                alt="Printable"
-                                                width={24}
-                                                height={24}
-                                            />
-                                            <span>Türkiye (200)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <Image
-                                                src={flagSpainIcon}
-                                                alt="Printable"
-                                                width={24}
-                                                height={24}
-                                            />
-                                            <span>Spain (93)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <Image
-                                                src={flagFranceIcon}
-                                                alt="Printable"
-                                                width={24}
-                                                height={24}
-                                            />
-                                            <span>France (89)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                            alignItems="center"
-                                        >
-                                            <Image
-                                                src={flagItalyIcon}
-                                                alt="Printable"
-                                                width={24}
-                                                height={24}
-                                            />
-                                            <span>Italy (66)</span>
-                                        </Stack>
-                                    }
-                                />
-                            </FormGroup>
+                        <Box className="widgetContent"
+                            sx={{
+                                maxHeight: countriesExpanded ? '800px' : '280px',
+                                overflowY: 'auto',
+                                transition: 'max-height 0.4s ease-in-out',
+                                pr: 1, // Add persistent padding so thumb scrollbar doesn't clip content
+                                '&::-webkit-scrollbar': {
+                                    width: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    backgroundColor: '#ccc',
+                                    borderRadius: '4px',
+                                },
+                            }}
+                        >
+                            {loadingCountries ? (
+                                <Loader minHeight={100} text="Loading countries..." />
+                            ) : (
+                                countries.map((country) => (
+                                    <FormGroup key={country.id}>
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label={
+                                                <Stack
+                                                    direction="row"
+                                                    spacing={1}
+                                                    alignItems="center"
+                                                >
+                                                    {country.country_flag && (
+                                                        <Image
+                                                            src={country.country_flag}
+                                                            alt={country.name}
+                                                            width={24}
+                                                            height={24}
+                                                        />
+                                                    )}
+                                                    <span>{country.name}</span>
+                                                </Stack>
+                                            }
+                                        />
+                                    </FormGroup>
+                                ))
+                            )}
                         </Box>
-                        <Box className="nearMeWidget">
+
+                        {countries.length > 0 && (
+                            <Box
+                                className="bottomIcon"
+                                sx={{ cursor: 'pointer', mt: 1 }}
+                                onClick={() => setCountriesExpanded(!countriesExpanded)}
+                            >
+                                <Image
+                                    src={arrowDownIcon}
+                                    alt="arrow-down"
+                                    width={28}
+                                    height={28}
+                                    style={{
+                                        transform: countriesExpanded ? 'rotate(180deg)' : 'none',
+                                        transition: 'transform 0.3s ease',
+                                    }}
+                                />
+                            </Box>
+                        )}
+                        {/* <Box className="nearMeWidget">
                             <Stack
                                 direction="row"
                                 justifyContent="space-between"
@@ -492,7 +535,7 @@ export default function FilterArea() {
                                 width={28}
                                 height={28}
                             />
-                        </Box>
+                        </Box> */}
                     </Box>
                     <Box className="widget priceRangeWidget">
                         <Box className="priceRangeWidgetContent">
@@ -515,102 +558,43 @@ export default function FilterArea() {
                                         padding: "0",
                                         height: "auto",
                                     }}
+                                    onClick={() => setPriceRange([0, 10000])}
                                 >
                                     Reset
                                 </Button>
                             </Stack>
 
                             <Box className="priceRangeWidgetContentInner">
-                                <FormControl className="priceRangeRadioGroup">
-                                    <RadioGroup
-                                        aria-labelledby="price-range-group-label"
-                                        name="price-range-group"
-                                    >
-                                        <FormControlLabel
-                                            value="lt5"
-                                            control={<Radio />}
-                                            sx={{ width: "100%", alignItems: "center", py: 1 }}
-                                            label={
-                                                <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: "100%" }}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <span>{"< 5"}</span>
-                                                        <Box component="span" sx={{ color: "#777" }}>(81)</Box>
-                                                    </Stack>
-                                                    <Box className="priceRangeProgress">
-                                                        <LinearProgress
-                                                            variant="determinate"
-                                                            value={20}
-                                                            sx={{
-                                                                height: 10,
-                                                                borderRadius: 8,
-                                                                bgcolor: "#eee",
-                                                                "& .MuiLinearProgress-bar": {
-                                                                    backgroundColor: "#7FAF0D",
-                                                                },
-                                                            }}
-                                                        />
-                                                    </Box>
-                                                </Stack>
+                                <Box sx={{ px: 1, py: 2 }}>
+                                    <Slider
+                                        value={priceRange}
+                                        onChange={(e, newValue) => setPriceRange(newValue as number[])}
+                                        valueLabelDisplay="auto"
+                                        min={0}
+                                        max={10000}
+                                        sx={{
+                                            "& .MuiSlider-rail": {
+                                                backgroundColor: "#ddd",
+                                                height: "4px",
+                                            },
+                                            "& .MuiSlider-track": {
+                                                backgroundColor: "#7FAF0D",
+                                                height: "4px",
+                                            },
+                                            "& .MuiSlider-thumb": {
+                                                backgroundColor: "#7FAF0D",
+                                                width: "18px",
+                                                height: "18px",
+                                                "&:hover": {
+                                                    boxShadow: "0 0 0 8px rgba(127, 175, 13, 0.16)",
+                                                },
+                                            },
+                                            "& .MuiSlider-valueLabel": {
+                                                backgroundColor: "#054934",
                                             }
-                                        />
-
-                                        <FormControlLabel
-                                            value="5-40"
-                                            control={<Radio />}
-                                            sx={{ width: "100%", alignItems: "center", py: 1 }}
-                                            label={
-                                                <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: "100%" }}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <span>5 - 40</span>
-                                                        <Box component="span" sx={{ color: "#777" }}>(58)</Box>
-                                                    </Stack>
-                                                    <Box className="priceRangeProgress" >
-                                                        <LinearProgress
-                                                            variant="determinate"
-                                                            value={50}
-                                                            sx={{
-                                                                height: 10,
-                                                                borderRadius: 8,
-                                                                bgcolor: "#eee",
-                                                                "& .MuiLinearProgress-bar": {
-                                                                    backgroundColor: "#7FAF0D",
-                                                                },
-                                                            }}
-                                                        />
-                                                    </Box>
-                                                </Stack>
-                                            }
-                                        />
-
-                                        <FormControlLabel
-                                            value="gte40"
-                                            control={<Radio />}
-                                            sx={{ width: "100%", alignItems: "center", py: 1 }}
-                                            label={
-                                                <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: "100%" }}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <span>{"\u2265 40"}</span>
-                                                        <Box component="span" sx={{ color: "#777" }}>(72)</Box>
-                                                    </Stack>
-                                                    <Box className="priceRangeProgress" >
-                                                        <LinearProgress
-                                                            variant="determinate"
-                                                            value={70}
-                                                            sx={{
-                                                                height: 10,
-                                                                borderRadius: 8,
-                                                                bgcolor: "#eee",
-                                                                "& .MuiLinearProgress-bar": {
-                                                                    backgroundColor: "#7FAF0D",
-                                                                },
-                                                            }}
-                                                        />
-                                                    </Box>
-                                                </Stack>
-                                            }
-                                        />
-                                    </RadioGroup>
-                                </FormControl>
+                                        }}
+                                    />
+                                </Box>
                                 <Stack
                                     direction="row"
                                     justifyContent="space-between"
@@ -623,6 +607,12 @@ export default function FilterArea() {
                                         placeholder="0"
                                         fullWidth
                                         label="Minimum"
+                                        value={priceRange[0]}
+                                        onChange={(e) => {
+                                            const val = parseInt(e.target.value);
+                                            if (!isNaN(val)) setPriceRange([val, priceRange[1]]);
+                                            if (e.target.value === '') setPriceRange([0, priceRange[1]]);
+                                        }}
                                         sx={{
                                             marginBottom: "16px",
                                             "& .MuiOutlinedInput-root": {
@@ -654,6 +644,12 @@ export default function FilterArea() {
                                         placeholder="10000"
                                         fullWidth
                                         label="Maximum"
+                                        value={priceRange[1]}
+                                        onChange={(e) => {
+                                            const val = parseInt(e.target.value);
+                                            if (!isNaN(val)) setPriceRange([priceRange[0], val]);
+                                            if (e.target.value === '') setPriceRange([priceRange[0], 0]);
+                                        }}
                                         sx={{
                                             marginBottom: "16px",
                                             "& .MuiOutlinedInput-root": {
@@ -683,14 +679,74 @@ export default function FilterArea() {
                                 </Stack>
                             </Box>
                         </Box>
-                        <Box className="bottomIcon">
+                        {/* <Box className="bottomIcon">
                             <Image
                                 src={arrowDownIcon}
                                 alt="arrow-down"
                                 width={28}
                                 height={28}
                             />
+                        </Box> */}
+                    </Box>
+                    <Box className="widget supplierWidget">
+                        <Typography variant="h3" className="widgetTitle">
+                            Supplier Type
+                        </Typography>
+                        <Box className="widgetContent"
+                            sx={{
+                                maxHeight: supplierTypesExpanded ? '800px' : '280px',
+                                overflowY: 'auto',
+                                transition: 'max-height 0.4s ease-in-out',
+                                pr: 1, // Add persistent padding so thumb scrollbar doesn't clip content
+                                '&::-webkit-scrollbar': {
+                                    width: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    backgroundColor: '#ccc',
+                                    borderRadius: '4px',
+                                },
+                            }}
+                        >
+                            {loadingSupplierTypes ? (
+                                <Loader minHeight={100} text="Loading supplier types..." />
+                            ) : (
+                                supplierTypes.map((supplierType) => (
+                                    <FormGroup key={supplierType.id}>
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label={
+                                                <Stack
+                                                    direction="row"
+                                                    spacing={1}
+                                                    alignItems="center"
+                                                >
+                                                    <span>{supplierType.name}</span>
+                                                </Stack>
+                                            }
+                                        />
+                                    </FormGroup>
+                                ))
+                            )}
                         </Box>
+
+                        {supplierTypes.length > 0 && (
+                            <Box
+                                className="bottomIcon"
+                                sx={{ cursor: 'pointer', mt: 1 }}
+                                onClick={() => setSupplierTypesExpanded(!supplierTypesExpanded)}
+                            >
+                                <Image
+                                    src={arrowDownIcon}
+                                    alt="arrow-down"
+                                    width={28}
+                                    height={28}
+                                    style={{
+                                        transform: supplierTypesExpanded ? 'rotate(180deg)' : 'none',
+                                        transition: 'transform 0.3s ease',
+                                    }}
+                                />
+                            </Box>
+                        )}
                     </Box>
 
                     <Box className="sidebarFooter">

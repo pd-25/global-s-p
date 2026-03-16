@@ -23,21 +23,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'dummyimage.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+      }
 
     ],
-  },
-  async redirects() {
-    return [];
-  },
-  async rewrites() {
-    return [
-      {
-        // When the browser requests something starting with /api-proxy/
-        source: "/api-proxy/:path*",
-        // Netlify NextJS server will secretly fetch it from your insecure backend
-        destination: "http://100.52.107.135:8000/api/v1/:path*",
-      },
-    ];
   },
 };
 

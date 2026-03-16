@@ -66,6 +66,40 @@ export interface ValuablePartnersResponse {
     meta: Record<string, unknown>
 }
 
+// ─── Countries ────────────────────────────────────────────────────────────────
+
+export interface Country {
+    id: number
+    name: string
+    country_flag: string
+    country_code: string
+    created_at: string
+    updated_at: string
+}
+
+export interface CountriesResponse {
+    success: boolean
+    message: string
+    data: Country[]
+    meta: Record<string, unknown>
+}
+
+// ─── Supplier Types ───────────────────────────────────────────────────────────
+
+export interface SupplierType {
+    id: number
+    name: string
+    created_at: string
+    updated_at: string
+}
+
+export interface SupplierTypesResponse {
+    success: boolean
+    message: string
+    data: SupplierType[]
+    meta: Record<string, unknown>
+}
+
 // ─── Product Listing ──────────────────────────────────────────────────────────
 
 export interface ProductListingItem {
