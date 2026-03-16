@@ -114,9 +114,13 @@ const apiService = {
         }
         console.log('fullUrl- ', fullUrl);
 
+        const headers = buildHeaders();
+        // Ensure Accept header is always present
+        headers['Accept'] = 'application/json';
+
         const response = await fetch(fullUrl, {
             method: 'GET',
-            headers: buildHeaders(),
+            headers,
         });
 
         return handleResponse<T>(response);
