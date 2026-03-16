@@ -99,7 +99,7 @@ const apiService = {
      */
     get: async function <T = any>(url: string, params?: Record<string, string | number | boolean>): Promise<T> {
         let fullUrl = `${BASE_URL}/${url}`;
-        console.log('fullUrl - get', fullUrl);
+        
         
         // Append query parameters if provided
         if (params) {
@@ -112,7 +112,7 @@ const apiService = {
             const qs = searchParams.toString();
             if (qs) fullUrl += `?${qs}`;
         }
-        console.log('fullUrl- ', fullUrl);
+        console.log('fullUrl - get', fullUrl);
 
         const headers = buildHeaders();
         // Ensure Accept header is always present
