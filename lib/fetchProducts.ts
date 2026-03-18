@@ -9,6 +9,14 @@ export const DEFAULT_META: ProductListingMeta = {
     total_pages: 1,
 }
 
+export interface ProductFilters {
+    country_code?: string
+    supplier_type_slug?: string
+    supplier_slug?: string
+    min_price?: number
+    max_price?: number
+}
+
 /**
  * Fetch product listing from the API.
  * @param categorySlug  Optional. When provided, fetches products for that category.
@@ -20,18 +28,27 @@ export async function fetchProducts(
     categorySlug?: string,
     page = 1,
     perPage = 30,
-    searchString?: string
+    searchString?: string,
+    filters?: ProductFilters
 ): Promise<{ products: ProductListingItem[]; meta: ProductListingMeta }> {
     try {
         const endpoint = categorySlug
             ? websiteEndpoints.productListing.replace('{categorySlug}', categorySlug)
             : websiteEndpoints.productListingGlobal
 
-        const json = await apiService.get<ProductListingResponse>(endpoint, {
+        const queryParams: Record<string, any> = {
             per_page: perPage,
             page,
-            ...(searchString && { search_string: searchString }),
-        })
+        }
+
+        if (searchString) queryParams.search_string = searchString
+        if (filters?.country_code) queryParams.country_code = filters.country_code
+        if (filters?.supplier_type_slug) queryParams.supplier_type_slug = filters.supplier_type_slug
+        if (filters?.supplier_slug) queryParams.supplier_slug = filters.supplier_slug
+        if (filters?.min_price !== undefined) queryParams.min_price = filters.min_price
+        if (filters?.max_price !== undefined) queryParams.max_price = filters.max_price
+
+        const json = await apiService.get<ProductListingResponse>(endpoint, queryParams)
 
         return {
             products: json?.data ?? [],

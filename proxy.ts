@@ -5,7 +5,7 @@ import { LOGIN_PATH, ADMIN_PATH_PREFIX, TOKEN_COOKIE_NAME } from '@/lib/constant
 
 const intlMiddleware = createMiddleware(routing);
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     // ─── Admin routes: skip i18n, handle auth ──────────────────────────────────

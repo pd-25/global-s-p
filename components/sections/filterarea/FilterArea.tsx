@@ -1,7 +1,8 @@
 'use client'
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import Image from "next/image"
 import NextLink from "next/link"
+import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import {
     Box,
     Typography,
@@ -29,13 +30,161 @@ import arrowDownIcon from "@/public/chevron-bottom.svg"
 
 
 export default function FilterArea() {
+    return (
+        <Suspense fallback={<Loader minHeight={300} text="Loading filters..." />}>
+            <FilterAreaContent />
+        </Suspense>
+    )
+}
+
+function FilterAreaContent() {
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    const pathname = usePathname()
+
+    const updateQueryParams = (key: string, value: string | null) => {
+        const params = new URLSearchParams(searchParams.toString())
+        if (value) params.set(key, value)
+        else params.delete(key)
+        params.delete('page')
+        router.push(`${pathname}?${params.toString()}`, { scroll: false })
+    }
+
+    const resetFilters = () => {
+        const params = new URLSearchParams(searchParams.toString())
+        params.delete('min_price')
+        params.delete('max_price')
+        params.delete('supplier_slug')
+        params.delete('country_code')
+        params.delete('supplier_type_slug')
+        params.delete('page')
+        router.push(`${pathname}?${params.toString()}`, { scroll: false })
+        setSupplierSlugs([])
+        setCountryCodes([])
+        setSupplierTypeSlugs([])
+        setPriceRange([0, 10000])
+    }
+
+    const handleCheckboxChange = (key: string, value: string) => {
+        const currentParams = searchParams.get(key)?.split(',') || []
+        const newParams = currentParams.includes(value) ? currentParams.filter(v => v !== value) : [...currentParams, value]
+        updateQueryParams(key, newParams.length > 0 ? newParams.join(',') : null)
+    }
+
+    const handlePriceCommit = (event: React.SyntheticEvent | Event, newValue: number | number[]) => {
+        const val = newValue as number[]
+        setPriceRange(val)
+
+        if (debounceRef.current) clearTimeout(debounceRef.current)
+        debounceRef.current = setTimeout(() => {
+            const params = new URLSearchParams(window.location.search)
+            if (val[0] > 0) params.set('min_price', val[0].toString())
+            else params.delete('min_price')
+
+            if (val[1] < 10000) params.set('max_price', val[1].toString())
+            else params.delete('max_price')
+
+            params.delete('page')
+            router.push(`${pathname}?${params.toString()}`, { scroll: false })
+        }, 500)
+    };
+
+    const handleExactPriceUpdate = () => {
+        if (debounceRef.current) clearTimeout(debounceRef.current)
+        debounceRef.current = setTimeout(() => {
+            const params = new URLSearchParams(window.location.search)
+            if (priceRange[0] > 0) params.set('min_price', priceRange[0].toString())
+            else params.delete('min_price')
+            if (priceRange[1] < 10000) params.set('max_price', priceRange[1].toString())
+            else params.delete('max_price')
+            params.delete('page')
+            router.push(`${pathname}?${params.toString()}`, { scroll: false })
+        }, 500)
+    }
+
+    // SUPPLIER AND COUNTRY DEBOUNCE
+    const [supplierSlugs, setSupplierSlugs] = useState<string[]>(searchParams.get('supplier_slug')?.split(',').filter(Boolean) || [])
+    const [countryCodes, setCountryCodes] = useState<string[]>(searchParams.get('country_code')?.split(',').filter(Boolean) || [])
+    const [supplierTypeSlugs, setSupplierTypeSlugs] = useState<string[]>(searchParams.get('supplier_type_slug')?.split(',').filter(Boolean) || [])
+    const debounceRef = useRef<NodeJS.Timeout | null>(null)
+
+    // Keep it synced with external URL changes
+    useEffect(() => {
+        setSupplierSlugs(searchParams.get('supplier_slug')?.split(',').filter(Boolean) || [])
+        setCountryCodes(searchParams.get('country_code')?.split(',').filter(Boolean) || [])
+        setSupplierTypeSlugs(searchParams.get('supplier_type_slug')?.split(',').filter(Boolean) || [])
+    }, [searchParams])
+
+    const handleSupplierChange = (slug: string) => {
+        if (!slug || String(slug).trim() === "" || String(slug).toLowerCase() === "null") return;
+        setSupplierSlugs(prev => {
+            const newVals = prev.includes(slug) ? prev.filter(s => s !== slug) : [...prev, slug]
+
+            if (debounceRef.current) clearTimeout(debounceRef.current)
+            debounceRef.current = setTimeout(() => {
+                const params = new URLSearchParams(window.location.search)
+                if (newVals.length > 0) params.set('supplier_slug', newVals.join(','))
+                else params.delete('supplier_slug')
+                params.delete('page')
+                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+            }, 500)
+
+            return newVals
+        })
+    }
+
+    const handleCountryChange = (code: string) => {
+        if (!code || String(code).trim() === "" || String(code).toLowerCase() === "null") return;
+        setCountryCodes(prev => {
+            const newVals = prev.includes(code) ? prev.filter(c => c !== code) : [...prev, code]
+
+            if (debounceRef.current) clearTimeout(debounceRef.current)
+            debounceRef.current = setTimeout(() => {
+                const params = new URLSearchParams(window.location.search)
+                if (newVals.length > 0) params.set('country_code', newVals.join(','))
+                else params.delete('country_code')
+                params.delete('page')
+                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+            }, 500)
+
+            return newVals
+        })
+    }
+
+    const handleSupplierTypeChange = (slug: string) => {
+        if (!slug || String(slug).trim() === "" || String(slug).toLowerCase() === "null") return;
+        setSupplierTypeSlugs(prev => {
+            const newVals = prev.includes(slug) ? prev.filter(s => s !== slug) : [...prev, slug]
+
+            if (debounceRef.current) clearTimeout(debounceRef.current)
+            debounceRef.current = setTimeout(() => {
+                const params = new URLSearchParams(window.location.search)
+                if (newVals.length > 0) params.set('supplier_type_slug', newVals.join(','))
+                else params.delete('supplier_type_slug')
+                params.delete('page')
+                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+            }, 500)
+
+            return newVals
+        })
+    }
+
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const toggleSideBar = () => setSidebarOpen((prev) => !prev)
 
     // const [location, setLocation] = useState("")
     // const [radius, setRadius] = useState(50)
 
-    const [priceRange, setPriceRange] = useState<number[]>([0, 100000])
+    const initialMin = searchParams.get('min_price') ? Number(searchParams.get('min_price')) : 0
+    const initialMax = searchParams.get('max_price') ? Number(searchParams.get('max_price')) : 10000
+    const [priceRange, setPriceRange] = useState<number[]>([initialMin, initialMax])
+
+    useEffect(() => {
+        setPriceRange([
+            searchParams.get('min_price') ? Number(searchParams.get('min_price')) : 0,
+            searchParams.get('max_price') ? Number(searchParams.get('max_price')) : 10000
+        ])
+    }, [searchParams])
 
     const [categories, setCategories] = useState<CategoryWithSubcategories[]>([])
     const [categoriesExpanded, setCategoriesExpanded] = useState(false)
@@ -280,22 +429,29 @@ export default function FilterArea() {
                             {loadingSuppliers ? (
                                 <Loader minHeight={100} text="Loading suppliers..." />
                             ) : (
-                                suppliers.map((supplier) => (
-                                    <FormGroup key={supplier.id}>
-                                        <FormControlLabel
-                                            control={<Checkbox />}
-                                            label={
-                                                <Stack
-                                                    direction="row"
-                                                    spacing={1}
-                                                    alignItems="center"
-                                                >
-                                                    <span>{supplier.name}</span>
-                                                </Stack>
-                                            }
-                                        />
-                                    </FormGroup>
-                                ))
+                                suppliers.map((supplier) => {
+                                    const computedSlug = supplier.slug || supplier.name.toLowerCase().replace(/\s+/g, '-');
+                                    
+                                    return (
+                                        <FormGroup key={supplier.id}>
+                                            <FormControlLabel
+                                                control={<Checkbox
+                                                    checked={supplierSlugs.includes(computedSlug)}
+                                                    onChange={() => handleSupplierChange(computedSlug)}
+                                                />}
+                                                label={
+                                                    <Stack
+                                                        direction="row"
+                                                        spacing={1}
+                                                        alignItems="center"
+                                                    >
+                                                        <span>{supplier.name}</span>
+                                                    </Stack>
+                                                }
+                                            />
+                                        </FormGroup>
+                                    );
+                                })
                             )}
                         </Box>
 
@@ -343,7 +499,10 @@ export default function FilterArea() {
                                 countries.map((country) => (
                                     <FormGroup key={country.id}>
                                         <FormControlLabel
-                                            control={<Checkbox />}
+                                            control={<Checkbox
+                                                checked={countryCodes.includes(country.country_code)}
+                                                onChange={() => handleCountryChange(country.country_code)}
+                                            />}
                                             label={
                                                 <Stack
                                                     direction="row"
@@ -558,7 +717,14 @@ export default function FilterArea() {
                                         padding: "0",
                                         height: "auto",
                                     }}
-                                    onClick={() => setPriceRange([0, 10000])}
+                                    onClick={() => {
+                                        const params = new URLSearchParams(searchParams.toString())
+                                        params.delete('min_price')
+                                        params.delete('max_price')
+                                        params.delete('page')
+                                        router.push(`${pathname}?${params.toString()}`, { scroll: false })
+                                        setPriceRange([0, 10000])
+                                    }}
                                 >
                                     Reset
                                 </Button>
@@ -568,7 +734,21 @@ export default function FilterArea() {
                                 <Box sx={{ px: 1, py: 2 }}>
                                     <Slider
                                         value={priceRange}
-                                        onChange={(e, newValue) => setPriceRange(newValue as number[])}
+                                        onChange={(e, newValue) => {
+                                            const val = newValue as number[]
+                                            setPriceRange(val)
+                                            // Trigger debounced update
+                                            if (debounceRef.current) clearTimeout(debounceRef.current)
+                                            debounceRef.current = setTimeout(() => {
+                                                const params = new URLSearchParams(window.location.search)
+                                                if (val[0] > 0) params.set('min_price', val[0].toString())
+                                                else params.delete('min_price')
+                                                if (val[1] < 10000) params.set('max_price', val[1].toString())
+                                                else params.delete('max_price')
+                                                params.delete('page')
+                                                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+                                            }, 500)
+                                        }}
                                         valueLabelDisplay="auto"
                                         min={0}
                                         max={10000}
@@ -610,9 +790,19 @@ export default function FilterArea() {
                                         value={priceRange[0]}
                                         onChange={(e) => {
                                             const val = parseInt(e.target.value);
-                                            if (!isNaN(val)) setPriceRange([val, priceRange[1]]);
-                                            if (e.target.value === '') setPriceRange([0, priceRange[1]]);
+                                            const newRange = !isNaN(val) ? [val, priceRange[1]] : [0, priceRange[1]];
+                                            setPriceRange(newRange);
+                                            // Handle typing debounce
+                                            if (debounceRef.current) clearTimeout(debounceRef.current)
+                                            debounceRef.current = setTimeout(() => {
+                                                const params = new URLSearchParams(window.location.search)
+                                                if (newRange[0] > 0) params.set('min_price', newRange[0].toString())
+                                                else params.delete('min_price')
+                                                params.delete('page')
+                                                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+                                            }, 500)
                                         }}
+                                        onBlur={handleExactPriceUpdate}
                                         sx={{
                                             marginBottom: "16px",
                                             "& .MuiOutlinedInput-root": {
@@ -647,9 +837,19 @@ export default function FilterArea() {
                                         value={priceRange[1]}
                                         onChange={(e) => {
                                             const val = parseInt(e.target.value);
-                                            if (!isNaN(val)) setPriceRange([priceRange[0], val]);
-                                            if (e.target.value === '') setPriceRange([priceRange[0], 0]);
+                                            const newRange = !isNaN(val) ? [priceRange[0], val] : [priceRange[0], 0];
+                                            setPriceRange(newRange);
+                                            // Handle typing debounce
+                                            if (debounceRef.current) clearTimeout(debounceRef.current)
+                                            debounceRef.current = setTimeout(() => {
+                                                const params = new URLSearchParams(window.location.search)
+                                                if (newRange[1] < 10000) params.set('max_price', newRange[1].toString())
+                                                else params.delete('max_price')
+                                                params.delete('page')
+                                                router.push(`${pathname}?${params.toString()}`, { scroll: false })
+                                            }, 500)
                                         }}
+                                        onBlur={handleExactPriceUpdate}
                                         sx={{
                                             marginBottom: "16px",
                                             "& .MuiOutlinedInput-root": {
@@ -710,22 +910,30 @@ export default function FilterArea() {
                             {loadingSupplierTypes ? (
                                 <Loader minHeight={100} text="Loading supplier types..." />
                             ) : (
-                                supplierTypes.map((supplierType) => (
-                                    <FormGroup key={supplierType.id}>
-                                        <FormControlLabel
-                                            control={<Checkbox />}
-                                            label={
-                                                <Stack
-                                                    direction="row"
-                                                    spacing={1}
-                                                    alignItems="center"
-                                                >
-                                                    <span>{supplierType.name}</span>
-                                                </Stack>
-                                            }
-                                        />
-                                    </FormGroup>
-                                ))
+                                supplierTypes.map((supplierType) => {
+                                    // Fallback to slugifying the name if slug API property is missing
+                                    const computedSlug = supplierType.slug || supplierType.name.toLowerCase().replace(/\s+/g, '-');
+                                    
+                                    return (
+                                        <FormGroup key={supplierType.id}>
+                                            <FormControlLabel
+                                                control={<Checkbox
+                                                    checked={supplierTypeSlugs.includes(computedSlug)}
+                                                    onChange={() => handleSupplierTypeChange(computedSlug)}
+                                                />}
+                                                label={
+                                                    <Stack
+                                                        direction="row"
+                                                        spacing={1}
+                                                        alignItems="center"
+                                                    >
+                                                        <span>{supplierType.name}</span>
+                                                    </Stack>
+                                                }
+                                            />
+                                        </FormGroup>
+                                    );
+                                })
                             )}
                         </Box>
 
@@ -750,7 +958,7 @@ export default function FilterArea() {
                     </Box>
 
                     <Box className="sidebarFooter">
-                        <Button variant="contained" className="resetFiltersButton">
+                        <Button variant="contained" className="resetFiltersButton" onClick={resetFilters}>
                             Reset Filters
                         </Button>
                     </Box>

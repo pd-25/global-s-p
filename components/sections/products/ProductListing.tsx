@@ -1,8 +1,11 @@
-import React, { Suspense } from "react"
+"use client"
+import React, { Suspense, useEffect, useState } from "react"
 import { Box, Grid } from "@mui/material"
 import SingleProductCard from "./SingleProductCard"
 import ProductPagination from "./ProductPagination"
 import type { ProductListingItem, ProductListingMeta } from "@/interfaces/interface"
+import Loader from "@/components/ui/loader/Loader"
+import { useSearchParams } from "next/navigation"
 
 interface ProductListingProps {
     products: ProductListingItem[]
@@ -24,6 +27,43 @@ function resolveImageUrl(path: string | null | undefined): string {
 }
 
 export default function ProductListing({ products, meta }: ProductListingProps) {
+    const searchParams = useSearchParams()
+    const [loading, setLoading] = useState(false)
+    const [activeQuery, setActiveQuery] = useState(searchParams.toString())
+
+    // 1. Detect URL changes to show loading UI
+    useEffect(() => {
+        if (searchParams.toString() !== activeQuery) {
+            setLoading(true)
+            setActiveQuery(searchParams.toString())
+        }
+    }, [searchParams, activeQuery])
+
+    // 2. Shut off loading UI when Next.js delivers new product props from SSR
+    useEffect(() => {
+        setLoading(false)
+    }, [products, meta])
+
+    if (loading) {
+        return (
+            <Box
+                className="mainContent"
+                sx={{
+                    flex: {
+                        xs: "1 1 100%",
+                        sm: "1 1 calc(100% - 0px)",
+                        md: "1 1 calc(75% - 32px)",
+                        lg: "1 1 calc(75% - 24px)",
+                    },
+                    minWidth: 0,
+                    position: "relative"
+                }}
+            >
+                <Loader minHeight={400} text="Fetching products..." />
+            </Box>
+        )
+    }
+
     if (products.length === 0) {
         return (
             <Box

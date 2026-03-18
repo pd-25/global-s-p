@@ -55,6 +55,7 @@ export interface CategoryWiseSubcategoriesResponse {
 
 export interface ValuablePartner {
     id: number
+    slug: string
     name: string
     logo: string
 }
@@ -88,6 +89,7 @@ export interface CountriesResponse {
 
 export interface SupplierType {
     id: number
+    slug: string
     name: string
     created_at: string
     updated_at: string

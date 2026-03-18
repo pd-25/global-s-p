@@ -1,3 +1,6 @@
+
+
+// ... (imports omitted)
 // SSR layout — shared shell for all product-listing routes
 import Image from 'next/image'
 import {

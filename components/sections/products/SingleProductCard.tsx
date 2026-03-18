@@ -8,6 +8,7 @@ import {
 } from "@mui/material"
 import verifiedIcon from "@/public/product/verified-badge.svg"
 import placeholderFlag from "@/public/flag/usa.svg"
+import { routes } from "@/config/routes"
 
 interface SingleProductCardProps {
     imageUrl: string
@@ -116,7 +117,7 @@ export default function SingleProductCard({
                     {title}
                 </Typography>
                 <Box className="actionBtn" sx={{ mt: 2 }}>
-                    <Button variant="contained" href={`/products/${slug}`}>
+                    <Button variant="contained" href={routes.supplierContactPage.replace("[slug]", slug)}>
                         Contact Supplier
                     </Button>
                 </Box>

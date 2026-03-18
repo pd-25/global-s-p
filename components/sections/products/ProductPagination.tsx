@@ -33,7 +33,7 @@ export default function ProductPagination({
             params.set("page", String(page))
         }
         const query = params.toString()
-        router.push(`${pathname}${query ? `?${query}` : ""}`)
+        router.push(`${pathname}${query ? `?${query}` : ""}`, { scroll: false })
     }
 
     return (
