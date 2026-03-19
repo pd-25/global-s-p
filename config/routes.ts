@@ -7,8 +7,9 @@ export const routes = {
     serviceProductListPage: "/products&searvices/products/[categoryId]",
     getQuotePage: "/get-quote",
     requestHubPage: "/request-hub",
-    supplierContactPage: "/suppliers/contact/[slug]",
-    productContactPage: "/products&searvices/products/contact/[slug]",
+    supplierContactPage: "/contact/supplier/[slug]",
+    productContactPage: "/contact/product/[slug]",
+    productDetails: "/product-details/[slug]",
 
 }
 

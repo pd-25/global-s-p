@@ -8,5 +8,8 @@ export const websiteEndpoints = {
     productListingGlobal: 'website/products',
     countries: 'website/countries',
     supplierTypes: 'website/supplier-types', // <-- New endpoint for supplier types
-    
+    fetchContactFormData: "website/enquiries/fetch-product-supplier-data",
+    createEnquiry: "website/enquiries/create",
+    productDetails: "website/products/product/{slug}",
+
 };

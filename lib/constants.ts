@@ -22,3 +22,12 @@ export const languageList = [
   { name: 'English', locale: 'en', path: '/en' },
   { name: 'Bengali', locale: 'bn', path: '/bn' },
 ];
+
+
+
+export const contactFormReason = [
+  { name: 'Get price / quote' },
+  { name: 'Get products / services details' },
+  { name: 'Sell something to them' },
+  { name: 'Other' },
+]

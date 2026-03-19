@@ -132,3 +132,125 @@ export interface ProductListingResponse {
     data: ProductListingItem[]
     meta: ProductListingMeta
 }
+
+// ─── Contact Form Data ────────────────────────────────────────────────────────
+export interface ContactFormData {
+    product: {
+        id: number
+        title: string
+        slug: string
+        preview_image: string
+    } | null
+    supplier: {
+        id: number
+        slug: string
+        name: string
+        about: string
+        logo: string
+        zipcode: string
+        city: string
+        country_id: number
+        address: string
+        delivery_area: string
+        founded_year: number
+        employee_strength: number
+        supplier_type_id: number
+        is_verified: boolean
+        vat_number: string
+        company_site: string
+        company_phone_number: string
+        company_email: string
+        created_at: string
+        updated_at: string
+        supplier_type: {
+            id: number
+            name: string
+            created_at: string
+            updated_at: string
+        }
+    }
+}
+
+export interface ContactFormDataResponse {
+    success: boolean
+    message: string
+    data: ContactFormData
+    meta: Record<string, unknown>
+}
+
+// ─── Product Details ───────────────────────────────────────────────────────────
+
+export interface ProductImage {
+    id: number
+    image: string
+    is_preview: boolean
+    created_at: string
+}
+
+export interface ProductDetail {
+    id: number
+    slug: string
+    title: string
+    description: string
+    short_desc: string
+    currency: string
+    price: string
+    price_per_measurement: string
+    min_order: number
+    country_id: number
+    supplier_id: number
+    product_type_id: number
+    category_id: number
+    created_at: string
+    updated_at: string
+    country: {
+        id: number
+        name: string
+        country_flag: string
+    }
+    supplier: {
+        id: number
+        slug: string
+        name: string
+        about: string
+        logo: string
+        zipcode: string
+        city: string
+        country_id: number
+        address: string
+        delivery_area: string
+        founded_year: number
+        employee_strength: number
+        supplier_type_id: number
+        is_verified: boolean
+        vat_number: string
+        company_site: string
+        company_phone_number: string
+        company_email: string
+        created_at: string
+        updated_at: string
+        supplier_type: {
+            id: number
+            name: string
+            created_at: string
+            updated_at: string
+        }
+    }
+    product_type: {
+        id: number
+        name: string
+    }
+    category: {
+        id: number
+        name: string
+        slug: string
+    }
+    images: ProductImage[]
+}
+
+export interface ProductDetailResponse {
+    success: boolean
+    message: string
+    data: ProductDetail
+    meta: Record<string, unknown>
+}
