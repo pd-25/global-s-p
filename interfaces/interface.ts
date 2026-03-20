@@ -254,3 +254,45 @@ export interface ProductDetailResponse {
     data: ProductDetail
     meta: Record<string, unknown>
 }
+
+export interface SupplierType {
+    id: number;
+    name: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Country {
+    id: number;
+    name: string;
+    country_flag: string;
+}
+
+export interface Supplier {
+    id: number;
+    slug: string;
+    name: string;
+    about: string;
+    logo: string;
+    zipcode: string;
+    city: string;
+    country_id: number;
+    address: string;
+    delivery_area: string;
+    founded_year: number;
+    employee_strength: number;
+    supplier_type_id: number;
+    is_verified: boolean;
+    vat_number: string;
+    company_site: string;
+    company_phone_number: string;
+    company_email: string;
+    created_at: string;
+    updated_at: string;
+    supplier_type: SupplierType;
+    country: Country;
+}
+
+export interface SupplierInfoProps {
+    supplier: Supplier;
+}

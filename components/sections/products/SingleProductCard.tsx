@@ -9,6 +9,7 @@ import {
 import verifiedIcon from "@/public/product/verified-badge.svg"
 import placeholderFlag from "@/public/flag/usa.svg"
 import { routes } from "@/config/routes"
+import Link from "next/link"
 
 interface SingleProductCardProps {
     imageUrl: string
@@ -34,11 +35,13 @@ export default function SingleProductCard({
         <Box className="lisitngCard">
             <Box className="lisitngCardImage">
                 {hasImage ? (
-                    <img
-                        src={imageUrl}
-                        alt={title}
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
+                    <Link href={routes.productDetails.replace("[slug]", slug)}>
+                        <img
+                            src={imageUrl}
+                            alt={title}
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                    </Link>
                 ) : (
                     <Box
                         sx={{
@@ -114,10 +117,13 @@ export default function SingleProductCard({
 
             <Box className="lisitngCardContent">
                 <Typography variant="h3" className="lisitngCardTitle">
-                    {title}
+                    <Link href={routes.productDetails.replace("[slug]", slug)} style={{ color: "#fff", textDecoration: "none" }}>
+                        {title}
+                    </Link>
+
                 </Typography>
                 <Box className="actionBtn" sx={{ mt: 2 }}>
-                    <Button variant="contained" href={routes.supplierContactPage.replace("[slug]", slug)}>
+                    <Button variant="contained" href={routes.productContactPage.replace("[slug]", slug)}>
                         Contact Supplier
                     </Button>
                 </Box>

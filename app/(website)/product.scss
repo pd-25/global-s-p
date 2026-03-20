@@ -79,6 +79,10 @@
             position: relative;
             justify-content: space-between;
 
+            @include respond-to(minLg) {
+                display: none;
+            }
+
             &::before {
                 content: "";
                 position: absolute;

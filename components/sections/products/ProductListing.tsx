@@ -1,6 +1,6 @@
 "use client"
 import React, { Suspense, useEffect, useState } from "react"
-import { Box, Grid } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import SingleProductCard from "./SingleProductCard"
 import ProductPagination from "./ProductPagination"
 import type { ProductListingItem, ProductListingMeta } from "@/interfaces/interface"
@@ -103,6 +103,11 @@ export default function ProductListing({ products, meta }: ProductListingProps) 
             }}
         >
             <Box className="childCategoryLisitngOuter">
+                <Box sx={{ mb: 3, pb: 2, borderBottom: '1px solid #eaeaea' }}>
+                    <Typography variant="h3" sx={{ fontSize: { xs: "18px", md: "22px" }, fontWeight: "600", color: "#000" }}>
+                        {meta.total_count} Product{meta.total_count !== 1 ? 's' : ''} and services
+                    </Typography>
+                </Box>
                 <Grid container spacing={2} className="childCategoryLisitngRow">
                     {products.map((product) => (
                         <Grid

@@ -11,5 +11,8 @@ export const websiteEndpoints = {
     fetchContactFormData: "website/enquiries/fetch-product-supplier-data",
     createEnquiry: "website/enquiries/create",
     productDetails: "website/products/product/{slug}",
+    productsBySupplier: "website/products/products-by-supplier/{slug}",
+    trendingProducts: "website/products/trending-products",
+    similerProducts: "website/products/similer-products",
 
 };

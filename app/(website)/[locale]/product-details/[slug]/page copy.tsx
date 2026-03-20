@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { fetchProductDetails } from '@/lib/fetchProductDetails';
-import ProductDetailsContent from '@/components/sections/product/ProductDetailsContent';
+import ProductDetailsContent from '@/components/sections/product/ProductDetailsContent_old';
 import { Box } from '@mui/material';
 
 interface PageProps {
