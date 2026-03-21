@@ -24,8 +24,8 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { contactFormReason } from '@/lib/constants';
-import apiService from '@/service/apiService';
 import { websiteEndpoints } from '@/config/websiteEndpoints';
+import { useCreateEnquiry } from '@/hooks/useCreateEnquiry';
 import { CircularProgress, Snackbar, Alert, Chip } from '@mui/material';
 
 export interface ContactFormProps {
@@ -58,7 +58,7 @@ export default function ContactForm({
     const [forwardRequest, setForwardRequest] = useState(true);
     const [files, setFiles] = useState<File[]>([]);
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const [loading, setLoading] = useState(false);
+    const { submitEnquiry, loading } = useCreateEnquiry();
     const [snackbar, setSnackbar] = useState<{ open: boolean; message: string; severity: 'success' | 'error' }>({
         open: false,
         message: '',
@@ -119,7 +119,6 @@ export default function ContactForm({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm()) {
-            setLoading(true);
             try {
                 const formData = new FormData();
                 formData.append('reason_for_contacting', reason);
@@ -143,7 +142,7 @@ export default function ContactForm({
                     formData.append('files', file);
                 });
 
-                await apiService.postFormData(websiteEndpoints.createEnquiry, formData);
+                await submitEnquiry(formData);
 
                 setSnackbar({
                     open: true,
@@ -172,8 +171,6 @@ export default function ContactForm({
                     message: error.message || 'Failed to send request. Please try again.',
                     severity: 'error',
                 });
-            } finally {
-                setLoading(false);
             }
         }
     };

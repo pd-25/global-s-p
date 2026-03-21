@@ -10,6 +10,7 @@ export const routes = {
     supplierContactPage: "/contact/supplier/[slug]",
     productContactPage: "/contact/product/[slug]",
     productDetails: "/product-details/[slug]",
+    getQuoteForm: "/get-quote/form",
 
 }
 

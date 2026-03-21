@@ -17,6 +17,7 @@ import {
     useTheme
 } from '@mui/material'
 import Image from 'next/image'
+import { routes } from '@/config/routes'
 
 // SVG Icons
 const CheckIcon = () => (
@@ -135,6 +136,7 @@ export default function GetQuotePage() {
                                         }}
                                     />
                                     <Button
+
                                         variant="contained"
                                         sx={{
                                             bgcolor: '#7FAF0D',
@@ -149,6 +151,7 @@ export default function GetQuotePage() {
                                             boxShadow: 'none',
                                             '&:hover': { bgcolor: '#69910A', boxShadow: '0 4px 12px rgba(127,175,13,0.3)' }
                                         }}
+                                        href={routes.getQuoteForm}
                                     >
                                         Get multiple quotes
                                     </Button>
@@ -357,7 +360,7 @@ export default function GetQuotePage() {
                     ))}
                 </Grid>
                 <Box sx={{ textAlign: 'center' }}>
-                    <Button variant="contained" sx={{ bgcolor: '#7FAF0D', color: 'white', px: 6, '&:hover': { bgcolor: '#6e980c' } }}>
+                    <Button variant="contained" sx={{ bgcolor: '#7FAF0D', color: 'white', px: 6, '&:hover': { bgcolor: '#6e980c' } }} href={routes.getQuoteForm}>
                         Get multiple quotes
                     </Button>
                 </Box>
