@@ -73,7 +73,7 @@ export default function SupplierPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const fetchSuppliers = useCallback(async () => {
+  const fetchSuppliers = async () => {
     setIsLoading(true);
     setError(null);
 
@@ -106,11 +106,11 @@ export default function SupplierPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [page, rowsPerPage, searchQuery]);
+  };
 
   useEffect(() => {
     fetchSuppliers();
-  }, [fetchSuppliers]);
+  }, [page, rowsPerPage, searchQuery]);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
