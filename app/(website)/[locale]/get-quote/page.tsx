@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Box,
     Container,
@@ -18,6 +18,7 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 import { routes } from '@/config/routes'
+import { title } from 'process'
 
 // SVG Icons
 const CheckIcon = () => (
@@ -34,7 +35,7 @@ const ExpandMoreIcon = () => (
 
 export default function GetQuotePage() {
     const theme = useTheme()
-
+    const [title, setTitle] = useState('')
     const faqs = [
         "What is Request for Quotes?",
         "Is the service free of charge?",
@@ -134,6 +135,7 @@ export default function GetQuotePage() {
                                                 '& input': { px: 2, fontSize: '16px', color: '#333' }
                                             }
                                         }}
+                                        onChange={(e: any) => setTitle(e.target.value)}
                                     />
                                     <Button
 
@@ -151,7 +153,7 @@ export default function GetQuotePage() {
                                             boxShadow: 'none',
                                             '&:hover': { bgcolor: '#69910A', boxShadow: '0 4px 12px rgba(127,175,13,0.3)' }
                                         }}
-                                        href={routes.getQuoteForm}
+                                        href={routes.getQuoteForm + (title ? `?title=${encodeURIComponent(title)}` : '')}
                                     >
                                         Get multiple quotes
                                     </Button>

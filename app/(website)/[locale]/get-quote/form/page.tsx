@@ -72,11 +72,14 @@ const FormField = ({ label, required, placeholder, ...props }: any) => (
 )
 
 export default function QuoteSubmitForm() {
+  const params = new URLSearchParams(window.location.search);
+  const prefillTitle = params.get('title') || '';
+  
   const theme = useTheme();
   const [selectedSupplierIds, setSelectedSupplierIds] = useState<number[]>([])
   const [dynamicSupplierTypes, setDynamicSupplierTypes] = useState<{ id: number; name: string; icon: React.ReactNode }[]>([])
 
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(prefillTitle);
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
   const [message, setMessage] = useState('');
