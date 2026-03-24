@@ -126,12 +126,34 @@ export interface ProductListingMeta {
     total_pages: number
 }
 
-export interface ProductListingResponse {
+export interface TrendingProduct {
+    slug: string
+    title: string
+    short_desc: string
+    primary_image: {
+        image: string
+    } | null
+    country: {
+        country_flag: string
+    } | null
+    supplier: {
+        name: string
+        is_verified: boolean
+    } | null
+}
+
+export interface TrendingProductsResponse {
     success: boolean
     message: string
-    data: ProductListingItem[]
-    meta: ProductListingMeta
+    data: TrendingProduct[]
+    meta: {
+        page: number
+        per_page: number
+        total_count: number
+        total_pages: number
+    }
 }
+
 
 // ─── Contact Form Data ────────────────────────────────────────────────────────
 export interface ContactFormData {

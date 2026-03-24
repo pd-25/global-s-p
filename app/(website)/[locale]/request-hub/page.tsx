@@ -1,20 +1,24 @@
 'use client'
 
-import React, { useState } from 'react'
+import FilterAreaSearch from '@/components/sections/request-hub/FilterAreaSearch';
+import { useEffect, useState } from 'react'
+import apiService from '@/service/apiService'
+import { websiteEndpoints } from '@/config/websiteEndpoints'
+import { TrendingProduct, TrendingProductsResponse } from '@/interfaces/interface'
 import {
     Box,
     Container,
     Typography,
     Button,
-    Grid,
     Card,
     Stack,
-    MenuItem,
-    Select,
-    InputBase,
-    Paper
+    CircularProgress
 } from '@mui/material'
 import Image from 'next/image'
+import { Link } from '@/i18n/navigation'
+import { routes } from '@/config/routes'
+
+
 
 const SearchIconSvg = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,29 +26,49 @@ const SearchIconSvg = () => (
     </svg>
 );
 
-const EyeIconSvg = () => (
+const ContactIconSvg = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 );
 
-const mockRequests = [
-    { title: 'Labore Dolore', time: '14 hours ago', delivery: '1000m', qty: '1205h' },
-    { title: 'Dolore Consectetur', time: '2 hours ago', delivery: '5829l', qty: '10000r' },
-    { title: 'Labore Tempor', time: '8 hours ago', delivery: '960rm', qty: '750cm' },
-    { title: 'Tempor Incididunt', time: '1 day ago', delivery: '45km', qty: '600kg' },
-    { title: 'Consectetur Adipiscing', time: '1 day ago', delivery: '100m', qty: '400l' },
-    { title: 'Tempor Incididunt', time: '1 day ago', delivery: '8km', qty: '500g' },
-    { title: 'Consectetur Adipiscing', time: '5 hours ago', delivery: '10km', qty: '1000l' },
-    { title: 'Consectetur Adipiscing', time: '1 day ago', delivery: '10m', qty: '500r' },
-    { title: 'Consectetur Adipiscing', time: '4 hours ago', delivery: '10km', qty: '100g' },
-    { title: 'Tempor Incididunt', time: '1 day ago', delivery: '100km', qty: '4m' },
-];
+
+
+
 
 export default function RequestHubPage() {
     // State to toggle between logged-in and guest view (mocking login functionality)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [products, setProducts] = useState<TrendingProduct[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchProducts = async (params: any = {}) => {
+        setLoading(true);
+        try {
+            const queryParams = new URLSearchParams();
+            queryParams.append('page', '1');
+            queryParams.append('perPage', '20');
+
+            if (params.category_id) queryParams.append('category_id', params.category_id.toString());
+            if (params.subcategory_id) queryParams.append('subcategory_id', params.subcategory_id.toString());
+            if (params.search_string) queryParams.append('search_string', params.search_string);
+            if (params.location) queryParams.append('location', params.location.toString());
+
+            const res = await apiService.get<TrendingProductsResponse>(`${websiteEndpoints.trendingProducts}?${queryParams.toString()}`);
+            if (res.success) {
+                setProducts(res.data);
+            }
+        } catch (error) {
+            console.error("Error fetching trending products:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
 
     return (
         <Box sx={{ bgcolor: '#F9FAF9', minHeight: '100vh', pb: 10 }}>
@@ -85,125 +109,76 @@ export default function RequestHubPage() {
             </Box>
 
             {/* Filter / Search Bar */}
-            <Container disableGutters sx={{ mt: { xs: -6, md: -4 }, position: 'relative', zIndex: 2, maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
-                <Paper elevation={0} sx={{ p: '12px', borderRadius: '8px', bgcolor: 'white', border: '1px solid #E5E7EB', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                            <Select
-                                fullWidth
-                                displayEmpty
-                                defaultValue=""
-                                sx={{ bgcolor: '#F3F4F6', borderRadius: '6px', '& fieldset': { border: 'none' }, height: '48px', color: '#6B7280' }}
-                            >
-                                <MenuItem value="" disabled>Select categories</MenuItem>
-                                <MenuItem value="cat1">Category 1</MenuItem>
-                                <MenuItem value="cat2">Category 2</MenuItem>
-                            </Select>
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                            <Select
-                                fullWidth
-                                displayEmpty
-                                defaultValue=""
-                                sx={{ bgcolor: '#F3F4F6', borderRadius: '6px', '& fieldset': { border: 'none' }, height: '48px', color: '#6B7280' }}
-                            >
-                                <MenuItem value="" disabled>Buyer location</MenuItem>
-                                <MenuItem value="loc1">Location 1</MenuItem>
-                                <MenuItem value="loc2">Location 2</MenuItem>
-                            </Select>
-                        </Grid>
-                        <Grid size={{ xs: 12, md: 4 }}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', bgcolor: '#F3F4F6', borderRadius: '6px', px: 2, height: '48px' }}>
-                                <InputBase
-                                    placeholder="Search by any keyword"
-                                    sx={{ ml: 1, flex: 1, color: '#6B7280' }}
-                                />
-                                <Box sx={{ color: '#9CA3AF', display: 'flex', alignItems: 'center' }}>
-                                    <SearchIconSvg />
-                                </Box>
-                            </Box>
-                        </Grid>
-                        <Grid size={{ xs: 12, md: 2 }}>
-                            <Button
-                                fullWidth
-                                variant="contained"
-                                sx={{
-                                    bgcolor: '#9CA3AF',
-                                    color: 'white',
-                                    height: '48px',
-                                    borderRadius: '6px',
-                                    textTransform: 'none',
-                                    fontWeight: 700,
-                                    fontSize: '16px',
-                                    boxShadow: 'none',
-                                    '&:hover': { bgcolor: '#6B7280', boxShadow: 'none' }
-                                }}
-                            >
-                                Find requests
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Paper>
-            </Container>
+            <FilterAreaSearch onSearch={(params) => fetchProducts(params)} />
 
             {/* Main Content (Requests List & Sign in Overlay) */}
             <Container disableGutters sx={{ mt: 2, position: 'relative', maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
 
                 {/* List Container */}
                 <Box sx={{
-                    position: 'relative',
-                    // Add blur and lock interactions if logged out
-                    ...(!isLoggedIn ? {
-                        filter: 'blur(5px)',
-                        pointerEvents: 'none',
-                        userSelect: 'none',
-                        opacity: 0.8
-                    } : {})
+                    position: 'relative'
                 }}>
-                    <Stack spacing={2}>
-                        {mockRequests.map((req, i) => (
-                            <Card key={i} sx={{ p: { xs: 2, md: 3 }, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: 'none', bgcolor: 'white' }}>
-                                <Box>
-                                    <Typography variant="caption" sx={{ color: '#9CA3AF', mb: 1, display: 'block', fontSize: '12px' }}>
-                                        Posted: {req.time}
-                                    </Typography>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, color: '#1F2937', mb: 1, fontSize: '16px' }}>
-                                        {req.title}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: '#4B5563', mb: 0.5, fontSize: '13px' }}>
-                                        <strong>Delivery to:</strong> {req.delivery}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: '#4B5563', fontSize: '13px' }}>
-                                        <strong>Quantity:</strong> {req.qty}
-                                    </Typography>
+                    {loading ? (
+                        <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+                            <CircularProgress sx={{ color: '#7FAF0D' }} />
+                        </Box>
+                    ) : (
+                        <Stack spacing={2}>
+                            {products.length === 0 ? (
+                                <Box sx={{ py: 8, textAlign: 'center' }}>
+                                    <Typography color="text.secondary">No requests found matching your criteria</Typography>
                                 </Box>
-                                <Box>
-                                    <Button
-                                        variant="outlined"
-                                        endIcon={<EyeIconSvg />}
-                                        sx={{
-                                            borderRadius: '6px',
-                                            textTransform: 'none',
-                                            borderColor: '#E5E7EB',
-                                            color: '#6B7280',
-                                            fontWeight: 600,
-                                            px: 3,
-                                            '&:hover': {
-                                                borderColor: '#D1D5DB',
-                                                bgcolor: '#F9FAFB'
-                                            }
-                                        }}
-                                    >
-                                        View
-                                    </Button>
-                                </Box>
-                            </Card>
-                        ))}
-                    </Stack>
+                            ) : (
+                                products.map((req, i) => (
+                                    <Card key={i} sx={{ p: { xs: 2, md: 3 }, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: 'none', bgcolor: 'white' }}>
+                                        <Box sx={{ flex: 1 }}>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                                                {req.country?.country_flag && (
+                                                    <Box sx={{ position: 'relative', width: 20, height: 14 }}>
+                                                        <Image src={req.country.country_flag} alt="Country Flag" fill style={{ objectFit: 'contain' }} />
+                                                    </Box>
+                                                )}
+                                                <Typography variant="caption" sx={{ color: '#9CA3AF', fontSize: '12px' }}>
+                                                    Supplier: {req.supplier?.name} {req.supplier?.is_verified && "(Verified)"}
+                                                </Typography>
+                                            </Box>
+                                            <Typography variant="h6" sx={{ fontWeight: 700, color: '#1F2937', mb: 1, fontSize: '16px' }}>
+                                                {req.title}
+                                            </Typography>
+                                            <Typography variant="body2" sx={{ color: '#4B5563', mb: 0.5, fontSize: '13px', lineClamp: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                                {req.short_desc}
+                                            </Typography>
+                                        </Box>
+                                        <Box sx={{ ml: 2 }}>
+                                            <Button
+                                                component={Link}
+                                                href={routes.productContactPage.replace('[slug]', req.slug)}
+                                                variant="contained"
+                                                endIcon={<ContactIconSvg />}
+                                                sx={{
+                                                    bgcolor: '#7FAF0D',
+                                                    '&:hover': { bgcolor: '#6e980c' },
+                                                    color: 'white',
+                                                    borderRadius: '6px',
+                                                    textTransform: 'none',
+                                                    fontWeight: 600,
+                                                    px: 3,
+                                                    boxShadow: 'none',
+                                                    whiteSpace: 'nowrap'
+                                                }}
+                                            >
+                                                Contact Supplier
+                                            </Button>
+                                        </Box>
+                                    </Card>
+                                ))
+                            )}
+                        </Stack>
+                    )}
                 </Box>
 
                 {/* Login Overlay UI */}
-                {!isLoggedIn && (
+                {/* {!isLoggedIn && (
                     <Box sx={{
                         position: 'absolute',
                         top: 50,
@@ -255,7 +230,7 @@ export default function RequestHubPage() {
                             </Typography>
                         </Card>
                     </Box>
-                )}
+                )} */}
 
             </Container>
         </Box>

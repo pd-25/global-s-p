@@ -18,8 +18,10 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
+import { useTranslations } from "next-intl"
 
 export default function Banner() {
+  const t = useTranslations('banner');
   return (
     <Box
       component="section"
@@ -35,7 +37,7 @@ export default function Banner() {
         >
           <TextField
             id="standard-basic"
-            placeholder="Search Items e,g, CNC Milling,Packaging , Gas"
+            placeholder={t('searchPlaceholder')}
             variant="outlined"
             fullWidth
             sx={{
@@ -82,10 +84,10 @@ export default function Banner() {
           className="btnHolder"
         >
           <Button variant="contained" href="/" sx={{ fontSize: "20px" }}>
-            Get Quote
+            {t('getQuote')}
           </Button>
           <Button variant="outlined" href="/" sx={{ fontSize: "20px" }}>
-            Learn More
+            {t('learnMore')}
           </Button>
         </Stack>
       </Box>
@@ -144,7 +146,7 @@ export default function Banner() {
                             color: "white",
                           }}
                         >
-                          The leading B2B marketplace for European trade
+                          {t('heroTitle')}
                         </Typography>
                         <Typography
                           variant="body1"
@@ -155,7 +157,7 @@ export default function Banner() {
                             color: "white",
                           }}
                         >
-                          Post your request to verified suppliers.
+                          {t('heroSubtitle')}
                         </Typography>
                       </Box>
                     </Stack>
@@ -203,7 +205,7 @@ export default function Banner() {
                             color: "white",
                           }}
                         >
-                          The leading B2B marketplace for European trade
+                          {t('heroTitle')}
                         </Typography>
                         <Typography
                           variant="body1"
@@ -214,7 +216,7 @@ export default function Banner() {
                             color: "white",
                           }}
                         >
-                          Post your request to verified suppliers.
+                          {t('heroSubtitle')}
                         </Typography>
                       </Box>
                     </Stack>

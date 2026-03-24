@@ -1,7 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { useTranslations } from 'next-intl';
+import { Link } from "@/i18n/navigation"
+
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 import Button from "@mui/material/Button"
@@ -107,7 +109,9 @@ function AnimatedBrandText({
 }
 
 export default function Header() {
+  const t = useTranslations('nav');
   const [mobileOpen, setMobileOpen] = useState(false)
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -139,19 +143,20 @@ export default function Header() {
       <Stack direction="column" spacing={2}>
         {navLinks.map((link) => (
           <Link
-            key={link.name}
+            key={link.key}
             href={link.href}
             className={styles.mobileNavLink}
             onClick={handleDrawerToggle}
           >
-            {link.name}
+            {t(link.key as any)}
           </Link>
         ))}
 
         <Button variant="contained" component={Link} href="/connect">
-          Connect with us
+          {t('connectWithUs')}
         </Button>
       </Stack>
+
     </Box>
   )
 
@@ -204,17 +209,18 @@ export default function Header() {
           >
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.key}
                 href={link.href}
                 className={styles.navLink}
                 style={{ fontWeight: 700, fontSize: "15px" }}
               >
-                {link.name}
+                {t(link.key as any)}
               </Link>
             ))}
             <Button variant="contained" component={Link} href="/connect">
-              Connect with us
+              {t('connectWithUs')}
             </Button>
+
             <Box sx={{ display: "flex", gap: "5px" }}>
               <IconButton sx={{ color: "#ffffff" }} aria-label="notifications">
                 <Icon name="notification" width={30} height={30} />
