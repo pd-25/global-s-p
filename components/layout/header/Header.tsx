@@ -18,6 +18,7 @@ import Image from "next/image"
 import logo from "@/public/gse-green-bg.svg"
 
 import { navLinks } from "@/lib/constants"
+import { routes } from "@/config/routes";
 
 const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
 const WORD_DELAY = 500 // ms between each word appearing
@@ -217,17 +218,17 @@ export default function Header() {
                 {t(link.key as any)}
               </Link>
             ))}
-            <Button variant="contained" component={Link} href="/connect">
+            <Button variant="contained" component={Link} href={routes.registerCompany}>
               {t('connectWithUs')}
             </Button>
 
             <Box sx={{ display: "flex", gap: "5px" }}>
-              <IconButton sx={{ color: "#ffffff" }} aria-label="notifications">
+              {/* <IconButton sx={{ color: "#ffffff" }} aria-label="notifications">
                 <Icon name="notification" width={30} height={30} />
               </IconButton>
               <IconButton sx={{ color: "#ffffff" }} aria-label="user profile">
                 <Icon name="user" width={30} height={30} />
-              </IconButton>
+              </IconButton> */}
               <LanguageSwitcher iconSize={30} />
             </Box>
           </Box>

@@ -9,6 +9,19 @@ import "../_reset.scss"
 import ThemeRegistry from "../ThemeRegistry"
 import Header from "@/components/layout/header/Header"
 import Footer from "@/components/layout/footer/Footer"
+import { websiteEndpoints } from "@/config/websiteEndpoints"
+import apiService from "@/service/apiService"
+import type { CategoryWithSubcategories, CategoryWiseSubcategoriesResponse } from "@/interfaces/interface"
+
+async function getCategoryWiseSubcategories(): Promise<CategoryWithSubcategories[]> {
+    try {
+        const url = `${websiteEndpoints.categoryWiseSubcategories}?limit=12&sub_cat_limit=10`
+        const json = await apiService.get<CategoryWiseSubcategoriesResponse>(url)
+        return json?.data ?? []
+    } catch {
+        return []
+    }
+}
 
 const montserrat = Montserrat({
     variable: "--font-montserrat",
@@ -36,6 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
     // Load messages for the current locale
     const messages = await getMessages()
+    const categoryWiseSubcategories = await getCategoryWiseSubcategories()
 
     return (
         <html lang={locale}>
@@ -44,7 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                     <ThemeRegistry>
                         <Header />
                         {children}
-                        <Footer />
+                        <Footer categories={categoryWiseSubcategories} />
                     </ThemeRegistry>
                 </NextIntlClientProvider>
             </body>

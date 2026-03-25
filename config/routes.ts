@@ -11,6 +11,12 @@ export const routes = {
     productContactPage: "/contact/product/[slug]",
     productDetails: "/product-details/[slug]",
     getQuoteForm: "/get-quote/form",
+    registerCompany: "/suppliers/register-new-company",
+    termsAndConditionsPage: "/terms-and-conditions",
+    faqPage: "/faq",
+    privacyPolicyPage: "/privacy-policy",
+    eWastePolicyPage: "/e-waste",
+    returnCancelPolicyPage: "/return-cancel-policy",
 
 }
 

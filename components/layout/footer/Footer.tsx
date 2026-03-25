@@ -10,7 +10,7 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import Icon from "@/components/ui/icon/Icon"
 import styles from "./Footer.module.css"
-import { adminRoutes } from "@/config/routes"
+import { adminRoutes, routes } from "@/config/routes"
 import storeIcon from "@/public/store.svg"
 import appStoreIcon from "@/public/app-store.svg"
 import googlePlayIcon from "@/public/google-play.svg"
@@ -106,29 +106,31 @@ function AnimatedBrandText({
   )
 }
 
-export default function Footer() {
-  const categories = [
-    "(SPICES & HERBS)",
-    "(CLOTHING Section)",
-    "(SEAFOOD)",
-    "JUTE SECTION",
-    "NATURAL AND AYURBEDIC MEDICINE",
-    "Vegetables & Fruits",
-    "HANDICRAFTS SECTION",
-    "Food & Beverage",
-    "Tea & Coffee",
-    "SEEDS WITH AGRI DRONE & ROBOTS",
-    "Kids Toys...",
-    "ECO COOKWARE & UTENSILS",
+import type { CategoryWithSubcategories } from "@/interfaces/interface"
+
+export default function Footer({ categories = [] }: { categories?: CategoryWithSubcategories[] }) {
+  const displayCategories = categories.length > 0 ? categories : [
+    { name: "(SPICES & HERBS)", slug: "spices-herbs" },
+    { name: "(CLOTHING Section)", slug: "clothing" },
+    { name: "(SEAFOOD)", slug: "seafood" },
+    { name: "JUTE SECTION", slug: "jute" },
+    { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
+    { name: "Vegetables & Fruits", slug: "vegetables" },
+    { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
+    { name: "Food & Beverage", slug: "food-beverage" },
+    { name: "Tea & Coffee", slug: "tea-coffee" },
+    { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
+    { name: "Kids Toys...", slug: "toys" },
+    { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
   ]
 
   const customerServices = [
-    { name: "About Us", link: "/about" },
-    { name: "Terms & Conditions", link: "/terms" },
-    { name: "FAQ", link: "/faq" },
-    { name: "Privacy Policy", link: "/privacy" },
-    { name: "E-waste Policy", link: "/e-waste" },
-    { name: "Cancellation & Return Policy", link: "/cancellation" },
+    { name: "About Us", link: routes.aboutPage },
+    { name: "Terms & Conditions", link: routes.termsAndConditionsPage },
+    { name: "FAQ", link: routes.faqPage },
+    { name: "Privacy Policy", link: routes.privacyPolicyPage },
+    // { name: "E-waste Policy", link: routes.eWastePolicyPage },
+    { name: "Cancellation & Return Policy", link: routes.returnCancelPolicyPage },
   ]
 
   const phoneNumber = "+1 202-918-2132"
@@ -290,7 +292,7 @@ export default function Footer() {
                 pb: 1,
               }}
             >
-              Most Popular Categories
+              Most Popular Product and Services
             </Typography>
             <Stack
               component="ul"
@@ -302,9 +304,9 @@ export default function Footer() {
                 mb: 3,
               }}
             >
-              {categories.map((category, index) => (
+              {displayCategories.map((category: any, index: number) => (
                 <Box
-                  key={index}
+                  key={category.id || index}
                   component="li"
                   className="footerLinks"
                   sx={{
@@ -314,7 +316,7 @@ export default function Footer() {
                   }}
                 >
                   <Link
-                    href={`/category/${index + 1}`}
+                    href={`/products&searvices/products/${category.slug || category.id || index + 1}`}
                     className={styles.categoryLink}
                     style={{
                       color: "#ffffff",
@@ -328,13 +330,13 @@ export default function Footer() {
                     onMouseOver={e => (e.currentTarget.style.color = "#7FAF0D")}
                     onMouseOut={e => (e.currentTarget.style.color = "#ffffff")}
                   >
-                    {category}
+                    {category.name} - ({category.total_products})
                   </Link>
                 </Box>
               ))}
             </Stack>
-            <Button variant="contained" component={Link} href="/categories">
-              View More
+            <Button variant="contained" component={Link} href={routes.productsServicesPage}>
+              Explore More
             </Button>
           </Box>
 

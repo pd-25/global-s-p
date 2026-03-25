@@ -95,5 +95,54 @@
         "viewAll": "View All",
         "readMore": "Read More",
         "learnMore": "Learn More"
+    },
+    "registerCompany": {
+        "title": "Create your company profile",
+        "sections": {
+            "companyInfo": {
+                "title": "Company information",
+                "subtitle": "Information will be displayed to buyers who visit your company profile.",
+                "fields": {
+                    "companyName": "Company name",
+                    "country": "Country of company registration",
+                    "vat": "VAT number"
+                }
+            },
+            "address": {
+                "title": "Company address",
+                "fields": {
+                    "street": "Street and number",
+                    "address2": "Address line 2 (optional)",
+                    "postalCode": "Postal code",
+                    "city": "City"
+                }
+            },
+            "contact": {
+                "title": "Company contact",
+                "subtitle": "This will be the main contact on your company profile.",
+                "fields": {
+                    "email": "Company email",
+                    "website": "Company website (optional)",
+                    "countryCode": "Country code",
+                    "phone": "Company phone number"
+                }
+            },
+            "business": {
+                "title": "Tell us about your business",
+                "fields": {
+                    "employees": "Number of employees",
+                    "deliveryArea": "Delivery area",
+                    "companyType": "Company type",
+                    "businessSector": "Business sector"
+                },
+                "placeholders": {
+                    "employees": "Choose your employee count",
+                    "deliveryArea": "Choose which area you deliver to",
+                    "companyType": "Select all matching types",
+                    "businessSector": "Which sector does your company belong to?"
+                }
+            }
+        },
+        "submit": "Publish company profile"
     }
 }
