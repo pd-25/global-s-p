@@ -17,6 +17,7 @@ export const routes = {
     privacyPolicyPage: "/privacy-policy",
     eWastePolicyPage: "/e-waste",
     returnCancelPolicyPage: "/return-cancel-policy",
+    store: "/store",
 
 }
 

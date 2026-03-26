@@ -107,6 +107,7 @@ function AnimatedBrandText({
 }
 
 import type { CategoryWithSubcategories } from "@/interfaces/interface"
+import { useTranslations } from "next-intl"
 
 export default function Footer({ categories = [] }: { categories?: CategoryWithSubcategories[] }) {
   const displayCategories = categories.length > 0 ? categories : [
@@ -134,6 +135,7 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
   ]
 
   const phoneNumber = "+1 202-918-2132"
+   const t = useTranslations('footer');
 
   return (
     <Box
@@ -171,10 +173,10 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
               </Box>
 
               <Stack direction="column" alignItems="start" spacing={2}>
-                <Button variant="contained" component={Link} href="/connect">
-                  Connect with us
+                <Button variant="contained" component={Link} href={routes.registerCompany}>
+                  {t('connectWithUs')}
                 </Button>
-                <Button variant="outlined" component={Link} href="/store" sx={{ borderColor: "#ffffff", color: "#ffffff", display: "flex", alignItems: "center", gap: 1, transition: "all 0.3s ease" }}>
+                <Button variant="outlined" component={Link} href={routes.store} sx={{ borderColor: "#ffffff", color: "#ffffff", display: "flex", alignItems: "center", gap: 1, transition: "all 0.3s ease" }}>
                   <Image src={storeIcon} alt="store-icon" />
                   Visit Our Store
                 </Button>

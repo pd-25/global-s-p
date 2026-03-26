@@ -72,7 +72,7 @@
         }
     },
     "footer": {
-        "connectWithUs": "Connect with us",
+        "connectWithUs": "Become a Partner",
         "visitOurStore": "Visit Our Store",
         "contactUs": "Contact Us",
         "whatsApp": "Whats App",
@@ -105,7 +105,8 @@
                 "fields": {
                     "companyName": "Company name",
                     "country": "Country of company registration",
-                    "vat": "VAT number"
+                    "vat": "VAT number",
+                    "uploadLogo": "Company logo"
                 }
             },
             "address": {

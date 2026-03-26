@@ -1,7 +1,11 @@
 import RegisterCompanyForm from "@/components/forms/registration/RegisterCompanyForm";
+import { getCountries } from "@/lib/fetchCountries";
+import { fetchSupplierTypes } from "@/lib/common";
 
-export default function RegisterCompany() {
+export default async function RegisterCompany() {
+  const countries = await getCountries();
+  const supplierTypes = await fetchSupplierTypes();
   return (
-    <RegisterCompanyForm />
+    <RegisterCompanyForm countries={countries} supplierTypes={supplierTypes} />
   )
 }

@@ -14,5 +14,6 @@ export const websiteEndpoints = {
     productsBySupplier: "website/products/products-by-supplier/{slug}",
     trendingProducts: "website/products/trending-products",
     similerProducts: "website/products/similer-products",
+    createSupplier: "website/suppliers/create",
 
 };
