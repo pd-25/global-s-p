@@ -126,6 +126,13 @@ export interface ProductListingMeta {
     total_pages: number
 }
 
+export interface ProductListingResponse {
+    success: boolean
+    message: string
+    data: ProductListingItem[]
+    meta: ProductListingMeta
+}
+
 export interface TrendingProduct {
     slug: string
     title: string
