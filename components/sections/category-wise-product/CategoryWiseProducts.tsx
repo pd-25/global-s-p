@@ -16,13 +16,16 @@ import { Navigation, Autoplay } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import type { CategoryWithSubcategories, Subcategory } from "@/interfaces/interface"
+import { useTranslations } from "next-intl"
+import { routes } from "@/config/routes"
 
 // ─── SubcategoryCard ──────────────────────────────────────────────────────────
 
 function SubcategoryCard({ item }: { item: Subcategory }) {
+  const t = useTranslations("categoryWiseProducts")
   return (
     <Box className="productShowcaseBox">
-      <Button href={`/category/${item.slug}`} className="innerLink"></Button>
+      <Button href={routes.serviceProductListPage?.replace("[categoryId]", item.slug)} className="innerLink"></Button>
       <Box className="productShowcaseCard">
         <Box className="productShowcaseCardImage">
           <Image
@@ -43,7 +46,7 @@ function SubcategoryCard({ item }: { item: Subcategory }) {
           </Typography>
           {item.total_products > 0 && (
             <Typography variant="body1" component="p" className="stockStatus">
-              {item.total_products.toLocaleString()} Products
+              {item.total_products.toLocaleString()} {t('products')}
             </Typography>
           )}
         </Box>
@@ -55,6 +58,7 @@ function SubcategoryCard({ item }: { item: Subcategory }) {
 // ─── CategoryRow ──────────────────────────────────────────────────────────────
 
 function CategoryRow({ category }: { category: CategoryWithSubcategories }) {
+  const t = useTranslations("categoryWiseProducts")
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down(992))
 
@@ -94,7 +98,7 @@ function CategoryRow({ category }: { category: CategoryWithSubcategories }) {
                       component="p"
                       className="stockStatus"
                     >
-                      {category.total_products.toLocaleString()} Products
+                      {category.total_products.toLocaleString()} {t('products')}
                     </Typography>
                   )}
                   <Typography
@@ -105,8 +109,8 @@ function CategoryRow({ category }: { category: CategoryWithSubcategories }) {
                     {category.name}
                   </Typography>
                   <Box className="actionBtn">
-                    <Button variant="contained" href={`/category/${category.slug}`}>
-                      Source Now
+                    <Button variant="contained" href={routes.serviceProductListPage?.replace("[categoryId]", category.slug)}>
+                      {t('sourceNow')}
                     </Button>
                   </Box>
                 </Box>
@@ -170,13 +174,14 @@ interface CategoryWiseProductsProps {
 }
 
 export default function CategoryWiseProducts({ categories }: CategoryWiseProductsProps) {
+  const t = useTranslations("categoryWiseProducts")
   return (
     <Box component="section" className="categorySliderWrapper pb-0 secPadd">
       <Container>
         <AnimateOnScroll animation="fade-up">
           <Box className="sectionHeading" sx={{ textAlign: "center" }}>
             <Typography variant="h2" component="h2">
-              Search by Product Category And get inspired
+              {t('heading')}
             </Typography>
           </Box>
         </AnimateOnScroll>
@@ -191,7 +196,7 @@ export default function CategoryWiseProducts({ categories }: CategoryWiseProduct
               // Fallback skeleton rows while data is empty / loading
               <Box sx={{ textAlign: "center", py: 6 }}>
                 <Typography variant="body1" color="text.secondary">
-                  No categories available.
+                  {t('noCategories')}
                 </Typography>
               </Box>
             )}

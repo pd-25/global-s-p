@@ -26,6 +26,13 @@
         "buyersPerMonth": "Buyers per month",
         "getMultipleQuotes": "Get Multiple Quotes"
     },
+    "categoryWiseProducts": {
+        "heading": "Search by Product Category And get inspired",
+        "noCategories": "No Categories Found",
+        "sourceNow": "Source Now",
+        "viewAll": "View All",
+        "products": "Products"
+    },
     "topBrands": {
         "title": "Top",
         "titleHighlight": "Electronics Brands",

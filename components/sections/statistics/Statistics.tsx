@@ -9,7 +9,9 @@ import StatisticsIcon3 from "@/public/home/home-statistics-icon-03.svg"
 import StatisticsIcon4 from "@/public/home/home-statistics-icon-04.svg"
 import StatisticsIcon5 from "@/public/home/home-statistics-icon-05.svg"
 import { AnimateOnScroll } from "@/components/animations"
-import { useEffect, useRef, useState } from "react"
+import { use, useEffect, useRef, useState } from "react"
+import { routes } from "@/config/routes"
+import { useTranslations } from "next-intl"
 
 // Custom hook for animated counter
 function useCounter(
@@ -69,6 +71,7 @@ function useCounter(
   return { count, elementRef }
 }
 export default function Statistics() {
+  const t = useTranslations("statistics")
   const { count: b2bCount, elementRef: b2bRef } = useCounter(2.2, 1000, 1)
   const { count: sectorsCount, elementRef: sectorsRef } = useCounter(
     111,
@@ -137,10 +140,10 @@ export default function Statistics() {
               </Box>
               <Box className="statisticsItemContent" ref={b2bRef}>
                 <Typography variant="h3" component="h3">
-                  {b2bCount} <span>Million </span>
+                  {b2bCount} <span>{t('million')}</span>
                 </Typography>
                 <Typography variant="body1" component="p">
-                  B2B Providers
+                  {t('b2bProviders')}
                 </Typography>
               </Box>
             </Box>
@@ -161,7 +164,7 @@ export default function Statistics() {
                   {Math.round(sectorsCount)}
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Industry Sectors
+                  {t('industrySectors')}
                 </Typography>
               </Box>
             </Box>
@@ -184,7 +187,7 @@ export default function Statistics() {
                   {Math.round(productsCount)}.000
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Products
+                  {t('products')}
                 </Typography>
               </Box>
             </Box>
@@ -204,10 +207,10 @@ export default function Statistics() {
               </Box>
               <Box className="statisticsItemContent" ref={picturesRef}>
                 <Typography variant="h3" component="h3">
-                  {picturesCount} <span>Million</span>
+                  {picturesCount} <span>{t('million')}</span>
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Pictures & Video
+                  {t('picturesAndVideo')}
                 </Typography>
               </Box>
             </Box>
@@ -227,10 +230,10 @@ export default function Statistics() {
               </Box>
               <Box className="statisticsItemContent" ref={buyersRef}>
                 <Typography variant="h3" component="h3">
-                  {Math.round(buyersCount)} <span>Million</span>
+                  {Math.round(buyersCount)} <span>{t('million')}</span>
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Buyers per month
+                  {t('buyersPerMonth')}
                 </Typography>
               </Box>
             </Box>
@@ -238,8 +241,8 @@ export default function Statistics() {
           {/* statistics-item */}
         </Box>
         <Box className="actionBtn" sx={{ textAlign: "center", mt: 4 }}>
-          <Button variant="contained" href="/">
-            Get Multiple Quotes
+          <Button variant="contained" href={routes.getQuotePage}>
+            {t('getMultipleQuotes')}
           </Button>
         </Box>
       </Box>

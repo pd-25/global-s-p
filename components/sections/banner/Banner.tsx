@@ -19,9 +19,33 @@ import { Pagination, Autoplay } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import { useTranslations } from "next-intl"
+import { useRouter, useSearchParams } from "next/navigation"
+import { FormEvent, useEffect, useState } from "react"
+import { routes } from "@/config/routes"
 
 export default function Banner() {
   const t = useTranslations('banner');
+  const router = useRouter()
+      const searchParams = useSearchParams()
+      
+      const [searchQuery, setSearchQuery] = useState('')
+  
+      // Initialize/sync query from the URL
+      useEffect(() => {
+          setSearchQuery(searchParams.get('search_string') || '')
+      }, [searchParams])
+  
+      const handleSearch = (e: FormEvent) => {
+          e.preventDefault()
+          
+          const params = new URLSearchParams()
+          if (searchQuery.trim()) {
+              params.set('search_string', searchQuery.trim())
+          }
+          
+          // Always redirect to global product listing on new search
+          router.push(`${routes.productListPage}?${params.toString()}`)
+      }
   return (
     <Box
       component="section"
@@ -40,6 +64,7 @@ export default function Banner() {
             placeholder={t('searchPlaceholder')}
             variant="outlined"
             fullWidth
+            onChange={(e) => setSearchQuery(e.target.value)}
             sx={{
               "& .MuiOutlinedInput-root": {
                 fontSize: "15px",
@@ -74,7 +99,7 @@ export default function Banner() {
               },
             }}
           />
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" onClick={handleSearch}>
             <Image src={SearchIcon} alt="search-icon" width={32} height={32} />
           </Button>
         </Stack>
@@ -83,10 +108,10 @@ export default function Banner() {
           spacing={2}
           className="btnHolder"
         >
-          <Button variant="contained" href="/" sx={{ fontSize: "20px" }}>
+          <Button variant="contained" href={routes.getQuotePage} sx={{ fontSize: "20px" }}>
             {t('getQuote')}
           </Button>
-          <Button variant="outlined" href="/" sx={{ fontSize: "20px" }}>
+          <Button variant="outlined" href={routes.aboutPage} sx={{ fontSize: "20px" }}>
             {t('learnMore')}
           </Button>
         </Stack>

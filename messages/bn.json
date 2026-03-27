@@ -26,6 +26,13 @@
         "buyersPerMonth": "প্রতি মাসে ক্রেতা",
         "getMultipleQuotes": "একাধিক কোটেশন নিন"
     },
+    "categoryWiseProducts": {
+        "heading": "পণ্যের ক্যাটাগরি অনুযায়ী খুঁজুন এবং অনুপ্রাণিত হোন",
+        "noCategories": "কোনো ক্যাটাগরি পাওয়া যায়নি",
+        "sourceNow": "এখনই সোর্স করুন",
+        "viewAll": "সব দেখুন",
+        "products": "পণ্যসমূহ"
+    },
     "topBrands": {
         "title": "শীর্ষ",
         "titleHighlight": "ইলেকট্রনিক্স ব্র্যান্ড",
