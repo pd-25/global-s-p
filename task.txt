@@ -1,0 +1,7 @@
+
+Frontend:
+1. Upload the given data
+2. In the footer do the text - "Become Our Partner"
+3. Add a checkbox to accept terms and condition in the supplier create
+
+Admin:

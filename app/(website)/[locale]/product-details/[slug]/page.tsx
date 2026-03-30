@@ -249,7 +249,12 @@ export default async function ProductDetailsPage({ params }: PageProps) {
         notFound();
     }
 
-    const supplierSlug = result.data.supplier.slug;
+    // console.log('result.data----------');
+    // console.log(result.data);
+    // return null;
+    
+    
+    const supplierSlug = result?.data?.supplier?.slug;
     const supplierProductsResult = await fetchProductsBySupplier(supplierSlug, 1, 4);
     const supplierProducts = supplierProductsResult?.data || [];
 
