@@ -4,7 +4,7 @@
 .heroWrapper {
     position: relative;
     overflow: hidden;
-    height: 330px;
+    height: 410px;
 
     @include respond-to(md) {
         height: 520px;
@@ -458,7 +458,7 @@
 
                             img {
                                 height: auto;
-                                max-width: 110px;
+                                max-width: 160px;
                                 object-fit: contain;
                                 @include transition-prefixes(0.4s);
                             }
@@ -933,6 +933,11 @@
             height: 100%;
             object-fit: contain;
             object-position: right;
+
+            @media (max-width: 767px) {
+                object-fit: cover;
+                object-position: left;
+            }
         }
     }
 

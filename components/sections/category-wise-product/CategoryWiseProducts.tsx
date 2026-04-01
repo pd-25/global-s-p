@@ -15,7 +15,10 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Autoplay } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
-import type { CategoryWithSubcategories, Subcategory } from "@/interfaces/interface"
+import type {
+  CategoryWithSubcategories,
+  Subcategory,
+} from "@/interfaces/interface"
 import { useTranslations } from "next-intl"
 import { routes } from "@/config/routes"
 
@@ -25,7 +28,10 @@ function SubcategoryCard({ item }: { item: Subcategory }) {
   const t = useTranslations("categoryWiseProducts")
   return (
     <Box className="productShowcaseBox">
-      <Button href={routes.serviceProductListPage?.replace("[categoryId]", item.slug)} className="innerLink"></Button>
+      <Button
+        href={routes.serviceProductListPage?.replace("[categoryId]", item.slug)}
+        className="innerLink"
+      ></Button>
       <Box className="productShowcaseCard">
         <Box className="productShowcaseCardImage">
           <Image
@@ -46,7 +52,7 @@ function SubcategoryCard({ item }: { item: Subcategory }) {
           </Typography>
           {item.total_products > 0 && (
             <Typography variant="body1" component="p" className="stockStatus">
-              {item.total_products.toLocaleString()} {t('products')}
+              {item.total_products.toLocaleString()} {t("products")}
             </Typography>
           )}
         </Box>
@@ -98,7 +104,7 @@ function CategoryRow({ category }: { category: CategoryWithSubcategories }) {
                       component="p"
                       className="stockStatus"
                     >
-                      {category.total_products.toLocaleString()} {t('products')}
+                      {category.total_products.toLocaleString()} {t("products")}
                     </Typography>
                   )}
                   <Typography
@@ -109,8 +115,14 @@ function CategoryRow({ category }: { category: CategoryWithSubcategories }) {
                     {category.name}
                   </Typography>
                   <Box className="actionBtn">
-                    <Button variant="contained" href={routes.serviceProductListPage?.replace("[categoryId]", category.slug)}>
-                      {t('sourceNow')}
+                    <Button
+                      variant="contained"
+                      href={routes.serviceProductListPage?.replace(
+                        "[categoryId]",
+                        category.slug,
+                      )}
+                    >
+                      {t("sourceNow")}
                     </Button>
                   </Box>
                 </Box>
@@ -173,7 +185,9 @@ interface CategoryWiseProductsProps {
   categories: CategoryWithSubcategories[]
 }
 
-export default function CategoryWiseProducts({ categories }: CategoryWiseProductsProps) {
+export default function CategoryWiseProducts({
+  categories,
+}: CategoryWiseProductsProps) {
   const t = useTranslations("categoryWiseProducts")
   return (
     <Box component="section" className="categorySliderWrapper pb-0 secPadd">
@@ -181,12 +195,12 @@ export default function CategoryWiseProducts({ categories }: CategoryWiseProduct
         <AnimateOnScroll animation="fade-up">
           <Box className="sectionHeading" sx={{ textAlign: "center" }}>
             <Typography variant="h2" component="h2">
-              {t('heading')}
+              {t("heading")}
             </Typography>
           </Box>
         </AnimateOnScroll>
 
-        <AnimateOnScroll animation="fade-up" delay={0.5}>
+        <AnimateOnScroll animation="fade-up" delay={0}>
           <Box className="productShowcaseRowOuter">
             {categories.length > 0 ? (
               categories.map((category) => (
@@ -196,7 +210,7 @@ export default function CategoryWiseProducts({ categories }: CategoryWiseProduct
               // Fallback skeleton rows while data is empty / loading
               <Box sx={{ textAlign: "center", py: 6 }}>
                 <Typography variant="body1" color="text.secondary">
-                  {t('noCategories')}
+                  {t("noCategories")}
                 </Typography>
               </Box>
             )}

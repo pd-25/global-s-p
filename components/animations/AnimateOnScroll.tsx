@@ -27,16 +27,19 @@ export default function AnimateOnScroll({
   className = "",
   as: Component = "div",
 }: AnimateOnScrollProps) {
-  const { ref, isVisible, animationType, delay: animDelay, duration: animDuration } = useScrollAnimation(
-    animation,
-    {
-      threshold,
-      rootMargin,
-      triggerOnce,
-      delay,
-      duration,
-    }
-  )
+  const {
+    ref,
+    isVisible,
+    animationType,
+    delay: animDelay,
+    duration: animDuration,
+  } = useScrollAnimation(animation, {
+    threshold,
+    rootMargin,
+    triggerOnce,
+    delay,
+    duration,
+  })
 
   const combinedClassName = [
     styles.animateOnScroll,

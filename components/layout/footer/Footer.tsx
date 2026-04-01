@@ -23,12 +23,12 @@ const WORD_DELAY = 500 // ms between each word appearing
 function AnimatedBrandText({
   fontSize,
   letterSpacing,
-  flexDirection = 'column',
+  flexDirection = "column",
   gap = 0,
 }: {
   fontSize: string | Record<string, string>
   letterSpacing: string | Record<string, string>
-  flexDirection?: 'column' | 'row' | Record<string, string>
+  flexDirection?: "column" | "row" | Record<string, string>
   gap?: number | string | Record<string, number | string>
 }) {
   const [visibleCount, setVisibleCount] = useState(0)
@@ -50,19 +50,19 @@ function AnimatedBrandText({
         fontSize,
         letterSpacing,
         lineHeight: 1.1,
-        display: 'flex',
+        display: "flex",
         flexDirection,
-        alignItems: { xs: 'flex-start', md: 'center' },
+        alignItems: { xs: "flex-start", md: "center" },
         gap,
       }}
     >
       <Box
         component="span"
         sx={{
-          color: 'white',
+          color: "white",
           opacity: 0 < visibleCount ? 1 : 0,
-          transform: 0 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-          transition: 'opacity 0.4s ease, transform 0.4s ease',
+          transform: 0 < visibleCount ? "translateY(0)" : "translateY(6px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
       >
         {brandWords[0]}
@@ -70,22 +70,25 @@ function AnimatedBrandText({
       <Box
         component="span"
         sx={{
-          color: '#7FAF0D',
+          color: "#7FAF0D",
           opacity: 1 < visibleCount ? 1 : 0,
-          transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-          transition: 'opacity 0.4s ease, transform 0.4s ease',
+          transform: 1 < visibleCount ? "translateY(0)" : "translateY(6px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
       >
         {brandWords[1]}
       </Box>
-      <Box component="span" sx={{ display: 'flex', flexDirection: 'row', gap: '5px' }}>
+      <Box
+        component="span"
+        sx={{ display: "flex", flexDirection: "row", gap: "5px" }}
+      >
         <Box
           component="span"
           sx={{
-            color: 'white',
+            color: "white",
             opacity: 2 < visibleCount ? 1 : 0,
-            transform: 2 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.4s ease, transform 0.4s ease',
+            transform: 2 < visibleCount ? "translateY(0)" : "translateY(6px)",
+            transition: "opacity 0.4s ease, transform 0.4s ease",
           }}
         >
           {brandWords[2]}
@@ -93,10 +96,10 @@ function AnimatedBrandText({
         <Box
           component="span"
           sx={{
-            color: '#7FAF0D',
+            color: "#7FAF0D",
             opacity: 3 < visibleCount ? 1 : 0,
-            transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.4s ease, transform 0.4s ease',
+            transform: 3 < visibleCount ? "translateY(0)" : "translateY(6px)",
+            transition: "opacity 0.4s ease, transform 0.4s ease",
           }}
         >
           {brandWords[3]}
@@ -109,21 +112,28 @@ function AnimatedBrandText({
 import type { CategoryWithSubcategories } from "@/interfaces/interface"
 import { useTranslations } from "next-intl"
 
-export default function Footer({ categories = [] }: { categories?: CategoryWithSubcategories[] }) {
-  const displayCategories = categories.length > 0 ? categories : [
-    { name: "(SPICES & HERBS)", slug: "spices-herbs" },
-    { name: "(CLOTHING Section)", slug: "clothing" },
-    { name: "(SEAFOOD)", slug: "seafood" },
-    { name: "JUTE SECTION", slug: "jute" },
-    { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
-    { name: "Vegetables & Fruits", slug: "vegetables" },
-    { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
-    { name: "Food & Beverage", slug: "food-beverage" },
-    { name: "Tea & Coffee", slug: "tea-coffee" },
-    { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
-    { name: "Kids Toys...", slug: "toys" },
-    { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
-  ]
+export default function Footer({
+  categories = [],
+}: {
+  categories?: CategoryWithSubcategories[]
+}) {
+  const displayCategories =
+    categories.length > 0
+      ? categories
+      : [
+          { name: "(SPICES & HERBS)", slug: "spices-herbs" },
+          { name: "(CLOTHING Section)", slug: "clothing" },
+          { name: "(SEAFOOD)", slug: "seafood" },
+          { name: "JUTE SECTION", slug: "jute" },
+          { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
+          { name: "Vegetables & Fruits", slug: "vegetables" },
+          { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
+          { name: "Food & Beverage", slug: "food-beverage" },
+          { name: "Tea & Coffee", slug: "tea-coffee" },
+          { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
+          { name: "Kids Toys...", slug: "toys" },
+          { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
+        ]
 
   const customerServices = [
     { name: "About Us", link: routes.aboutPage },
@@ -131,11 +141,14 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
     { name: "FAQ", link: routes.faqPage },
     { name: "Privacy Policy", link: routes.privacyPolicyPage },
     // { name: "E-waste Policy", link: routes.eWastePolicyPage },
-    { name: "Cancellation & Return Policy", link: routes.returnCancelPolicyPage },
+    {
+      name: "Cancellation & Return Policy",
+      link: routes.returnCancelPolicyPage,
+    },
   ]
 
   const phoneNumber = "+1 202-918-2132"
-   const t = useTranslations('footer');
+  const t = useTranslations("footer")
 
   return (
     <Box
@@ -160,23 +173,62 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
           <Box>
             <Box sx={{ mb: 3 }}>
               <Box sx={{ mb: 3 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: { xs: 1.5, md: 0 } }}>
-                  <Image src={logo} alt="logo" width={300} height={40} style={{ width: '100px', height: '100px', maxWidth: '100%' }} />
-                  <Box sx={{ width: '2px', height: { xs: '48px', md: '52px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6, ml: 1, mr: 2 }} />
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: { xs: 1.5, md: 0 },
+                  }}
+                >
+                  <Image
+                    src={logo}
+                    alt="logo"
+                    width={300}
+                    height={40}
+                    style={{ width: "80px", height: "100px", maxWidth: "100%" }}
+                  />
+                  <Box
+                    sx={{
+                      width: "1px",
+                      height: { xs: "48px", md: "52px" },
+                      bgcolor: "#7FAF0D",
+                      borderRadius: "1px",
+                      opacity: 0.6,
+                      ml: 1,
+                      mr: 1,
+                    }}
+                  />
                   <AnimatedBrandText
-                    fontSize={{ xs: '14px', md: '20px' }}
-                    letterSpacing={{ xs: '1.5px', md: '2.5px' }}
-                    flexDirection={{ xs: 'column', md: 'row' }}
-                    gap={{ xs: 0, md: '8px' }}
+                    fontSize={{ xs: "14px", md: "20px" }}
+                    letterSpacing={{ xs: "1.5px", md: "2.5px" }}
+                    flexDirection={{ xs: "column", md: "row" }}
+                    gap={{ xs: 0, md: "8px" }}
                   />
                 </Box>
               </Box>
 
               <Stack direction="column" alignItems="start" spacing={2}>
-                <Button variant="contained" component={Link} href={routes.registerCompany}>
-                  {t('connectWithUs')}
+                <Button
+                  variant="contained"
+                  component={Link}
+                  href={routes.registerCompany}
+                >
+                  {t("connectWithUs")}
                 </Button>
-                <Button variant="outlined" component={Link} href={routes.store} sx={{ borderColor: "#ffffff", color: "#ffffff", display: "flex", alignItems: "center", gap: 1, transition: "all 0.3s ease" }}>
+                <Button
+                  variant="outlined"
+                  component={Link}
+                  href={routes.store}
+                  sx={{
+                    borderColor: "#ffffff",
+                    color: "#ffffff",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                    transition: "all 0.3s ease",
+                  }}
+                >
                   <Image src={storeIcon} alt="store-icon" />
                   Visit Our Store
                 </Button>
@@ -327,17 +379,25 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
                       lineHeight: 1.6,
                       textDecoration: "none",
                       transition: "color 0.3s ease",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
-                    onMouseOver={e => (e.currentTarget.style.color = "#7FAF0D")}
-                    onMouseOut={e => (e.currentTarget.style.color = "#ffffff")}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#7FAF0D")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.color = "#ffffff")
+                    }
                   >
                     {category.name} - ({category.total_products})
                   </Link>
                 </Box>
               ))}
             </Stack>
-            <Button variant="contained" component={Link} href={routes.productsServicesPage}>
+            <Button
+              variant="contained"
+              component={Link}
+              href={routes.productsServicesPage}
+            >
               Explore More
             </Button>
           </Box>
@@ -389,8 +449,12 @@ export default function Footer({ categories = [] }: { categories?: CategoryWithS
                       textDecoration: "none",
                       transition: "color 0.3s ease",
                     }}
-                    onMouseOver={e => (e.currentTarget.style.color = "#7FAF0D")}
-                    onMouseOut={e => (e.currentTarget.style.color = "#ffffff")}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#7FAF0D")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.color = "#ffffff")
+                    }
                   >
                     {service.name}
                   </Link>
