@@ -96,7 +96,8 @@ function AnimatedBrandText({
         <Box
           component="span"
           sx={{
-            color: '#7FAF0D',
+            // color: '#7FAF0D',
+            color: 'white',
             opacity: 3 < visibleCount ? 1 : 0,
             transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
             transition: 'opacity 0.4s ease, transform 0.4s ease',

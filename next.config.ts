@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'loremflickr.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.globalsourceexpoltd.com'
       }
 
     ],

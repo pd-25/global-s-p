@@ -17,7 +17,9 @@ import {
     Avatar,
     InputAdornment,
     Tooltip,
-    FormHelperText
+    FormHelperText,
+    FormControlLabel,
+    Checkbox
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -30,6 +32,8 @@ import { useTranslations } from 'next-intl';
 import { Country, SupplierType } from '@/interfaces/interface';
 import { websiteEndpoints } from '@/config/websiteEndpoints';
 import apiService from '@/service/apiService';
+import Link from 'next/link';
+import { routes } from '@/config/routes';
 
 export default function RegisterCompanyForm({ countries, supplierTypes }: { countries: Country[], supplierTypes: SupplierType[] }) {
     const t = useTranslations('registerCompany');
@@ -52,6 +56,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
         deliveryArea: '',
         companyType: '',
         businessSector: '',
+        isAcceptTerms: false,
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -88,6 +93,10 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
         if (!formData.companyType) newErrors.companyType = reqMsg;
         if (!formData.businessSector) newErrors.businessSector = reqMsg;
 
+        if (!formData.isAcceptTerms) {
+            newErrors.isAcceptTerms = t('validation.acceptTerms', { defaultValue: 'You must accept the Terms and Conditions and Privacy Policy' });
+        }
+
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length > 0) {
@@ -120,6 +129,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
             formDataObj.append('delivery_area', formData.deliveryArea);
             formDataObj.append('supplier_type_id', String(formData.companyType));
             formDataObj.append('business_sector', formData.businessSector);
+            formDataObj.append('is_accept_terms', String(formData.isAcceptTerms));
             
             // Unmapped fields provided in curl standard payload
             formDataObj.append('about', 'Company registration context'); 
@@ -208,7 +218,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                         {t('title')}
                     </Typography>
                     <Typography align="center" sx={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', maxWidth: '650px', mx: 'auto', lineHeight: 1.6 }}>
-                        Join thousands of verified suppliers on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.
+                        {t('description', { defaultValue: 'Join thousands of verified suppliers on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.' })}
                     </Typography>
                 </Container>
             </Box>
@@ -372,7 +382,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                                     value={formData.address2}
                                     onChange={handleChange('address2')}
                                     sx={inputStyles}
-                                    placeholder="Suite, Building, Floor (optional)"
+                                    placeholder={t('sections.address.placeholders.address2', { defaultValue: 'Suite, Building, Floor (optional)' })}
                                 />
                             </Grid>
                             <Grid size={{ xs: 12, md: 6 }}>
@@ -433,7 +443,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                                 <TextField
                                     fullWidth
                                     label={t('sections.contact.fields.website')}
-                                    placeholder="e.g. www.company.com"
+                                    placeholder={t('sections.contact.placeholders.website', { defaultValue: 'e.g. www.company.com' })}
                                     value={formData.website}
                                     onChange={handleChange('website')}
                                     sx={inputStyles}
@@ -560,6 +570,48 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                             </Grid>
                         </Grid>
                     </Card>
+
+                    {/* Terms and Conditions Checkbox */}
+                    <Box sx={{ px: 1 }}>
+                        <FormControl error={!!errors.isAcceptTerms} component="fieldset">
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={formData.isAcceptTerms}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, isAcceptTerms: e.target.checked });
+                                            if (e.target.checked && errors.isAcceptTerms) {
+                                                setErrors({ ...errors, isAcceptTerms: '' });
+                                            }
+                                        }}
+                                        sx={{
+                                            color: errors.isAcceptTerms ? '#d32f2f' : '#7FAF0D',
+                                            '&.Mui-checked': {
+                                                color: '#7FAF0D',
+                                            },
+                                        }}
+                                    />
+                                }
+                                label={
+                                    <Typography variant="body2" sx={{ color: errors.isAcceptTerms ? '#d32f2f' : 'text.secondary' }}>
+                                        {t('terms.iAcceptThe', { defaultValue: 'I accept the ' })}
+                                        <Link href={routes.termsAndConditionsPage} style={{ color: '#014B35', fontWeight: 600, textDecoration: 'none' }} target="_blank">
+                                            {t('terms.termsAndConditions', { defaultValue: 'Terms and Conditions' })}
+                                        </Link>
+                                        {t('terms.and', { defaultValue: ' and ' })}
+                                        <Link href={routes.privacyPolicyPage} style={{ color: '#014B35', fontWeight: 600, textDecoration: 'none' }} target="_blank">
+                                            {t('terms.privacyPolicy', { defaultValue: 'Privacy Policy' })}
+                                        </Link>
+                                        {t('terms.acceptMsg', { defaultValue: '' })}
+                                        *
+                                    </Typography>
+                                }
+                            />
+                            {errors.isAcceptTerms && (
+                                <FormHelperText error sx={{ ml: 4 }}>{errors.isAcceptTerms}</FormHelperText>
+                            )}
+                        </FormControl>
+                    </Box>
 
                     {/* Submit Area */}
                     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 6 }}>

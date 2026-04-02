@@ -105,6 +105,7 @@
     },
     "registerCompany": {
         "title": "Create your company profile",
+        "description": "Join thousands of verified suppliers on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.",
         "sections": {
             "companyInfo": {
                 "title": "Company information",
@@ -123,6 +124,9 @@
                     "address2": "Address line 2 (optional)",
                     "postalCode": "Postal code",
                     "city": "City"
+                },
+                "placeholders": {
+                    "address2": "Suite, Building, Floor (optional)"
                 }
             },
             "contact": {
@@ -133,10 +137,14 @@
                     "website": "Company website (optional)",
                     "countryCode": "Country code",
                     "phone": "Company phone number"
+                },
+                "placeholders": {
+                    "website": "e.g. www.company.com"
                 }
             },
             "business": {
                 "title": "Tell us about your business",
+                "subtitle": "Help buyers understand your capabilities and operations better.",
                 "fields": {
                     "employees": "Number of employees",
                     "deliveryArea": "Delivery area",
@@ -151,6 +159,22 @@
                 }
             }
         },
-        "submit": "Publish company profile"
+        "submit": "Publish company profile",
+        "submitting": "Submitting...",
+        "successTitle": "Company Registered Successfully!",
+        "successMessage": "Thank you for registering on our platform. Your company details have been submitted and are pending verification.",
+        "validation": {
+            "required": "This field is required",
+            "invalidEmail": "Invalid email format",
+            "invalidWebsite": "Start with http:// or https://",
+            "acceptTerms": "You must accept the Terms and Conditions and Privacy Policy"
+        },
+        "terms": {
+            "iAcceptThe": "I accept the ",
+            "termsAndConditions": "Terms and Conditions",
+            "and": " and ",
+            "privacyPolicy": "Privacy Policy",
+            "acceptMsg": ""
+        }
     }
 }
