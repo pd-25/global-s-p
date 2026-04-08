@@ -24,7 +24,8 @@
         "products": "পণ্য",
         "picturesVideo": "ছবি ও ভিডিও",
         "buyersPerMonth": "প্রতি মাসে ক্রেতা",
-        "getMultipleQuotes": "একাধিক কোটেশন নিন"
+        "getMultipleQuotes": "একাধিক কোটেশন নিন",
+        "picturesAndVideo": "ছবি ও ভিডিও"
     },
     "categoryWiseProducts": {
         "heading": "পণ্যের ক্যাটাগরি অনুযায়ী খুঁজুন এবং অনুপ্রাণিত হোন",

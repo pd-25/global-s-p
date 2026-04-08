@@ -30,6 +30,14 @@ async function getCategories(): Promise<CategoryWithSubcategories[]> {
 
 export default async function ProductsServices() {
   const categories = await getCategories()
+  categories.push({
+    id: 0,
+    slug: "others",
+    name: "Others",
+    image: "/images/others_category.jpeg",
+    total_products: 0,
+    subcategories: [],
+  })
 
   // Compute stat totals from live data
   const totalProducts = categories.reduce((sum, c) => sum + c.total_products, 0)
@@ -104,6 +112,7 @@ export default async function ProductsServices() {
               {categories.map((cat, idx) => (
                 <CategoryAccordionCard key={cat.id} category={cat} index={idx} />
               ))}
+              {/* <CategoryAccordionCard key={0} category={cat} index={idx} /> */}
             </Box>
           ) : (
             <Box

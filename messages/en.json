@@ -24,7 +24,8 @@
         "products": "Products",
         "picturesVideo": "Pictures & Video",
         "buyersPerMonth": "Buyers per month",
-        "getMultipleQuotes": "Get Multiple Quotes"
+        "getMultipleQuotes": "Get Multiple Quotes",
+        "picturesAndVideo": "Pictures and videos"
     },
     "categoryWiseProducts": {
         "heading": "Search by Product Category And get inspired",

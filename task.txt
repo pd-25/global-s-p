@@ -5,3 +5,13 @@ Frontend:
 3. Add a checkbox to accept terms and condition in the supplier create
 
 Admin:
+
+
+
+
+
+Client-
+1. logo Size
+2. add others in product&service list
+3. Increse size of category name
+4. Contact Supplier -> submt inquery

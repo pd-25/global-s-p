@@ -28,8 +28,13 @@ export default function SingleProductCard({
     slug,
     verified = true,
 }: SingleProductCardProps) {
+    console.log('supplierFlagUrl ---- ', supplierFlagUrl);
+    
     const hasImage = Boolean(imageUrl)
     const hasFlag = Boolean(supplierFlagUrl)
+
+    console.log('hasFlag ---- ', hasFlag);
+
 
     return (
         <Box className="lisitngCard">
@@ -82,7 +87,7 @@ export default function SingleProductCard({
                         />
                     ) : (
                         <Image
-                            src={placeholderFlag}
+                            src={"placeholderFlag"}
                             alt="flag"
                             width={27}
                             height={27}
@@ -124,7 +129,7 @@ export default function SingleProductCard({
                 </Typography>
                 <Box className="actionBtn" sx={{ mt: 2 }}>
                     <Button variant="contained" href={routes.productContactPage.replace("[slug]", slug)}>
-                        Contact Supplier
+                        Submit Inquiry
                     </Button>
                 </Box>
             </Box>

@@ -1,8 +1,8 @@
 import { API_BASE_URL } from '@/lib/constants';
 import { getAuthToken } from '@/lib/cookies';
 
-// const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
-const BASE_URL = API_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+// const BASE_URL = API_BASE_URL;
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -112,7 +112,7 @@ const apiService = {
             const qs = searchParams.toString();
             if (qs) fullUrl += `?${qs}`;
         }
-        console.log('fullUrl - get', fullUrl);
+        // console.log('fullUrl - get', fullUrl);
 
         const headers = buildHeaders();
         // Ensure Accept header is always present
