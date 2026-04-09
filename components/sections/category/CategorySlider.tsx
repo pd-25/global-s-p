@@ -12,6 +12,7 @@ import Container from "@mui/material/Container"
 import Link from "next/link"
 import { useSliderNavigation } from "@/hooks/useSliderNavigation"
 import { CountryImage, ProductPrimaryImage } from "@/interfaces/interface"
+import { routes } from "@/config/routes"
 
 interface Image {
   image: string
@@ -19,6 +20,7 @@ interface Image {
 interface CategoryItem {
   id: number
   title: string
+  slug: string
   primary_image: ProductPrimaryImage | null
   country: CountryImage | null
 }
@@ -111,7 +113,7 @@ export default function CategorySlider({ recommendedProducts }: CategorySliderPr
           {recommendedProducts.map((product) => (
             <SwiperSlide key={product.id}>
               <Box className="categoryItem">
-                <Link href={`/category/${product.id}`}></Link>
+                <Link href={`${routes.productDetails.replace("[slug]", product?.slug)}`} ></Link>
                 <Box className="categoryItemImage">
                   <Box className="holder">
                     <Image

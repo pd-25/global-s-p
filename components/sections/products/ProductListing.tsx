@@ -136,7 +136,7 @@ export default function ProductListing({
             >
               <SingleProductCard
                 imageUrl={resolveImageUrl(product.primary_image?.image)}
-                supplierFlagUrl={resolveImageUrl(product.country?.country_flag)}
+                supplierFlagUrl={product.country?.country_flag ?? ""}
                 supplierName={product.supplier?.name ?? ""}
                 title={product.title}
                 slug={product.slug}

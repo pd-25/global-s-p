@@ -77,6 +77,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
 
     // Use API images; fall back gracefully if empty
     const productImages: string[] = product.images.map((img) => img.image)
+    console.log("productImages ---- ", productImages);
 
     // Find the preview image (or first image as fallback)
     const previewImage =
@@ -141,6 +142,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                     className="mainSwiper"
                                 >
                                     {productImages.map((imgUrl, idx) => (
+                                        console.log("imgUrl ---- ", imgUrl),
                                         <SwiperSlide key={idx}>
                                             <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
                                                 <Image
@@ -149,8 +151,8 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                                     fill
                                                     style={{ objectFit: "cover" }}
                                                     priority={idx === 0}
+                                                    unoptimized
                                                 />
-                                                {/* Gentle dark gradient at the bottom to give it depth */}
                                                 <Box sx={{
                                                     position: 'absolute',
                                                     bottom: 0, left: 0, right: 0,
@@ -214,6 +216,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                                     alt={`${product.title} thumb ${idx + 1}`}
                                                     fill
                                                     style={{ objectFit: "cover", borderRadius: '10px' }}
+                                                    unoptimized
                                                 />
                                             </Box>
                                         </SwiperSlide>
@@ -390,6 +393,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                             width={20}
                                             height={13}
                                             style={{ objectFit: "cover", borderRadius: "2px" }}
+                                            unoptimized
                                         />
                                         <Typography variant="body2" sx={{ color: "#fff", fontWeight: 600, fontSize: "13px" }}>
                                             {product.country.name}
@@ -438,6 +442,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                     width={38}
                                     height={38}
                                     style={{ borderRadius: "8px", objectFit: "cover", flexShrink: 0 }}
+                                    unoptimized
                                 />
                                 <Box sx={{ minWidth: 0 }}>
                                     <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.4)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.08em", display: "block" }}>
