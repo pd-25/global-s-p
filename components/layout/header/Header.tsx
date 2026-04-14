@@ -170,7 +170,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            py: 2,
+            py: { xs: 1.5, md: 1 },
           }}
         >
           {/* Logo */}
@@ -178,7 +178,7 @@ export default function Header() {
             sx={{
               display: "flex",
               alignItems: "center",
-              height: { xs: 40, md: 85 },
+              height: { xs: 40, md: 60 },
               maxWidth: { xs: 180, md: 500 },
             }}
           >
@@ -189,9 +189,9 @@ export default function Header() {
                 width={220}
                 height={95}
                 className="logo"
-                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "85px" }}
+                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "90px" }}
               />
-              <Box sx={{ width: '2px', height: { xs: '36px', md: '65px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+              <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
               <AnimatedBrandText
                 fontSize={{ xs: '12px', md: '20px' }}
                 letterSpacing={{ xs: '1.5px', md: '2.5px' }}

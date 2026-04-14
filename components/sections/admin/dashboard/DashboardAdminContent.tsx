@@ -180,7 +180,7 @@ export default function DashboardAdminContent() {
             <Quotes showViewAll={true}/>
 
             {/* Recent Activity Section */}
-            <Grid container spacing={3}>
+            {/* <Grid container spacing={3}>
                 <Grid size={{ xs: 12 }}>
                     <Paper
                         elevation={0}
@@ -235,7 +235,7 @@ export default function DashboardAdminContent() {
                         </TableContainer>
                     </Paper>
                 </Grid>
-            </Grid>
+            </Grid> */}
 
             {/* Action Menu (Shared for now) */}
             <Menu

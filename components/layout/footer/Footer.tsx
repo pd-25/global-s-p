@@ -121,19 +121,19 @@ export default function Footer({
     categories.length > 0
       ? categories
       : [
-          { name: "(SPICES & HERBS)", slug: "spices-herbs" },
-          { name: "(CLOTHING Section)", slug: "clothing" },
-          { name: "(SEAFOOD)", slug: "seafood" },
-          { name: "JUTE SECTION", slug: "jute" },
-          { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
-          { name: "Vegetables & Fruits", slug: "vegetables" },
-          { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
-          { name: "Food & Beverage", slug: "food-beverage" },
-          { name: "Tea & Coffee", slug: "tea-coffee" },
-          { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
-          { name: "Kids Toys...", slug: "toys" },
-          { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
-        ]
+        { name: "(SPICES & HERBS)", slug: "spices-herbs" },
+        { name: "(CLOTHING Section)", slug: "clothing" },
+        { name: "(SEAFOOD)", slug: "seafood" },
+        { name: "JUTE SECTION", slug: "jute" },
+        { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
+        { name: "Vegetables & Fruits", slug: "vegetables" },
+        { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
+        { name: "Food & Beverage", slug: "food-beverage" },
+        { name: "Tea & Coffee", slug: "tea-coffee" },
+        { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
+        { name: "Kids Toys...", slug: "toys" },
+        { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
+      ]
 
   const customerServices = [
     { name: "About Us", link: routes.aboutPage },
@@ -147,7 +147,8 @@ export default function Footer({
     },
   ]
 
-  const phoneNumber = "+1 202-918-2132"
+  const phoneNumber = "+447572758910"
+  const emailAddress = "Info@globalsourceexpoltd.com"
   const t = useTranslations("footer")
 
   return (
@@ -208,7 +209,7 @@ export default function Footer({
                 </Box>
               </Box>
 
-              <Stack direction="column" alignItems="start" spacing={2}>
+              {/* <Stack direction="column" alignItems="start" spacing={2}>
                 <Button
                   variant="contained"
                   component={Link}
@@ -232,7 +233,7 @@ export default function Footer({
                   <Image src={storeIcon} alt="store-icon" />
                   Visit Our Store
                 </Button>
-              </Stack>
+              </Stack> */}
             </Box>
 
             {/* Contact Us */}
@@ -251,7 +252,7 @@ export default function Footer({
               </Typography>
               <Stack direction="column" spacing={2}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <Icon name="whatsapp" width={20} height={20} />
+                  <Icon name="email" width={20} height={20} />
                   <Box>
                     <Typography
                       variant="body1"
@@ -262,7 +263,7 @@ export default function Footer({
                         color: "#ffffff",
                       }}
                     >
-                      Whats App
+                      Email Us
                     </Typography>
                     <Typography
                       variant="body1"
@@ -273,7 +274,7 @@ export default function Footer({
                         color: "#ffffff",
                       }}
                     >
-                      {phoneNumber}
+                      {emailAddress}
                     </Typography>
                   </Box>
                 </Box>
