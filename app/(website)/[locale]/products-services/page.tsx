@@ -12,6 +12,7 @@ import type {
 } from "@/interfaces/interface"
 import apiService from "@/service/apiService"
 import "../../product-services.scss"
+import { routes } from "@/config/routes"
 
 // ─── SSR Data Fetcher ─────────────────────────────────────────────────────────
 
@@ -79,7 +80,7 @@ export default async function ProductsServices() {
             </Typography>
 
             {/* ── CTA Button ───────────────────────────────────────── */}
-            <NextLink href="/products&searvices/products" className="ps-hero__cta-link">
+            <NextLink href={routes.productListPage} className="ps-hero__cta-link">
               <span className="ps-hero__cta">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
