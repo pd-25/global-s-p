@@ -21,13 +21,18 @@ import {
 } from '@mui/material';
 import { pages } from '@/lib/constants';
 import { adminRoutes } from '@/config/routes';
+import { useTheme } from '@mui/material/styles';
+import { ColorModeContext } from '@/components/providers/AdminThemeRegistry';
 
 
 
 export default function Header() {
   const pathname = usePathname();
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [anchorElTools, setAnchorElTools] = React.useState<null | HTMLElement>(null);
+  const [anchorElSupplier, setAnchorElSupplier] = React.useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -45,8 +50,16 @@ export default function Header() {
     setAnchorElTools(null);
   };
 
+  const handleOpenSupplierMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElSupplier(event.currentTarget);
+  };
+
+  const handleCloseSupplierMenu = () => {
+    setAnchorElSupplier(null);
+  };
+
   return (
-    <AppBar position="sticky" sx={{ bgcolor: '#ffffff', color: 'text.primary', boxShadow: '0px 1px 15px rgba(0,0,0,0.04)' }}>
+    <AppBar position="sticky" sx={{ bgcolor: 'background.paper', color: 'text.primary', boxShadow: '0px 1px 15px rgba(0,0,0,0.04)' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', height: '80px', gap: 2 }}>
 
@@ -150,6 +163,63 @@ export default function Header() {
                 </Link>
               )
             })}
+            {/* Supplier Menu */}
+            <Box
+              onClick={handleOpenSupplierMenu}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+                my: 1,
+                px: 2,
+                py: 1,
+                color: Boolean(anchorElSupplier) ? 'primary.main' : 'text.secondary',
+                bgcolor: Boolean(anchorElSupplier) ? 'primary.light' : 'transparent',
+                fontWeight: Boolean(anchorElSupplier) ? 700 : 500,
+                textTransform: 'none',
+                fontSize: '0.9rem',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: Boolean(anchorElSupplier) ? 'primary.light' : 'grey.50',
+                  color: 'primary.main'
+                },
+                '&:hover .material-icons': {
+                  color: 'primary.main'
+                }
+              }}
+            >
+              Supplier
+              <Icon>arrow_drop_down</Icon>
+            </Box>
+            <Menu
+              anchorEl={anchorElSupplier}
+              open={Boolean(anchorElSupplier)}
+              onClose={handleCloseSupplierMenu}
+              sx={{ mt: 1 }}
+              PaperProps={{
+                sx: {
+                  mt: 1.5,
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                  borderRadius: '12px',
+                  minWidth: '200px'
+                }
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
+              <MenuItem onClick={handleCloseSupplierMenu} component={Link} href="/gse/admin/suppliers">
+                <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>storefront</Icon>
+                <Typography variant="inherit">Supplier List</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseSupplierMenu} component={Link} href="/gse/admin/supplier-types">
+                <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>category</Icon>
+                <Typography variant="inherit">Supplier Types</Typography>
+              </MenuItem>
+            </Menu>
+
+            {/* Tools Menu */}
 
             <Box
               onClick={handleOpenToolsMenu}
@@ -255,6 +325,13 @@ export default function Header() {
               <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2, minWidth: '150px' }}>
                 <Icon sx={{ color: 'text.secondary' }}>person</Icon>
                 <Typography>Profile</Typography>
+              </MenuItem>
+              <MenuItem onClick={() => {
+                colorMode.toggleColorMode();
+                handleCloseUserMenu();
+              }} sx={{ gap: 2 }}>
+                <Icon sx={{ color: 'text.secondary' }}>{theme.palette.mode === 'dark' ? 'light_mode' : 'dark_mode'}</Icon>
+                <Typography>{theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'}</Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2 }}>
                 <Icon sx={{ color: 'text.secondary' }}>settings</Icon>

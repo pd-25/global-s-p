@@ -209,7 +209,7 @@ export default function Footer({
                 </Box>
               </Box>
 
-              {/* <Stack direction="column" alignItems="start" spacing={2}>
+              <Stack direction="column" alignItems="start" spacing={2}>
                 <Button
                   variant="contained"
                   component={Link}
@@ -217,7 +217,7 @@ export default function Footer({
                 >
                   {t("connectWithUs")}
                 </Button>
-                <Button
+                {/* <Button
                   variant="outlined"
                   component={Link}
                   href={routes.store}
@@ -232,8 +232,8 @@ export default function Footer({
                 >
                   <Image src={storeIcon} alt="store-icon" />
                   Visit Our Store
-                </Button>
-              </Stack> */}
+                </Button> */}
+              </Stack>
             </Box>
 
             {/* Contact Us */}
