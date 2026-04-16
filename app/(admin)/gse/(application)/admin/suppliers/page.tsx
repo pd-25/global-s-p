@@ -25,6 +25,7 @@ import {
 } from '@mui/material';
 import apiService from '@/service/apiService';
 import { endpoints } from '@/config/adminEndpoints';
+import AddSuppliersModal from '@/components/ui/modal/AddSuppliersModal';
 
 // ─── Types matching API response (aligned with admin list pattern) ───────────
 
@@ -65,6 +66,8 @@ export default function SupplierPage() {
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [openAddModal, setOpenAddModal] = useState(false);
+  const [editSupplierKey, setEditSupplierKey] = useState<string | null>(null);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -186,6 +189,10 @@ export default function SupplierPage() {
             variant="contained"
             color="primary"
             startIcon={<Icon>add</Icon>}
+            onClick={() => {
+              setEditSupplierKey(null);
+              setOpenAddModal(true);
+            }}
             sx={{
               textTransform: 'none',
               fontWeight: 600,
@@ -328,6 +335,10 @@ export default function SupplierPage() {
                       <Stack direction="row" spacing={1} justifyContent="flex-end">
                         <IconButton
                           size="small"
+                          onClick={() => {
+                            setEditSupplierKey(row.slug || String(row.id));
+                            setOpenAddModal(true);
+                          }}
                           sx={{
                             color: 'primary.main',
                             bgcolor: 'primary.50',
@@ -360,6 +371,16 @@ export default function SupplierPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+
+      <AddSuppliersModal
+        open={openAddModal}
+        editSupplierKey={editSupplierKey}
+        onClose={() => {
+          setOpenAddModal(false);
+          setEditSupplierKey(null);
+        }}
+        onSuccess={fetchSuppliers}
+      />
     </Container>
   );
 }
