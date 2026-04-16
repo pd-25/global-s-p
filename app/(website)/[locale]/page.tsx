@@ -50,7 +50,7 @@ async function getCategoryWiseSubcategories(): Promise<CategoryWithSubcategories
     const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
       url
     )
-    console.log('json?.data- ', json?.data);
+    // console.log('json?.data- ', json?.data);
     return json?.data ?? []
   } catch {
     return []

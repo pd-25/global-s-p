@@ -12,6 +12,8 @@ import { SupplierInfoProps } from "@/interfaces/interface";
 
 
 export default function SupplierInfo({ supplier }: SupplierInfoProps) {
+    console.log('supplier - -', supplier);
+    
     const [infoAnchorEl, setInfoAnchorEl] = useState<HTMLElement | null>(null)
     const [showPhone, setShowPhone] = useState(false)
     const [showVat, setShowVat] = useState(false)
@@ -63,14 +65,14 @@ export default function SupplierInfo({ supplier }: SupplierInfoProps) {
                     {/* Country Flag + Name */}
                     <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 2 }}>
                         <Image
-                            src={supplier.country.country_flag}
-                            alt={supplier.country.name}
+                            src={supplier?.country?.country_flag}
+                            alt={supplier?.country?.name}
                             width={27}
                             height={18}
                             style={{ objectFit: "cover", borderRadius: "2px" }}
                         />
                         <Typography variant="body2" sx={{ color: "#000000", fontSize: "14px !important", fontWeight: 400 }}>
-                            {supplier.country.name}
+                            {supplier?.country?.name}
                         </Typography>
                     </Stack>
 
@@ -189,7 +191,7 @@ export default function SupplierInfo({ supplier }: SupplierInfoProps) {
 
                     <Stack direction="row" spacing={1} alignItems="center">
                         <Icon name="supplierType" width={24} height={24} />
-                        <Typography variant="body2">{supplier.supplier_type.name}</Typography>
+                        <Typography variant="body2">{supplier?.supplier_type?.name}</Typography>
                     </Stack>
                 </Box>
 

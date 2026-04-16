@@ -96,7 +96,8 @@ function AnimatedBrandText({
         <Box
           component="span"
           sx={{
-            color: '#7FAF0D',
+            // color: '#7FAF0D',
+            color: 'white',
             opacity: 3 < visibleCount ? 1 : 0,
             transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
             transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -169,7 +170,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            py: 2,
+            py: { xs: 1.5, md: 1 },
           }}
         >
           {/* Logo */}
@@ -178,24 +179,24 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               height: { xs: 40, md: 60 },
-              maxWidth: { xs: 180, md: 400 },
+              maxWidth: { xs: 180, md: 500 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '8px', minWidth: 'max-content' }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '12px', minWidth: 'max-content' }}>
               <Image
                 src={logo}
                 alt="logo"
-                width={200}
-                height={86}
+                width={220}
+                height={95}
                 className="logo"
-                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80px" }}
+                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "90px" }}
               />
-              <Box sx={{ width: '2px', height: { xs: '36px', md: '52px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+              <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
               <AnimatedBrandText
-                fontSize={{ xs: '12px', md: '16px' }}
+                fontSize={{ xs: '12px', md: '20px' }}
                 letterSpacing={{ xs: '1.5px', md: '2.5px' }}
                 flexDirection={{ xs: 'column', md: 'row' }}
-                gap={{ xs: 0, md: '6px' }}
+                gap={{ xs: 0, md: '8px' }}
               />
             </Link>
           </Box>

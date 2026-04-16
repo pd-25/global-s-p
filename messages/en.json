@@ -24,7 +24,8 @@
         "products": "Products",
         "picturesVideo": "Pictures & Video",
         "buyersPerMonth": "Buyers per month",
-        "getMultipleQuotes": "Get Multiple Quotes"
+        "getMultipleQuotes": "Get Multiple Quotes",
+        "picturesAndVideo": "Pictures and videos"
     },
     "categoryWiseProducts": {
         "heading": "Search by Product Category And get inspired",
@@ -47,7 +48,7 @@
         "description": "We have had perhaps the best experience of getting our children counselled for their career with the psychologist at Tera Parichay. She was not only incredibly knowledgeable and helpful but also ethical. While we had tried services of other \"career"
     },
     "partners": {
-        "heading": "Become Our Partner",
+        "heading": "Become Global Partner",
         "subtitle": "Make Passive Income Online",
         "forPartners": "For Partners,",
         "andTheOnes": "and the ones",
@@ -79,7 +80,7 @@
         }
     },
     "footer": {
-        "connectWithUs": "Become Our Partner",
+        "connectWithUs": "Become Global Partner",
         "visitOurStore": "Visit Our Store",
         "contactUs": "Contact Us",
         "whatsApp": "Whats App",
@@ -105,6 +106,7 @@
     },
     "registerCompany": {
         "title": "Create your company profile",
+        "description": "Join thousands of verified suppliers on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.",
         "sections": {
             "companyInfo": {
                 "title": "Company information",
@@ -123,6 +125,9 @@
                     "address2": "Address line 2 (optional)",
                     "postalCode": "Postal code",
                     "city": "City"
+                },
+                "placeholders": {
+                    "address2": "Suite, Building, Floor (optional)"
                 }
             },
             "contact": {
@@ -133,10 +138,14 @@
                     "website": "Company website (optional)",
                     "countryCode": "Country code",
                     "phone": "Company phone number"
+                },
+                "placeholders": {
+                    "website": "e.g. www.company.com"
                 }
             },
             "business": {
                 "title": "Tell us about your business",
+                "subtitle": "Help buyers understand your capabilities and operations better.",
                 "fields": {
                     "employees": "Number of employees",
                     "deliveryArea": "Delivery area",
@@ -151,6 +160,22 @@
                 }
             }
         },
-        "submit": "Publish company profile"
+        "submit": "Publish company profile",
+        "submitting": "Submitting...",
+        "successTitle": "Company Registered Successfully!",
+        "successMessage": "Thank you for registering on our platform. Your company details have been submitted and are pending verification.",
+        "validation": {
+            "required": "This field is required",
+            "invalidEmail": "Invalid email format",
+            "invalidWebsite": "Start with http:// or https://",
+            "acceptTerms": "You must accept the Terms and Conditions and Privacy Policy"
+        },
+        "terms": {
+            "iAcceptThe": "I accept the ",
+            "termsAndConditions": "Terms and Conditions",
+            "and": " and ",
+            "privacyPolicy": "Privacy Policy",
+            "acceptMsg": ""
+        }
     }
 }

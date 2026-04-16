@@ -79,8 +79,25 @@ export default function CategoryAccordionCard({
 
         {/* Info */}
         <Box className="ps-cat-card__info">
-          <Typography className="ps-cat-card__name">{category.name}</Typography>
+          <Typography
+            className="ps-cat-card__name"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
+              background: 'linear-gradient(135deg, #054934 0%, #7FAF0D 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textTransform: 'capitalize',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2,
+              mb: 0.5,
+              display: 'inline-block',
+            }}
+          >
+            {category.name}
+          </Typography>
           <Box className="ps-cat-card__pills">
+            {/* {category?.total_products > 0 && ( */}
             <Box className="ps-pill ps-pill--primary">
               <svg
                 width="11"
@@ -93,21 +110,25 @@ export default function CategoryAccordionCard({
                 <rect x="2" y="7" width="20" height="14" rx="2" />
                 <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
               </svg>
-              {category.total_products.toLocaleString()} Products
+              {category.total_products} Products
             </Box>
-            <Box className="ps-pill ps-pill--secondary">
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M4 6h16M4 12h10M4 18h6" />
-              </svg>
-              {category.subcategories.length} Subcategories
-            </Box>
+            {/* )} */}
+            {category.subcategories.length > 0 && (
+              <Box className="ps-pill ps-pill--secondary">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path d="M4 6h16M4 12h10M4 18h6" />
+                </svg>
+                {category.subcategories.length} Subcategories
+              </Box>
+            )}
+
           </Box>
         </Box>
 
@@ -116,15 +137,27 @@ export default function CategoryAccordionCard({
           className="ps-cat-card__end"
           onClick={(e) => e.stopPropagation()}
         >
-          <Link href={`${routes.serviceProductListPage.replace("[categoryId]", category.slug)}`} className="ps-sub-link">
-            <Button
-              className="ps-cat-card__cta"
-              variant="contained"
-              tabIndex={-1}
-            >
-              Source Now
-            </Button>
-          </Link>
+          {category.slug != "others" ? (
+            <Link href={`${routes.serviceProductListPage.replace("[categoryId]", category.slug)}`} className="ps-sub-link">
+              <Button
+                className="ps-cat-card__cta"
+                variant="contained"
+                tabIndex={-1}
+              >
+                Source Now
+              </Button>
+            </Link>
+          ) : (
+            <Link href={`${routes.productListPage}`} className="ps-sub-link">
+              <Button
+                className="ps-cat-card__cta"
+                variant="contained"
+                tabIndex={-1}
+              >
+                View others
+              </Button>
+            </Link>
+          )}
         </Box>
 
         {/* Chevron */}

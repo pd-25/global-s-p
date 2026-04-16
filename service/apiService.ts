@@ -112,7 +112,7 @@ const apiService = {
             const qs = searchParams.toString();
             if (qs) fullUrl += `?${qs}`;
         }
-        console.log('fullUrl - get', fullUrl);
+        // console.log('fullUrl - get', fullUrl);
 
         const headers = buildHeaders();
         // Ensure Accept header is always present

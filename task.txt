@@ -1,7 +1,17 @@
 
-Frontend:
-1. Upload the given data
-2. In the footer do the text - "Become Our Partner"
-3. Add a checkbox to accept terms and condition in the supplier create
 
 Admin:
+
+Admin - suppliers
+1. list is done , only check if all works good
+2. Add supplier-> onlcick button the modal with form(form will have all api input fields)
+3. Edit -> modal open with clicked data then update, if nothing changes dont call the update api
+4. delete, onclick show confirmation then proceed
+
+
+
+Client-
+1. logo. new design
+2. content
+3. header connnect button for buier with less form
+4. Become global partner button in footer

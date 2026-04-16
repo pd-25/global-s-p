@@ -135,8 +135,8 @@ export default function ProductClientView({ product, supplier, supplierProducts 
                                     {/* Left: supplier logo + label */}
                                     <Stack direction="row" spacing={1.5} alignItems="center">
                                         <Image
-                                            src={supplier.logo}
-                                            alt={supplier.name}
+                                            src={supplier?.logo || "/placeholderSupplierLogo.png"}
+                                            alt={supplier?.name}
                                             width={38}
                                             height={38}
                                             style={{ borderRadius: "8px", objectFit: "cover", flexShrink: 0 }}
