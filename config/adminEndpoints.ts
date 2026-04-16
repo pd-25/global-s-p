@@ -37,4 +37,11 @@ export const endpoints = {
         delete: (id: number | string) => `admin/countries/${id}`,
         getById: (id: number | string) => `admin/countries/${id}`,
     },
+    supplierTypes: {
+        list: 'admin/supplier-types/',
+        create: 'admin/supplier-types/',
+        update: (id: number | string) => `admin/supplier-types/${id}`,
+        delete: (id: number | string) => `admin/supplier-types/${id}`,
+        getById: (id: number | string) => `admin/supplier-types/${id}`,
+    },
 }
