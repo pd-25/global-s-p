@@ -216,6 +216,7 @@ export default function Footer({
                   href={routes.registerCompany}
                 >
                   {t("connectWithUs")}
+                  
                 </Button>
                 {/* <Button
                   variant="outlined"
