@@ -13,7 +13,7 @@ export default function LeadsLayout({
 }) {
   return (
     <>
-    <div>main page</div>
+    <div><strong>Main Lead Page</strong></div>
     {children}
     </>
   );
