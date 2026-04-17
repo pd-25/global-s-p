@@ -17,7 +17,7 @@ export const pages = [
   { name: 'Products', path: '/gse/admin/products', icon: 'inventory_2' },
   // { name: 'Categories', path: '/gse/admin/categories', icon: 'category' },
   // { name: 'Leads', path: '/gse/admin/leads', icon: 'leaderboard' },
-  { name: 'Quotes', path: '/gse/admin/quotes', icon: 'assignment' },
+  { name: 'Leads', path: adminRoutes.leadPage.replace('[leadType]', 'inquiry'), icon: 'assignment' },
 ];
 
 export const languageList = [

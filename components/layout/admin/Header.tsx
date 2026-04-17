@@ -274,10 +274,10 @@ export default function Header() {
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>public</Icon>
                 <Typography variant="inherit">Countries</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseToolsMenu} component={Link} href="/gse/admin/testimonials">
+              {/* <MenuItem onClick={handleCloseToolsMenu} component={Link} href="/gse/admin/testimonials">
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>reviews</Icon>
                 <Typography variant="inherit">Testimonials</Typography>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Box>
 

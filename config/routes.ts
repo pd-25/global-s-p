@@ -27,4 +27,5 @@ export const adminRoutes = {
     categoryPage: "/gse/admin/categories",
     quotePage: "/gse/admin/quotes",
     countryPage: "/gse/admin/countries",
+    leadPage: "/gse/admin/leads/[leadType]",
 }
