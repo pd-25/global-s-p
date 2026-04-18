@@ -58,6 +58,7 @@ interface SupplierDetail {
   employee_strength?: string | null
   supplier_type_id?: number | null
   is_verified?: boolean | null
+  is_accept_terms?: boolean | null
   vat_number?: string | null
   company_site?: string | null
   company_phone_number?: string | null
@@ -88,6 +89,7 @@ export default function AddSuppliersModal({
   const [employeeStrength, setEmployeeStrength] = useState("")
   const [supplierTypeId, setSupplierTypeId] = useState("")
   const [isVerified, setIsVerified] = useState(false)
+  const [isAcceptTerms, setIsAcceptTerms] = useState(false)
   const [vatNumber, setVatNumber] = useState("")
   const [companySite, setCompanySite] = useState("")
   const [companyPhoneNumber, setCompanyPhoneNumber] = useState("")
@@ -192,6 +194,7 @@ export default function AddSuppliersModal({
             supplier.supplier_type_id ? String(supplier.supplier_type_id) : "",
           )
           setIsVerified(Boolean(supplier.is_verified))
+          setIsAcceptTerms(Boolean(supplier.is_accept_terms))
           setVatNumber(supplier.vat_number ?? "")
           setCompanySite(supplier.company_site ?? "")
           setCompanyPhoneNumber(supplier.company_phone_number ?? "")
@@ -225,6 +228,7 @@ export default function AddSuppliersModal({
     setEmployeeStrength("")
     setSupplierTypeId("")
     setIsVerified(false)
+    setIsAcceptTerms(false)
     setVatNumber("")
     setCompanySite("")
     setCompanyPhoneNumber("")
@@ -381,6 +385,7 @@ export default function AddSuppliersModal({
       formData.append("employee_strength", employeeStrength.trim())
       formData.append("supplier_type_id", supplierTypeId)
       formData.append("is_verified", String(isVerified))
+      formData.append("is_accept_terms", String(isAcceptTerms))
       formData.append("vat_number", vatNumber.trim())
       formData.append("company_site", companySite.trim())
       formData.append("company_phone_number", companyPhoneNumber.trim())
@@ -700,7 +705,7 @@ export default function AddSuppliersModal({
               error={!!companyEmailError}
               helperText={companyEmailError}
               slotProps={{ inputLabel: { shrink: true } }}
-            />{" "}
+            />
             <FormControlLabel
               control={
                 <Checkbox
@@ -709,6 +714,15 @@ export default function AddSuppliersModal({
                 />
               }
               label="Is Verified"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isAcceptTerms}
+                  onChange={(e) => setIsAcceptTerms(e.target.checked)}
+                />
+              }
+              label="Accept terms and condition"
             />
             <Box sx={{ gridColumn: "1 / -1" }}>
               <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
