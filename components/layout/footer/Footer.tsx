@@ -15,7 +15,8 @@ import storeIcon from "@/public/store.svg"
 import appStoreIcon from "@/public/app-store.svg"
 import googlePlayIcon from "@/public/google-play.svg"
 // import logo from "@/public/global-sp-logo.svg"
-import logo from "@/public/gse-green-bg.svg"
+// import logo from "@/public/gse-green-bg.svg"
+import logo from "@/public/logo_jpg.jpeg"
 
 const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
 const WORD_DELAY = 500 // ms between each word appearing
@@ -185,11 +186,11 @@ export default function Footer({
                   <Image
                     src={logo}
                     alt="logo"
-                    width={300}
-                    height={40}
-                    style={{ width: "80px", height: "100px", maxWidth: "100%" }}
+                    width={220}
+                    height={95}
+                    style={{ objectFit: "contain", width: "auto", height: "auto", maxHeight: "90px", maxWidth: "100%" }}
                   />
-                  <Box
+                  {/* <Box
                     sx={{
                       width: "1px",
                       height: { xs: "48px", md: "52px" },
@@ -205,7 +206,7 @@ export default function Footer({
                     letterSpacing={{ xs: "1.5px", md: "2.5px" }}
                     flexDirection={{ xs: "column", md: "row" }}
                     gap={{ xs: 0, md: "8px" }}
-                  />
+                  /> */}
                 </Box>
               </Box>
 

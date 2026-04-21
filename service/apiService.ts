@@ -1,8 +1,8 @@
 import { API_BASE_URL } from '@/lib/constants';
 import { getAuthToken } from '@/lib/cookies';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
-// const BASE_URL = API_BASE_URL;
+// const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BASE_URL = API_BASE_URL;
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -99,8 +99,8 @@ const apiService = {
      */
     get: async function <T = any>(url: string, params?: Record<string, string | number | boolean>): Promise<T> {
         let fullUrl = `${BASE_URL}/${url}`;
-        
-        
+
+
         // Append query parameters if provided
         if (params) {
             const searchParams = new URLSearchParams();

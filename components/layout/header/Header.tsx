@@ -15,7 +15,8 @@ import Icon from "@/components/ui/icon/Icon"
 import LanguageSwitcher from "@/components/ui/language-switcher/LanguageSwitcher"
 import styles from "./Header.module.css"
 import Image from "next/image"
-import logo from "@/public/gse-green-bg.svg"
+// import logo from "@/public/gse-green-bg.svg"
+import logo from "@/public/logo_jpg.jpeg"
 
 import { navLinks } from "@/lib/constants"
 import { routes } from "@/config/routes";
@@ -130,9 +131,9 @@ export default function Header() {
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Image src={logo} alt="logo" width={80} height={80} />
-          <Box sx={{ width: '2px', height: '44px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
-          <AnimatedBrandText fontSize="14px" letterSpacing="2px" />
+          <Image src={logo} alt="logo" width={200} height={85} style={{ objectFit: "contain", width: "auto", height: "auto", maxHeight: "80px" }} />
+          {/* <Box sx={{ width: '2px', height: '44px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
+          <AnimatedBrandText fontSize="14px" letterSpacing="2px" /> */}
         </Box>
         <IconButton
           onClick={handleDrawerToggle}
@@ -170,7 +171,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            py: { xs: 1.5, md: 1 },
+            py: { xs: 1, md: 0.8 },
           }}
         >
           {/* Logo */}
@@ -178,26 +179,26 @@ export default function Header() {
             sx={{
               display: "flex",
               alignItems: "center",
-              height: { xs: 40, md: 60 },
-              maxWidth: { xs: 180, md: 500 },
+              height: { xs: 50, md: 80 },
+              maxWidth: { xs: 200, md: 500 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '12px', minWidth: 'max-content' }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: '12px', minWidth: 'max-content', height: '100%' }}>
               <Image
                 src={logo}
                 alt="logo"
                 width={220}
                 height={95}
                 className="logo"
-                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "90px" }}
+                style={{ objectFit: "contain", width: "auto", height: "100%", maxHeight: "100%" }}
               />
-              <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
-              <AnimatedBrandText
+              {/* <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
+              {/* <AnimatedBrandText
                 fontSize={{ xs: '12px', md: '20px' }}
                 letterSpacing={{ xs: '1.5px', md: '2.5px' }}
                 flexDirection={{ xs: 'column', md: 'row' }}
                 gap={{ xs: 0, md: '8px' }}
-              />
+              /> */}
             </Link>
           </Box>
 
