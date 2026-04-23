@@ -45,4 +45,11 @@ export const endpoints = {
         delete: (id: number | string) => `admin/supplier-types/${id}`,
         getById: (id: number | string) => `admin/supplier-types/${id}`,
     },
+    productTypes: {
+        list: 'admin/product-types/',
+        create: 'admin/product-types/',
+        update: (id: number | string) => `admin/product-types/${id}`,
+        delete: (id: number | string) => `admin/product-types/${id}`,
+        getById: (id: number | string) => `admin/product-types/${id}`,
+    },
 }

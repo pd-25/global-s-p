@@ -25,6 +25,7 @@ import {
 } from '@mui/material';
 import apiService from '@/service/apiService';
 import { endpoints } from '@/config/adminEndpoints';
+import AddProductModal from './AddProductModal';
 
 interface ProductData {
   id: number;
@@ -77,6 +78,8 @@ export default function ProductsTable() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchQuery, setSearchQuery] = useState('');
   const [totalCount, setTotalCount] = useState(0);
+  const [editSlug, setEditSlug] = useState<string | null>(null);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -116,7 +119,23 @@ export default function ProductsTable() {
     setPage(0);
   };
 
+  const handleEditClick = (slug: string) => {
+    setEditSlug(slug);
+    setEditModalOpen(true);
+  };
+
+  const handleEditClose = () => {
+    setEditModalOpen(false);
+    setEditSlug(null);
+  };
+
+  const handleEditSuccess = () => {
+    // Re-fetch products after successful edit
+    setPage(0); // Reset to first page to trigger useEffect refetch
+  };
+
   return (
+    <>
     <Paper
       elevation={0}
       sx={{
@@ -232,15 +251,15 @@ export default function ProductsTable() {
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Edit">
-                      <IconButton size="small">
+                      <IconButton size="small" onClick={() => handleEditClick(product.slug)}>
                         <Icon fontSize="small">edit</Icon>
                       </IconButton>
                     </Tooltip>
-                    <Tooltip title="More">
+                    {/* <Tooltip title="More">
                       <IconButton size="small">
                         <Icon fontSize="small">more_vert</Icon>
                       </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                   </TableCell>
                 </TableRow>
               ))
@@ -274,5 +293,14 @@ export default function ProductsTable() {
         onRowsPerPageChange={handleRowsPerPageChange}
       />
     </Paper>
+
+    {/* Edit Product Modal */}
+    <AddProductModal
+      open={editModalOpen}
+      onClose={handleEditClose}
+      onSuccess={handleEditSuccess}
+      editSlug={editSlug}
+    />
+    </>
   );
 }
