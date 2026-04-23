@@ -9,11 +9,12 @@ const TOKEN_EXPIRY_DAYS = 7;
  * Set a cookie.
  * @param name   - Cookie name
  * @param value  - Cookie value
- * @param days   - Expiry in days (default: 7)
+ * @param hours   - Expiry in hours (default: 168, which is 7 days)
  */
-export function setCookie(name: string, value: string, days: number = TOKEN_EXPIRY_DAYS): void {
+export function setCookie(name: string, value: string, hours: number = TOKEN_EXPIRY_DAYS): void {
     const expires = new Date();
-    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    // expires.setTime(expires.getTime() + hours * 24 * 60 * 60 * 1000);
+    expires.setTime(expires.getTime() + hours * 60 * 60 * 1000);
     document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
 }
 

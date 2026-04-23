@@ -33,11 +33,13 @@ import {
   Icon,
 } from '@mui/material';
 
-import ProductsKPI from './ProductsKPI';
-import ProductsTable from './ProductsTable';
+import ProductsKPI from '../../../../../../components/sections/product/ProductsKPI';
+import ProductsTable from '../../../../../../components/sections/product/ProductsTable';
+import AddProductModal from '../../../../../../components/sections/product/AddProductModal';
 
 export default function ProductPage() {
   const theme = useTheme();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -49,6 +51,7 @@ export default function ProductPage() {
         <Button
           variant="contained"
           startIcon={<Icon>add</Icon>}
+          onClick={() => setIsModalOpen(true)}
           sx={{
             textTransform: 'none',
             borderRadius: 2,
@@ -66,6 +69,9 @@ export default function ProductPage() {
 
       {/* Product List Section */}
       <ProductsTable />
+
+      {/* Add Product Modal */}
+      <AddProductModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </Container>
   );
 }
