@@ -29,6 +29,7 @@ export const endpoints = {
         update: (id: number | string) => `admin/products/${id}`,
         delete: (id: number | string) => `admin/products/${id}`,
         getById: (id: number | string) => `admin/products/${id}`,
+        kpis: 'admin/products/product-kpis',
     },
     countries: {
         list: 'admin/countries/',

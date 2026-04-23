@@ -10,9 +10,13 @@ import { headers } from 'next/headers'
 export async function fetchProductDetails(slug: string): Promise<ProductDetailResponse | null> {
     try {
         const headersList = await headers();
-        const clientIp = headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || '';
-        console.log('x-for- ', headersList.get('x-forwarded-for'));
-        console.log('x-real-ip: ', headersList.get('x-real-ip'));
+        let clientIp = headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || '';
+        
+        // x-forwarded-for can contain a comma-separated list of IPs (client, proxy1, proxy2, ...)
+        // The first IP in the list is the original client IP.
+        if (clientIp) {
+            clientIp = clientIp.split(',')[0].trim();
+        }
 
         // Replace {slug} placeholder in the endpoint
         const endpoint = websiteEndpoints.productDetails.replace('{slug}', slug);
