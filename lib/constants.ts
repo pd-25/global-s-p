@@ -17,7 +17,7 @@ export const pages = [
   { name: 'Products', path: '/gse/admin/products', icon: 'inventory_2' },
   // { name: 'Categories', path: '/gse/admin/categories', icon: 'category' },
   // { name: 'Leads', path: '/gse/admin/leads', icon: 'leaderboard' },
-  { name: 'Leads', path: adminRoutes.leadPage.replace('[leadType]', 'inquiry'), icon: 'assignment' },
+  { name: 'Leads', path: adminRoutes.leadPage.replace('[leadType]', 'inquiries'), icon: 'assignment' },
 ];
 
 export const languageList = [
@@ -33,3 +33,5 @@ export const contactFormReason = [
   { name: 'Sell something to them' },
   { name: 'Other' },
 ]
+
+export const leadTypes = ['Inquiries', 'Quotes']

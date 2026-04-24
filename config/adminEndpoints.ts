@@ -16,12 +16,12 @@ export const endpoints = {
         delete: (id: number | string) => `admin/suppliers/${id}`,
         getById: (id: number | string) => `admin/suppliers/${id}`,
     },
-    quotes: {
-        list: 'admin/quotes/',
-        create: 'admin/quotes/',
-        update: (id: number | string) => `admin/quotes/${id}`,
-        delete: (id: number | string) => `admin/quotes/${id}`,
-        getById: (id: number | string) => `admin/quotes/${id}`,
+    leads: {
+        list: (leadType: string) => `admin/quotes-inquiries/${leadType}`,
+        create: 'admin/leads/',
+        update: (id: number | string) => `admin/leads/${id}`,
+        delete: (id: number | string) => `admin/leads/${id}`,
+        getById: (id: number | string) => `admin/leads/${id}`,
     },
     products: {
         list: 'admin/products/',

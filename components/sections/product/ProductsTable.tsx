@@ -26,6 +26,7 @@ import {
 import apiService from '@/service/apiService';
 import { endpoints } from '@/config/adminEndpoints';
 import AddProductModal from './AddProductModal';
+import { routes } from '@/config/routes';
 
 interface ProductData {
   id: number;
@@ -122,6 +123,9 @@ export default function ProductsTable() {
   const handleEditClick = (slug: string) => {
     setEditSlug(slug);
     setEditModalOpen(true);
+  };
+  const handleViewClick = (slug: string) => {
+    window.open(`${routes.productDetails.replace('[slug]', slug)}`, '_blank');
   };
 
   const handleEditClose = () => {
@@ -246,7 +250,7 @@ export default function ProductsTable() {
                   </TableCell>
                   <TableCell align="right">
                     <Tooltip title="View">
-                      <IconButton size="small">
+                      <IconButton size="small" onClick={() => handleViewClick(product.slug)}>
                         <Icon fontSize="small">visibility</Icon>
                       </IconButton>
                     </Tooltip>
