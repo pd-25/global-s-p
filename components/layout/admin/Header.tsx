@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import {
   AppBar,
   Toolbar,
@@ -28,6 +29,7 @@ import { ColorModeContext } from '@/components/providers/AdminThemeRegistry';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -40,6 +42,16 @@ export default function Header() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    // Delete auth cookie
+    Cookies.remove('access_token', { path: '/' });
+    
+    // Redirect to login page
+    router.push('/gse/login');
+    
+    handleCloseUserMenu();
   };
 
   const handleOpenToolsMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -337,7 +349,7 @@ export default function Header() {
                 <Icon sx={{ color: 'text.secondary' }}>settings</Icon>
                 <Typography>Settings</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2 }}>
+              <MenuItem onClick={handleLogout} sx={{ gap: 2 }}>
                 <Icon color="error">logout</Icon>
                 <Typography color="error">Logout</Typography>
               </MenuItem>
