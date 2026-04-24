@@ -27,6 +27,7 @@ import {
 import { useState, useEffect, useCallback } from 'react';
 import apiService from '@/service/apiService';
 import { endpoints } from '@/config/adminEndpoints';
+import LeadDetailsModal from './LeadDetailsModal';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -136,6 +137,9 @@ export default function LeadsTable({ leadType }: LeadsTableProps) {
   const [dateRange, setDateRange] = useState('all');
   const [totalCount, setTotalCount] = useState(0);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [menuEnquiryNumber, setMenuEnquiryNumber] = useState<string | null>(null);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  const [selectedEnquiryNumber, setSelectedEnquiryNumber] = useState<string | null>(null);
   const open = Boolean(anchorEl);
 
   const isInquiry = leadType.toLowerCase() === 'inquiries';
@@ -201,12 +205,25 @@ export default function LeadsTable({ leadType }: LeadsTableProps) {
     setPage(0);
   };
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenuClick = (event: React.MouseEvent<HTMLElement>, enquiryNumber: string) => {
     setAnchorEl(event.currentTarget);
+    setMenuEnquiryNumber(enquiryNumber);
   };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setMenuEnquiryNumber(null);
+  };
+
+  const handleViewDetails = () => {
+    setSelectedEnquiryNumber(menuEnquiryNumber);
+    setDetailModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleDetailModalClose = () => {
+    setDetailModalOpen(false);
+    setSelectedEnquiryNumber(null);
   };
 
   /* ── Render ────────────────────────────────────────────────────── */
@@ -404,13 +421,13 @@ export default function LeadsTable({ leadType }: LeadsTableProps) {
 
                       {/* Actions */}
                       <TableCell align="right">
-                        <Tooltip title="View Details">
+                        {/* <Tooltip title="View Details">
                           <IconButton size="small">
                             <Icon fontSize="small">visibility</Icon>
                           </IconButton>
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="More">
-                          <IconButton size="small" onClick={handleMenuClick}>
+                          <IconButton size="small" onClick={(e) => handleMenuClick(e, row.enquiry_number)}>
                             <Icon fontSize="small">more_vert</Icon>
                           </IconButton>
                         </Tooltip>
@@ -459,16 +476,25 @@ export default function LeadsTable({ leadType }: LeadsTableProps) {
         elevation={2}
         sx={{ '& .MuiPaper-root': { borderRadius: '8px', mt: 1 } }}
       >
-        <MenuItem onClick={handleMenuClose} sx={{ gap: 1 }}>
+        <MenuItem onClick={handleViewDetails} sx={{ gap: 1 }}>
           <Icon fontSize="small" color="action">visibility</Icon> View Details
         </MenuItem>
-        <MenuItem onClick={handleMenuClose} sx={{ gap: 1 }}>
+        {/* <MenuItem onClick={handleMenuClose} sx={{ gap: 1 }}>
           <Icon fontSize="small" color="action">edit</Icon> Edit
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleMenuClose} sx={{ gap: 1, color: 'error.main' }}>
           <Icon fontSize="small" color="error">delete</Icon> Delete
         </MenuItem>
       </Menu>
+
+      {/* ── Lead Details Modal ────────────────────────────────────── */}
+      <LeadDetailsModal
+        open={detailModalOpen}
+        onClose={handleDetailModalClose}
+        enquiryNumber={selectedEnquiryNumber}
+        leadType={leadType}
+        onUpdate={fetchLeads}
+      />
     </>
   );
 }

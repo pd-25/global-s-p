@@ -213,10 +213,10 @@ export default function Header() {
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>storefront</Icon>
                 <Typography variant="inherit">Supplier List</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseSupplierMenu} component={Link} href="/gse/admin/supplier-types">
+              {/* <MenuItem onClick={handleCloseSupplierMenu} component={Link} href="/gse/admin/supplier-types">
                 <Icon sx={{ mr: 2, color: 'text.secondary', fontSize: '1.2rem !important' }}>category</Icon>
                 <Typography variant="inherit">Supplier Types</Typography>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
 
             {/* Tools Menu */}
@@ -284,11 +284,11 @@ export default function Header() {
           {/* User Settings & Notifications */}
           <Box sx={{ flexGrow: 0 }}>
             <Stack direction="row" spacing={1} alignItems="center">
-              <IconButton size="small" sx={{ color: 'text.secondary' }}>
+              {/* <IconButton size="small" sx={{ color: 'text.secondary' }}>
                 <Badge badgeContent={4} color="error">
                   <Icon>notifications</Icon>
                 </Badge>
-              </IconButton>
+              </IconButton> */}
 
               <Box sx={{ textAlign: 'right', display: { xs: 'none', sm: 'block' }, mr: 1, ml: 2 }}>
                 <Typography variant="body2" sx={{ fontWeight: 600, lineHeight: 1.2 }}>Admin User</Typography>

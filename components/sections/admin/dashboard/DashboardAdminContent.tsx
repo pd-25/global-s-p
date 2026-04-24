@@ -23,7 +23,11 @@ import {
     IconButton,
     Menu,
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import apiService from '@/service/apiService';
+import { endpoints } from '@/config/adminEndpoints';
+import LeadsTabs from '../leads/LeadsTabs';
+import LeadsTable from '../leads/LeadsTable';
 
 // Interfaces
 
@@ -37,15 +41,15 @@ interface Activity {
     status: 'Completed' | 'Pending' | 'Failed';
 }
 
-// Mock Data
-const stats = [
-    { label: 'Total Products', value: '1,234', color: '#7faf0d', percentage: '+12%' },
-    { label: 'Active Leads', value: '56', color: '#014b35', percentage: '+5%' },
-    { label: 'New Requests', value: '12', color: '#ff9800', percentage: '+2%' },
-    { label: 'Total Categories', value: '24', color: '#2196f3', percentage: '0%' },
-];
-
-
+interface DashboardKpis {
+    total_products: number;
+    active_leads: number;
+    active_suppliers: number;
+    total_categories: {
+        total_main_categories: number;
+        total_sub_categories: number;
+    };
+}
 
 const recentActivity: Activity[] = [
     { id: 1, user: 'Sarah Smith', action: 'New Registration', target: 'Account', date: '1 hour ago', status: 'Completed' },
@@ -115,6 +119,32 @@ export default function DashboardAdminContent() {
         setAnchorEl(null);
     };
 
+    const [kpis, setKpis] = useState<DashboardKpis | null>(null);
+    const [loadingKpis, setLoadingKpis] = useState(true);
+
+    useEffect(() => {
+        const fetchKpis = async () => {
+            try {
+                const res = await apiService.get<{ success: boolean; data: DashboardKpis }>(endpoints.general.kpis);
+                if (res?.success && res.data) {
+                    setKpis(res.data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch KPIs:", err);
+            } finally {
+                setLoadingKpis(false);
+            }
+        };
+        fetchKpis();
+    }, []);
+
+    const dynamicStats = [
+        { label: 'Total Products', value: kpis?.total_products ?? '-', color: '#7faf0d' },
+        { label: 'Active Leads', value: kpis?.active_leads ?? '-', color: '#014b35' },
+        { label: 'Active Suppliers', value: kpis?.active_suppliers ?? '-', color: '#ff9800' },
+        { label: 'Total Categories', value: kpis?.total_categories?.total_main_categories ?? '-', color: '#2196f3' },
+    ];
+
     return (
         <Container maxWidth="xl">
             <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -126,14 +156,14 @@ export default function DashboardAdminContent() {
                         Welcome back, Admin! Here's what's happening today.
                     </Typography>
                 </Box>
-                <Button variant="contained" color="secondary" startIcon={<Icon>download</Icon>}>
+                {/* <Button variant="contained" color="secondary" startIcon={<Icon>download</Icon>}>
                     Generate Report
-                </Button>
+                </Button> */}
             </Box>
 
             {/* Stats Grid */}
             <Grid container spacing={3} sx={{ mb: 4 }}>
-                {stats.map((stat, index) => (
+                {dynamicStats.map((stat, index) => (
                     <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                         <Paper
                             elevation={0}
@@ -153,23 +183,14 @@ export default function DashboardAdminContent() {
                                 <Typography variant="subtitle2" color="text.secondary" sx={{ fontWeight: 600 }}>
                                     {stat.label}
                                 </Typography>
-                                <Box
-                                    sx={{
-                                        bgcolor: `${stat.color}22`,
-                                        color: stat.color,
-                                        py: 0.5,
-                                        px: 1,
-                                        borderRadius: '4px',
-                                        fontSize: '0.75rem',
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    {stat.percentage}
-                                </Box>
                             </Box>
-                            <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary' }}>
-                                {stat.value}
-                            </Typography>
+                            {loadingKpis ? (
+                                <Box sx={{ width: '40%', height: 48, bgcolor: 'grey.200', borderRadius: 1, animation: 'pulse 1.5s infinite' }} />
+                            ) : (
+                                <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary' }}>
+                                    {stat.value}
+                                </Typography>
+                            )}
                         </Paper>
                     </Grid>
                 ))}
@@ -177,7 +198,20 @@ export default function DashboardAdminContent() {
 
             {/* Recent Quotes Section*/}
 
-            <Quotes showViewAll={true}/>
+            {/* <Quotes showViewAll={true}/> */}
+            {/* Tabs + Content */}
+            <Box
+                sx={{
+                    borderRadius: '12px',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    overflow: 'hidden',
+                    bgcolor: 'background.paper',
+                }}
+            >
+                <LeadsTabs />
+                <LeadsTable leadType="inquiries" />
+            </Box>
 
             {/* Recent Activity Section */}
             {/* <Grid container spacing={3}>

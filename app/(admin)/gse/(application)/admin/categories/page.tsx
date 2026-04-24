@@ -189,24 +189,24 @@ function Row({ row, index, open, onToggle, onAddSubcategory, onEdit }: { row: Ca
                 },
               }}
             >
-              <MenuItem onClick={handleMenuClose}>
+              {/* <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Icon fontSize="small">visibility</Icon>
                 </ListItemIcon>
                 <ListItemText>View Products</ListItemText>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem onClick={() => { handleMenuClose(); onAddSubcategory({ id: row.id, name: row.name }); }}>
                 <ListItemIcon>
                   <Icon fontSize="small">playlist_add</Icon>
                 </ListItemIcon>
                 <ListItemText>Add Subcategory</ListItemText>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              {/* <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Icon fontSize="small">info</Icon>
                 </ListItemIcon>
                 <ListItemText>Details</ListItemText>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Stack>
         </TableCell>

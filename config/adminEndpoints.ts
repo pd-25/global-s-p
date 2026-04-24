@@ -18,6 +18,10 @@ export const endpoints = {
     },
     leads: {
         list: (leadType: string) => `admin/quotes-inquiries/${leadType}`,
+        getByEnquiryNumber: (enquiryNumber: string, leadType: string) =>
+            `admin/quotes-inquiries/${enquiryNumber}/${leadType}`,
+        updateByEnquiryNumber: (enquiryNumber: string) =>
+            `admin/quotes-inquiries/${enquiryNumber}`,
         create: 'admin/leads/',
         update: (id: number | string) => `admin/leads/${id}`,
         delete: (id: number | string) => `admin/leads/${id}`,
@@ -37,6 +41,9 @@ export const endpoints = {
         update: (id: number | string) => `admin/countries/${id}`,
         delete: (id: number | string) => `admin/countries/${id}`,
         getById: (id: number | string) => `admin/countries/${id}`,
+    },
+    general: {
+        kpis: 'admin/general/kpis'
     },
     supplierTypes: {
         list: 'admin/supplier-types/',

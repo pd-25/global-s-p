@@ -34,9 +34,9 @@ export default function LeadsLayout({
             Manage inquiries and quote requests from potential customers.
           </Typography>
         </Box>
-        <Button variant="contained" color="secondary" startIcon={<Icon>download</Icon>}>
+        {/* <Button variant="contained" color="secondary" startIcon={<Icon>download</Icon>}>
           Export Data
-        </Button>
+        </Button> */}
       </Box>
 
       {/* Tabs + Content */}
