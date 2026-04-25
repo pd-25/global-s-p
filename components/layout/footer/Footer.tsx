@@ -509,7 +509,9 @@ export default function Footer({
                   }}
                 >
                   <Link
-                    href={`/products&searvices/products/${category.slug || category.id || index + 1}`}
+                    // href={`/products&searvices/products/${category.slug || category.id || index + 1}`}
+                    href={`${routes.serviceProductListPage.replace("[categoryId]", category.slug)}`}
+                    
                     className={styles.categoryLink}
                     style={{
                       color: "#ffffff",
