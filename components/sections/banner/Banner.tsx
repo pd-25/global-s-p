@@ -142,9 +142,11 @@ export default function Banner() {
                   height={1080}
                 /> */}
                 <picture>
-                  <source srcSet="/home/banner-slider-pic-01.svg" media="(min-width: 768px)" />
+                  {/* <source srcSet="/home/banner-slider-pic-01.svg" media="(min-width: 768px)" /> */}
+                  <source srcSet="/banner-demo1.jpeg" media="(min-width: 768px)" />
                   <source srcSet="/home/banner-slider-pic-mobile-01.svg" media="(max-width: 767px)" />
-                  <img src="/home/banner-slider-pic-01.svg" alt="hero-bg" width={1000} height={1080} />
+                  {/* <img src="/home/banner-slider-pic-01.svg" alt="hero-bg" width={1000} height={1080} /> */}
+                  <img src="/banner-demo1.jpeg" alt="hero-bg" width={1000} height={1080} />
                 </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>
@@ -201,9 +203,11 @@ export default function Banner() {
                   height={1080}
                 /> */}
                 <picture>
-                  <source srcSet="/home/banner4.jpg" media="(min-width: 768px)" />
+                  {/* <source srcSet="/home/banner4.jpg" media="(min-width: 768px)" /> */}
+                  <source srcSet="/banner-demo2.jpeg" media="(min-width: 768px)" />
                   <source srcSet="/home/banner4-mobile.jpg" media="(max-width: 767px)" />
-                  <img src="/home/banner4.jpg" alt="hero-bg" width={1000} height={1080} />
+                  {/* <img src="/home/banner4.jpg" alt="hero-bg" width={1000} height={1080} /> */}
+                  <img src="/banner-demo2.jpeg" alt="hero-bg" width={1000} height={1080} />
                 </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>
