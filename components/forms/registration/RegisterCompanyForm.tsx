@@ -19,7 +19,8 @@ import {
     Tooltip,
     FormHelperText,
     FormControlLabel,
-    Checkbox
+    Checkbox,
+    IconButton
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -28,6 +29,8 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import AddIcon from '@mui/icons-material/Add';
 import { useTranslations } from 'next-intl';
 import { Country, SupplierType } from '@/interfaces/interface';
 import { websiteEndpoints } from '@/config/websiteEndpoints';
@@ -57,6 +60,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
         companyType: '',
         businessSector: '',
         isAcceptTerms: false,
+        documents: [] as { name: string; file: File | null }[],
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -131,6 +135,14 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
             formDataObj.append('business_sector', formData.businessSector);
             formDataObj.append('is_accept_terms', String(formData.isAcceptTerms));
             
+            // Append documents
+            formData.documents.forEach((doc, index) => {
+                if (doc.name && doc.file) {
+                    formDataObj.append(`documents[${index}][name]`, doc.name);
+                    formDataObj.append(`documents[${index}][file]`, doc.file);
+                }
+            });
+            
             // Unmapped fields provided in curl standard payload
             formDataObj.append('about', 'Company registration context'); 
             formDataObj.append('founded_year', new Date().getFullYear().toString());
@@ -177,6 +189,27 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
             setFormData({ ...formData, logo: e.target.files[0] });
             if (errors.logo) setErrors({ ...errors, logo: '' });
         }
+    };
+
+    const handleAddDocument = () => {
+        if (formData.documents.length < 5) {
+            setFormData({
+                ...formData,
+                documents: [...formData.documents, { name: '', file: null }]
+            });
+        }
+    };
+
+    const handleRemoveDocument = (index: number) => {
+        const newDocs = [...formData.documents];
+        newDocs.splice(index, 1);
+        setFormData({ ...formData, documents: newDocs });
+    };
+
+    const handleDocumentChange = (index: number, field: 'name' | 'file', value: string | File | null) => {
+        const newDocs = [...formData.documents];
+        newDocs[index] = { ...newDocs[index], [field]: value as any };
+        setFormData({ ...formData, documents: newDocs });
     };
 
     const inputStyles = {
@@ -348,6 +381,93 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                                     error={!!errors.vatNumber}
                                     helperText={errors.vatNumber}
                                 />
+                            </Grid>
+
+                            {/* Documents Section */}
+                            <Grid size={{ xs: 12 }}>
+                                <Box sx={{ mt: 2, mb: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <Typography variant="subtitle1" fontWeight={600} color="#333">
+                                        {t('sections.companyInfo.fields.companyDocuments', { defaultValue: 'Company Documents' })}
+                                    </Typography>
+                                    {formData.documents.length < 5 && (
+                                        <Button
+                                            variant="outlined"
+                                            startIcon={<AddIcon />}
+                                            onClick={handleAddDocument}
+                                            size="small"
+                                            sx={{
+                                                borderColor: '#7FAF0D',
+                                                color: '#7FAF0D',
+                                                textTransform: 'none',
+                                                '&:hover': {
+                                                    borderColor: '#6A920B',
+                                                    backgroundColor: 'rgba(127, 175, 13, 0.04)'
+                                                }
+                                            }}
+                                        >
+                                            {t('sections.companyInfo.fields.addDocument', { defaultValue: 'Add Document' })}
+                                        </Button>
+                                    )}
+                                </Box>
+                                {formData.documents.map((doc, index) => (
+                                    <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: 'center' }}>
+                                        <Grid size={{ xs: 12, md: 5 }}>
+                                            <TextField
+                                                fullWidth
+                                                label={t('sections.companyInfo.fields.documentName', { defaultValue: 'Document Name' })}
+                                                placeholder={t('sections.companyInfo.placeholders.documentName', { defaultValue: 'e.g. Incorporation Certificate' })}
+                                                value={doc.name}
+                                                onChange={(e) => handleDocumentChange(index, 'name', e.target.value)}
+                                                sx={inputStyles}
+                                                size="small"
+                                            />
+                                        </Grid>
+                                        <Grid size={{ xs: 12, md: 6 }}>
+                                            <Button
+                                                component="label"
+                                                variant="outlined"
+                                                startIcon={<CloudUploadIcon />}
+                                                sx={{
+                                                    height: '40px',
+                                                    width: '100%',
+                                                    borderRadius: '10px',
+                                                    borderColor: doc.file ? '#7FAF0D' : 'rgba(0, 0, 0, 0.23)',
+                                                    color: doc.file ? '#7FAF0D' : 'text.secondary',
+                                                    textTransform: 'none',
+                                                    justifyContent: 'flex-start',
+                                                    px: 2,
+                                                    '&:hover': {
+                                                        borderColor: '#7FAF0D',
+                                                        backgroundColor: 'rgba(127, 175, 13, 0.04)',
+                                                    }
+                                                }}
+                                            >
+                                                <Box sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                                    {doc.file ? doc.file.name : t('sections.companyInfo.fields.uploadFile', { defaultValue: 'Upload File (PDF, DOC, JPG/PNG)' })}
+                                                </Box>
+                                                <input
+                                                    type="file"
+                                                    hidden
+                                                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                                                    onChange={(e) => {
+                                                        if (e.target.files && e.target.files[0]) {
+                                                            handleDocumentChange(index, 'file', e.target.files[0]);
+                                                        }
+                                                    }}
+                                                />
+                                            </Button>
+                                        </Grid>
+                                        <Grid size={{ xs: 12, md: 1 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                            <IconButton 
+                                                onClick={() => handleRemoveDocument(index)}
+                                                color="error"
+                                                size="small"
+                                            >
+                                                <DeleteOutlineIcon />
+                                            </IconButton>
+                                        </Grid>
+                                    </Grid>
+                                ))}
                             </Grid>
                         </Grid>
                     </Card>

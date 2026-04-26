@@ -1,0 +1,236 @@
+.connectWithUsContainer {
+  background-color: #F8FAFC;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.bannerContainer {
+  background: linear-gradient(135deg, #014B35 0%, #056847 100%);
+  padding: 6rem 0 8rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: rgba(127, 175, 13, 0.15);
+    filter: blur(40px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: rgba(127, 175, 13, 0.1);
+    filter: blur(50px);
+  }
+}
+
+.bannerWrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.bannerTitle {
+  color: #ffffff;
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem !important;
+  }
+}
+
+.bannerSubtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem !important;
+  max-width: 650px;
+  margin: 0 auto !important;
+  line-height: 1.6 !important;
+}
+
+.badgeContainer {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 8px 16px;
+  margin-top: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  svg {
+    color: #7FAF0D;
+    font-size: 18px;
+  }
+
+  span {
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+}
+
+.contentContainer {
+  margin-top: -4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contactFormSection {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.sectionTitle {
+  color: #014B35;
+  font-weight: 700 !important;
+  font-size: 1.8rem !important;
+}
+
+.formDescription {
+  font-size: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.inputLabel {
+  font-weight: 600 !important;
+  color: #333333;
+  margin-bottom: 8px !important;
+}
+
+.required {
+  color: #d32f2f;
+  margin-left: 2px;
+}
+
+.submitButton {
+  background-color: #7FAF0D !important;
+  color: #ffffff !important;
+  padding: 14px 32px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  text-transform: none !important;
+  box-shadow: 0 8px 24px rgba(127, 175, 13, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: #6A920B !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(127, 175, 13, 0.5) !important;
+  }
+}
+
+.trustIndicatorsSection {
+  margin-top: 2rem;
+}
+
+.trustCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.trustIconCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #EBF4D3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(127, 175, 13, 0.2);
+
+  svg {
+    color: #7FAF0D;
+    font-size: 24px;
+  }
+}
+
+.trustTitle {
+  color: #014B35;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+}
+
+.quickLinksCard {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: sticky;
+  top: 100px;
+}
+
+.cardTitle {
+  color: #014B35;
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 2px solid #EBF4D3;
+  padding-bottom: 1rem;
+}
+
+.quickLinkItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background-color: #F8FAFC;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: #ffffff;
+    border-color: #EBF4D3;
+    box-shadow: 0 4px 12px rgba(127, 175, 13, 0.1);
+    transform: translateX(4px);
+
+    .checkIcon {
+      color: #7FAF0D;
+    }
+  }
+
+  .checkIcon {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #B0BEC5;
+    transition: color 0.2s ease;
+  }
+
+  p {
+    color: #455A64;
+    flex-grow: 1;
+  }
+}

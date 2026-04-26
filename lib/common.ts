@@ -10,7 +10,7 @@ export async function fetchSupplierTypes() {
             if (cached) {
                 const { data, timestamp } = JSON.parse(cached);
                 if (Date.now() - timestamp < 86400000) { // 24 hours
-                    console.log('cached data+++++++++++++++++++++++++++++++', data);
+                    // console.log('cached data+++++++++++++++++++++++++++++++', data);
 
                     return data;
                 }
@@ -22,7 +22,7 @@ export async function fetchSupplierTypes() {
             if (typeof window !== 'undefined') {
                 localStorage.setItem(cacheKey, JSON.stringify({ data: res.data, timestamp: Date.now() }));
             }
-            console.log('api data+++++++++++++++++++++++++++++++++++', res.data);
+            // console.log('api data+++++++++++++++++++++++++++++++++++', res.data);
             return res.data;
         }
     } catch (err) {

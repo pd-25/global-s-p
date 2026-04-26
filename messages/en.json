@@ -70,6 +70,10 @@
         "readMore": "Read More"
     },
     "home": {
+        "meta": {
+            "title": "Global Source Expo | The Perfect Vendor Marketplace",
+            "description": "Find the perfect vendor for your business needs. Global Source Expo provides a leading marketplace for B2B buyers and sellers to connect, discover recommended products, and build trusted partnerships."
+        },
         "perfectVendor": {
             "heading": "The Perfect Vendor",
             "subheading": "Worried about finding",
@@ -115,7 +119,14 @@
                     "companyName": "Company name",
                     "country": "Country of company registration",
                     "vat": "VAT number",
-                    "uploadLogo": "Company logo"
+                    "uploadLogo": "Company logo",
+                    "companyDocuments": "Company Documents",
+                    "addDocument": "Add Document",
+                    "documentName": "Document Name",
+                    "uploadFile": "Upload File (PDF, DOC, JPG/PNG)"
+                },
+                "placeholders": {
+                    "documentName": "e.g. Incorporation Certificate"
                 }
             },
             "address": {
@@ -176,6 +187,160 @@
             "and": " and ",
             "privacyPolicy": "Privacy Policy",
             "acceptMsg": ""
+        },
+        "connectWithUsPage": {
+            "bannerTitle": "Connect With Us",
+            "bannerSubtitle": "Have a question or looking to build a partnership? Our team is ready to help you navigate global sourcing with expert guidance and dedicated support.",
+            "badgeLabel": "Global Reach, Local Support",
+            "contactFormTitle": "Send us a Message",
+            "formDescription": "Fill out the form below and our team will get back to you within 24 hours.",
+            "nameField": "Full Name",
+            "namePlaceholder": "John Doe",
+            "emailField": "Email Address",
+            "emailPlaceholder": "john@company.com",
+            "phoneField": "Phone Number",
+            "phonePlaceholder": "+1 (555) 000-0000",
+            "countryField": "Country",
+            "countryPlaceholder": "Select your country",
+            "messageField": "Your Message",
+            "messagePlaceholder": "Tell us how we can help you...",
+            "submitButton": "Send Message",
+            "trustIndicatorsTitle": "Why trust us?",
+            "isoDescription": "Certified for quality management systems",
+            "verifiedSupplierTitle": "Verified Network",
+            "verifiedSupplierDescription": "All suppliers undergo strict vetting",
+            "whyChooseUsTitle": "Why Choose Us",
+            "whyChooseUs1": "Global Reach & Verified Suppliers",
+            "whyChooseUs2": "Secure & Transparent Transactions",
+            "whyChooseUs3": "24/7 Dedicated Customer Support",
+            "whyChooseUs4": "End-to-End Trade Assurance"
+        }
+    },
+    "about": {
+        "meta": {
+            "title": "About Us | Global S&P",
+            "description": "Learn about Global S&P, the leading B2B sourcing platform connecting global markets and empowering B2B trade."
+        },
+        "hero": {
+            "label": "About global-s-p",
+            "title": "Connecting global markets, empowering B2B trade.",
+            "description": "We are the leading B2B sourcing platform bridging the gap between verified global suppliers and quality buyers worldwide.",
+            "contactUs": "Contact Us",
+            "logoText": "GLOBAL-S-P"
+        },
+        "stats": {
+            "suppliers": "Verified Suppliers",
+            "products": "Products & Services",
+            "countries": "Countries Covered",
+            "support": "Dedicated Support"
+        },
+        "mission": {
+            "label": "Our Mission",
+            "title": "Simplifying B2B Sourcing for Everyone.",
+            "desc1": "We believe that finding the right business partners should be transparent, efficient, and reliable. Our mission is to digitize the global supply chain, making it accessible for businesses of all sizes to connect and thrive.",
+            "desc2": "By leveraging advanced matching algorithms and rigorous supplier verification processes, we ensure that every connection made on our platform is built on trust and mutual growth.",
+            "feature1Title": "Unmatched Precision",
+            "feature1Desc": "We use data-driven insights to match your precise sourcing needs with the most capable global suppliers.",
+            "feature2Title": "Global Reach",
+            "feature2Desc": "Our network spans over 150 countries, providing you with unparalleled access to international markets.",
+            "feature3Title": "Verified Trust",
+            "feature3Desc": "Every supplier undergoes a strict vetting process to ensure safe, reliable, and high-quality transactions."
+        },
+        "cta": {
+            "title": "Ready to grow your business?",
+            "description": "Join million of buyers and suppliers who rely on global-s-p for their B2B sourcing needs.",
+            "createAccount": "Create an Account",
+            "contactSales": "Contact Sales"
+        }
+    },
+    "contactPage": {
+        "meta": {
+            "title": "Contact Us | Global S&P",
+            "description": "Get in touch with Global S&P. We'd love to hear from you."
+        },
+        "heroTitle": "Let's Talk",
+        "heroSubtitle": "We'd love to hear from you. Whether you have a question about our marketplace, pricing, or anything else, our team is ready to answer all your questions.",
+        "formTitle": "Send us a Message",
+        "formSubtitle": "Fill out the form below and we will get back to you within 24 hours.",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "subject": "Subject",
+        "messagePlaceholder": "Write your message here...",
+        "sending": "Sending Request...",
+        "sendButton": "Send Message",
+        "contactInfoTitle": "Contact Information",
+        "locationLabel": "Location",
+        "locationLine1": "123 Global Trade Avenue",
+        "locationLine2": "Business District, NY 10001",
+        "emailLabel": "Email Address",
+        "email1": "support@globalsourceexpo.com",
+        "email2": "sales@globalsourceexpo.com",
+        "phoneLabel": "Phone Number",
+        "phoneValue": "+1 (800) 123-4567",
+        "connectWithUsLabel": "Connect with us",
+        "successMessage": "Message sent successfully! Our team will contact you shortly."
+    },
+    "contactSupplier": {
+        "meta": {
+            "title": "{name} | Global S&P",
+            "description": "Get in touch with {name} on Global S&P."
+        },
+        "headquarters": "Headquarters",
+        "deliveryArea": "Delivery Area",
+        "founded": "Founded",
+        "employees": "Employees",
+        "aboutCompany": "About the Company",
+        "notSpecified": "Not specified",
+        "noDescription": "No description available for this supplier."
+    },
+    "contactForm": {
+        "title": "Contact supplier",
+        "toLabel": "To",
+        "reasonLabel": "Reason for contacting",
+        "reasons": {
+            "getQuote": "Get price / quote",
+            "getDetails": "Get products / services details",
+            "sellSomething": "Sell something to them",
+            "other": "Other"
+        },
+        "titlePlaceholder": "Please add a short title or subject for your request",
+        "titleLabel": "Request title*",
+        "locationPlaceholder": "Please enter a city name",
+        "locationLabel": "Delivery location*",
+        "quantityPlaceholder": "E.g. 200 kg, 500 pieces, 10 litres",
+        "quantityLabel": "Quantity*",
+        "oneTimeRequest": "One-time request",
+        "recurringRequest": "Recurring request",
+        "messageLabel": "Message*",
+        "messagePlaceholder": "Please provide detailed specifications, including colour, material, size, weight, packaging, certificates, and any other relevant information for a prompt and accurate quote",
+        "uploadBtn": "Upload images or files",
+        "maxSize": "Maximum size 25 MB",
+        "forwardRequestText": "Forward this request to other suppliers if the company doesn't respond within 48 hours",
+        "emailPlaceholder": "Please enter your email",
+        "emailLabel": "Business email*",
+        "companyPlaceholder": "Please enter your company name",
+        "companyLabel": "Company name",
+        "sendRequest": "Send request",
+        "termsText1": "By submitting the form, I accept the ",
+        "termsOfUse": "Terms of use",
+        "termsText2": " and the ",
+        "gtc": "GTC",
+        "termsText3": ". I have acknowledged the ",
+        "privacyPolicy": "privacy policy",
+        "termsText4": ". An account on our platform is required to access responses from your communication partners.",
+        "errors": {
+            "errTitle": "Request title is required",
+            "errLocation": "Delivery location is required",
+            "errQuantity": "Quantity is required",
+            "errMessage": "Message is required",
+            "errEmailReq": "Business email is required",
+            "errEmailValid": "Please enter a valid email address",
+            "errMaxFiles": "Maximum 5 files allowed",
+            "errMaxSize": "Total file size exceeds 25 MB",
+            "successMessage": "Request sent successfully!",
+            "errFailed": "Failed to send request. Please try again."
         }
     }
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
@@ -65,6 +66,31 @@ async function getValuablePartners(): Promise<ValuablePartner[]> {
     return json?.data ?? []
   } catch {
     return []
+  }
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("home.meta")
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      siteName: "Global Source Expo",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   }
 }
 

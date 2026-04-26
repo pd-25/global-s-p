@@ -171,7 +171,7 @@ function AnimatedBrandText({
           fontWeight: 500,
           fontSize: { xs: '1.2em', md: '1.6em' },
           letterSpacing: { xs: '1px', md: '2px' },
-          marginTop: '-0.15em',
+          margin: '-2px 0px',
           opacity: 1 < visibleCount ? 1 : 0,
           transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
           transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -179,7 +179,7 @@ function AnimatedBrandText({
       >
         {brandWords[1]}
       </Box>
-      <Box component="span" sx={{ display: 'flex', flexDirection: 'row', gap: { xs: '4px', md: '8px' }, marginTop: '-0.1em' }}>
+      <Box component="span" sx={{ display: 'inline-flex', flexDirection: 'row', gap: { xs: '4px', md: '8px' }, margin: '0em' }}>
         <Box
           component="span"
           sx={{
@@ -291,33 +291,33 @@ export default function Footer({
                   }}
                 >
                   {/* Logo */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  height: { xs: 65, md: 80 },
-                  maxWidth: { xs: 260, md: 500 },
-                }}
-              >
-                <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", minWidth: 'max-content', height: '100%' }}>
-                  {/* gap: '12px', */}
-                  <Image
-                    src={logo}
-                    alt="logo"
-                    width={220}
-                    height={95}
-                    className="logo"
-                    style={{ objectFit: "contain", width: "auto", height: "100%", maxHeight: "100%" }}
-                  />
-                  {/* <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
-                  <AnimatedBrandText
-                    fontSize={{ xs: '14px', md: '20px' }}
-                    letterSpacing={{ xs: '1.5px', md: '2.5px' }}
-                    flexDirection={{ xs: 'column', md: 'row' }}
-                    gap={{ xs: 0, md: '8px' }}
-                  />
-                </Link>
-              </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      height: { xs: 65, md: 80 },
+                      maxWidth: { xs: 260, md: 500 },
+                    }}
+                  >
+                    <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", minWidth: 'max-content', height: '100%' }}>
+                      {/* gap: '12px', */}
+                      <Image
+                        src={logo}
+                        alt="logo"
+                        width={220}
+                        height={95}
+                        className="logo"
+                        style={{ objectFit: "contain", width: "auto", height: "100%", maxHeight: "100%" }}
+                      />
+                      {/* <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
+                      <AnimatedBrandText
+                        fontSize={{ xs: '14px', md: '20px' }}
+                        letterSpacing={{ xs: '1.5px', md: '2.5px' }}
+                        flexDirection={{ xs: 'column', md: 'row' }}
+                        gap={{ xs: 0, md: '8px' }}
+                      />
+                    </Link>
+                  </Box>
                   {/*<Image
                     src={logo}
                     alt="logo"
@@ -353,7 +353,7 @@ export default function Footer({
                   href={routes.registerCompany}
                 >
                   {t("connectWithUs")}
-                  
+
                 </Button>
                 {/* <Button
                   variant="outlined"
@@ -447,7 +447,7 @@ export default function Footer({
             </Box>
 
             {/* Download App */}
-            <Box>
+            {/* <Box>
               <Typography
                 variant="h4"
                 component="h4"
@@ -468,7 +468,7 @@ export default function Footer({
                   <Image src={googlePlayIcon} alt="apple-icon" />
                 </Link>
               </Stack>
-            </Box>
+            </Box> */}
           </Box>
 
           {/* Middle Column: Most Popular Categories */}
@@ -511,7 +511,7 @@ export default function Footer({
                   <Link
                     // href={`/products&searvices/products/${category.slug || category.id || index + 1}`}
                     href={`${routes.serviceProductListPage.replace("[categoryId]", category.slug)}`}
-                    
+
                     className={styles.categoryLink}
                     style={{
                       color: "#ffffff",

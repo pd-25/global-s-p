@@ -18,6 +18,7 @@ export const routes = {
     eWastePolicyPage: "/e-waste",
     returnCancelPolicyPage: "/return-cancel-policy",
     store: "/store",
+    connectWithUsPage: "/connect-with-us",
 
 }
 

@@ -85,7 +85,7 @@ function AnimatedBrandText({
           fontWeight: 500,
           fontSize: { xs: '1.2em', md: '1.6em' },
           letterSpacing: { xs: '1px', md: '2px' },
-          marginTop: '-0.15em',
+          margin: '-3px 0px',
           opacity: 1 < visibleCount ? 1 : 0,
           transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
           transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -93,7 +93,7 @@ function AnimatedBrandText({
       >
         {brandWords[1]}
       </Box>
-      <Box component="span" sx={{ display: 'flex', flexDirection: 'row', gap: { xs: '4px', md: '8px' }, marginTop: '-0.1em' }}>
+      <Box component="span" sx={{ display: 'inline-flex', flexDirection: 'row', gap: { xs: '4px', md: '8px' }, margin: '0em' }}>
         <Box
           component="span"
           sx={{
@@ -191,7 +191,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            py: { xs: 1, md: 0.8 },
+            py: { xs: 1, md: 0 },
           }}
         >
           {/* Logo */}
@@ -241,7 +241,7 @@ export default function Header() {
                 {t(link.key as any)}
               </Link>
             ))}
-            <Button variant="contained" component={Link} href={routes.registerCompany}>
+            <Button variant="contained" component={Link} href={routes.connectWithUsPage}>
               {t('connectWithUs')}
             </Button>
 

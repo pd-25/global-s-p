@@ -26,8 +26,10 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import SubjectIcon from '@mui/icons-material/Subject';
+import { useTranslations } from 'next-intl';
 
 export default function ContactPage() {
+    const t = useTranslations('contactPage');
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -85,10 +87,10 @@ export default function ContactPage() {
             >
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
                     <Typography variant="h1" sx={{ fontSize: { xs: '40px', md: '64px' }, fontWeight: 900, mb: 2, letterSpacing: '-1px', textShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                        Let's Talk
+                        {t('heroTitle')}
                     </Typography>
                     <Typography variant="body1" sx={{ fontSize: { xs: '18px', md: '20px' }, opacity: 0.9, maxWidth: '600px', mx: 'auto', lineHeight: 1.6, fontWeight: 300 }}>
-                        We'd love to hear from you. Whether you have a question about our marketplace, pricing, or anything else, our team is ready to answer all your questions.
+                        {t('heroSubtitle')}
                     </Typography>
                 </Container>
             </Box>
@@ -109,10 +111,10 @@ export default function ContactPage() {
                     {/* Left Column: Contact Form */}
                     <Box sx={{ flex: 1, p: { xs: 4, md: 6, lg: 8 }, backgroundColor: '#ffffff' }}>
                         <Typography variant="h3" sx={{ fontWeight: 800, color: '#014B35', mb: 1, fontSize: { xs: '28px', md: '36px' }, letterSpacing: '-0.5px' }}>
-                            Send us a Message
+                            {t('formTitle')}
                         </Typography>
                         <Typography variant="body1" sx={{ color: '#666', mb: 5, fontSize: '16px' }}>
-                            Fill out the form below and we will get back to you within 24 hours.
+                            {t('formSubtitle')}
                         </Typography>
 
                         <Box component="form" onSubmit={handleSubmit}>
@@ -120,7 +122,7 @@ export default function ContactPage() {
                                 <Grid size={{ xs: 12, sm: 6 }}>
                                     <TextField
                                         fullWidth
-                                        placeholder="First Name"
+                                        placeholder={t('firstName')}
                                         name="firstName"
                                         value={formData.firstName}
                                         onChange={handleChange}
@@ -136,7 +138,7 @@ export default function ContactPage() {
                                 <Grid size={{ xs: 12, sm: 6 }}>
                                     <TextField
                                         fullWidth
-                                        placeholder="Last Name"
+                                        placeholder={t('lastName')}
                                         name="lastName"
                                         value={formData.lastName}
                                         onChange={handleChange}
@@ -152,7 +154,7 @@ export default function ContactPage() {
                                 <Grid size={{ xs: 12, sm: 6 }}>
                                     <TextField
                                         fullWidth
-                                        placeholder="Email Address"
+                                        placeholder={t('email')}
                                         type="email"
                                         name="email"
                                         value={formData.email}
@@ -169,7 +171,7 @@ export default function ContactPage() {
                                 <Grid size={{ xs: 12, sm: 6 }}>
                                     <TextField
                                         fullWidth
-                                        placeholder="Phone Number"
+                                        placeholder={t('phone')}
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
@@ -184,7 +186,7 @@ export default function ContactPage() {
                                 <Grid size={12}>
                                     <TextField
                                         fullWidth
-                                        placeholder="Subject"
+                                        placeholder={t('subject')}
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
@@ -200,7 +202,7 @@ export default function ContactPage() {
                                 <Grid size={12}>
                                     <TextField
                                         fullWidth
-                                        placeholder="Write your message here..."
+                                        placeholder={t('messagePlaceholder')}
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
@@ -238,7 +240,7 @@ export default function ContactPage() {
                                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                                         }}
                                     >
-                                        {loading ? 'Sending Request...' : 'Send Message'}
+                                        {loading ? t('sending') : t('sendButton')}
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -260,7 +262,7 @@ export default function ContactPage() {
                     >
                         <Box sx={{ position: 'relative', zIndex: 1 }}>
                             <Typography variant="h4" sx={{ fontWeight: 800, mb: 5, fontSize: '28px' }}>
-                                Contact Information
+                                {t('contactInfoTitle')}
                             </Typography>
 
                             <Stack spacing={5}>
@@ -269,8 +271,8 @@ export default function ContactPage() {
                                         <LocationOnIcon sx={{ color: '#7FAF0D', fontSize: '28px' }} />
                                     </Box>
                                     <Box>
-                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Location</Typography>
-                                        <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.6, fontSize: '18px', fontWeight: 500 }}>123 Global Trade Avenue<br />Business District, NY 10001</Typography>
+                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>{t('locationLabel')}</Typography>
+                                        <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.6, fontSize: '18px', fontWeight: 500 }}>{t('locationLine1')}<br />{t('locationLine2')}</Typography>
                                     </Box>
                                 </Box>
 
@@ -279,9 +281,9 @@ export default function ContactPage() {
                                         <EmailIcon sx={{ color: '#7FAF0D', fontSize: '28px' }} />
                                     </Box>
                                     <Box>
-                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Email Address</Typography>
-                                        <Typography variant="body1" sx={{ mt: 0.5, fontSize: '18px', fontWeight: 500 }}>support@globalsourceexpo.com</Typography>
-                                        <Typography variant="body1" sx={{ fontSize: '18px', fontWeight: 500 }}>sales@globalsourceexpo.com</Typography>
+                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>{t('emailLabel')}</Typography>
+                                        <Typography variant="body1" sx={{ mt: 0.5, fontSize: '18px', fontWeight: 500 }}>{t('email1')}</Typography>
+                                        <Typography variant="body1" sx={{ fontSize: '18px', fontWeight: 500 }}>{t('email2')}</Typography>
                                     </Box>
                                 </Box>
 
@@ -290,8 +292,8 @@ export default function ContactPage() {
                                         <PhoneIcon sx={{ color: '#7FAF0D', fontSize: '28px' }} />
                                     </Box>
                                     <Box>
-                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Phone Number</Typography>
-                                        <Typography variant="body1" sx={{ mt: 0.5, fontSize: '18px', fontWeight: 500 }}>+1 (800) 123-4567</Typography>
+                                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>{t('phoneLabel')}</Typography>
+                                        <Typography variant="body1" sx={{ mt: 0.5, fontSize: '18px', fontWeight: 500 }}>{t('phoneValue')}</Typography>
                                     </Box>
                                 </Box>
                             </Stack>
@@ -299,7 +301,7 @@ export default function ContactPage() {
 
                         <Box sx={{ position: 'relative', zIndex: 1, mt: { xs: 8, md: 0 } }}>
                             <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600, color: 'rgba(255,255,255,0.8)' }}>
-                                Connect with us
+                                {t('connectWithUsLabel')}
                             </Typography>
                             <Stack direction="row" spacing={2}>
                                 <IconButton sx={{ backgroundColor: '#ffffff', color: '#014B35', '&:hover': { backgroundColor: '#7FAF0D', color: '#fff', transform: 'translateY(-3px)' }, transition: 'all 0.3s', width: '48px', height: '48px' }}>
@@ -326,7 +328,7 @@ export default function ContactPage() {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
                 <Alert onClose={() => setSuccess(false)} severity="success" sx={{ width: '100%', borderRadius: '12px', fontSize: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                    Message sent successfully! Our team will contact you shortly.
+                    {t('successMessage')}
                 </Alert>
             </Snackbar>
         </Box>

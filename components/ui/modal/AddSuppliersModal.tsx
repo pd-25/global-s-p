@@ -45,6 +45,13 @@ interface OptionListResponse<T> {
   data: T[]
 }
 
+interface SupplierDocument {
+  id: number
+  name: string
+  document: string
+  is_active: boolean
+}
+
 interface SupplierDetail {
   id: number
   name?: string | null
@@ -64,6 +71,7 @@ interface SupplierDetail {
   company_phone_number?: string | null
   company_email?: string | null
   logo?: string | null
+  documents?: SupplierDocument[]
 }
 
 interface SupplierDetailResponse {
@@ -96,6 +104,7 @@ export default function AddSuppliersModal({
   const [companyEmail, setCompanyEmail] = useState("")
   const [logoFile, setLogoFile] = useState<File | null>(null)
   const [logoPreview, setLogoPreview] = useState<string | null>(null)
+  const [documents, setDocuments] = useState<{ name: string; file: File | null; preview?: string; id?: number }[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoadingOptions, setIsLoadingOptions] = useState(false)
   const [isFetchingSupplier, setIsFetchingSupplier] = useState(false)
@@ -201,6 +210,19 @@ export default function AddSuppliersModal({
           setCompanyEmail(supplier.company_email ?? "")
           setLogoFile(null)
           setLogoPreview(supplier.logo ?? null)
+          
+          if (supplier.documents && supplier.documents.length > 0) {
+            setDocuments(
+              supplier.documents.map(doc => ({
+                id: doc.id,
+                name: doc.name,
+                file: null,
+                preview: doc.document
+              }))
+            )
+          } else {
+            setDocuments([])
+          }
         }
       } catch (err: unknown) {
         const message =
@@ -235,6 +257,7 @@ export default function AddSuppliersModal({
     setCompanyEmail("")
     setLogoFile(null)
     setLogoPreview(null)
+    setDocuments([])
     setIsSubmitting(false)
     setError(null)
     setNameError(null)
@@ -309,6 +332,28 @@ export default function AddSuppliersModal({
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
     }
+  }
+
+  const handleAddDocument = () => {
+    if (documents.length < 5) {
+      setDocuments([...documents, { name: "", file: null }])
+    }
+  }
+
+  const handleRemoveDocument = (index: number) => {
+    const newDocs = [...documents]
+    newDocs.splice(index, 1)
+    setDocuments(newDocs)
+  }
+
+  const handleDocumentChange = (
+    index: number,
+    field: "name" | "file",
+    value: string | File | null,
+  ) => {
+    const newDocs = [...documents]
+    newDocs[index] = { ...newDocs[index], [field]: value as any }
+    setDocuments(newDocs)
   }
 
   const validate = () => {
@@ -393,6 +438,15 @@ export default function AddSuppliersModal({
 
       if (logoFile) {
         formData.append("logo", logoFile)
+      }
+
+      if (!isEditMode) {
+        documents.forEach((doc, index) => {
+          if (doc.name && doc.file) {
+            formData.append(`documents[${index}][name]`, doc.name)
+            formData.append(`documents[${index}][file]`, doc.file)
+          }
+        })
       }
 
       if (isEditMode) {
@@ -831,6 +885,95 @@ export default function AddSuppliersModal({
                 </Paper>
               )}
             </Box>
+
+            {/* Documents Section */}
+            <Box sx={{ gridColumn: "1 / -1" }}>
+              <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
+                Company Documents
+              </Typography>
+              
+              {isEditMode ? (
+                documents.length > 0 ? (
+                  <Stack spacing={2}>
+                    {documents.map((doc, index) => (
+                      <Paper key={index} variant="outlined" sx={{ p: 2, display: "flex", alignItems: "center", justifyContent: "space-between", bgcolor: "grey.50", borderRadius: "8px" }}>
+                        <Box>
+                          <Typography variant="body2" fontWeight={600}>{doc.name || `Document ${index + 1}`}</Typography>
+                        </Box>
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          href={doc.preview}
+                          target="_blank"
+                          startIcon={<Icon>visibility</Icon>}
+                          sx={{ textTransform: "none", borderRadius: "6px" }}
+                        >
+                          View
+                        </Button>
+                      </Paper>
+                    ))}
+                  </Stack>
+                ) : (
+                  <Paper variant="outlined" sx={{ p: 3, textAlign: "center", bgcolor: "grey.50", borderRadius: "8px", borderStyle: "dashed" }}>
+                    <Typography variant="body2" color="text.secondary">No documents available.</Typography>
+                  </Paper>
+                )
+              ) : (
+                <Stack spacing={2}>
+                  {documents.map((doc, index) => (
+                    <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                      <TextField
+                        fullWidth
+                        label="Document Name"
+                        placeholder="e.g. Incorporation Certificate"
+                        size="small"
+                        value={doc.name}
+                        onChange={(e) => handleDocumentChange(index, "name", e.target.value)}
+                      />
+                      <Button
+                        component="label"
+                        variant="outlined"
+                        sx={{ flexShrink: 0, height: 40, textTransform: "none", maxWidth: { xs: 150, sm: 200 }, overflow: "hidden" }}
+                        startIcon={<Icon>upload_file</Icon>}
+                      >
+                        <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {doc.file ? doc.file.name : "Upload File"}
+                        </Box>
+                        <input
+                          type="file"
+                          hidden
+                          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                          onChange={(e) => {
+                            if (e.target.files && e.target.files[0]) {
+                              handleDocumentChange(index, "file", e.target.files[0])
+                            }
+                          }}
+                        />
+                      </Button>
+                      <Button
+                        color="error"
+                        onClick={() => handleRemoveDocument(index)}
+                        sx={{ minWidth: "auto", p: 1, mt: 0.5 }}
+                      >
+                        <Icon>delete</Icon>
+                      </Button>
+                    </Box>
+                  ))}
+                  
+                  {documents.length < 5 && (
+                    <Button
+                      variant="text"
+                      startIcon={<Icon>add</Icon>}
+                      onClick={handleAddDocument}
+                      sx={{ alignSelf: "flex-start", textTransform: "none" }}
+                    >
+                      Add Document
+                    </Button>
+                  )}
+                </Stack>
+              )}
+            </Box>
+
             <Stack
               direction="row"
               spacing={2}

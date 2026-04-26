@@ -32,6 +32,10 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
     title: "Global Source Export",
     description: "A b2b market place for buyers.",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+    }
 }
 
 type Props = {

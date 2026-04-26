@@ -27,6 +27,14 @@ import { contactFormReason } from "@/lib/constants"
 import { websiteEndpoints } from "@/config/websiteEndpoints"
 import { useCreateEnquiry } from "@/hooks/useCreateEnquiry"
 import { CircularProgress, Snackbar, Alert, Chip } from "@mui/material"
+import { useTranslations } from "next-intl"
+
+const reasonMap: Record<string, 'getQuote' | 'getDetails' | 'sellSomething' | 'other'> = {
+  'Get price / quote': 'getQuote',
+  'Get products / services details': 'getDetails',
+  'Sell something to them': 'sellSomething',
+  'Other': 'other'
+}
 
 export interface ContactFormProps {
   supplierId?: number
@@ -59,6 +67,7 @@ export default function ContactForm({
   const [files, setFiles] = useState<File[]>([])
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const { submitEnquiry, loading } = useCreateEnquiry()
+  const t = useTranslations("contactForm")
   const [snackbar, setSnackbar] = useState<{
     open: boolean
     message: string
@@ -77,17 +86,17 @@ export default function ContactForm({
     const newErrors: { [key: string]: string } = {}
 
     if (isQuoteRequest) {
-      if (!title.trim()) newErrors.title = "Request title is required"
-      if (!location.trim()) newErrors.location = "Delivery location is required"
-      if (!quantity.trim()) newErrors.quantity = "Quantity is required"
+      if (!title.trim()) newErrors.title = t("errors.errTitle")
+      if (!location.trim()) newErrors.location = t("errors.errLocation")
+      if (!quantity.trim()) newErrors.quantity = t("errors.errQuantity")
     }
 
-    if (!message.trim()) newErrors.message = "Message is required"
+    if (!message.trim()) newErrors.message = t("errors.errMessage")
 
     if (!email.trim()) {
-      newErrors.email = "Business email is required"
+      newErrors.email = t("errors.errEmailReq")
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Please enter a valid email address"
+      newErrors.email = t("errors.errEmailValid")
     }
 
     setErrors(newErrors)
@@ -100,7 +109,7 @@ export default function ContactForm({
       if (files.length + selectedFiles.length > 5) {
         setSnackbar({
           open: true,
-          message: "Maximum 5 files allowed",
+          message: t("errors.errMaxFiles"),
           severity: "error",
         })
         return
@@ -112,7 +121,7 @@ export default function ContactForm({
       if (totalSize > 25 * 1024 * 1024) {
         setSnackbar({
           open: true,
-          message: "Total file size exceeds 25 MB",
+          message: t("errors.errMaxSize"),
           severity: "error",
         })
         return
@@ -155,7 +164,7 @@ export default function ContactForm({
 
         setSnackbar({
           open: true,
-          message: "Request sent successfully!",
+          message: t("errors.successMessage"),
           severity: "success",
         })
 
@@ -177,7 +186,7 @@ export default function ContactForm({
       } catch (error: any) {
         setSnackbar({
           open: true,
-          message: error.message || "Failed to send request. Please try again.",
+          message: error.message || t("errors.errFailed"),
           severity: "error",
         })
       }
@@ -204,13 +213,13 @@ export default function ContactForm({
           variant="h5"
           sx={{ fontWeight: 600, color: "#002540", fontSize: "20px" }}
         >
-          Contact supplier
+          {t("title")}
         </Typography>
       </Stack>
 
       {/* To line */}
       <Stack direction="row" alignItems="center" spacing={2} mb={3}>
-        <Typography sx={{ fontWeight: 600, color: "#000" }}>To</Typography>
+        <Typography sx={{ fontWeight: 600, color: "#000" }}>{t("toLabel")}</Typography>
         <Box
           sx={{
             backgroundColor: "#EBF4D3",
@@ -257,7 +266,7 @@ export default function ContactForm({
         {/* Reason for contacting */}
         <FormControl fullWidth size="small">
           <Typography sx={{ fontSize: "12px", color: "#555", mb: 0.5 }}>
-            Reason for contacting
+            {t("reasonLabel")}
           </Typography>
           <Select
             value={reason}
@@ -269,9 +278,9 @@ export default function ContactForm({
               },
             }}
           >
-            {contactFormReason.map((reason) => (
-              <MenuItem key={reason.name} value={reason.name}>
-                {reason.name}
+            {contactFormReason.map((r) => (
+              <MenuItem key={r.name} value={r.name}>
+                {t(`reasons.${reasonMap[r.name] || 'other'}`)}
               </MenuItem>
             ))}
           </Select>
@@ -283,8 +292,8 @@ export default function ContactForm({
             <TextField
               fullWidth
               size="small"
-              placeholder="Please add a short title or subject for your request"
-              label="Request title*"
+              placeholder={t("titlePlaceholder")}
+              label={t("titleLabel")}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               error={!!errors.title}
@@ -302,8 +311,8 @@ export default function ContactForm({
             <TextField
               fullWidth
               size="small"
-              placeholder="Please enter a city name"
-              label="Delivery location*"
+              placeholder={t("locationPlaceholder")}
+              label={t("locationLabel")}
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               error={!!errors.location}
@@ -313,8 +322,8 @@ export default function ContactForm({
             <TextField
               fullWidth
               size="small"
-              placeholder="E.g. 200 kg, 500 pieces, 10 litres"
-              label="Quantity*"
+              placeholder={t("quantityPlaceholder")}
+              label={t("quantityLabel")}
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               error={!!errors.quantity}
@@ -343,7 +352,7 @@ export default function ContactForm({
               }
               label={
                 <Typography sx={{ fontSize: "14px" }}>
-                  One-time request
+                  {t("oneTimeRequest")}
                 </Typography>
               }
             />
@@ -359,7 +368,7 @@ export default function ContactForm({
               }
               label={
                 <Typography sx={{ fontSize: "14px" }}>
-                  Recurring request
+                  {t("recurringRequest")}
                 </Typography>
               }
             />
@@ -372,8 +381,8 @@ export default function ContactForm({
             fullWidth
             multiline
             rows={4}
-            label="Message*"
-            placeholder="Please provide detailed specifications, including colour, material, size, weight, packaging, certificates, and any other relevant information for a prompt and accurate quote"
+            label={t("messageLabel")}
+            placeholder={t("messagePlaceholder")}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             error={!!errors.message}
@@ -415,12 +424,12 @@ export default function ContactForm({
                 },
               }}
             >
-              Upload images or files
+              {t("uploadBtn")}
               <input type="file" hidden multiple onChange={handleFileChange} />
             </Button>
             <Stack direction="row" justifyContent="space-between" mt={0.5}>
               <Typography sx={{ fontSize: "12px", color: "#888" }}>
-                Maximum size 25 MB
+                {t("maxSize")}
               </Typography>
               <Typography sx={{ fontSize: "12px", color: "#888" }}>
                 {files.length}/5
@@ -464,8 +473,7 @@ export default function ContactForm({
             }
             label={
               <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
-                Forward this request to other suppliers if the company doesn't
-                respond within 48 hours
+                {t("forwardRequestText")}
               </Typography>
             }
             sx={{ alignItems: "center", pt: 0.5 }}
@@ -478,8 +486,8 @@ export default function ContactForm({
         <TextField
           fullWidth
           size="small"
-          placeholder="Please enter your email"
-          label="Business email*"
+          placeholder={t("emailPlaceholder")}
+          label={t("emailLabel")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           error={!!errors.email}
@@ -491,8 +499,8 @@ export default function ContactForm({
           <TextField
             fullWidth
             size="small"
-            placeholder="Please enter your company name"
-            label="Company name"
+            placeholder={t("companyPlaceholder")}
+            label={t("companyLabel")}
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             sx={{ "& .MuiOutlinedInput-root": { borderRadius: "6px" } }}
@@ -525,7 +533,7 @@ export default function ContactForm({
           {loading ? (
             <CircularProgress size={24} sx={{ color: "#fff" }} />
           ) : (
-            "Send request"
+            t("sendRequest")
           )}
         </Button>
 
@@ -538,7 +546,7 @@ export default function ContactForm({
             lineHeight: 1.6,
           }}
         >
-          By submitting the form, I accept the{" "}
+          {t("termsText1")}
           <Box
             component="span"
             sx={{
@@ -547,9 +555,9 @@ export default function ContactForm({
               textDecoration: "underline",
             }}
           >
-            Terms of use
+            {t("termsOfUse")}
           </Box>{" "}
-          and the{" "}
+          {t("termsText2")}
           <Box
             component="span"
             sx={{
@@ -558,9 +566,9 @@ export default function ContactForm({
               textDecoration: "underline",
             }}
           >
-            GTC
+            {t("gtc")}
           </Box>
-          . I have acknowledged the{" "}
+          {t("termsText3")}
           <Box
             component="span"
             sx={{
@@ -569,10 +577,9 @@ export default function ContactForm({
               textDecoration: "underline",
             }}
           >
-            privacy policy
+            {t("privacyPolicy")}
           </Box>
-          . An account on our platform is required to access responses from your
-          communication partners.
+          {t("termsText4")}
         </Typography>
       </Stack>
 

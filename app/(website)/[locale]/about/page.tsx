@@ -1,6 +1,5 @@
-'use client'
-
 import React from 'react'
+import type { Metadata } from "next"
 import {
     Box,
     Container,
@@ -36,7 +35,29 @@ const HandshakeIcon = () => (
     </svg>
 );
 
-export default function AboutPage() {
+import { getTranslations } from "next-intl/server"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("about.meta");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+  };
+}
+
+export default async function AboutPage() {
+    const t = await getTranslations("about");
     return (
         <Box sx={{ bgcolor: '#F9FAF9', minHeight: '100vh', pb: 0 }}>
             {/* Header / Hero Section */}
@@ -48,13 +69,13 @@ export default function AboutPage() {
                     <Grid container spacing={6} alignItems="center">
                         <Grid size={{ xs: 12, md: 6 }}>
                             <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
-                                About global-s-p
+                                {t('hero.label')}
                             </Typography>
                             <Typography variant="h1" sx={{ fontWeight: 800, fontSize: { xs: '36px', md: '52px' }, mb: 3, lineHeight: 1.1 }}>
-                                Connecting global markets, empowering B2B trade.
+                                {t('hero.title')}
                             </Typography>
                             <Typography sx={{ fontSize: '18px', opacity: 0.9, lineHeight: 1.6, mb: 4, color: 'white' }}>
-                                We are the leading B2B sourcing platform bridging the gap between verified global suppliers and quality buyers worldwide.
+                                {t('hero.description')}
                             </Typography>
                             <Button
                                 variant="contained"
@@ -71,7 +92,7 @@ export default function AboutPage() {
                                     '&:hover': { bgcolor: '#6e980c', boxShadow: 'none' }
                                 }}
                             >
-                                Contact Us
+                                {t('hero.contactUs')}
                             </Button>
                         </Grid>
 
@@ -87,7 +108,7 @@ export default function AboutPage() {
                             }}>
                                 <Box sx={{ bgcolor: '#013D2B', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                     <GlobeIcon />
-                                    <Typography variant="h3" sx={{ ml: 2, opacity: 0.5 }}>GLOBAL-S-P</Typography>
+                                    <Typography variant="h3" sx={{ ml: 2, opacity: 0.5 }}>{t('hero.logoText')}</Typography>
                                 </Box>
                             </Box>
                         </Grid>
@@ -105,10 +126,10 @@ export default function AboutPage() {
                         }
                     }}>
                         {[
-                            { value: '2.2M+', label: 'Verified Suppliers' },
-                            { value: '470K+', label: 'Products & Services' },
-                            { value: '150+', label: 'Countries Covered' },
-                            { value: '24/7', label: 'Dedicated Support' },
+                            { value: '2.2M+', label: t('stats.suppliers') },
+                            { value: '470K+', label: t('stats.products') },
+                            { value: '150+', label: t('stats.countries') },
+                            { value: '24/7', label: t('stats.support') },
                         ].map((stat, i) => (
                             <Grid size={{ xs: 12, sm: 6, md: 3 }} key={i} sx={{ textAlign: 'center', py: { xs: 2, md: 0 } }}>
                                 <Typography sx={{ fontWeight: 800, fontSize: { xs: '28px', md: '36px' }, color: '#1C1B1F', lineHeight: 1, mb: 1 }}>
@@ -128,16 +149,16 @@ export default function AboutPage() {
                 <Grid container spacing={8} alignItems="center">
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
-                            Our Mission
+                            {t('mission.label')}
                         </Typography>
                         <Typography variant="h2" sx={{ fontWeight: 800, fontSize: { xs: '32px', md: '40px' }, color: '#1C1B1F', mb: 3 }}>
-                            Simplifying B2B Sourcing for Everyone.
+                            {t('mission.title')}
                         </Typography>
                         <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
-                            We believe that finding the right business partners should be transparent, efficient, and reliable. Our mission is to digitize the global supply chain, making it accessible for businesses of all sizes to connect and thrive.
+                            {t('mission.desc1')}
                         </Typography>
                         <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563' }}>
-                            By leveraging advanced matching algorithms and rigorous supplier verification processes, we ensure that every connection made on our platform is built on trust and mutual growth.
+                            {t('mission.desc2')}
                         </Typography>
                     </Grid>
 
@@ -148,8 +169,8 @@ export default function AboutPage() {
                                     <TargetIcon />
                                 </Box>
                                 <Box>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Unmatched Precision</Typography>
-                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>We use data-driven insights to match your precise sourcing needs with the most capable global suppliers.</Typography>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>{t('mission.feature1Title')}</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>{t('mission.feature1Desc')}</Typography>
                                 </Box>
                             </Box>
                             <Box sx={{ display: 'flex', gap: 3 }}>
@@ -157,8 +178,8 @@ export default function AboutPage() {
                                     <GlobeIcon />
                                 </Box>
                                 <Box>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Global Reach</Typography>
-                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>Our network spans over 150 countries, providing you with unparalleled access to international markets.</Typography>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>{t('mission.feature2Title')}</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>{t('mission.feature2Desc')}</Typography>
                                 </Box>
                             </Box>
                             <Box sx={{ display: 'flex', gap: 3 }}>
@@ -166,8 +187,8 @@ export default function AboutPage() {
                                     <HandshakeIcon />
                                 </Box>
                                 <Box>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>Verified Trust</Typography>
-                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>Every supplier undergoes a strict vetting process to ensure safe, reliable, and high-quality transactions.</Typography>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#1F2937' }}>{t('mission.feature3Title')}</Typography>
+                                    <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>{t('mission.feature3Desc')}</Typography>
                                 </Box>
                             </Box>
                         </Stack>
@@ -179,10 +200,10 @@ export default function AboutPage() {
             <Box sx={{ bgcolor: '#014B35', py: { xs: 8, md: 10 }, textAlign: 'center' }}>
                 <Container disableGutters sx={{ maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, color: 'white', mb: 3, fontSize: { xs: '28px', md: '36px' } }}>
-                        Ready to grow your business?
+                        {t('cta.title')}
                     </Typography>
                     <Typography sx={{ color: '#E5E7EB', fontSize: '18px', mb: 5, maxWidth: '600px', mx: 'auto' }}>
-                        Join million of buyers and suppliers who rely on global-s-p for their B2B sourcing needs.
+                        {t('cta.description')}
                     </Typography>
                     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
                         <Button
@@ -200,7 +221,7 @@ export default function AboutPage() {
                                 '&:hover': { bgcolor: '#6e980c', boxShadow: 'none' }
                             }}
                         >
-                            Create an Account
+                            {t('cta.createAccount')}
                         </Button>
                         <Button
                             variant="outlined"
@@ -216,7 +237,7 @@ export default function AboutPage() {
                                 '&:hover': { borderColor: 'white', bgcolor: 'rgba(255,255,255,0.05)' }
                             }}
                         >
-                            Contact Sales
+                            {t('cta.contactSales')}
                         </Button>
                     </Stack>
                 </Container>

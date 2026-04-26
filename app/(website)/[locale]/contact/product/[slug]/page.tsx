@@ -10,9 +10,32 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import EventIcon from '@mui/icons-material/Event';
 import StoreIcon from '@mui/icons-material/Store';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const result = await fetchContactFormData(slug);
+  const productName = result?.data?.product?.title || "Product";
+  const t = await getTranslations({ locale, namespace: 'contactSupplier.meta' });
+
+  return {
+    title: t('title', { name: productName }),
+    description: t('description', { name: productName }),
+    openGraph: {
+      title: t('title', { name: productName }),
+      description: t('description', { name: productName }),
+    },
+    twitter: {
+      title: t('title', { name: productName }),
+      description: t('description', { name: productName }),
+    }
+  };
+}
 
 export default async function ProductContactSuppliePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
+  const t = await getTranslations('contactSupplier');
   const result = await fetchContactFormData(slug)
   const data = result?.data
 
@@ -104,25 +127,25 @@ export default async function ProductContactSuppliePage({ params }: { params: Pr
                 <Stack spacing={2.5}>
                   <InfoRow
                     icon={<LocationOnIcon sx={{ color: '#7FAF0D' }} />}
-                    label="Headquarters"
+                    label={t('headquarters')}
                     value={`${supplier?.address}, ${supplier?.city} ${supplier?.zipcode}`}
                   />
 
                   <InfoRow
                     icon={<TravelExploreIcon sx={{ color: '#7FAF0D' }} />}
-                    label="Delivery Area"
-                    value={supplier?.delivery_area || "Not specified"}
+                    label={t('deliveryArea')}
+                    value={supplier?.delivery_area || t('notSpecified')}
                   />
 
                   <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mt: 1 }}>
                     <InfoBox
                       icon={<EventIcon sx={{ fontSize: 20 }} />}
-                      label="Founded"
+                      label={t('founded')}
                       value={supplier?.founded_year?.toString() || "-"}
                     />
                     <InfoBox
                       icon={<GroupsIcon sx={{ fontSize: 20 }} />}
-                      label="Employees"
+                      label={t('employees')}
                       value={supplier?.employee_strength?.toString() || "-"}
                     />
                   </Box>
@@ -130,10 +153,10 @@ export default async function ProductContactSuppliePage({ params }: { params: Pr
 
                 <Box sx={{ mt: 4 }}>
                   <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5, color: '#002540' }}>
-                    About the Company
+                    {t('aboutCompany')}
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#5F6D7E', lineHeight: 1.6 }}>
-                    {supplier?.about || "No description available for this supplier."}
+                    {supplier?.about || t('noDescription')}
                   </Typography>
                 </Box>
               </Box>
