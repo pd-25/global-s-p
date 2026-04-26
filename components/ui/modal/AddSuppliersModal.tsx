@@ -901,9 +901,10 @@ export default function AddSuppliersModal({
                           <Typography variant="body2" fontWeight={600}>{doc.name || `Document ${index + 1}`}</Typography>
                         </Box>
                         <Button
+                          component="a"
                           variant="outlined"
                           size="small"
-                          href={doc.preview}
+                          href={doc.preview || "#"}
                           target="_blank"
                           startIcon={<Icon>visibility</Icon>}
                           sx={{ textTransform: "none", borderRadius: "6px" }}
