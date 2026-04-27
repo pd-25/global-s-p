@@ -47,6 +47,7 @@ import productCategoryImage1 from "@/public/product/spice-product-slider-thumb-0
 import productCategoryImage2 from "@/public/product/spice-product-slider-thumb-02.png"
 import productCategoryImage3 from "@/public/product/spice-product-slider-thumb-03.png"
 import startQuoteImage from "@/public/product/start-quote.png"
+import { routes } from "@/config/routes"
 
 
 
@@ -114,9 +115,6 @@ export default function ProductServiceDetailsClient() {
                   <Typography variant="h2" className="productTitle">
                     SPICES & HERBS
                   </Typography>
-                  {/* <Typography variant="h3" className="productSubTitle">
-                    28824 Suppliers
-                  </Typography> */}
                 </Box>
                 <Grid container spacing={2} className="productFeaturedBox">
                   <Grid
@@ -164,12 +162,17 @@ export default function ProductServiceDetailsClient() {
                         </List>
                       </Box>
                       <Box className="productFeaturedBoxRightContentButton">
-                        <Button variant="contained">Contact Supplier</Button>
+                        <Button variant="contained">View Products</Button>
                       </Box>
                     </Box>
                   </Grid>
                 </Grid>
                 <Box className="productListingSliderOuter">
+                  <Box className="productListingSliderHeader">
+                    <Typography variant="h3" className="productListingSliderTitleMain">
+                      Popular subcategories under <span>SPICES & HERBS</span>
+                    </Typography>
+                  </Box>
                   <Swiper
                     modules={[Navigation, Autoplay]}
                     navigation={false}
@@ -177,23 +180,27 @@ export default function ProductServiceDetailsClient() {
                     speed={1500}
                     autoplay={{ delay: 4000, disableOnInteraction: true }}
                     spaceBetween={24}
-                    slidesPerView={1}
+                    slidesPerView={2}
                     loop={false}
                     breakpoints={{
                       0: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
+                        spaceBetween: 12,
+                      },
+                      640: {
+                        slidesPerView: 2,
                         spaceBetween: 20,
                       },
-                      768: {
-                        slidesPerView: 2,
-                        spaceBetween: 24,
-                      },
-                      1024: {
+                      960: {
                         slidesPerView: 3,
                         spaceBetween: 24,
                       },
-                      1800: {
+                      1280: {
                         slidesPerView: 4,
+                        spaceBetween: 24,
+                      },
+                      1536: {
+                        slidesPerView: 5,
                         spaceBetween: 24,
                       },
                     }}
@@ -205,11 +212,11 @@ export default function ProductServiceDetailsClient() {
                             src={productCategoryImage1}
                             alt="product-featured-image"
                           />
-                          <Box className="discountBadge">
+                          {/* <Box className="discountBadge">
                             <Typography variant="body1" component="p">
                               56% <span>OFF</span>
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
 
                         <Box className="productListingSliderContent">
@@ -228,7 +235,7 @@ export default function ProductServiceDetailsClient() {
                             </ListItem>
                           </List>
                           <Box className="productListingSliderContentButton">
-                            <Button variant="contained" size="small">View Details</Button>
+                            <Button variant="contained" size="small">View Products</Button>
                           </Box>
                         </Box>
                       </Box>
@@ -240,11 +247,11 @@ export default function ProductServiceDetailsClient() {
                             src={productCategoryImage2}
                             alt="product-featured-image"
                           />
-                          <Box className="discountBadge">
+                          {/* <Box className="discountBadge">
                             <Typography variant="body1" component="p">
                               56% <span>OFF</span>
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -262,7 +269,7 @@ export default function ProductServiceDetailsClient() {
                             </ListItem>
                           </List>
                           <Box className="productListingSliderContentButton">
-                            <Button variant="contained" size="small">View Details</Button>
+                            <Button variant="contained" size="small">View Products</Button>
                           </Box>
                         </Box>
                       </Box>
@@ -274,11 +281,11 @@ export default function ProductServiceDetailsClient() {
                             src={productCategoryImage3}
                             alt="product-featured-image"
                           />
-                          <Box className="discountBadge">
+                          {/* <Box className="discountBadge">
                             <Typography variant="body1" component="p">
                               56% <span>OFF</span>
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -296,7 +303,7 @@ export default function ProductServiceDetailsClient() {
                             </ListItem>
                           </List>
                           <Box className="productListingSliderContentButton">
-                            <Button variant="contained" size="small">View Details</Button>
+                            <Button variant="contained" size="small">View Products</Button>
                           </Box>
                         </Box>
                       </Box>
@@ -308,11 +315,11 @@ export default function ProductServiceDetailsClient() {
                             src={productCategoryImage1}
                             alt="product-featured-image"
                           />
-                          <Box className="discountBadge">
+                          {/* <Box className="discountBadge">
                             <Typography variant="body1" component="p">
                               56% <span>OFF</span>
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -330,7 +337,109 @@ export default function ProductServiceDetailsClient() {
                             </ListItem>
                           </List>
                           <Box className="productListingSliderContentButton">
-                            <Button variant="contained" size="small">View Details</Button>
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:33
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:44
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices55:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
                           </Box>
                         </Box>
                       </Box>
@@ -342,11 +451,11 @@ export default function ProductServiceDetailsClient() {
                             src={productCategoryImage2}
                             alt="product-featured-image"
                           />
-                          <Box className="discountBadge">
+                          {/* <Box className="discountBadge">
                             <Typography variant="body1" component="p">
                               56% <span>OFF</span>
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                         <Box className="productListingSliderContent">
                           <Typography
@@ -364,14 +473,327 @@ export default function ProductServiceDetailsClient() {
                             </ListItem>
                           </List>
                           <Box className="productListingSliderContentButton">
-                            <Button variant="contained" size="small">View Details</Button>
+                            <Button variant="contained" size="small">View Products</Button>
                           </Box>
                         </Box>
                       </Box>
                     </SwiperSlide>
                   </Swiper>
                 </Box>
-                <Box className="childCategorySliderOuter">
+                <Box className="productListingSliderOuter">
+                  <Box className="productListingSliderHeader">
+                    <Typography variant="h3" className="productListingSliderTitleMain">
+                      Popular products under <span>SPICES & HERBS</span>
+                    </Typography>
+                  </Box>
+                  <Swiper
+                    modules={[Navigation, Autoplay]}
+                    navigation={false}
+                    // autoplay={false}
+                    speed={1500}
+                    autoplay={{ delay: 4000, disableOnInteraction: true }}
+                    spaceBetween={24}
+                    slidesPerView={2}
+                    loop={false}
+                    breakpoints={{
+                      0: {
+                        slidesPerView: 2,
+                        spaceBetween: 12,
+                      },
+                      640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                      },
+                      960: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                      },
+                      1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 24,
+                      },
+                      1536: {
+                        slidesPerView: 5,
+                        spaceBetween: 24,
+                      },
+                    }}
+                  >
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage2}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage3}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:33
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:44
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage1}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices55:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Box className="productListingSliderBox">
+                        <Box className="productListingSliderBoxImage">
+                          <Image
+                            src={productCategoryImage2}
+                            alt="product-featured-image"
+                          />
+                          {/* <Box className="discountBadge">
+                            <Typography variant="body1" component="p">
+                              56% <span>OFF</span>
+                            </Typography>
+                          </Box> */}
+                        </Box>
+                        <Box className="productListingSliderContent">
+                          <Typography
+                            variant="h3"
+                            className="productListingSliderTitle"
+                          >
+                            Ground Spices:
+                          </Typography>
+                          <List>
+                            <ListItem>
+                              <ListItemText primary="Custom packaging solutions" />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText primary="Wide range of protective materials" />
+                            </ListItem>
+                          </List>
+                          <Box className="productListingSliderContentButton">
+                            <Button variant="contained" size="small">View Products</Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                  </Swiper>
+                </Box>
+                {/* <Box className="childCategorySliderOuter">
                   <Swiper
                     modules={[Navigation, Autoplay]}
                     navigation={false}
@@ -462,15 +884,15 @@ export default function ProductServiceDetailsClient() {
                       </Box>
                     </SwiperSlide>
                   </Swiper>
-                </Box>
+                </Box> */}
               </Box>
-              <Box className="paginationOuter">
+              {/* <Box className="paginationOuter">
                 <Pagination count={10} color="primary" />
-              </Box>
+              </Box> */}
 
             </Box>
           </Stack>
-          <Box className="learnMoreOuter">
+          {/* <Box className="learnMoreOuter">
             <Typography variant="h2" className="learnMoreTitle">
               Learn More
             </Typography>
@@ -482,8 +904,8 @@ export default function ProductServiceDetailsClient() {
             <Box className="learnMoreButton">
               <Button variant="contained" onClick={toggleReadMoreParent}>{readMoreOpen ? "See Less" : "See More"}</Button>
             </Box>
-          </Box>
-          <Box className="relatedKeyWordsOuter">
+          </Box> */}
+          {/* <Box className="relatedKeyWordsOuter">
             <Typography variant="h2" className="relatedKeyWordsTitle">
               Related Keywords
             </Typography>
@@ -534,7 +956,7 @@ export default function ProductServiceDetailsClient() {
             <Box className="learnMoreButton">
               <Button variant="contained" onClick={toggleReadMoreKeywords}>{readMoreOpenKeywords ? "See Less" : "See More"}</Button>
             </Box>
-          </Box>
+          </Box> */}
           <Box className="startRequestOuter">
             <Grid container spacing={4} alignItems="center" className="startRequestBox">
               <Grid
@@ -575,7 +997,7 @@ export default function ProductServiceDetailsClient() {
 
                   </Box>
                   <Box className="actionBtn">
-                    <Button variant="contained">Get Multiple Quotes </Button>
+                    <Button variant="contained" href={routes.getQuoteForm}>Get Multiple Quotes </Button>
                   </Box>
                 </Box>
               </Grid>

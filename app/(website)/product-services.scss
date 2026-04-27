@@ -470,7 +470,7 @@
   @include transition-prefixes(0.22s);
 
   &:hover {
-    background: color.adjust($colorPrimary, $lightness: -8%) !important;
+    background: darken($colorPrimary, 8%) !important;
     transform: translateY(-1px);
   }
 
