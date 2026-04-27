@@ -22,7 +22,8 @@ export const pages = [
 
 export const languageList = [
   { name: 'English', locale: 'en', path: '/en' },
-  { name: 'Bengali', locale: 'bn', path: '/bn' },
+  { name: 'বাংলা', locale: 'bn', path: '/bn' },
+  { name: 'हिन्दी', locale: 'hi', path: '/hi' },
 ];
 
 

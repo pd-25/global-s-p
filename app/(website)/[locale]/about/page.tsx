@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Metadata } from "next"
+import Image from "next/image"
 import {
     Box,
     Container,
@@ -32,6 +33,28 @@ const HandshakeIcon = () => (
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+    </svg>
+);
+
+const CartIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3H5L5.4 5M5.4 5H21L19 14H7M5.4 5L7 14M7 14L5 16C4.44772 16.5523 4.83939 17.5 5.61803 17.5H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="9" cy="20" r="1" stroke="currentColor" strokeWidth="2"/>
+        <circle cx="18" cy="20" r="1" stroke="currentColor" strokeWidth="2"/>
+    </svg>
+);
+
+const FactoryIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20H22M4 20V8L9 11V8L14 11V8L19 11V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M4 4H6V8H4V4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+);
+
+const SearchIcon = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+        <path d="M20 20L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
     </svg>
 );
 
@@ -106,10 +129,14 @@ export default async function AboutPage() {
                                 border: '4px solid rgba(255,255,255,0.1)',
                                 boxShadow: '0 24px 48px rgba(0,0,0,0.2)'
                             }}>
-                                <Box sx={{ bgcolor: '#013D2B', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    <GlobeIcon />
-                                    <Typography variant="h3" sx={{ ml: 2, opacity: 0.5 }}>{t('hero.logoText')}</Typography>
-                                </Box>
+                                <Image 
+                                    src="/about-hero-illustration.png" 
+                                    alt="About Global Source Expo" 
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
+                                />
                             </Box>
                         </Grid>
                     </Grid>
@@ -193,6 +220,88 @@ export default async function AboutPage() {
                             </Box>
                         </Stack>
                     </Grid>
+                </Grid>
+            </Container>
+
+            {/* Who We Are Section */}
+            <Box sx={{ bgcolor: 'white', py: { xs: 10, md: 14 } }}>
+                <Container disableGutters sx={{ maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                    <Grid container spacing={8} alignItems="center" flexDirection={{ xs: 'column-reverse', md: 'row' }}>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <Box sx={{
+                                width: '100%',
+                                height: { xs: '300px', md: '460px' },
+                                borderRadius: '24px',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                boxShadow: '0 20px 40px rgba(0,0,0,0.08)'
+                            }}>
+                                <Image 
+                                    src="/who-we-are-illustration.png" 
+                                    alt="Who We Are" 
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                />
+                            </Box>
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
+                                {t('whoWeAre.label')}
+                            </Typography>
+                            <Typography variant="h2" sx={{ fontWeight: 800, fontSize: { xs: '32px', md: '40px' }, color: '#1C1B1F', mb: 3 }}>
+                                {t('whoWeAre.title')}
+                            </Typography>
+                            <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
+                                {t('whoWeAre.description')}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+
+            {/* Use Cases Section */}
+            <Container disableGutters sx={{ py: { xs: 10, md: 14 }, maxWidth: '1040px !important', px: { xs: 2, lg: 0 } }}>
+                <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, maxWidth: '700px', mx: 'auto' }}>
+                    <Typography sx={{ color: '#7FAF0D', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', mb: 2 }}>
+                        {t('useCases.label')}
+                    </Typography>
+                    <Typography variant="h2" sx={{ fontWeight: 800, fontSize: { xs: '32px', md: '40px' }, color: '#1C1B1F' }}>
+                        {t('useCases.title')}
+                    </Typography>
+                </Box>
+                
+                <Grid container spacing={4}>
+                    {[
+                        { icon: <CartIcon />, title: t('useCases.case1Title'), desc: t('useCases.case1Desc') },
+                        { icon: <FactoryIcon />, title: t('useCases.case2Title'), desc: t('useCases.case2Desc') },
+                        { icon: <SearchIcon />, title: t('useCases.case3Title'), desc: t('useCases.case3Desc') },
+                    ].map((useCase, i) => (
+                        <Grid size={{ xs: 12, md: 4 }} key={i}>
+                            <Card sx={{ 
+                                p: 4, 
+                                height: '100%', 
+                                borderRadius: '24px', 
+                                border: '1px solid #E5E7EB', 
+                                boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                '&:hover': {
+                                    transform: 'translateY(-4px)',
+                                    boxShadow: '0 12px 30px rgba(0,0,0,0.08)'
+                                }
+                            }}>
+                                <Box sx={{ width: '56px', height: '56px', borderRadius: '14px', bgcolor: 'rgba(127,175,13,0.1)', color: '#7FAF0D', display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 3 }}>
+                                    {useCase.icon}
+                                </Box>
+                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1F2937' }}>
+                                    {useCase.title}
+                                </Typography>
+                                <Typography sx={{ color: '#6B7280', lineHeight: 1.6 }}>
+                                    {useCase.desc}
+                                </Typography>
+                            </Card>
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
 

@@ -557,7 +557,7 @@ export default function Footer({
                 pb: 1,
               }}
             >
-              Customer Services
+              Company
             </Typography>
             <Stack
               component="ul"

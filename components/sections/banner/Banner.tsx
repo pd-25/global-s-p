@@ -26,26 +26,26 @@ import { routes } from "@/config/routes"
 export default function Banner() {
   const t = useTranslations('banner');
   const router = useRouter()
-      const searchParams = useSearchParams()
-      
-      const [searchQuery, setSearchQuery] = useState('')
-  
-      // Initialize/sync query from the URL
-      useEffect(() => {
-          setSearchQuery(searchParams.get('search_string') || '')
-      }, [searchParams])
-  
-      const handleSearch = (e: FormEvent) => {
-          e.preventDefault()
-          
-          const params = new URLSearchParams()
-          if (searchQuery.trim()) {
-              params.set('search_string', searchQuery.trim())
-          }
-          
-          // Always redirect to global product listing on new search
-          router.push(`${routes.productListPage}?${params.toString()}`)
-      }
+  const searchParams = useSearchParams()
+
+  const [searchQuery, setSearchQuery] = useState('')
+
+  // Initialize/sync query from the URL
+  useEffect(() => {
+    setSearchQuery(searchParams.get('search_string') || '')
+  }, [searchParams])
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault()
+
+    const params = new URLSearchParams()
+    if (searchQuery.trim()) {
+      params.set('search_string', searchQuery.trim())
+    }
+
+    // Always redirect to global product listing on new search
+    router.push(`${routes.productListPage}?${params.toString()}`)
+  }
   return (
     <Box
       component="section"
@@ -135,18 +135,15 @@ export default function Banner() {
           <SwiperSlide>
             <Box className="heroSliderCard">
               <Box className="heroBg">
-                {/* <Image
-                  src="https://d18yn9dcojt05d.cloudfront.net/apps/visable-dev/homepage-frontend/_nuxt/market-place-home.Dp_XERVV.svg"
-                  alt="hero-bg"
-                  width={1000}
-                  height={1080}
-                /> */}
+
                 <picture>
                   {/* <source srcSet="/home/banner-slider-pic-01.svg" media="(min-width: 768px)" /> */}
-                  <source srcSet="/banner-demo1.jpeg" media="(min-width: 768px)" />
+                  {/* <source srcSet="/banner_new_1.png" media="(min-width: 768px)" /> */}
+                  <source srcSet="/gemini_banner.png" media="(min-width: 768px)" />
+
                   <source srcSet="/home/banner-slider-pic-mobile-01.svg" media="(max-width: 767px)" />
                   {/* <img src="/home/banner-slider-pic-01.svg" alt="hero-bg" width={1000} height={1080} /> */}
-                  <img src="/banner-demo1.jpeg" alt="hero-bg" width={1000} height={1080} />
+                  <img src="/gemini_banner.png" alt="hero-bg" width={1600} height={800} />
                 </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>
@@ -196,18 +193,10 @@ export default function Banner() {
           <SwiperSlide>
             <Box className="heroSliderCard">
               <Box className="heroBg">
-                {/* <Image
-                  src="/home/banner4.jpg"
-                  alt="hero-bg"
-                  width={1000}
-                  height={1080}
-                /> */}
                 <picture>
-                  {/* <source srcSet="/home/banner4.jpg" media="(min-width: 768px)" /> */}
-                  <source srcSet="/banner-demo2.jpeg" media="(min-width: 768px)" />
+                  <source srcSet="/banner_new_2.png" media="(min-width: 768px)" />
                   <source srcSet="/home/banner4-mobile.jpg" media="(max-width: 767px)" />
-                  {/* <img src="/home/banner4.jpg" alt="hero-bg" width={1000} height={1080} /> */}
-                  <img src="/banner-demo2.jpeg" alt="hero-bg" width={1000} height={1080} />
+                  <img src="/banner_new_2.png" alt="hero-bg" width={1600} height={800} />
                 </picture>
               </Box>
               <Container sx={{ position: "relative", zIndex: 1 }}>

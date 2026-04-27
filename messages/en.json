@@ -251,6 +251,22 @@
             "description": "Join million of buyers and suppliers who rely on global-s-p for their B2B sourcing needs.",
             "createAccount": "Create an Account",
             "contactSales": "Contact Sales"
+        },
+        "whoWeAre": {
+            "label": "Who We Are",
+            "title": "A dedicated team passionate about global trade.",
+            "description": "Global S&P was founded with a simple yet ambitious goal: to create a seamless, transparent, and efficient ecosystem for international trade. Our team is composed of industry veterans, tech innovators, and global trade experts who understand the complexities of sourcing and selling across borders. We continuously strive to build tools that eliminate language barriers, simplify logistics, and foster trust between businesses.",
+            "imageAlt": "Our team at Global S&P"
+        },
+        "useCases": {
+            "label": "How It Works",
+            "title": "Empowering businesses across all use cases.",
+            "case1Title": "Wholesale Sourcing",
+            "case1Desc": "Retailers and distributors use our platform to bulk-buy products at competitive prices directly from manufacturers, reducing middleman costs.",
+            "case2Title": "Custom Manufacturing (OEM/ODM)",
+            "case2Desc": "Brands and innovators connect with specialized factories to bring their unique product designs to life with custom manufacturing capabilities.",
+            "case3Title": "Global Supplier Discovery",
+            "case3Desc": "Procurement teams leverage our verified supplier database to quickly find reliable partners, mitigate supply chain risks, and expand their market reach."
         }
     },
     "contactPage": {

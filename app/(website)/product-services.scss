@@ -1,5 +1,6 @@
 // Import global variables
 @use './variables' as *;
+@use 'sass:color';
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PAGE ROOT
@@ -159,7 +160,7 @@
   }
 
   &:hover {
-    background: darken($colorPrimary, 8%);
+    background: color.adjust($colorPrimary, $lightness: -8%);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(127, 175, 13, 0.45);
 
@@ -442,7 +443,7 @@
   @include transition-prefixes(0.22s);
 
   &:hover {
-    background: darken($colorPrimary, 8%) !important;
+    background: color.adjust($colorPrimary, $lightness: -8%) !important;
     transform: translateY(-1px);
   }
 }
