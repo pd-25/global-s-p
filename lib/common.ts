@@ -1,5 +1,9 @@
 import { websiteEndpoints } from "@/config/websiteEndpoints";
-import { SupplierTypesResponse } from "@/interfaces/interface";
+import {
+    SupplierTypesResponse, CategoryWithSubcategories,
+    CategoryWiseSubcategoriesResponse,
+} from "@/interfaces/interface";
+
 import apiService from "@/service/apiService";
 
 export async function fetchSupplierTypes() {
@@ -27,5 +31,16 @@ export async function fetchSupplierTypes() {
         }
     } catch (err) {
         console.error("Failed to fetch supplier types:", err)
+    }
+}
+
+export async function getCategories(): Promise<CategoryWithSubcategories[]> {
+    try {
+        const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
+            websiteEndpoints.categoryWiseSubcategories
+        )
+        return json?.data ?? []
+    } catch {
+        return []
     }
 }

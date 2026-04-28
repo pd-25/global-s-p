@@ -1,6 +1,6 @@
 "use client"
 import React, { Suspense, useEffect, useState } from "react"
-import { Alert, Box, Grid, Typography } from "@mui/material"
+import { Alert, Box, Button, Grid, Stack, Typography } from "@mui/material"
 import SingleProductCard from "./SingleProductCard"
 import ProductPagination from "./ProductPagination"
 import type {
@@ -9,10 +9,14 @@ import type {
 } from "@/interfaces/interface"
 import Loader from "@/components/ui/loader/Loader"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
+import { useCategorySlug } from "@/components/providers/CategorySlugProvider"
+import { routes } from "@/config/routes"
 
 interface ProductListingProps {
   products: ProductListingItem[]
   meta: ProductListingMeta
+  fromServicePage?: boolean
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ""
@@ -32,8 +36,10 @@ function resolveImageUrl(path: string | null | undefined): string {
 export default function ProductListing({
   products,
   meta,
+  fromServicePage = false
 }: ProductListingProps) {
   const searchParams = useSearchParams()
+  const categorySlug = useCategorySlug()
   const [loading, setLoading] = useState(false)
   const [activeQuery, setActiveQuery] = useState(searchParams.toString())
 
@@ -114,19 +120,21 @@ export default function ProductListing({
       }}
     >
       <Box className="childCategoryLisitngOuter">
-        <Box sx={{ mb: 3, pb: 2, borderBottom: "1px solid #eaeaea" }}>
-          <Typography
-            variant="h3"
-            sx={{
-              fontSize: { xs: "18px", md: "22px" },
-              fontWeight: "600",
-              color: "#000",
-            }}
-          >
-            {meta.total_count} Product{meta.total_count !== 1 ? "s" : ""} and
-            services
-          </Typography>
-        </Box>
+        {!fromServicePage && (
+          <Box sx={{ mb: 3, pb: 2, borderBottom: "1px solid #eaeaea" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                fontSize: { xs: "18px", md: "22px" },
+                fontWeight: "600",
+                color: "#000",
+              }}
+            >
+              {meta.total_count} Product{meta.total_count !== 1 ? "s" : ""} and
+              services
+            </Typography>
+          </Box>
+        )}
         <Grid container spacing={2} className="childCategoryLisitngRow">
           {products.map((product) => (
             <Grid
@@ -146,14 +154,46 @@ export default function ProductListing({
         </Grid>
 
         {/* Pagination — wrapped in Suspense because ProductPagination reads useSearchParams */}
-        <Suspense fallback={null}>
-          <ProductPagination
-            currentPage={meta.page}
-            totalPages={meta.total_pages}
-            totalCount={meta.total_count}
-            perPage={meta.per_page}
-          />
-        </Suspense>
+        {!fromServicePage ? (
+          <Suspense fallback={null}>
+            <ProductPagination
+              currentPage={meta.page}
+              totalPages={meta.total_pages}
+              totalCount={meta.total_count}
+              perPage={meta.per_page}
+            />
+          </Suspense>
+        ) :
+          (
+            <Stack direction="row" justifyContent="center" sx={{ mt: 4 }}>
+              {/* <Button variant="outlined" color="primary">
+                <Link href={`${routes.serviceProductListPage.replace("[categoryId]", categorySlug)}`} className="ps-sub-link">
+                  <Button
+                    className="ps-cat-card__cta"
+                    variant="contained"
+                    tabIndex={-1}
+                  >
+                    View All
+                  </Button>
+                </Link>
+              </Button> */}
+              <Link href={`${routes.productsServicesDetailsPage.replace("[slug]", categorySlug)}`} className="ps-sub-link">
+                <Button
+                  className="ps-cat-card__cta ps-cat-card__cta--outline"
+                  variant="outlined"
+                  color="primary"
+                  tabIndex={-1}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Details
+                </Button>
+              </Link>
+            </Stack>
+          )}
       </Box>
     </Box>
   )

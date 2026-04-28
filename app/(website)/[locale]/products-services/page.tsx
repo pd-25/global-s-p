@@ -1,31 +1,25 @@
 // SSR page — no "use client" directive
-import React from "react"
-import Image from "next/image"
+
 import { Box, Breadcrumbs, Container, Typography, Grid } from "@mui/material"
 import NextLink from "next/link"
-import homeIcon from "@/public/home-icon.svg"
 import CategoryAccordionCard from "@/components/sections/products-services/CategoryAccordionCard"
-import { websiteEndpoints } from "@/config/websiteEndpoints"
-import type {
-  CategoryWithSubcategories,
-  CategoryWiseSubcategoriesResponse,
-} from "@/interfaces/interface"
-import apiService from "@/service/apiService"
+
 import "../../product-services.scss"
 import { routes } from "@/config/routes"
+import { getCategories } from "@/lib/common"
 
 // ─── SSR Data Fetcher ─────────────────────────────────────────────────────────
 
-async function getCategories(): Promise<CategoryWithSubcategories[]> {
-  try {
-    const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
-      websiteEndpoints.categoryWiseSubcategories
-    )
-    return json?.data ?? []
-  } catch {
-    return []
-  }
-}
+// async function getCategories(): Promise<CategoryWithSubcategories[]> {
+//   try {
+//     const json = await apiService.get<CategoryWiseSubcategoriesResponse>(
+//       websiteEndpoints.categoryWiseSubcategories
+//     )
+//     return json?.data ?? []
+//   } catch {
+//     return []
+//   }
+// }
 
 // ─── Page (async SSR) ─────────────────────────────────────────────────────────
 
