@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 
 import Box from "@mui/material/Box"
@@ -19,7 +19,7 @@ import logo from "@/public/gse-green-bg.svg"
 // import logo from "@/public/logo_jpg.jpeg"
 
 import { navLinks } from "@/lib/constants"
-import { routes } from "@/config/routes";
+import { routes } from "@/config/routes"
 
 const brandWords = ["Global", "Source", "Expo", "Ltd"] as const
 const WORD_DELAY = 500 // ms between each word appearing
@@ -27,12 +27,12 @@ const WORD_DELAY = 500 // ms between each word appearing
 function AnimatedBrandText({
   fontSize,
   letterSpacing,
-  flexDirection = 'column',
+  flexDirection = "column",
   gap = 0,
 }: {
   fontSize: string | Record<string, string>
   letterSpacing: string | Record<string, string>
-  flexDirection?: 'column' | 'row' | Record<string, string>
+  flexDirection?: "column" | "row" | Record<string, string>
   gap?: number | string | Record<string, number | string>
 }) {
   const [visibleCount, setVisibleCount] = useState(0)
@@ -53,25 +53,25 @@ function AnimatedBrandText({
         fontWeight: 700,
         fontSize,
         lineHeight: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
         gap: 0,
       }}
     >
       <Box
         component="span"
         sx={{
-          color: '#7FAF0D',
-          fontStyle: 'italic',
-          textTransform: 'uppercase',
+          color: "#7FAF0D",
+          fontStyle: "italic",
+          textTransform: "uppercase",
           fontWeight: 900,
-          fontSize: { xs: '0.7em', md: '0.9em' },
-          letterSpacing: { xs: '0.5px', md: '1px' },
+          fontSize: { xs: "0.7em", md: "0.9em" },
+          letterSpacing: { xs: "0.5px", md: "1px" },
           opacity: 0 < visibleCount ? 1 : 0,
-          transform: 0 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-          transition: 'opacity 0.4s ease, transform 0.4s ease',
+          transform: 0 < visibleCount ? "translateY(0)" : "translateY(6px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
       >
         {brandWords[0]}
@@ -79,33 +79,41 @@ function AnimatedBrandText({
       <Box
         component="span"
         sx={{
-          color: 'white',
-          textTransform: 'uppercase',
+          color: "white",
+          textTransform: "uppercase",
           fontFamily: '"Times New Roman", Times, serif',
           fontWeight: 500,
-          fontSize: { xs: '1.2em', md: '1.6em' },
-          letterSpacing: { xs: '1px', md: '2px' },
-          margin: '-3px 0px',
+          fontSize: { xs: "1.2em", md: "1.6em" },
+          letterSpacing: { xs: "1px", md: "2px" },
+          margin: "-3px 0px",
           opacity: 1 < visibleCount ? 1 : 0,
-          transform: 1 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-          transition: 'opacity 0.4s ease, transform 0.4s ease',
+          transform: 1 < visibleCount ? "translateY(0)" : "translateY(6px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
       >
         {brandWords[1]}
       </Box>
-      <Box component="span" sx={{ display: 'inline-flex', flexDirection: 'row', gap: { xs: '4px', md: '8px' }, margin: '0em' }}>
+      <Box
+        component="span"
+        sx={{
+          display: "inline-flex",
+          flexDirection: "row",
+          gap: { xs: "4px", md: "8px" },
+          margin: "0em",
+        }}
+      >
         <Box
           component="span"
           sx={{
-            color: '#7FAF0D',
-            fontStyle: 'italic',
-            textTransform: 'uppercase',
+            color: "#7FAF0D",
+            fontStyle: "italic",
+            textTransform: "uppercase",
             fontWeight: 800,
-            fontSize: { xs: '0.55em', md: '0.65em' },
-            letterSpacing: { xs: '0.15em', md: '0.25em' },
+            fontSize: { xs: "0.55em", md: "0.65em" },
+            letterSpacing: { xs: "0.15em", md: "0.25em" },
             opacity: 2 < visibleCount ? 1 : 0,
-            transform: 2 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.4s ease, transform 0.4s ease',
+            transform: 2 < visibleCount ? "translateY(0)" : "translateY(6px)",
+            transition: "opacity 0.4s ease, transform 0.4s ease",
           }}
         >
           {brandWords[2]}
@@ -113,15 +121,15 @@ function AnimatedBrandText({
         <Box
           component="span"
           sx={{
-            color: '#7FAF0D',
-            fontStyle: 'italic',
-            textTransform: 'uppercase',
+            color: "#7FAF0D",
+            fontStyle: "italic",
+            textTransform: "uppercase",
             fontWeight: 800,
-            fontSize: { xs: '0.55em', md: '0.65em' },
-            letterSpacing: { xs: '0.15em', md: '0.25em' },
+            fontSize: { xs: "0.55em", md: "0.65em" },
+            letterSpacing: { xs: "0.15em", md: "0.25em" },
             opacity: 3 < visibleCount ? 1 : 0,
-            transform: 3 < visibleCount ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.4s ease, transform 0.4s ease',
+            transform: 3 < visibleCount ? "translateY(0)" : "translateY(6px)",
+            transition: "opacity 0.4s ease, transform 0.4s ease",
           }}
         >
           {brandWords[3]}
@@ -132,9 +140,8 @@ function AnimatedBrandText({
 }
 
 export default function Header() {
-  const t = useTranslations('nav');
+  const t = useTranslations("nav")
   const [mobileOpen, setMobileOpen] = useState(false)
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -150,8 +157,19 @@ export default function Header() {
           mb: 3,
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Image src={logo} alt="logo" width={200} height={85} style={{ objectFit: "contain", width: "auto", height: "auto", maxHeight: "80px" }} />
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+          <Image
+            src={logo}
+            alt="logo"
+            width={200}
+            height={85}
+            style={{
+              objectFit: "contain",
+              width: "auto",
+              height: "auto",
+              maxHeight: "80px",
+            }}
+          />
           {/* <Box sx={{ width: '2px', height: '44px', bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} />
           <AnimatedBrandText fontSize="14px" letterSpacing="2px" /> */}
         </Box>
@@ -176,16 +194,17 @@ export default function Header() {
         ))}
 
         <Button variant="contained" component={Link} href="/connect">
-          {t('connectWithUs')}
+          {t("connectWithUs")}
         </Button>
       </Stack>
-
     </Box>
   )
 
   return (
     <Box component="header" className={styles.header}>
-      <Container sx={{ maxWidth: "100% !important", padding: "0 15px !important" }}>
+      <Container
+        sx={{ maxWidth: "100% !important", padding: "0 15px !important" }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -203,7 +222,16 @@ export default function Header() {
               maxWidth: { xs: 260, md: 500 },
             }}
           >
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", minWidth: 'max-content', height: '100%' }}>
+            <Link
+              href="/"
+              style={{
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                minWidth: "max-content",
+                height: "100%",
+              }}
+            >
               {/* gap: '12px', */}
               <Image
                 src={logo}
@@ -211,14 +239,19 @@ export default function Header() {
                 width={220}
                 height={95}
                 className="logo"
-                style={{ objectFit: "contain", width: "auto", height: "100%", maxHeight: "100%" }}
+                style={{
+                  objectFit: "contain",
+                  width: "auto",
+                  height: "100%",
+                  maxHeight: "100%",
+                }}
               />
               {/* <Box sx={{ width: '2px', height: { xs: '36px', md: '60px' }, bgcolor: '#7FAF0D', borderRadius: '1px', opacity: 0.6 }} /> */}
               <AnimatedBrandText
-                fontSize={{ xs: '14px', md: '20px' }}
-                letterSpacing={{ xs: '1.5px', md: '2.5px' }}
-                flexDirection={{ xs: 'column', md: 'row' }}
-                gap={{ xs: 0, md: '8px' }}
+                fontSize={{ xs: "20px", md: "20px" }}
+                letterSpacing={{ xs: "1.5px", md: "2.5px" }}
+                flexDirection={{ xs: "column", md: "row" }}
+                gap={{ xs: "6px", md: "8px" }}
               />
             </Link>
           </Box>
@@ -241,8 +274,12 @@ export default function Header() {
                 {t(link.key as any)}
               </Link>
             ))}
-            <Button variant="contained" component={Link} href={routes.connectWithUsPage}>
-              {t('connectWithUs')}
+            <Button
+              variant="contained"
+              component={Link}
+              href={routes.connectWithUsPage}
+            >
+              {t("connectWithUs")}
             </Button>
 
             <Box sx={{ display: "flex", gap: "5px" }}>
