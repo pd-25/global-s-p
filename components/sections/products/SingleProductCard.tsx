@@ -28,12 +28,12 @@ export default function SingleProductCard({
     slug,
     verified = true,
 }: SingleProductCardProps) {
-    console.log('supplierFlagUrl ---- ', supplierFlagUrl);
+    // console.log('supplierFlagUrl ---- ', supplierFlagUrl);
     
     const hasImage = Boolean(imageUrl)
     const hasFlag = Boolean(supplierFlagUrl)
 
-    console.log('hasFlag ---- ', hasFlag);
+    // console.log('hasFlag ---- ', hasFlag);
 
 
     return (

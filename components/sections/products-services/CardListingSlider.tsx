@@ -33,14 +33,19 @@ import Image from "next/image"
 import productCategoryImage1 from "@/public/product/spice-product-slider-thumb-01.png"
 import productCategoryImage2 from "@/public/product/spice-product-slider-thumb-02.png"
 import productCategoryImage3 from "@/public/product/spice-product-slider-thumb-03.png"
+import { Subcategory } from "@/interfaces/interface"
+import { routes } from "@/config/routes"
+import NextLink from "next/link"
 
-export default function CardListingSlider({title}: {title: string}) {
+export default function CardListingSlider({title, categoryName, subcategories}: {title: string, categoryName?: string, subcategories?: Subcategory[]}) {
+    if (!subcategories || subcategories.length === 0) return null;
+
     return (
         <>
             <Box className="productListingSliderOuter">
                 <Box className="productListingSliderHeader">
                     <Typography variant="h3" className="productListingSliderTitleMain">
-                        {title} <span>SPICES & HERBS</span>
+                        {title} <span>{categoryName}</span>
                     </Typography>
                 </Box>
                 <Swiper
@@ -75,279 +80,35 @@ export default function CardListingSlider({title}: {title: string}) {
                         },
                     }}
                 >
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage1}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
+                    {subcategories.map((sub, index) => (
+                        <SwiperSlide key={index}>
+                            <Box className="productListingSliderBox">
+                                <NextLink href={routes.productsServicesDetailsPage.replace("[slug]", sub.slug)}>
+                                    <Box className="productListingSliderBoxImage" sx={{ position: 'relative', width: '100%', aspectRatio: '5/4' }}>
+                                        <img
+                                            src={sub.image || productCategoryImage1.src}
+                                            alt={sub.name}
+                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        />
+                                    </Box>
+                                </NextLink>
+                                <Box className="productListingSliderContent">
+                                    <Typography
+                                        variant="h3"
+                                        className="productListingSliderTitle"
+                                    >
+                                        {sub.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" sx={{ mb: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                        {sub.description}
+                                    </Typography>
+                                    <Box className="productListingSliderContentButton">
+                                        <Button variant="contained" size="small" href={`${routes.serviceProductListPage.replace("[categoryId]", sub?.slug)}`}>View Products</Button>
+                                    </Box>
                                 </Box>
                             </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage2}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage3}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage1}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage1}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:33
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage1}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:44
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage1}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices55:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Box className="productListingSliderBox">
-                            <Box className="productListingSliderBoxImage">
-                                <Image
-                                    src={productCategoryImage2}
-                                    alt="product-featured-image"
-                                />
-                                {/* <Box className="discountBadge">
-                                <Typography variant="body1" component="p">
-                                  56% <span>OFF</span>
-                                </Typography>
-                              </Box> */}
-                            </Box>
-                            <Box className="productListingSliderContent">
-                                <Typography
-                                    variant="h3"
-                                    className="productListingSliderTitle"
-                                >
-                                    Ground Spices:
-                                </Typography>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText primary="Custom packaging solutions" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Wide range of protective materials" />
-                                    </ListItem>
-                                </List>
-                                <Box className="productListingSliderContentButton">
-                                    <Button variant="contained" size="small">View Products</Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </SwiperSlide>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </Box>
         </>

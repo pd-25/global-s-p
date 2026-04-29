@@ -54,11 +54,12 @@ import { getCategories } from "@/lib/common"
 import CategoryAccordionCard from "./CategoryAccordionCard"
 import ProductListing from "../products/ProductListing"
 import { fetchProducts } from "@/lib/fetchProducts"
+import { CategoryWithSubcategories } from "@/interfaces/interface"
 
 
 
 
-export default function ProductServiceDetailsClient({ slug }: { slug: string }) {
+export default function ProductServiceDetailsClient({ slug, categoryData }: { slug: string, categoryData?: CategoryWithSubcategories | null }) {
   const prevRef = React.useRef<any>(null)
   const nextRef = React.useRef<any>(null)
   const [readMoreOpen, setReadMoreOpen] = React.useState(false)
@@ -161,8 +162,8 @@ export default function ProductServiceDetailsClient({ slug }: { slug: string }) 
               <Box className="categoryLoopListing">
 
                 <Box className="productTitleOuter">
-                  <Typography variant="h2" className="productTitle">
-                    SPICES & HERBS
+                  <Typography variant="h2" className="productTitle" sx={{ textTransform: 'uppercase' }}>
+                    {categoryData?.name || slug}
                   </Typography>
                 </Box>
                 <Grid container spacing={2} className="productFeaturedBox">
@@ -171,9 +172,13 @@ export default function ProductServiceDetailsClient({ slug }: { slug: string }) 
                     className="productFeaturedBoxLeft"
                   >
                     <Image
-                      src={productFeaturedImage}
+                      src={categoryData?.image || "/no-image.png"}
                       alt="product-featured-image"
+                      width={385}
+                      height={385}
+                      unoptimized
                     />
+                    {/* <img src={categoryData?.image || "/no-image.png"} alt="product-featured-image" /> */}
                   </Grid>
                   <Grid
                     size={{ xs: 12, md: 12, lg: 4 }}
@@ -183,41 +188,37 @@ export default function ProductServiceDetailsClient({ slug }: { slug: string }) 
                       <Typography
                         variant="h3"
                         className="productFeaturedBoxRightTitle"
+                        sx={{ textTransform: 'uppercase' }}
                       >
-                        (SPICES & HERBS)
+                        ({categoryData?.name || slug})
                       </Typography>
                       <Box className="productFeaturedBoxRightContentList">
-                        <List>
-                          <ListItem>
-                            <ListItemText primary="Custom packaging solutions" />
-                          </ListItem>
-                          <ListItem>
-                            <ListItemText primary="Wide range of protective materials" />
-                          </ListItem>
-                          <ListItem>
-                            <ListItemText primary="Expert hazardous goods packaging" />
-                          </ListItem>
-                        </List>
-                        <List>
-                          <ListItem>
-                            <ListItemText primary="Custom packaging solutions" />
-                          </ListItem>
-                          <ListItem>
-                            <ListItemText primary="Wide range of protective materials" />
-                          </ListItem>
-                          <ListItem>
-                            <ListItemText primary="Expert hazardous goods packaging" />
-                          </ListItem>
-                        </List>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.8)",
+                            fontSize: "0.95rem",
+                            lineHeight: 1.6,
+                            mb: 2
+                          }}
+                        >
+                          {categoryData?.description}
+                        </Typography>
                       </Box>
                       <Box className="productFeaturedBoxRightContentButton">
-                        <Button variant="contained">View Products</Button>
+                        <Button variant="contained" href={`${routes.serviceProductListPage.replace("[categoryId]", categoryData?.slug || slug)}`}>View Products</Button>
                       </Box>
                     </Box>
                   </Grid>
                 </Grid>
 
-                <CardListingSlider title="Popular subcategories under " />
+                {categoryData?.subcategories && categoryData.subcategories.length > 0 && (
+                  <CardListingSlider
+                    title="Popular subcategories under "
+                    categoryName={categoryData?.name || slug}
+                    subcategories={categoryData.subcategories}
+                  />
+                )}
                 {/* <CardListingSlider title="Popular products under " /> */}
 
                 {isLoadingProducts ? (

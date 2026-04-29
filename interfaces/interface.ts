@@ -31,6 +31,7 @@ export interface Subcategory {
     id: number
     slug: string
     name: string
+    description?: string
     image: string
     total_products: number
 }
@@ -39,6 +40,7 @@ export interface CategoryWithSubcategories {
     id: number
     slug: string
     name: string
+    description?: string
     image: string
     total_products: number
     subcategories: Subcategory[]

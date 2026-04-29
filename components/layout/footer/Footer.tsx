@@ -237,19 +237,19 @@ export default function Footer({
     categories.length > 0
       ? categories
       : [
-          { name: "(SPICES & HERBS)", slug: "spices-herbs" },
-          { name: "(CLOTHING Section)", slug: "clothing" },
-          { name: "(SEAFOOD)", slug: "seafood" },
-          { name: "JUTE SECTION", slug: "jute" },
-          { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
-          { name: "Vegetables & Fruits", slug: "vegetables" },
-          { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
-          { name: "Food & Beverage", slug: "food-beverage" },
-          { name: "Tea & Coffee", slug: "tea-coffee" },
-          { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
-          { name: "Kids Toys...", slug: "toys" },
-          { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
-        ]
+        { name: "(SPICES & HERBS)", slug: "spices-herbs" },
+        { name: "(CLOTHING Section)", slug: "clothing" },
+        { name: "(SEAFOOD)", slug: "seafood" },
+        { name: "JUTE SECTION", slug: "jute" },
+        { name: "NATURAL AND AYURBEDIC MEDICINE", slug: "ayurvedic" },
+        { name: "Vegetables & Fruits", slug: "vegetables" },
+        { name: "HANDICRAFTS SECTION", slug: "handicrafts" },
+        { name: "Food & Beverage", slug: "food-beverage" },
+        { name: "Tea & Coffee", slug: "tea-coffee" },
+        { name: "SEEDS WITH AGRI DRONE & ROBOTS", slug: "seeds" },
+        { name: "Kids Toys...", slug: "toys" },
+        { name: "ECO COOKWARE & UTENSILS", slug: "cookware" },
+      ]
 
   const customerServices = [
     { name: "About Us", link: routes.aboutPage },
