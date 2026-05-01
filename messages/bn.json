@@ -161,13 +161,15 @@
                     "employees": "কর্মচারীর সংখ্যা",
                     "deliveryArea": "ডেলিভারি এলাকা",
                     "companyType": "কোম্পানির ধরন",
-                    "businessSector": "ব্যবসার খাত"
+                    "businessSector": "ব্যবসার খাত",
+                    "details": "পণ্যের বিবরণ"
                 },
                 "placeholders": {
                     "employees": "আপনার কর্মচারীর সংখ্যা চয়ন করুন",
                     "deliveryArea": "আপনি কোন এলাকায় ডেলিভারি করেন তা চয়ন করুন",
                     "companyType": "সব মিলিয়ে ধরন নির্বাচন করুন",
-                    "businessSector": "আপনার কোম্পানি কোন খাতের অন্তর্গত?"
+                    "businessSector": "আপনার কোম্পানি কোন খাতের অন্তর্গত?",
+                    "details": "পণ্যের বিবরণ"
                 }
             }
         },

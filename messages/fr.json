@@ -1,0 +1,364 @@
+{
+    "metadata": {
+        "title": "Global Source Export",
+        "description": "Une place de marché B2B pour les acheteurs."
+    },
+    "nav": {
+        "getQuote": "Obtenir un devis",
+        "requestHub": "Centre de requêtes",
+        "productsServices": "Produits et Services",
+        "aboutUs": "À propos de nous",
+        "connectWithUs": "Connectez-vous avec nous"
+    },
+    "banner": {
+        "searchPlaceholder": "Rechercher des articles, ex: Fraisage CNC, Emballage, Gaz",
+        "getQuote": "Obtenir un devis",
+        "learnMore": "En savoir plus",
+        "heroTitle": "La première place de marché B2B pour le commerce européen",
+        "heroSubtitle": "Publiez votre demande auprès de fournisseurs vérifiés."
+    },
+    "statistics": {
+        "million": "Millions",
+        "b2bProviders": "Fournisseurs B2B",
+        "industrySectors": "Secteurs industriels",
+        "products": "Produits",
+        "picturesVideo": "Images et Vidéos",
+        "buyersPerMonth": "Acheteurs par mois",
+        "getMultipleQuotes": "Obtenez plusieurs devis",
+        "picturesAndVideo": "Images et vidéos"
+    },
+    "categoryWiseProducts": {
+        "heading": "Recherchez par catégorie de produits et laissez-vous inspirer",
+        "noCategories": "Aucune catégorie trouvée",
+        "sourceNow": "Acheter maintenant",
+        "viewAll": "Voir tout",
+        "products": "Produits"
+    },
+    "topBrands": {
+        "title": "Meilleures",
+        "titleHighlight": "Marques d'électronique",
+        "viewAll": "Voir tout"
+    },
+    "marketplace": {
+        "heading": "Faites partie de la place de marché aujourd'hui",
+        "subtitle": "Générez des revenus passifs en ligne",
+        "products": "2.2K Produits",
+        "electronicsItems": "Articles électroniques et plus",
+        "sourceNow": "Acheter maintenant",
+        "description": "Nous avons eu peut-être la meilleure expérience pour orienter la carrière de nos enfants avec le psychologue de Tera Parichay. Elle était non seulement incroyablement compétente et serviable, mais aussi éthique. Bien que nous ayons essayé les services d'autres \"orientations"
+    },
+    "partners": {
+        "heading": "Devenez un partenaire mondial",
+        "subtitle": "Générez des revenus passifs en ligne",
+        "forPartners": "Pour les partenaires,",
+        "andTheOnes": "et ceux",
+        "whoBecomeExperts": "qui deviennent des experts.",
+        "description1": "Que vous soyez un designer solo ou membre d'une équipe, junior ou senior, dans une agence ou une grande organisation, Prime a ce qu'il vous faut.",
+        "description2": "Il ne s'agit pas du nombre de composants. Avec les meilleures astuces et techniques Figma, une approche éprouvée de système de design",
+        "knowMore": "En savoir plus",
+        "ourValuablePartners": "Nos précieux partenaires",
+        "supportedBy": "Soutenu par"
+    },
+    "blog": {
+        "heading": "Inside Business : Le blog B2B par europages",
+        "subtitle": "Les sujets professionnels les plus tendances pour vous",
+        "readMore": "Lire la suite"
+    },
+    "testimonials": {
+        "heading": "Ce que nos clients disent de nous :",
+        "subtitle": "Commencez à planifier la carrière de votre enfant au bon moment avec des psychologues en orientation reconnus internationalement",
+        "readMore": "Lire la suite"
+    },
+    "home": {
+        "meta": {
+            "title": "Global Source Expo | La place de marché idéale pour les fournisseurs",
+            "description": "Trouvez le fournisseur parfait pour les besoins de votre entreprise. Global Source Expo fournit une place de marché de premier plan pour les acheteurs et vendeurs B2B afin de se connecter, de découvrir des produits recommandés et de bâtir des partenariats de confiance."
+        },
+        "perfectVendor": {
+            "heading": "Le fournisseur parfait",
+            "subheading": "Inquiet de trouver",
+            "description": "Profitez d'un",
+            "descriptionBold": "Conseil à distance",
+            "descriptionEnd": "entièrement interactif depuis le confort de votre maison",
+            "cta": "Acheter maintenant"
+        }
+    },
+    "footer": {
+        "connectWithUs": "Devenez partenaire mondial",
+        "visitOurStore": "Visitez notre magasin",
+        "contactUs": "Nous contacter",
+        "whatsApp": "WhatsApp",
+        "callUs": "Appelez-nous",
+        "downloadApp": "Télécharger l'application",
+        "mostPopularCategories": "Catégories les plus populaires",
+        "viewMore": "Voir plus",
+        "customerServices": "Services clients",
+        "aboutUs": "À propos de nous",
+        "termsConditions": "Termes & Conditions",
+        "faq": "FAQ",
+        "privacyPolicy": "Politique de confidentialité",
+        "eWastePolicy": "Politique relative aux déchets électroniques",
+        "cancellationPolicy": "Politique d'annulation et de retour",
+        "copyright": "© 2026 Tous droits réservés. Global Source Expo",
+        "adminLogin": "Connexion Admin"
+    },
+    "common": {
+        "sourceNow": "Acheter maintenant",
+        "viewAll": "Voir tout",
+        "readMore": "Lire la suite",
+        "learnMore": "En savoir plus"
+    },
+    "registerCompany": {
+        "title": "Créez le profil de votre entreprise",
+        "description": "Rejoignez des milliers de fournisseurs vérifiés sur la première place de marché B2B. Complétez votre profil ci-dessous pour commencer à vous connecter avec des acheteurs mondiaux dès aujourd'hui.",
+        "sections": {
+            "companyInfo": {
+                "title": "Informations sur l'entreprise",
+                "subtitle": "Les informations seront affichées aux acheteurs qui visitent le profil de votre entreprise.",
+                "fields": {
+                    "companyName": "Nom de l'entreprise",
+                    "country": "Pays d'enregistrement de l'entreprise",
+                    "vat": "Numéro de TVA",
+                    "uploadLogo": "Logo de l'entreprise",
+                    "companyDocuments": "Documents de l'entreprise",
+                    "addDocument": "Ajouter un document",
+                    "documentName": "Nom du document",
+                    "uploadFile": "Téléverser un fichier (PDF, DOC, JPG/PNG)"
+                },
+                "placeholders": {
+                    "documentName": "ex. Certificat d'incorporation"
+                }
+            },
+            "address": {
+                "title": "Adresse de l'entreprise",
+                "fields": {
+                    "street": "Rue et numéro",
+                    "address2": "Ligne d'adresse 2 (optionnel)",
+                    "postalCode": "Code postal",
+                    "city": "Ville"
+                },
+                "placeholders": {
+                    "address2": "Suite, Bâtiment, Étage (optionnel)"
+                }
+            },
+            "contact": {
+                "title": "Contact de l'entreprise",
+                "subtitle": "Ce sera le contact principal sur le profil de votre entreprise.",
+                "fields": {
+                    "email": "Email de l'entreprise",
+                    "website": "Site web de l'entreprise (optionnel)",
+                    "countryCode": "Code pays",
+                    "phone": "Numéro de téléphone de l'entreprise"
+                },
+                "placeholders": {
+                    "website": "ex. www.entreprise.com"
+                }
+            },
+            "business": {
+                "title": "Parlez-nous de votre entreprise",
+                "subtitle": "Aidez les acheteurs à mieux comprendre vos capacités et opérations.",
+                "fields": {
+                    "employees": "Nombre d'employés",
+                    "deliveryArea": "Zone de livraison",
+                    "companyType": "Type d'entreprise",
+                    "businessSector": "Secteur d'activité",
+                    "details": "Détails du produit"
+                },
+                "placeholders": {
+                    "employees": "Choisissez le nombre de vos employés",
+                    "deliveryArea": "Choisissez la zone où vous livrez",
+                    "companyType": "Sélectionnez tous les types correspondants",
+                    "businessSector": "À quel secteur appartient votre entreprise ?",
+                    "details": "Saisissez les détails du produit..."
+                }
+            }
+        },
+        "submit": "Publier le profil de l'entreprise",
+        "submitting": "Soumission en cours...",
+        "successTitle": "Entreprise enregistrée avec succès !",
+        "successMessage": "Merci de vous être inscrit sur notre plateforme. Les détails de votre entreprise ont été soumis et sont en attente de vérification.",
+        "validation": {
+            "required": "Ce champ est requis",
+            "invalidEmail": "Format d'email invalide",
+            "invalidWebsite": "Commencez par http:// ou https://",
+            "acceptTerms": "Vous devez accepter les Termes et Conditions et la Politique de confidentialité"
+        },
+        "terms": {
+            "iAcceptThe": "J'accepte les ",
+            "termsAndConditions": "Termes et Conditions",
+            "and": " et la ",
+            "privacyPolicy": "Politique de confidentialité",
+            "acceptMsg": ""
+        },
+        "connectWithUsPage": {
+            "bannerTitle": "Connectez-vous avec nous",
+            "bannerSubtitle": "Vous avez une question ou cherchez à établir un partenariat ? Notre équipe est prête à vous aider à naviguer dans l'approvisionnement mondial avec des conseils d'experts et un support dédié.",
+            "badgeLabel": "Portée mondiale, support local",
+            "contactFormTitle": "Envoyez-nous un message",
+            "formDescription": "Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les 24 heures.",
+            "nameField": "Nom complet",
+            "namePlaceholder": "Jean Dupont",
+            "emailField": "Adresse Email",
+            "emailPlaceholder": "jean@entreprise.com",
+            "phoneField": "Numéro de téléphone",
+            "phonePlaceholder": "+1 (555) 000-0000",
+            "countryField": "Pays",
+            "countryPlaceholder": "Sélectionnez votre pays",
+            "messageField": "Votre message",
+            "messagePlaceholder": "Dites-nous comment nous pouvons vous aider...",
+            "submitButton": "Envoyer le message",
+            "trustIndicatorsTitle": "Pourquoi nous faire confiance ?",
+            "isoDescription": "Certifié pour les systèmes de gestion de la qualité",
+            "verifiedSupplierTitle": "Réseau vérifié",
+            "verifiedSupplierDescription": "Tous les fournisseurs sont soumis à une vérification stricte",
+            "whyChooseUsTitle": "Pourquoi nous choisir",
+            "whyChooseUs1": "Portée mondiale & fournisseurs vérifiés",
+            "whyChooseUs2": "Transactions sécurisées et transparentes",
+            "whyChooseUs3": "Service client dédié 24/7",
+            "whyChooseUs4": "Assurance commerciale de bout en bout"
+        }
+    },
+    "about": {
+        "meta": {
+            "title": "À propos de nous | Global S&P",
+            "description": "Découvrez Global S&P, la principale plateforme d'approvisionnement B2B reliant les marchés mondiaux et favorisant le commerce B2B."
+        },
+        "hero": {
+            "label": "À propos de global-s-p",
+            "title": "Connecter les marchés mondiaux, favoriser le commerce B2B.",
+            "description": "Nous sommes la principale plateforme d'approvisionnement B2B comblant le fossé entre les fournisseurs mondiaux vérifiés et les acheteurs de qualité dans le monde entier.",
+            "contactUs": "Nous contacter",
+            "logoText": "GLOBAL-S-P"
+        },
+        "stats": {
+            "suppliers": "Fournisseurs vérifiés",
+            "products": "Produits & Services",
+            "countries": "Pays couverts",
+            "support": "Support dédié"
+        },
+        "mission": {
+            "label": "Notre mission",
+            "title": "Simplifier l'approvisionnement B2B pour tous.",
+            "desc1": "Nous pensons que trouver les bons partenaires commerciaux doit être transparent, efficace et fiable. Notre mission est de numériser la chaîne d'approvisionnement mondiale, la rendant accessible aux entreprises de toutes tailles pour se connecter et prospérer.",
+            "desc2": "En tirant parti d'algorithmes de mise en relation avancés et de processus de vérification rigoureux des fournisseurs, nous nous assurons que chaque connexion établie sur notre plateforme est fondée sur la confiance et la croissance mutuelle.",
+            "feature1Title": "Précision inégalée",
+            "feature1Desc": "Nous utilisons des informations basées sur les données pour faire correspondre vos besoins précis en approvisionnement avec les fournisseurs mondiaux les plus compétents.",
+            "feature2Title": "Portée mondiale",
+            "feature2Desc": "Notre réseau s'étend sur plus de 150 pays, vous offrant un accès inégalé aux marchés internationaux.",
+            "feature3Title": "Confiance vérifiée",
+            "feature3Desc": "Chaque fournisseur est soumis à un processus de vérification strict pour garantir des transactions sûres, fiables et de haute qualité."
+        },
+        "cta": {
+            "title": "Prêt à développer votre entreprise ?",
+            "description": "Rejoignez des millions d'acheteurs et de fournisseurs qui comptent sur global-s-p pour leurs besoins en approvisionnement B2B.",
+            "createAccount": "Créer un compte",
+            "contactSales": "Contacter les ventes"
+        },
+        "whoWeAre": {
+            "label": "Qui nous sommes",
+            "title": "Une équipe dédiée passionnée par le commerce mondial.",
+            "description": "Global S&P a été fondé avec un objectif simple mais ambitieux : créer un écosystème transparent et efficace pour le commerce international. Notre équipe est composée de vétérans de l'industrie, d'innovateurs technologiques et d'experts du commerce mondial qui comprennent les complexités de l'approvisionnement et de la vente transfrontalière. Nous nous efforçons continuellement de développer des outils qui éliminent les barrières linguistiques, simplifient la logistique et favorisent la confiance entre les entreprises.",
+            "imageAlt": "Notre équipe chez Global S&P"
+        },
+        "useCases": {
+            "label": "Comment ça marche",
+            "title": "Renforcer les entreprises dans tous les cas d'utilisation.",
+            "case1Title": "Approvisionnement en gros",
+            "case1Desc": "Les détaillants et distributeurs utilisent notre plateforme pour acheter des produits en gros à des prix compétitifs directement auprès des fabricants, réduisant ainsi les coûts des intermédiaires.",
+            "case2Title": "Fabrication sur mesure (OEM/ODM)",
+            "case2Desc": "Les marques et innovateurs se connectent avec des usines spécialisées pour donner vie à leurs conceptions de produits uniques avec des capacités de fabrication sur mesure.",
+            "case3Title": "Découverte de fournisseurs mondiaux",
+            "case3Desc": "Les équipes d'achat s'appuient sur notre base de données de fournisseurs vérifiés pour trouver rapidement des partenaires fiables, atténuer les risques de la chaîne d'approvisionnement et étendre leur portée sur le marché."
+        }
+    },
+    "contactPage": {
+        "meta": {
+            "title": "Nous contacter | Global S&P",
+            "description": "Entrez en contact avec Global S&P. Nous aimerions avoir de vos nouvelles."
+        },
+        "heroTitle": "Parlons-en",
+        "heroSubtitle": "Nous aimerions avoir de vos nouvelles. Que vous ayez une question sur notre place de marché, les prix ou autre chose, notre équipe est prête à répondre à toutes vos questions.",
+        "formTitle": "Envoyez-nous un message",
+        "formSubtitle": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+        "firstName": "Prénom",
+        "lastName": "Nom de famille",
+        "email": "Adresse Email",
+        "phone": "Numéro de téléphone",
+        "subject": "Sujet",
+        "messagePlaceholder": "Écrivez votre message ici...",
+        "sending": "Envoi de la demande...",
+        "sendButton": "Envoyer le message",
+        "contactInfoTitle": "Informations de contact",
+        "locationLabel": "Emplacement",
+        "locationLine1": "123 Avenue du Commerce Mondial",
+        "locationLine2": "Quartier des affaires, NY 10001",
+        "emailLabel": "Adresse Email",
+        "email1": "support@globalsourceexpo.com",
+        "email2": "sales@globalsourceexpo.com",
+        "phoneLabel": "Numéro de téléphone",
+        "phoneValue": "+1 (800) 123-4567",
+        "connectWithUsLabel": "Connectez-vous avec nous",
+        "successMessage": "Message envoyé avec succès ! Notre équipe vous contactera sous peu."
+    },
+    "contactSupplier": {
+        "meta": {
+            "title": "{name} | Global S&P",
+            "description": "Entrez en contact avec {name} sur Global S&P."
+        },
+        "headquarters": "Siège social",
+        "deliveryArea": "Zone de livraison",
+        "founded": "Fondé en",
+        "employees": "Employés",
+        "aboutCompany": "À propos de l'entreprise",
+        "notSpecified": "Non spécifié",
+        "noDescription": "Aucune description disponible pour ce fournisseur."
+    },
+    "contactForm": {
+        "title": "Contacter le fournisseur",
+        "toLabel": "À",
+        "reasonLabel": "Raison du contact",
+        "reasons": {
+            "getQuote": "Obtenir un prix / devis",
+            "getDetails": "Obtenir des détails sur les produits / services",
+            "sellSomething": "Leur vendre quelque chose",
+            "other": "Autre"
+        },
+        "titlePlaceholder": "Veuillez ajouter un court titre ou sujet pour votre demande",
+        "titleLabel": "Titre de la demande*",
+        "locationPlaceholder": "Veuillez entrer le nom d'une ville",
+        "locationLabel": "Lieu de livraison*",
+        "quantityPlaceholder": "Ex: 200 kg, 500 pièces, 10 litres",
+        "quantityLabel": "Quantité*",
+        "oneTimeRequest": "Demande ponctuelle",
+        "recurringRequest": "Demande récurrente",
+        "messageLabel": "Message*",
+        "messagePlaceholder": "Veuillez fournir des spécifications détaillées, y compris la couleur, le matériau, la taille, le poids, l'emballage, les certificats et toute autre information pertinente pour un devis rapide et précis",
+        "uploadBtn": "Téléverser des images ou des fichiers",
+        "maxSize": "Taille maximale 25 Mo",
+        "forwardRequestText": "Transférer cette demande à d'autres fournisseurs si l'entreprise ne répond pas dans les 48 heures",
+        "emailPlaceholder": "Veuillez entrer votre email",
+        "emailLabel": "Email professionnel*",
+        "companyPlaceholder": "Veuillez entrer le nom de votre entreprise",
+        "companyLabel": "Nom de l'entreprise",
+        "sendRequest": "Envoyer la demande",
+        "termsText1": "En soumettant le formulaire, j'accepte les ",
+        "termsOfUse": "Conditions d'utilisation",
+        "termsText2": " et les ",
+        "gtc": "CGV",
+        "termsText3": ". J'ai pris connaissance de la ",
+        "privacyPolicy": "Politique de confidentialité",
+        "termsText4": ". Un compte sur notre plateforme est requis pour accéder aux réponses de vos partenaires de communication.",
+        "errors": {
+            "errTitle": "Le titre de la demande est requis",
+            "errLocation": "Le lieu de livraison est requis",
+            "errQuantity": "La quantité est requise",
+            "errMessage": "Le message est requis",
+            "errEmailReq": "L'email professionnel est requis",
+            "errEmailValid": "Veuillez entrer une adresse email valide",
+            "errMaxFiles": "Maximum 5 fichiers autorisés",
+            "errMaxSize": "La taille totale des fichiers dépasse 25 Mo",
+            "successMessage": "Demande envoyée avec succès !",
+            "errFailed": "Échec de l'envoi de la demande. Veuillez réessayer."
+        }
+    }
+}

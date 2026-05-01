@@ -7,7 +7,7 @@ export const TOKEN_COOKIE_NAME = 'access_token';
 export const navLinks = [
   { name: "Get Quote", href: routes.getQuotePage, key: "getQuote" },
   { name: "Request Hub", href: routes.requestHubPage, key: "requestHub" },
-  { name: "Products&Services", href: routes.productsServicesPage, key: "productsServices" },
+  { name: "Products & Services", href: routes.productsServicesPage, key: "productsServices" },
   { name: "About us", href: routes.aboutPage, key: "aboutUs" },
 ]
 
@@ -24,6 +24,10 @@ export const languageList = [
   { name: 'English', locale: 'en', path: '/en' },
   { name: 'বাংলা', locale: 'bn', path: '/bn' },
   { name: 'हिन्दी', locale: 'hi', path: '/hi' },
+  { name: 'Français', locale: 'fr', path: '/fr' },
+  { name: '中文', locale: 'zh', path: '/zh' },
+
+
 ];
 
 

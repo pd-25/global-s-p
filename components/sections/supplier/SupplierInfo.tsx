@@ -81,7 +81,7 @@ export default function SupplierInfo({ supplier }: SupplierInfoProps) {
                     {/* <Button variant="contained" sx={{ backgroundColor: "#7FAF0D", mt: 2, textTransform: "none", width: "100%", }}> */}
                     <Link href={routes.supplierContactPage.replace("[slug]", supplier.slug)}>
                         <Button variant="contained" sx={{ backgroundColor: "#7FAF0D", mt: 2, textTransform: "none", width: "100%", }}>
-                            Contact Supplier
+                            Submit Inquiry
                         </Button>
                     </Link>
                     {/* </Button> */}

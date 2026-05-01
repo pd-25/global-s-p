@@ -9,10 +9,10 @@ export default function PartnerInfo() {
         <Container>
           <Box className="sectionHeading" sx={{ textAlign: "center" }}>
             <Typography variant="h2" component="h2">
-              Become Our Partner 
+              Become Global Partner
             </Typography>
             <Typography variant="body2" component="p">
-              Make Passive Income Online
+              Grow Together, Win Together
             </Typography>
           </Box>
           <Stack
@@ -27,22 +27,20 @@ export default function PartnerInfo() {
             >
               <Box className="ourPartnersContentCard">
                 <Typography variant="h3" component="h3">
-                  <span> For Partners,</span> and the ones
+                  <span> Become Part </span> of
                 </Typography>
                 <Typography variant="h4" component="h4">
-                  who become experts.
+                   Something Bigger Than Trade.
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Whether you're a solo designer or part of a team, a junior or
-                  a senior, at an agency or a large organization, Prime has you
-                  covered.
+                  Trade today is more than transactions- it’s about building a long-standing relationship. We bring together global buyers and trusted partners on a platform built around transparency, credibility, and shared success.
+
                 </Typography>
                 <Typography variant="body1" component="p">
-                  It’s not about number of components. With top Figma tricks &
-                  techniques, battle-tested design system approach
+                  Join a growing network where collaboration drives growth and every connection creates new opportunities. Together, we scale smarter, build stronger partnerships, and win as one.
                 </Typography>
                 <Button variant="contained" href="/">
-                  Know More
+                  Explore More
                 </Button>
               </Box>
             </Box>

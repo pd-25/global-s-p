@@ -830,7 +830,7 @@ export default function DemoPage() {
                         </List>
                       </Box>
                       <Box className="productFeaturedBoxRightContentButton">
-                        <Button variant="contained">Contact Supplier</Button>
+                        <Button variant="contained">Submit Inquiry</Button>
                       </Box>
                     </Box>
                   </Grid>

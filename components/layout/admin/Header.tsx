@@ -111,7 +111,7 @@ export default function Header() {
           </Box>
 
           {/* Search Bar (Professional Touch) */}
-          <Box
+          {/* <Box
             sx={{
               display: { xs: 'none', lg: 'flex' },
               alignItems: 'center',
@@ -132,7 +132,7 @@ export default function Header() {
               placeholder="Search resources..."
               sx={{ ml: 1, flex: 1, fontSize: '0.9rem' }}
             />
-          </Box>
+          </Box> */}
 
           {/* Desktop Menu */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
@@ -334,10 +334,10 @@ export default function Header() {
                 }
               }}
             >
-              <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2, minWidth: '150px' }}>
+              {/* <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2, minWidth: '150px' }}>
                 <Icon sx={{ color: 'text.secondary' }}>person</Icon>
                 <Typography>Profile</Typography>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem onClick={() => {
                 colorMode.toggleColorMode();
                 handleCloseUserMenu();
@@ -345,10 +345,10 @@ export default function Header() {
                 <Icon sx={{ color: 'text.secondary' }}>{theme.palette.mode === 'dark' ? 'light_mode' : 'dark_mode'}</Icon>
                 <Typography>{theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'}</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2 }}>
+              {/* <MenuItem onClick={handleCloseUserMenu} sx={{ gap: 2 }}>
                 <Icon sx={{ color: 'text.secondary' }}>settings</Icon>
                 <Typography>Settings</Typography>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem onClick={handleLogout} sx={{ gap: 2 }}>
                 <Icon color="error">logout</Icon>
                 <Typography color="error">Logout</Typography>

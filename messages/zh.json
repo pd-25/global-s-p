@@ -1,0 +1,364 @@
+{
+    "metadata": {
+        "title": "Global Source Export",
+        "description": "面向买家的B2B市场。"
+    },
+    "nav": {
+        "getQuote": "获取报价",
+        "requestHub": "请求中心",
+        "productsServices": "产品与服务",
+        "aboutUs": "关于我们",
+        "connectWithUs": "联系我们"
+    },
+    "banner": {
+        "searchPlaceholder": "搜索物品，例如：数控铣削、包装、气体",
+        "getQuote": "获取报价",
+        "learnMore": "了解更多",
+        "heroTitle": "领先的欧洲贸易B2B市场",
+        "heroSubtitle": "向经过验证的供应商发布您的请求。"
+    },
+    "statistics": {
+        "million": "百万",
+        "b2bProviders": "B2B供应商",
+        "industrySectors": "行业领域",
+        "products": "产品",
+        "picturesVideo": "图片和视频",
+        "buyersPerMonth": "每月买家数",
+        "getMultipleQuotes": "获取多个报价",
+        "picturesAndVideo": "图片和视频"
+    },
+    "categoryWiseProducts": {
+        "heading": "按产品类别搜索并获得灵感",
+        "noCategories": "未找到类别",
+        "sourceNow": "立即采购",
+        "viewAll": "查看全部",
+        "products": "产品"
+    },
+    "topBrands": {
+        "title": "热门",
+        "titleHighlight": "电子品牌",
+        "viewAll": "查看全部"
+    },
+    "marketplace": {
+        "heading": "立即加入市场",
+        "subtitle": "在线赚取被动收入",
+        "products": "2.2K 产品",
+        "electronicsItems": "电子产品及更多",
+        "sourceNow": "立即采购",
+        "description": "我们有可能是最好的体验，为我们的孩子在Tera Parichay的心理学家那里获得职业咨询。她不仅非常专业且乐于助人，而且很讲职业道德。虽然我们尝试了其他服务的“职业指导"
+    },
+    "partners": {
+        "heading": "成为全球合作伙伴",
+        "subtitle": "在线赚取被动收入",
+        "forPartners": "对于合作伙伴，",
+        "andTheOnes": "以及那些",
+        "whoBecomeExperts": "成为专家的人。",
+        "description1": "无论您是独立设计师还是团队的一员，是初级还是高级，是在代理机构还是大型组织中，Prime 都能满足您的需求。",
+        "description2": "这与组件的数量无关。拥有顶级的 Figma 技巧和技术、经过实战检验的设计系统方法",
+        "knowMore": "了解更多",
+        "ourValuablePartners": "我们宝贵的合作伙伴",
+        "supportedBy": "技术支持"
+    },
+    "blog": {
+        "heading": "商业内幕：europages的B2B博客",
+        "subtitle": "为您提供最热门的商业话题",
+        "readMore": "阅读更多"
+    },
+    "testimonials": {
+        "heading": "我们的客户对我们的评价：",
+        "subtitle": "在国际认可的职业心理学家的帮助下，在合适的时间开始规划您孩子的职业生涯",
+        "readMore": "阅读更多"
+    },
+    "home": {
+        "meta": {
+            "title": "Global Source Expo | 完美的供应商市场",
+            "description": "找到满足您业务需求的完美供应商。Global Source Expo为B2B买家和卖家提供领先的市场以建立联系、发现推荐产品并建立值得信赖的合作伙伴关系。"
+        },
+        "perfectVendor": {
+            "heading": "完美的供应商",
+            "subheading": "担心找不到",
+            "description": "提供完全互动的远程",
+            "descriptionBold": "咨询",
+            "descriptionEnd": "在舒适的家中即可享受",
+            "cta": "立即采购"
+        }
+    },
+    "footer": {
+        "connectWithUs": "成为全球合作伙伴",
+        "visitOurStore": "访问我们的商店",
+        "contactUs": "联系我们",
+        "whatsApp": "WhatsApp",
+        "callUs": "致电我们",
+        "downloadApp": "下载应用",
+        "mostPopularCategories": "最受欢迎的类别",
+        "viewMore": "查看更多",
+        "customerServices": "客户服务",
+        "aboutUs": "关于我们",
+        "termsConditions": "条款与条件",
+        "faq": "常见问题",
+        "privacyPolicy": "隐私政策",
+        "eWastePolicy": "电子垃圾政策",
+        "cancellationPolicy": "取消及退货政策",
+        "copyright": "© 2026 保留所有权利。Global Source Expo",
+        "adminLogin": "管理员登录"
+    },
+    "common": {
+        "sourceNow": "立即采购",
+        "viewAll": "查看全部",
+        "readMore": "阅读更多",
+        "learnMore": "了解更多"
+    },
+    "registerCompany": {
+        "title": "创建您的公司资料",
+        "description": "加入领先B2B市场上成千上万经过验证的供应商。填写下面的资料，立即开始与全球买家建立联系。",
+        "sections": {
+            "companyInfo": {
+                "title": "公司信息",
+                "subtitle": "信息将显示给访问您公司资料的买家。",
+                "fields": {
+                    "companyName": "公司名称",
+                    "country": "公司注册国家",
+                    "vat": "增值税号",
+                    "uploadLogo": "公司标识 (Logo)",
+                    "companyDocuments": "公司文件",
+                    "addDocument": "添加文件",
+                    "documentName": "文件名称",
+                    "uploadFile": "上传文件 (PDF, DOC, JPG/PNG)"
+                },
+                "placeholders": {
+                    "documentName": "例如：公司注册证书"
+                }
+            },
+            "address": {
+                "title": "公司地址",
+                "fields": {
+                    "street": "街道和门牌号",
+                    "address2": "地址第2行（可选）",
+                    "postalCode": "邮政编码",
+                    "city": "城市"
+                },
+                "placeholders": {
+                    "address2": "套房、楼层等（可选）"
+                }
+            },
+            "contact": {
+                "title": "公司联系方式",
+                "subtitle": "这将成为您公司资料上的主要联系方式。",
+                "fields": {
+                    "email": "公司邮箱",
+                    "website": "公司网站（可选）",
+                    "countryCode": "国家代码",
+                    "phone": "公司电话号码"
+                },
+                "placeholders": {
+                    "website": "例如：www.company.com"
+                }
+            },
+            "business": {
+                "title": "介绍一下您的业务",
+                "subtitle": "帮助买家更好地了解您的能力和运营。",
+                "fields": {
+                    "employees": "员工人数",
+                    "deliveryArea": "送货区域",
+                    "companyType": "公司类型",
+                    "businessSector": "所属行业",
+                    "details": "产品详情"
+                },
+                "placeholders": {
+                    "employees": "选择您的员工数量",
+                    "deliveryArea": "选择您送货的区域",
+                    "companyType": "选择所有匹配的类型",
+                    "businessSector": "您的公司属于哪个行业？",
+                    "details": "输入产品详情..."
+                }
+            }
+        },
+        "submit": "发布公司资料",
+        "submitting": "提交中...",
+        "successTitle": "公司注册成功！",
+        "successMessage": "感谢您在我们的平台注册。您的公司详细信息已提交并正在等待验证。",
+        "validation": {
+            "required": "此字段为必填项",
+            "invalidEmail": "无效的电子邮件格式",
+            "invalidWebsite": "请以http://或https://开头",
+            "acceptTerms": "您必须接受条款和条件及隐私政策"
+        },
+        "terms": {
+            "iAcceptThe": "我接受",
+            "termsAndConditions": "条款和条件",
+            "and": "以及",
+            "privacyPolicy": "隐私政策",
+            "acceptMsg": ""
+        },
+        "connectWithUsPage": {
+            "bannerTitle": "联系我们",
+            "bannerSubtitle": "有问题或希望建立合作伙伴关系？我们的团队随时准备为您提供专家指导和专门支持，帮助您畅游全球采购。",
+            "badgeLabel": "全球覆盖，本地支持",
+            "contactFormTitle": "给我们留言",
+            "formDescription": "填写下表，我们的团队将在24小时内回复您。",
+            "nameField": "全名",
+            "namePlaceholder": "张三",
+            "emailField": "电子邮件地址",
+            "emailPlaceholder": "zhangsan@company.com",
+            "phoneField": "电话号码",
+            "phonePlaceholder": "+1 (555) 000-0000",
+            "countryField": "国家",
+            "countryPlaceholder": "选择您的国家",
+            "messageField": "您的留言",
+            "messagePlaceholder": "告诉我们能如何帮助您...",
+            "submitButton": "发送留言",
+            "trustIndicatorsTitle": "为什么信任我们？",
+            "isoDescription": "质量管理体系认证",
+            "verifiedSupplierTitle": "验证网络",
+            "verifiedSupplierDescription": "所有供应商都经过严格的审查",
+            "whyChooseUsTitle": "为什么选择我们",
+            "whyChooseUs1": "全球覆盖与经过验证的供应商",
+            "whyChooseUs2": "安全且透明的交易",
+            "whyChooseUs3": "24/7 全天候客户服务支持",
+            "whyChooseUs4": "端到端的贸易保障"
+        }
+    },
+    "about": {
+        "meta": {
+            "title": "关于我们 | Global S&P",
+            "description": "了解Global S&P，这是一家连接全球市场、赋能B2B贸易的领先B2B采购平台。"
+        },
+        "hero": {
+            "label": "关于 global-s-p",
+            "title": "连接全球市场，赋能B2B贸易。",
+            "description": "我们是领先的B2B采购平台，致力于填补全球经过验证的供应商与优质买家之间的鸿沟。",
+            "contactUs": "联系我们",
+            "logoText": "GLOBAL-S-P"
+        },
+        "stats": {
+            "suppliers": "经过验证的供应商",
+            "products": "产品与服务",
+            "countries": "覆盖国家",
+            "support": "专业支持"
+        },
+        "mission": {
+            "label": "我们的使命",
+            "title": "为所有人简化B2B采购。",
+            "desc1": "我们认为，寻找合适的商业伙伴应该是透明、高效和可靠的。我们的使命是实现全球供应链的数字化，使各种规模的企业都能轻松建立联系并茁壮成长。",
+            "desc2": "通过利用先进的匹配算法和严格的供应商验证流程，我们确保在我们的平台上建立的每一种联系都建立在信任和共同成长的基础之上。",
+            "feature1Title": "无与伦比的精确度",
+            "feature1Desc": "我们利用数据驱动的见解，将您精确的采购需求与最能干的全球供应商进行匹配。",
+            "feature2Title": "全球覆盖",
+            "feature2Desc": "我们的网络遍及150多个国家/地区，为您提供进入国际市场的无与伦比的途径。",
+            "feature3Title": "验证的信任",
+            "feature3Desc": "每个供应商都经过严格的审查程序，以确保安全、可靠和高质量的交易。"
+        },
+        "cta": {
+            "title": "准备好发展您的业务了吗？",
+            "description": "加入成千上万依赖 global-s-p 满足其B2B采购需求的买家和供应商。",
+            "createAccount": "创建账户",
+            "contactSales": "联系销售"
+        },
+        "whoWeAre": {
+            "label": "我们是谁",
+            "title": "一个充满激情、致力于全球贸易的敬业团队。",
+            "description": "Global S&P 的成立有着一个简单但雄心勃勃的目标：为国际贸易创造一个无缝、透明且高效的生态系统。我们的团队由了解跨境采购和销售复杂性的行业资深人士、技术创新者和全球贸易专家组成。我们不断努力开发工具来消除语言障碍，简化物流，并培养企业之间的信任。",
+            "imageAlt": "我们在Global S&P的团队"
+        },
+        "useCases": {
+            "label": "运作方式",
+            "title": "为各种用例的企业赋能。",
+            "case1Title": "批发采购",
+            "case1Desc": "零售商和分销商使用我们的平台，以具有竞争力的价格直接从制造商那里批量购买产品，从而降低了中间商的成本。",
+            "case2Title": "定制制造 (OEM/ODM)",
+            "case2Desc": "品牌和创新者与专业工厂建立联系，通过定制制造能力将他们独特的产品设计变为现实。",
+            "case3Title": "全球供应商发现",
+            "case3Desc": "采购团队利用我们经过验证的供应商数据库快速寻找可靠的合作伙伴，降低供应链风险，扩大市场覆盖范围。"
+        }
+    },
+    "contactPage": {
+        "meta": {
+            "title": "联系我们 | Global S&P",
+            "description": "与 Global S&P 取得联系。我们很乐意听取您的意见。"
+        },
+        "heroTitle": "让我们谈谈",
+        "heroSubtitle": "我们很乐意听取您的意见。无论您对我们的市场、价格还是其他任何问题有疑问，我们的团队随时准备回答您的所有问题。",
+        "formTitle": "给我们留言",
+        "formSubtitle": "填写下表，我们将在24小时内回复您。",
+        "firstName": "名字",
+        "lastName": "姓氏",
+        "email": "电子邮件地址",
+        "phone": "电话号码",
+        "subject": "主题",
+        "messagePlaceholder": "在此写下您的留言...",
+        "sending": "正在发送请求...",
+        "sendButton": "发送留言",
+        "contactInfoTitle": "联系信息",
+        "locationLabel": "位置",
+        "locationLine1": "123 Global Trade Avenue",
+        "locationLine2": "Business District, NY 10001",
+        "emailLabel": "电子邮件地址",
+        "email1": "support@globalsourceexpo.com",
+        "email2": "sales@globalsourceexpo.com",
+        "phoneLabel": "电话号码",
+        "phoneValue": "+1 (800) 123-4567",
+        "connectWithUsLabel": "联系我们",
+        "successMessage": "留言发送成功！我们的团队会尽快与您联系。"
+    },
+    "contactSupplier": {
+        "meta": {
+            "title": "{name} | Global S&P",
+            "description": "在 Global S&P 上联系 {name}。"
+        },
+        "headquarters": "总部",
+        "deliveryArea": "送货区域",
+        "founded": "成立时间",
+        "employees": "员工人数",
+        "aboutCompany": "关于公司",
+        "notSpecified": "未说明",
+        "noDescription": "暂无该供应商描述。"
+    },
+    "contactForm": {
+        "title": "联系供应商",
+        "toLabel": "致",
+        "reasonLabel": "联系原因",
+        "reasons": {
+            "getQuote": "获取价格/报价",
+            "getDetails": "获取产品/服务详细信息",
+            "sellSomething": "向他们推销",
+            "other": "其他"
+        },
+        "titlePlaceholder": "请为您的请求添加一个简短的标题或主题",
+        "titleLabel": "请求标题*",
+        "locationPlaceholder": "请输入城市名称",
+        "locationLabel": "交货地点*",
+        "quantityPlaceholder": "例如：200千克，500件，10升",
+        "quantityLabel": "数量*",
+        "oneTimeRequest": "一次性请求",
+        "recurringRequest": "周期性请求",
+        "messageLabel": "信息*",
+        "messagePlaceholder": "请提供详细的规格说明，包括颜色、材质、尺寸、重量、包装、证书等相关信息，以便快速获得准确的报价",
+        "uploadBtn": "上传图片或文件",
+        "maxSize": "最大支持 25 MB",
+        "forwardRequestText": "如果公司在48小时内未答复，请将此请求转发给其他供应商",
+        "emailPlaceholder": "请输入您的电子邮箱",
+        "emailLabel": "工作邮箱*",
+        "companyPlaceholder": "请输入您的公司名称",
+        "companyLabel": "公司名称",
+        "sendRequest": "发送请求",
+        "termsText1": "提交表格即表示我接受",
+        "termsOfUse": "使用条款",
+        "termsText2": " 和 ",
+        "gtc": "一般条款及条件",
+        "termsText3": "。我已知晓",
+        "privacyPolicy": "隐私政策",
+        "termsText4": "。必须在我们的平台上注册账户才能访问来自您的沟通伙伴的回复。",
+        "errors": {
+            "errTitle": "请求标题必填",
+            "errLocation": "交货地点必填",
+            "errQuantity": "数量必填",
+            "errMessage": "信息必填",
+            "errEmailReq": "工作邮箱必填",
+            "errEmailValid": "请输入有效的电子邮件地址",
+            "errMaxFiles": "最多允许 5 个文件",
+            "errMaxSize": "文件总大小超过 25 MB",
+            "successMessage": "请求发送成功！",
+            "errFailed": "发送请求失败，请重试。"
+        }
+    }
+}

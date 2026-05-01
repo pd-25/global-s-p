@@ -307,7 +307,7 @@ export default function RequestHubPage() {
                           whiteSpace: "nowrap",
                         }}
                       >
-                        Contact Supplier
+                        Submit Inquiry
                       </Button>
                     </Box>
                   </Card>

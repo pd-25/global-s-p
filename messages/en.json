@@ -6,7 +6,7 @@
     "nav": {
         "getQuote": "Get Quote",
         "requestHub": "Request Hub",
-        "productsServices": "Products&Services",
+        "productsServices": "Products & Services",
         "aboutUs": "About us",
         "connectWithUs": "Connect with us"
     },
@@ -14,8 +14,8 @@
         "searchPlaceholder": "Search Items e,g, CNC Milling,Packaging , Gas",
         "getQuote": "Get Quote",
         "learnMore": "Learn More",
-        "heroTitle": "The leading B2B marketplace for European trade",
-        "heroSubtitle": "Post your request to verified suppliers."
+        "heroTitle": "A New Era of B2B Marketplace Begins with Global Source Expo LTD ",
+        "heroSubtitle": "Source your desired products with us."
     },
     "statistics": {
         "million": "Million",
@@ -28,7 +28,7 @@
         "picturesAndVideo": "Pictures and videos"
     },
     "categoryWiseProducts": {
-        "heading": "Search by Product Category And get inspired",
+        "heading": " Explore Products with Purpose and Get Inspired",
         "noCategories": "No Categories Found",
         "sourceNow": "Source Now",
         "viewAll": "View All",
@@ -40,7 +40,7 @@
         "viewAll": "View All"
     },
     "marketplace": {
-        "heading": "Become Part of the Marketplace Today",
+        "heading": "Access Verified Global Trade Network in One Place",
         "subtitle": "Make Passive Income Online",
         "products": "2.2K Products",
         "electronicsItems": "Electronics Items And More",
@@ -110,7 +110,7 @@
     },
     "registerCompany": {
         "title": "Create your company profile",
-        "description": "Join thousands of verified suppliers on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.",
+        "description": "Join thousands of verified global partners on the leading B2B marketplace. Complete your profile below to start connecting with global buyers today.",
         "sections": {
             "companyInfo": {
                 "title": "Company information",
@@ -161,13 +161,15 @@
                     "employees": "Number of employees",
                     "deliveryArea": "Delivery area",
                     "companyType": "Company type",
-                    "businessSector": "Business sector"
+                    "businessSector": "Business sector",
+                    "details": "Product details"
                 },
                 "placeholders": {
                     "employees": "Choose your employee count",
                     "deliveryArea": "Choose which area you deliver to",
                     "companyType": "Select all matching types",
-                    "businessSector": "Which sector does your company belong to?"
+                    "businessSector": "Which sector does your company belong to?",
+                    "details": "Enter product details..."
                 }
             }
         },
@@ -208,7 +210,7 @@
             "trustIndicatorsTitle": "Why trust us?",
             "isoDescription": "Certified for quality management systems",
             "verifiedSupplierTitle": "Verified Network",
-            "verifiedSupplierDescription": "All suppliers undergo strict vetting",
+            "verifiedSupplierDescription": "All global partners undergo strict vetting",
             "whyChooseUsTitle": "Why Choose Us",
             "whyChooseUs1": "Global Reach & Verified Suppliers",
             "whyChooseUs2": "Secure & Transparent Transactions",
@@ -222,9 +224,9 @@
             "description": "Learn about Global S&P, the leading B2B sourcing platform connecting global markets and empowering B2B trade."
         },
         "hero": {
-            "label": "About global-s-p",
-            "title": "Connecting global markets, empowering B2B trade.",
-            "description": "We are the leading B2B sourcing platform bridging the gap between verified global suppliers and quality buyers worldwide.",
+            "label": "About Global Source Expo",
+            "title": "Global Source Expo - A Nontraditional B2B Sourcing Platform.",
+            "description": "Global Source Expo Ltd. is a global trade partnership built on a fundamentally different model. We enable seamless and trusted B2B sourcing for buyers across continents.",
             "contactUs": "Contact Us",
             "logoText": "GLOBAL-S-P"
         },
@@ -236,37 +238,37 @@
         },
         "mission": {
             "label": "Our Mission",
-            "title": "Simplifying B2B Sourcing for Everyone.",
-            "desc1": "We believe that finding the right business partners should be transparent, efficient, and reliable. Our mission is to digitize the global supply chain, making it accessible for businesses of all sizes to connect and thrive.",
-            "desc2": "By leveraging advanced matching algorithms and rigorous supplier verification processes, we ensure that every connection made on our platform is built on trust and mutual growth.",
-            "feature1Title": "Unmatched Precision",
-            "feature1Desc": "We use data-driven insights to match your precise sourcing needs with the most capable global suppliers.",
-            "feature2Title": "Global Reach",
-            "feature2Desc": "Our network spans over 150 countries, providing you with unparalleled access to international markets.",
-            "feature3Title": "Verified Trust",
-            "feature3Desc": "Every supplier undergoes a strict vetting process to ensure safe, reliable, and high-quality transactions."
+            "title": "Making Global Sourcing More Reliable and Structured.",
+            "desc1": "Global sourcing has traditionally been complex, inconsistent, and often out of reach for small and mid-sized businesses. We are the only platform bringing you hassle-free access to verified products backed by quality, credibility, and real market demand.",
+            "desc2": "We believe finding the right business partners should be transparent, efficient, and reliable. That’s why we bring structure to global sourcing- making it more accessible, more dependable, and easier to navigate, so your business can grow with confidence.",
+            "feature1Title": "Agile Expertise",
+            "feature1Desc": "We combine deep experience working with small and mid-sized businesses with the mindset of a modern, evolving global B2B platform with a presence across 3 continents.",
+            "feature2Title": "Global Leadership",
+            "feature2Desc": "Our leadership team brings proven experience from major international companies, offering strong strategic direction and a clear understanding of global markets",
+            "feature3Title": "Skilled Team",
+            "feature3Desc": "Our diverse teams are structured with the right people in the right roles- working closely with you to support growth and deliver real, measurable outcomes."
         },
         "cta": {
             "title": "Ready to grow your business?",
-            "description": "Join million of buyers and suppliers who rely on global-s-p for their B2B sourcing needs.",
+            "description": "Join million of buyers and global partners who rely on global-s-p for their B2B sourcing needs.",
             "createAccount": "Create an Account",
             "contactSales": "Contact Sales"
         },
         "whoWeAre": {
             "label": "Who We Are",
-            "title": "A dedicated team passionate about global trade.",
-            "description": "Global S&P was founded with a simple yet ambitious goal: to create a seamless, transparent, and efficient ecosystem for international trade. Our team is composed of industry veterans, tech innovators, and global trade experts who understand the complexities of sourcing and selling across borders. We continuously strive to build tools that eliminate language barriers, simplify logistics, and foster trust between businesses.",
+            "title": "We are Global Source Expo.",
+            "description": "Global Source Expo represents a new approach to global B2B sourcing- where access, trust, and execution come together. We connect buyers with reliable products from global markets, backed by clear specifications, consistent supply, and dependable sourcing processes. Unlike traditional platforms, we operate beyond listings. Through a structured and partnership-driven model, we bring together product validation, strategic positioning, and global market reach- creating a more reliable and effective sourcing environment. With a growing presence across three continents, we are committed to making global trade more accessible, transparent, and dependable for businesses ready to scale with confidence.",
             "imageAlt": "Our team at Global S&P"
         },
         "useCases": {
             "label": "How It Works",
-            "title": "Empowering businesses across all use cases.",
-            "case1Title": "Wholesale Sourcing",
-            "case1Desc": "Retailers and distributors use our platform to bulk-buy products at competitive prices directly from manufacturers, reducing middleman costs.",
-            "case2Title": "Custom Manufacturing (OEM/ODM)",
-            "case2Desc": "Brands and innovators connect with specialized factories to bring their unique product designs to life with custom manufacturing capabilities.",
-            "case3Title": "Global Supplier Discovery",
-            "case3Desc": "Procurement teams leverage our verified supplier database to quickly find reliable partners, mitigate supply chain risks, and expand their market reach."
+            "title": "Reliable Foundation for Global B2B Sourcing.",
+            "case1Title": "Our Mission",
+            "case1Desc": "To connect the world's most authentic producers, manufacturers, and entrepreneurs to the global markets they deserve through verified partnerships, rigorous standards, and a robust legal framework that ensures credibility, security, and trust at every level. We transform local excellence into global legacy. At Global Source Expo Limited, we do not simply open doors to international markets, we build the pathway, and ensure every partner who walks it arrives with strength, recognition, and competitive authority. Quality finds its market. Excellence finds its world. Grow Together. Win Together.....",
+            "case2Title": "Our Vision",
+            "case2Desc": "To become the world's most trusted gateway to global trade where borders are no barrier, quality is the only currency, and every exceptional producer has the power to compete, grow, and win on the international stage. One world. One standard. Infinite possibilities.....",
+            "case3Title": "Our Values",
+            "case3Desc": "We believe trust is built before business begins. Quality is not a promise- it is a practice. Partnership is not a contract, it is a commitment. Every border crossed, every market entered, every deal sealed carries one uncompromising truth- excellence is the only language the world truly understands. Grow Together. Win Together...."
         }
     },
     "contactPage": {
@@ -312,7 +314,7 @@
         "noDescription": "No description available for this supplier."
     },
     "contactForm": {
-        "title": "Contact supplier",
+        "title": "Submit Inquiry",
         "toLabel": "To",
         "reasonLabel": "Reason for contacting",
         "reasons": {
@@ -333,7 +335,7 @@
         "messagePlaceholder": "Please provide detailed specifications, including colour, material, size, weight, packaging, certificates, and any other relevant information for a prompt and accurate quote",
         "uploadBtn": "Upload images or files",
         "maxSize": "Maximum size 25 MB",
-        "forwardRequestText": "Forward this request to other suppliers if the company doesn't respond within 48 hours",
+        "forwardRequestText": "Forward this request to other global partners if the company doesn't respond within 48 hours",
         "emailPlaceholder": "Please enter your email",
         "emailLabel": "Business email*",
         "companyPlaceholder": "Please enter your company name",

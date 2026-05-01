@@ -190,7 +190,7 @@ export default function ProductServiceDetailsClient({ slug, categoryData }: { sl
                         className="productFeaturedBoxRightTitle"
                         sx={{ textTransform: 'uppercase' }}
                       >
-                        ({categoryData?.name || slug})
+                        {categoryData?.name || slug}
                       </Typography>
                       <Box className="productFeaturedBoxRightContentList">
                         <Typography

@@ -59,6 +59,7 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
         deliveryArea: '',
         companyType: '',
         businessSector: '',
+        details: '',
         isAcceptTerms: false,
         documents: [] as { name: string; file: File | null }[],
     });
@@ -133,6 +134,9 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
             formDataObj.append('delivery_area', formData.deliveryArea);
             formDataObj.append('supplier_type_id', String(formData.companyType));
             formDataObj.append('business_sector', formData.businessSector);
+            if (formData.details) {
+                formDataObj.append('details', formData.details);
+            }
             formDataObj.append('is_accept_terms', String(formData.isAcceptTerms));
             
             // Append documents
@@ -687,6 +691,18 @@ export default function RegisterCompanyForm({ countries, supplierTypes }: { coun
                                     </Select>
                                     {errors.businessSector && <FormHelperText>{errors.businessSector}</FormHelperText>}
                                 </FormControl>
+                            </Grid>
+                            <Grid size={{ xs: 12 }}>
+                                <TextField
+                                    fullWidth
+                                    multiline
+                                    rows={4}
+                                    label={t('sections.business.fields.details', { defaultValue: 'Product details' })}
+                                    placeholder={t('sections.business.placeholders.details', { defaultValue: 'Enter product details...' })}
+                                    value={formData.details}
+                                    onChange={handleChange('details')}
+                                    sx={inputStyles}
+                                />
                             </Grid>
                         </Grid>
                     </Card>

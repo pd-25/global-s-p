@@ -478,7 +478,7 @@ export default function ProductDetailsInfo({ product }: ProductDetailsInfoProps)
                                             },
                                         }}
                                     >
-                                        Contact Supplier
+                                        Submit Inquiry
                                     </Button>
                                 </Link>
                                 <Button

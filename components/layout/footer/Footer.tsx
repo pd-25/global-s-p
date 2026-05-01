@@ -427,11 +427,17 @@ export default function Footer({
                     </Typography>
                     <Typography
                       variant="body1"
-                      component="p"
+                      component="a"
+                      href={`mailto:${emailAddress}`}
                       sx={{
                         fontSize: "16px",
                         fontWeight: 600,
                         color: "#ffffff",
+                        textDecoration: "none",
+                        cursor: "pointer",
+                        "&:hover": {
+                          color: "#7FAF0D",
+                        },
                       }}
                     >
                       {emailAddress}
