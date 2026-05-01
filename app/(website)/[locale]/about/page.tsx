@@ -255,6 +255,12 @@ export default async function AboutPage() {
                             <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
                                 {t('whoWeAre.description')}
                             </Typography>
+                            <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
+                                {t('whoWeAre.description2')}
+                            </Typography>
+                            <Typography sx={{ fontSize: '17px', lineHeight: 1.7, color: '#4B5563', mb: 3 }}>
+                                {t('whoWeAre.description3')}
+                            </Typography>
                         </Grid>
                     </Grid>
                 </Container>

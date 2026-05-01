@@ -91,7 +91,7 @@
   text-transform: uppercase !important;
   border-radius: 30px;
   padding: 5px 14px;
-  margin: 18px 0 14px;
+  margin: 0 0 14px !important;
 }
 
 .ps-hero__dot {
@@ -104,10 +104,12 @@
 }
 
 @keyframes ps-blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.25;
   }
@@ -302,6 +304,7 @@
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -319,7 +322,7 @@
   outline: none;
   position: relative;
   @include transition-prefixes(0.2s);
-  
+
   @include respond-to(sm) {
     flex-wrap: wrap;
     gap: 12px;
@@ -478,7 +481,7 @@
     background: transparent !important;
     color: $colorSecondary !important;
     border: 1px solid rgba(5, 73, 52, 0.2) !important;
-    
+
     &:hover {
       background: rgba(5, 73, 52, 0.05) !important;
       border-color: $colorSecondary !important;
@@ -564,7 +567,8 @@
 .ps-sub-card__img-wrap {
   position: relative;
   width: 100%;
-  padding-top: 80%; /* Aspect ratio 5:4 */
+  padding-top: 80%;
+  /* Aspect ratio 5:4 */
   background: #f8f9fa;
   overflow: hidden;
 

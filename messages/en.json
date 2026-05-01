@@ -257,7 +257,9 @@
         "whoWeAre": {
             "label": "Who We Are",
             "title": "We are Global Source Expo.",
-            "description": "Global Source Expo represents a new approach to global B2B sourcing- where access, trust, and execution come together. We connect buyers with reliable products from global markets, backed by clear specifications, consistent supply, and dependable sourcing processes. Unlike traditional platforms, we operate beyond listings. Through a structured and partnership-driven model, we bring together product validation, strategic positioning, and global market reach- creating a more reliable and effective sourcing environment. With a growing presence across three continents, we are committed to making global trade more accessible, transparent, and dependable for businesses ready to scale with confidence.",
+            "description": "Global Source Expo represents a new approach to global B2B sourcing- where access, trust, and execution come together. We connect buyers with reliable products from global markets, backed by clear specifications, consistent supply, and dependable sourcing processes. ",
+            "description2": "Unlike traditional platforms, we operate beyond listings. Through a structured and partnership-driven model, we bring together product validation, strategic positioning, and global market reach- creating a more reliable and effective sourcing environment.",
+            "description3": " With a growing presence across three continents, we are committed to making global trade more accessible, transparent, and dependable for businesses ready to scale with confidence.",
             "imageAlt": "Our team at Global S&P"
         },
         "useCases": {
